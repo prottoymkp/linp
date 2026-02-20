@@ -1,68 +1,69 @@
-"""Excel read/write helpers for named table ingestion and result export."""
-
 from __future__ import annotations
 
-from pathlib import Path
+from io import BytesIO
 from typing import Dict
 
 import pandas as pd
-from openpyxl import Workbook, load_workbook
-from openpyxl.utils.cell import range_boundaries
+from openpyxl import load_workbook
 from openpyxl.worksheet.table import Table, TableStyleInfo
 
-from app.config import TABLE_ALIASES
+from .config import TABLE_ALIASES
 
 
-class ExcelIOError(Exception):
-    """Raised when workbook ingestion/writing fails."""
+def load_tables_from_excel(file_bytes: bytes) -> Dict[str, pd.DataFrame]:
+    wb = load_workbook(BytesIO(file_bytes), data_only=True)
+    tables: Dict[str, pd.DataFrame] = {}
 
-
-def _table_to_dataframe(ws, table) -> pd.DataFrame:
-    min_col, min_row, max_col, max_row = range_boundaries(table.ref)
-    rows = ws.iter_rows(min_row=min_row, max_row=max_row, min_col=min_col, max_col=max_col, values_only=True)
-    rows = list(rows)
-    if not rows:
-        return pd.DataFrame()
-    headers = [str(h).strip() if h is not None else "" for h in rows[0]]
-    data = rows[1:]
-    return pd.DataFrame(data, columns=headers)
-
-
-def load_input_tables(path: str | Path) -> Dict[str, pd.DataFrame]:
-    """Load workbook tables into logical datasets with alias normalization."""
-    wb = load_workbook(filename=path, data_only=True)
-    datasets: Dict[str, pd.DataFrame] = {}
     for ws in wb.worksheets:
         for table in ws.tables.values():
-            logical_name = TABLE_ALIASES.get(table.name)
-            if logical_name:
-                datasets[logical_name] = _table_to_dataframe(ws, table)
-    return datasets
+            ref = ws[table.ref]
+            data = [[c.value for c in row] for row in ref]
+            if not data:
+                continue
+            headers = [str(h) for h in data[0]]
+            rows = data[1:]
+            df = pd.DataFrame(rows, columns=headers)
+            tname = TABLE_ALIASES.get(table.name, table.name)
+            tables[tname] = df
+
+    return tables
 
 
-def _write_table_sheet(wb: Workbook, sheet_name: str, table_name: str, df: pd.DataFrame) -> None:
-    ws = wb.create_sheet(title=sheet_name)
-    ws.append(list(df.columns))
+def _write_df_as_table(ws, df: pd.DataFrame, table_name: str):
+    ws.append(df.columns.tolist())
     for row in df.itertuples(index=False):
         ws.append(list(row))
-
-    end_col_letter = ws.cell(row=1, column=max(1, len(df.columns))).column_letter
-    end_row = max(2, len(df) + 1)
-    ref = f"A1:{end_col_letter}{end_row}"
-
-    table = Table(displayName=table_name, ref=ref)
-    style = TableStyleInfo(name="TableStyleMedium9", showRowStripes=True)
-    table.tableStyleInfo = style
-    ws.add_table(table)
+    end_col = chr(ord("A") + len(df.columns) - 1)
+    end_row = len(df) + 1
+    tab = Table(displayName=table_name, ref=f"A1:{end_col}{end_row}")
+    style = TableStyleInfo(name="TableStyleMedium9", showFirstColumn=False, showLastColumn=False, showRowStripes=True, showColumnStripes=False)
+    tab.tableStyleInfo = style
+    ws.add_table(tab)
 
 
-def write_output_workbook(path: str | Path, fg_result: pd.DataFrame, rm_diagnostic: pd.DataFrame, run_meta: pd.DataFrame) -> None:
-    """Write output workbook with stable sheet/table names and column order."""
-    wb = Workbook()
-    wb.remove(wb.active)
+def write_output_excel(fg_df: pd.DataFrame, rm_df: pd.DataFrame, meta_df: pd.DataFrame) -> bytes:
+    out = BytesIO()
+    with pd.ExcelWriter(out, engine="openpyxl") as writer:
+        fg_df.to_excel(writer, sheet_name="FG_Result", index=False)
+        rm_df.to_excel(writer, sheet_name="RM_Diagnostic", index=False)
+        meta_df.to_excel(writer, sheet_name="Run_Metadata", index=False)
 
-    _write_table_sheet(wb, "FGResult", "tblFGResult", fg_result)
-    _write_table_sheet(wb, "RMDiagnostic", "tblRMDiagnostic", rm_diagnostic)
-    _write_table_sheet(wb, "RunMeta", "tblRunMeta", run_meta)
+    out.seek(0)
+    wb = load_workbook(out)
+    ws_fg = wb["FG_Result"]
+    ws_rm = wb["RM_Diagnostic"]
+    ws_meta = wb["Run_Metadata"]
 
-    wb.save(path)
+    for ws in [ws_fg, ws_rm, ws_meta]:
+        if ws.tables:
+            for name in list(ws.tables.keys()):
+                del ws.tables[name]
+
+    _write_df_as_table(ws_fg, fg_df, "tblFGResult")
+    _write_df_as_table(ws_rm, rm_df, "tblRMDiagnostic")
+    _write_df_as_table(ws_meta, meta_df, "tblRunMeta")
+
+    final = BytesIO()
+    wb.save(final)
+    final.seek(0)
+    return final.getvalue()
