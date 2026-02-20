@@ -6,7 +6,7 @@ from typing import Dict
 import pandas as pd
 
 from .config import BOM_DATASET, CAP_DATASET, CONTROL_DATASET, FG_DATASET, RM_DATASET
-from .model import solve_optimization
+from .model import audit_phaseA_solution, solve_optimization, solve_phaseA_lexicographic
 from .types import RunConfig, TwoPhaseResult
 
 
@@ -36,7 +36,10 @@ def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhas
     margin_col = _margin_col(fg)
     cap_map = dict(zip(cap["FG Code"].astype(str), pd.to_numeric(cap[cap_col], errors="coerce").fillna(0).astype(int)))
 
-    phase_a = solve_optimization(fg, bom, cap, rm, config.mode_avail, config.objective, config.big_m_cap, enforce_caps=True)
+    phase_a, phase_a_meta, audit_payload = solve_phaseA_lexicographic(fg, bom, cap, rm, config.mode_avail, config.big_m_cap)
+    stage2_success = str(phase_a_meta.get("stage2_status")) in {"Optimal", "Feasible", "fallback_reallocated"}
+    audit_phaseA_solution(audit_payload, stage2_success=stage2_success)
+
     all_caps_hit = all(int(phase_a.quantities.get(code, 0)) >= int(cap_map.get(code, 0)) for code in fg["FG Code"].astype(str))
 
     phase_b_qty = {c: 0 for c in fg["FG Code"].astype(str)}
@@ -90,7 +93,10 @@ def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhas
             {
                 "run_ts_utc": datetime.now(timezone.utc).isoformat(),
                 "phase_a_status": phase_a.status,
-                "phase_a_method": phase_a.method,
+                "phase_a_method": "lexicographic",
+                "phase_a_stage1_status": phase_a_meta.get("stage1_status"),
+                "phase_a_stage2_status": phase_a_meta.get("stage2_status"),
+                "P_star": phase_a_meta.get("P_star", 0),
                 "phase_b_status": phase_b_status,
                 "phase_b_method": phase_b_method,
                 "phase_b_executed": phase_b_executed,
@@ -106,4 +112,6 @@ def run_optimization(tables: Dict[str, pd.DataFrame]):
     ctrl = _control_map(tables[CONTROL_DATASET])
     cfg = RunConfig(mode_avail=ctrl["Mode_Avail"], objective=ctrl["Objective"], big_m_cap=10**9)
     out = run_two_phase(tables, cfg)
-    return out.fg_result, out.rm_diagnostic, out.run_meta.rename(columns={"all_caps_hit": "Value"})
+    meta = out.run_meta.melt(var_name="Key", value_name="Value")
+    meta["Value"] = meta["Value"].astype(str)
+    return out.fg_result, out.rm_diagnostic, meta
