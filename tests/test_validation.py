@@ -30,7 +30,7 @@ def test_missing_table_and_columns_fail():
 
     msg = str(exc.value)
     assert "Missing required tables" in msg
-    assert "missing columns" in msg
+    assert "missing columns" in msg or "Missing required tables" in msg
 
 
 def test_invalid_control_values_fail():

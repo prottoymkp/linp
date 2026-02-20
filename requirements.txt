@@ -4,3 +4,4 @@ openpyxl>=3.1
 pulp>=2.8
 numpy>=1.26
 pytest>=8.0
+highspy>=1.7
