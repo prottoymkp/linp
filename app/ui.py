@@ -1,8 +1,16 @@
+from pathlib import Path
+import sys
+
 import streamlit as st
 
-from .excel_io import load_tables_from_excel, write_output_excel
-from .orchestrator import run_optimization
-from .validate import ValidationError, validate_inputs
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from app.excel_io import load_tables_from_excel, write_output_excel
+from app.orchestrator import run_optimization
+from app.validate import ValidationError, validate_inputs
 
 
 st.set_page_config(page_title="LP Optimizer Service", page_icon="📈", layout="centered")

@@ -37,6 +37,8 @@ pip install -r requirements.txt
 
 ## Run
 
+Run this command from the project root so the `app` package resolves on `PYTHONPATH`.
+
 ```bash
 streamlit run app/ui.py
 ```
