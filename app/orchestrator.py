@@ -13,7 +13,9 @@ from .types import RunConfig, TwoPhaseResult
 def _control_map(df: pd.DataFrame):
     if {"Key", "Value"}.issubset(df.columns):
         return dict(zip(df["Key"].astype(str), df["Value"].astype(str)))
-    return dict(zip(df["Control Key"].astype(str), df["Control Value"].astype(str)))
+    if {"Control Key", "Control Value"}.issubset(df.columns):
+        return dict(zip(df["Control Key"].astype(str), df["Control Value"].astype(str)))
+    return dict(zip(df["Setting"].astype(str), df["Value"].astype(str)))
 
 
 def _cap_col(df):

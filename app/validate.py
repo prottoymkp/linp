@@ -22,7 +22,9 @@ def _control_cols(df: pd.DataFrame) -> Tuple[str, str]:
         return "Key", "Value"
     if {"Control Key", "Control Value"}.issubset(df.columns):
         return "Control Key", "Control Value"
-    raise ValidationError("Control table must have columns ['Key','Value'] or ['Control Key','Control Value']")
+    if {"Setting", "Value"}.issubset(df.columns):
+        return "Setting", "Value"
+    raise ValidationError("Control table must have columns ['Key','Value'], ['Control Key','Control Value'], or ['Setting','Value']")
 
 
 def _fg_margin_col(df: pd.DataFrame) -> str:
