@@ -1,117 +1,127 @@
-"""Schema and business-rule validation with aggregated fail-fast errors."""
+from typing import Dict, List, Tuple
 
-from __future__ import annotations
-
-from typing import Dict, List
-
-import numpy as np
 import pandas as pd
 
-from app.config import (
+from .config import (
     BOM_DATASET,
     CAP_DATASET,
     CONTROL_DATASET,
-    CONTROL_KEYS,
+    CONTROL_MODE_VALUES,
+    CONTROL_OBJECTIVE_VALUES,
     FG_DATASET,
-    REQUIRED_COLUMNS,
-    REQUIRED_TABLES,
     RM_DATASET,
 )
-from app.types import RunConfig
 
 
 class ValidationError(Exception):
-    def __init__(self, errors: List[str]):
-        self.errors = errors
-        super().__init__("Validation failed:\n" + "\n".join(f"- {e}" for e in errors))
+    pass
 
 
-def _check_numeric(df: pd.DataFrame, column: str, errors: List[str], *, non_negative: bool = True, strictly_positive: bool = False, integer_like: bool = False, label: str = "") -> None:
-    if column not in df.columns:
-        return
-    series = pd.to_numeric(df[column], errors="coerce")
-    if series.isna().any() or (~np.isfinite(series)).any():
-        errors.append(f"{label}{column} contains null/non-finite values.")
-        return
-    if non_negative and (series < 0).any():
-        errors.append(f"{label}{column} must be non-negative.")
-    if strictly_positive and (series <= 0).any():
-        errors.append(f"{label}{column} must be > 0.")
-    if integer_like and (~np.isclose(series, np.floor(series))).any():
-        errors.append(f"{label}{column} must be integer-like values.")
+def _control_cols(df: pd.DataFrame) -> Tuple[str, str]:
+    if {"Key", "Value"}.issubset(df.columns):
+        return "Key", "Value"
+    if {"Control Key", "Control Value"}.issubset(df.columns):
+        return "Control Key", "Control Value"
+    raise ValidationError("Control table must have columns ['Key','Value'] or ['Control Key','Control Value']")
 
 
-def validate_inputs(data: Dict[str, pd.DataFrame]) -> RunConfig:
+def _fg_margin_col(df: pd.DataFrame) -> str:
+    if "Margin" in df.columns:
+        return "Margin"
+    if "Unit Margin" in df.columns:
+        return "Unit Margin"
+    raise ValidationError("fg_master must include either 'Margin' or 'Unit Margin'")
+
+
+def _cap_col(df: pd.DataFrame) -> str:
+    if "Max Plan Qty" in df.columns:
+        return "Max Plan Qty"
+    if "Plan Cap" in df.columns:
+        return "Plan Cap"
+    raise ValidationError("tblFGPlanCap must include either 'Max Plan Qty' or 'Plan Cap'")
+
+
+def validate_inputs(tables: Dict[str, pd.DataFrame]) -> None:
     errors: List[str] = []
 
-    missing_tables = sorted(REQUIRED_TABLES - set(data.keys()))
-    if missing_tables:
-        errors.append(f"Missing required tables: {', '.join(missing_tables)}")
-
-    for dataset, required_cols in REQUIRED_COLUMNS.items():
-        if dataset not in data:
-            continue
-        columns = list(data[dataset].columns)
-        missing = [col for col in required_cols if col not in columns]
-        extra = [col for col in columns if col not in required_cols]
-        if missing:
-            errors.append(f"{dataset} missing columns: {', '.join(missing)}")
-        if extra:
-            errors.append(f"{dataset} has unexpected columns: {', '.join(extra)}")
-
-    if FG_DATASET in data and data[FG_DATASET]["FG Code"].duplicated().any():
-        errors.append("FG master must have unique FG Code values.")
-    if RM_DATASET in data and data[RM_DATASET]["RM Code"].duplicated().any():
-        errors.append("RM availability must have unique RM Code values.")
-
-    if FG_DATASET in data:
-        _check_numeric(data[FG_DATASET], "Unit Margin", errors, non_negative=False, label="fg_master.")
-    if BOM_DATASET in data:
-        _check_numeric(data[BOM_DATASET], "QtyPerPair", errors, strictly_positive=True, label="bom_master.")
-    if CAP_DATASET in data:
-        _check_numeric(data[CAP_DATASET], "Plan Cap", errors, integer_like=True, label="fg_plan_cap.")
-    if RM_DATASET in data:
-        _check_numeric(data[RM_DATASET], "Avail_Stock", errors, integer_like=True, label="rm_avail.")
-        _check_numeric(data[RM_DATASET], "Avail_StockPO", errors, integer_like=True, label="rm_avail.")
-
-    if FG_DATASET in data and CAP_DATASET in data:
-        missing_fg = sorted(set(data[CAP_DATASET]["FG Code"]) - set(data[FG_DATASET]["FG Code"]))
-        if missing_fg:
-            errors.append(f"FG codes in cap not found in FG master: {', '.join(map(str, missing_fg))}")
-    if FG_DATASET in data and BOM_DATASET in data:
-        missing_fg = sorted(set(data[BOM_DATASET]["FG Code"]) - set(data[FG_DATASET]["FG Code"]))
-        if missing_fg:
-            errors.append(f"FG codes in BOM not found in FG master: {', '.join(map(str, missing_fg))}")
-    if RM_DATASET in data and BOM_DATASET in data:
-        missing_rm = sorted(set(data[BOM_DATASET]["RM Code"]) - set(data[RM_DATASET]["RM Code"]))
-        if missing_rm:
-            errors.append(f"RM codes in BOM not found in RM availability: {', '.join(map(str, missing_rm))}")
-
-    run_config = RunConfig(mode_avail="", objective="", phase_b_upper_bound=1_000_000)
-    if CONTROL_DATASET in data:
-        ctl = data[CONTROL_DATASET].copy()
-        ctl_map = {
-            str(row["Control Key"]).strip(): str(row["Control Value"]).strip().upper()
-            for _, row in ctl.iterrows()
-        }
-        for key, allowed in CONTROL_KEYS.items():
-            value = ctl_map.get(key)
-            if value not in allowed:
-                errors.append(f"Control {key} must be one of {sorted(allowed)}, got {value!r}")
-        phase_b_ub = ctl_map.get("PhaseB_UpperBound", "1000000")
-        try:
-            phase_b_upper_bound = int(float(phase_b_ub))
-            if phase_b_upper_bound <= 0:
-                raise ValueError
-        except ValueError:
-            errors.append("Control PhaseB_UpperBound must be a positive integer if provided.")
-            phase_b_upper_bound = 1_000_000
-        run_config = RunConfig(
-            mode_avail=ctl_map.get("Mode_Avail", ""),
-            objective=ctl_map.get("Objective", ""),
-            phase_b_upper_bound=phase_b_upper_bound,
-        )
+    required = {FG_DATASET, BOM_DATASET, CAP_DATASET, RM_DATASET, CONTROL_DATASET}
+    missing = sorted(list(required - set(tables.keys())))
+    if missing:
+        errors.append(f"Missing required tables: {missing}")
 
     if errors:
-        raise ValidationError(errors)
-    return run_config
+        raise ValidationError("\n".join(errors))
+
+    fg = tables[FG_DATASET]
+    bom = tables[BOM_DATASET]
+    cap = tables[CAP_DATASET]
+    rm = tables[RM_DATASET]
+    ctrl = tables[CONTROL_DATASET]
+
+    for col in ["FG Code"]:
+        if col not in fg.columns:
+            errors.append(f"fg_master missing columns: {col}")
+    for col in ["FG Code", "RM Code", "QtyPerPair"]:
+        if col not in bom.columns:
+            errors.append(f"bom_master missing columns: {col}")
+    for col in ["FG Code"]:
+        if col not in cap.columns:
+            errors.append(f"tblFGPlanCap missing columns: {col}")
+    for col in ["RM Code", "Avail_Stock", "Avail_StockPO"]:
+        if col not in rm.columns:
+            errors.append(f"tblRMAvail missing columns: {col}")
+
+    try:
+        _ = _fg_margin_col(fg)
+    except ValidationError as e:
+        errors.append(str(e))
+    try:
+        _ = _cap_col(cap)
+    except ValidationError as e:
+        errors.append(str(e))
+
+    if errors:
+        raise ValidationError("\n".join(errors))
+
+    if fg["FG Code"].duplicated().any():
+        errors.append("Duplicate FG Code in fg_master")
+    if rm["RM Code"].duplicated().any():
+        errors.append("Duplicate RM Code in tblRMAvail")
+
+    fg_margin_col = _fg_margin_col(fg)
+    cap_col = _cap_col(cap)
+    numeric_checks = [
+        (fg, [fg_margin_col], "fg_master"),
+        (bom, ["QtyPerPair"], "bom_master"),
+        (cap, [cap_col], "tblFGPlanCap"),
+        (rm, ["Avail_Stock", "Avail_StockPO"], "tblRMAvail"),
+    ]
+    for df, cols, name in numeric_checks:
+        for col in cols:
+            ser = pd.to_numeric(df[col], errors="coerce")
+            if ser.isna().any():
+                errors.append(f"{name}.{col} has non-numeric values")
+            if (ser < 0).any():
+                errors.append(f"{name}.{col} has negative values")
+    if (pd.to_numeric(bom["QtyPerPair"], errors="coerce") <= 0).any():
+        errors.append("bom_master.QtyPerPair must be > 0")
+
+    fg_codes = set(fg["FG Code"].astype(str))
+    if not set(bom["FG Code"].astype(str)).issubset(fg_codes):
+        errors.append("All BOM FG codes must exist in fg_master")
+    if not set(cap["FG Code"].astype(str)).issubset(fg_codes):
+        errors.append("All Cap FG codes must exist in fg_master")
+
+    rm_codes = set(rm["RM Code"].astype(str))
+    if not set(bom["RM Code"].astype(str)).issubset(rm_codes):
+        errors.append("All BOM RM codes must exist in tblRMAvail")
+
+    key_col, val_col = _control_cols(ctrl)
+    c_map = dict(zip(ctrl[key_col].astype(str), ctrl[val_col].astype(str)))
+    if c_map.get("Mode_Avail") not in CONTROL_MODE_VALUES:
+        errors.append("Control Mode_Avail invalid")
+    if c_map.get("Objective") not in CONTROL_OBJECTIVE_VALUES:
+        errors.append("Control Objective invalid")
+
+    if errors:
+        raise ValidationError("\n".join(errors))

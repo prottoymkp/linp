@@ -1,36 +1,47 @@
-# FG Optimization App
+# LP Optimizer Service for RM-Constrained FG Planning
 
-## Setup
+Streamlit app that uploads an Excel workbook with required input tables, runs a 2-phase FG optimization under RM constraints, and returns an output Excel workbook with result tables.
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-```
+## Architecture
 
-## Run UI
+- `app/ui.py`: Streamlit upload/run/download UI
+- `app/excel_io.py`: Excel table extraction and output workbook writing
+- `app/validate.py`: schema and business-rule validation (fail-fast)
+- `app/model.py`: MILP solve (CBC via PuLP), LP+greedy fallback heuristic
+- `app/orchestrator.py`: Phase A + strict Phase B gating logic
 
-```bash
-streamlit run app/ui.py
-```
+## Solver choice
 
-## Input workbook tables
+- **Primary**: MILP using PuLP + CBC (integer production quantities)
+- **Fallback**: LP relaxation then floor + greedy refill; metadata marks heuristic mode
 
-Required named tables:
-- `fg_master` or `tblFG`
-- `bom_master` or `tblBOM`
+## Required input tables
+
+- `fg_master` (or alias `tblFG`)
+- `bom_master` (or alias `tblBOM`)
 - `tblFGPlanCap`
 - `tblRMAvail`
 - `tblControl_2`
 
 ## Output workbook
 
-The app generates an output workbook with:
-- `tblFGResult`
-- `tblRMDiagnostic`
-- `tblRunMeta`
+- Sheet `FG_Result`, table `tblFGResult`
+- Sheet `RM_Diagnostic`, table `tblRMDiagnostic`
+- Sheet `Run_Metadata`, table `tblRunMeta`
 
-## Tests
+## Install
+
+```bash
+pip install -r requirements.txt
+```
+
+## Run
+
+```bash
+streamlit run app/ui.py
+```
+
+## Test
 
 ```bash
 pytest -q
