@@ -70,10 +70,14 @@ def load_tables_from_excel(file_bytes: bytes) -> Dict[str, pd.DataFrame]:
 
 
 def _write_df_as_table(ws, df: pd.DataFrame, table_name: str):
-    ws.append(df.columns.tolist())
+    if ws.max_row > 1 or ws.max_column > 1 or ws["A1"].value is not None:
+        raise ValueError(f"Worksheet '{ws.title}' must be empty before writing table data.")
+
+    ws.delete_rows(1, ws.max_row)
+    ws.append([str(col) for col in df.columns.tolist()])
     for row in df.itertuples(index=False):
         ws.append(list(row))
-    end_col = chr(ord("A") + len(df.columns) - 1)
+    end_col = get_column_letter(len(df.columns))
     end_row = len(df) + 1
     tab = Table(displayName=table_name, ref=f"A1:{end_col}{end_row}")
     style = TableStyleInfo(name="TableStyleMedium9", showFirstColumn=False, showLastColumn=False, showRowStripes=True, showColumnStripes=False)
