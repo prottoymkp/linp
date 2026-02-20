@@ -4,7 +4,7 @@ from io import BytesIO
 from typing import Dict, List
 
 import pandas as pd
-from openpyxl import load_workbook
+from openpyxl import Workbook, load_workbook
 from openpyxl.worksheet.table import Table, TableStyleInfo
 
 from .config import TABLE_ALIASES
@@ -82,22 +82,12 @@ def _write_df_as_table(ws, df: pd.DataFrame, table_name: str):
 
 
 def write_output_excel(fg_df: pd.DataFrame, rm_df: pd.DataFrame, meta_df: pd.DataFrame) -> bytes:
-    out = BytesIO()
-    with pd.ExcelWriter(out, engine="openpyxl") as writer:
-        fg_df.to_excel(writer, sheet_name="FG_Result", index=False)
-        rm_df.to_excel(writer, sheet_name="RM_Diagnostic", index=False)
-        meta_df.to_excel(writer, sheet_name="Run_Metadata", index=False)
+    wb = Workbook()
+    wb.remove(wb.active)
 
-    out.seek(0)
-    wb = load_workbook(out)
-    ws_fg = wb["FG_Result"]
-    ws_rm = wb["RM_Diagnostic"]
-    ws_meta = wb["Run_Metadata"]
-
-    for ws in [ws_fg, ws_rm, ws_meta]:
-        if ws.tables:
-            for name in list(ws.tables.keys()):
-                del ws.tables[name]
+    ws_fg = wb.create_sheet("FG_Result")
+    ws_rm = wb.create_sheet("RM_Diagnostic")
+    ws_meta = wb.create_sheet("Run_Metadata")
 
     _write_df_as_table(ws_fg, fg_df, "tblFGResult")
     _write_df_as_table(ws_rm, rm_df, "tblRMDiagnostic")
