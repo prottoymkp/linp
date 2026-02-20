@@ -29,7 +29,7 @@ Streamlit app that uploads an Excel workbook with required input tables, runs a 
 - `bom_master`: `FG Code`, `RM Code`, `QtyPerPair`
 - `tblFGPlanCap`: `FG Code` plus either `Max Plan Qty` or `Plan Cap`
 - `tblRMAvail`: `RM Code`, `Avail_Stock`, `Avail_StockPO`
-- `tblControl_2`: either (`Key`, `Value`) or (`Control Key`, `Control Value`) with keys `Mode_Avail` and `Objective`
+- `tblControl_2`: either (`Key`, `Value`), (`Control Key`, `Control Value`), or (`Setting`, `Value`) with keys `Mode_Avail` and `Objective`
 
 The Streamlit UI now includes an input-structure panel and a pre-parse workbook diagnosis step that surfaces table-level issues (missing table objects, blank headers, or empty tables) before validation/optimization.
 

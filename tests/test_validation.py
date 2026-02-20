@@ -48,3 +48,15 @@ def test_invalid_control_values_fail():
     msg = str(exc.value)
     assert "Control Mode_Avail" in msg
     assert "Control Objective" in msg
+
+
+def test_control_setting_value_columns_pass():
+    payload = valid_payload()
+    payload[CONTROL_DATASET] = pd.DataFrame(
+        {
+            "Setting": ["Horizon_Start", "Horizon_End", "Mode_Avail", "Objective"],
+            "Value": ["01-Dec-25", "31-Dec-25", "STOCK", "MARGIN"],
+        }
+    )
+
+    validate_inputs(payload)
