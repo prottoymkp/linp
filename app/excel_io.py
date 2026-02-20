@@ -5,6 +5,7 @@ from typing import Dict, List
 
 import pandas as pd
 from openpyxl import Workbook, load_workbook
+from openpyxl.utils import get_column_letter
 from openpyxl.worksheet.table import Table, TableStyleInfo
 
 from .config import TABLE_ALIASES
@@ -70,9 +71,8 @@ def load_tables_from_excel(file_bytes: bytes) -> Dict[str, pd.DataFrame]:
 
 
 def _write_df_as_table(ws, df: pd.DataFrame, table_name: str):
-    if ws.max_row > 1 or ws.max_column > 1 or ws["A1"].value is not None:
-        raise ValueError(f"Worksheet '{ws.title}' must be empty before writing table data.")
-
+    # Always reset the worksheet body before writing to avoid accidental
+    # duplicate header/data blocks when this helper is called repeatedly.
     ws.delete_rows(1, ws.max_row)
     ws.append([str(col) for col in df.columns.tolist()])
     for row in df.itertuples(index=False):
