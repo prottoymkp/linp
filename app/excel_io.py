@@ -4,9 +4,7 @@ from io import BytesIO
 from typing import Dict, List
 
 import pandas as pd
-from openpyxl import load_workbook
-from openpyxl.utils import get_column_letter
-from openpyxl.workbook import Workbook
+from openpyxl import Workbook, load_workbook
 from openpyxl.worksheet.table import Table, TableStyleInfo
 
 from .config import TABLE_ALIASES
@@ -89,8 +87,9 @@ def _write_df_as_table(ws, df: pd.DataFrame, table_name: str):
 
 def write_output_excel(fg_df: pd.DataFrame, rm_df: pd.DataFrame, meta_df: pd.DataFrame) -> bytes:
     wb = Workbook()
-    ws_fg = wb.active
-    ws_fg.title = "FG_Result"
+    wb.remove(wb.active)
+
+    ws_fg = wb.create_sheet("FG_Result")
     ws_rm = wb.create_sheet("RM_Diagnostic")
     ws_meta = wb.create_sheet("Run_Metadata")
 
