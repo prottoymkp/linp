@@ -8,7 +8,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from app.excel_io import load_tables_from_excel, write_output_excel
+from app.config import REQUIRED_TABLES
+from app.excel_io import diagnose_workbook_structure, load_tables_from_excel, write_output_excel
 from app.orchestrator import run_optimization
 from app.validate import ValidationError, validate_inputs
 
@@ -16,11 +17,36 @@ from app.validate import ValidationError, validate_inputs
 st.set_page_config(page_title="LP Optimizer Service", page_icon="📈", layout="centered")
 st.title("LP Optimizer Service for RM-Constrained FG Planning")
 
+with st.expander("Input file structure requirements", expanded=True):
+    st.markdown("Upload an **.xlsx workbook** that contains named Excel Tables with the following structures.")
+    st.caption("Table aliases accepted: tblFG → fg_master, tblBOM → bom_master")
+
+    for table_name, required_columns in REQUIRED_TABLES.items():
+        cols = ", ".join(required_columns) if required_columns else "No mandatory columns, but must include control key/value pairs."
+        st.write(f"- **{table_name}**: {cols}")
+
+    st.info("Optional accepted columns: fg_master accepts Margin or Unit Margin; tblFGPlanCap accepts Max Plan Qty or Plan Cap.")
+
 upload = st.file_uploader("Upload input Excel (.xlsx)", type=["xlsx"])
 
 if upload is not None:
     raw = upload.read()
     try:
+        st.subheader("File quality diagnosis")
+        diagnosis = diagnose_workbook_structure(raw)
+
+        if diagnosis["issues"]:
+            for issue in diagnosis["issues"]:
+                st.error(issue)
+        if diagnosis["warnings"]:
+            for warning in diagnosis["warnings"]:
+                st.warning(warning)
+        if diagnosis["tables"]:
+            st.write({"Detected tables": diagnosis["tables"]})
+
+        if diagnosis["issues"]:
+            st.stop()
+
         tables = load_tables_from_excel(raw)
         validate_inputs(tables)
         st.success("Validation passed.")
