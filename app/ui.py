@@ -54,15 +54,22 @@ if upload is not None:
         run_purchase_planner = st.checkbox("Run purchase planner (25/50/75/100)", value=True)
 
         if st.button("Run Optimization", type="primary"):
-            fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df = run_optimization(tables)
-            out_bytes = write_output_excel(fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df)
-            if run_purchase_planner:
-                fg_df, rm_df, meta_df, purchase_summary_df = run_optimization(tables, run_purchase_planner=True)
-            else:
-                fg_df, rm_df, meta_df = run_optimization(tables, run_purchase_planner=False)
-                purchase_summary_df = None
+            fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df = run_optimization(
+                tables,
+                run_purchase_planner=run_purchase_planner,
+            )
 
-            out_bytes = write_output_excel(fg_df, rm_df, meta_df)
+            if not run_purchase_planner:
+                purchase_summary_df = purchase_summary_df.iloc[0:0].copy()
+                purchase_detail_df = purchase_detail_df.iloc[0:0].copy()
+
+            out_bytes = write_output_excel(
+                fg_df,
+                rm_df,
+                meta_df,
+                purchase_summary_df,
+                purchase_detail_df,
+            )
 
             st.subheader("Summary")
             st.write({
@@ -71,7 +78,7 @@ if upload is not None:
                 "RM rows": int(len(rm_df)),
             })
 
-            if run_purchase_planner and purchase_summary_df is not None and not purchase_summary_df.empty:
+            if run_purchase_planner and not purchase_summary_df.empty:
                 st.subheader("Purchase summary preview")
                 st.dataframe(purchase_summary_df, use_container_width=True)
 
