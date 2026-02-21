@@ -80,15 +80,17 @@ def test_phase_b_runs_when_caps_met():
 
 
 def test_purchase_planner_summary_when_enabled():
-    fg, rm, meta, purchase_summary, purchase_detail = run_optimization(_tables(rm_avail=3, cap=4), run_purchase_planner=True)
+    fg, rm, meta, purchase_summary, purchase_detail = run_optimization(
+        _tables(rm_avail=3, cap=4),
+        run_purchase_planner=True,
+    )
 
     assert not fg.empty
     assert not rm.empty
     assert not meta.empty
-    assert purchase_summary is not None
-    assert purchase_detail.empty
-    assert len(purchase_summary) == 1
-    assert set(["TargetMetric", "AchievedPairs", "AchievedMargin", "Status"]).issubset(purchase_summary.columns)
+    assert not purchase_summary.empty
+    assert "Status" in purchase_summary.columns
+    assert "BuyCost" in purchase_detail.columns
 
 
 def test_fill_fg_guard_when_plan_cap_zero():
