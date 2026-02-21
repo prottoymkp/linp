@@ -289,8 +289,59 @@ def run_optimization(tables: Dict[str, pd.DataFrame], run_purchase_planner: bool
         run_purchase_planner=run_purchase_planner,
     )
     out = run_two_phase(tables, cfg)
+
+    fg_result = out.fg_result.copy()
+    rm_diag = out.rm_diagnostic.copy()
+    run_meta_df = out.run_meta.copy()
+
+    achieved_pairs = int(pd.to_numeric(fg_result["Opt Qty Total"], errors="coerce").fillna(0).sum())
+    achieved_margin = float(pd.to_numeric(fg_result["Total Margin"], errors="coerce").fillna(0.0).sum())
+    total_cap = float(pd.to_numeric(fg_result["Plan Cap"], errors="coerce").fillna(0.0).sum())
+    implied_pair_fill = float((achieved_pairs / total_cap) * 100.0) if total_cap > 0 else 0.0
+
+    target_metric = "MARGIN_AT_PAIR_FILL" if cfg.objective == "PLAN" else cfg.objective
+    phase_b_status = str(run_meta_df.loc[0, "phase_b_status"]) if "phase_b_status" in run_meta_df.columns else "not_run"
+    phase_b_method = str(run_meta_df.loc[0, "phase_b_method"]) if "phase_b_method" in run_meta_df.columns else "not_run"
+
+    rm_source = tables[RM_DATASET].copy()
+    rm_rate_col = "RM_Rate" if "RM_Rate" in rm_source.columns else None
+    rm_source["RM Code"] = rm_source["RM Code"].astype(str)
+    rm_source["RM_Rate"] = pd.to_numeric(rm_source[rm_rate_col], errors="coerce").fillna(0.0) if rm_rate_col else 0.0
+    rm_source["BuyQty"] = pd.to_numeric(rm_source["BuyQty"], errors="coerce").fillna(0.0) if "BuyQty" in rm_source.columns else 0.0
+    rm_source["BuyCost"] = rm_source["BuyQty"] * rm_source["RM_Rate"]
+
+    include_zero_buy_qty = str(ctrl.get("IncludeZeroBuyQty", "FALSE")).upper() in {"TRUE", "1", "YES"}
+    purchase_detail = rm_source[["RM Code", "BuyQty", "RM_Rate", "BuyCost"]].copy()
+    if not include_zero_buy_qty:
+        purchase_detail = purchase_detail[purchase_detail["BuyQty"] > 0]
+
+    purchase_detail.insert(0, "TargetFillPct", implied_pair_fill)
+    purchase_detail.insert(0, "TargetMetric", target_metric)
+    purchase_detail = purchase_detail[["TargetMetric", "TargetFillPct", "RM Code", "BuyQty", "RM_Rate", "BuyCost"]]
+
+    total_buy_cost = float(pd.to_numeric(purchase_detail["BuyCost"], errors="coerce").fillna(0.0).sum()) if not purchase_detail.empty else 0.0
+    purchase_summary = pd.DataFrame(
+        [
+            {
+                "TargetMetric": target_metric,
+                "TargetFillPct": implied_pair_fill,
+                "TargetValue": achieved_margin if target_metric == "MARGIN_AT_PAIR_FILL" else achieved_pairs,
+                "AchievedPairs": achieved_pairs,
+                "AchievedMargin": achieved_margin,
+                "TotalBuyCost": total_buy_cost,
+                "Mode_Avail": cfg.mode_avail,
+                "Status": phase_b_status,
+                "Method": phase_b_method,
+                "ImpliedPairFill": implied_pair_fill,
+                "TargetMarginAtImpliedPairFill": achieved_margin,
+                "MarginFillAtImpliedPairFill": achieved_margin,
+            }
+        ]
+    )
+
     meta = out.run_meta.melt(var_name="Key", value_name="Value")
     meta["Value"] = meta["Value"].astype(str)
+    return fg_result, rm_diag, meta, purchase_summary, purchase_detail
     if run_purchase_planner:
         return out.fg_result, out.rm_diagnostic, meta, out.purchase_summary
     return out.fg_result, out.rm_diagnostic, meta

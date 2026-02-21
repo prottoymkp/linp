@@ -17,8 +17,12 @@ def test_run_optimization_accepts_setting_value_control_columns():
         ),
     }
 
-    fg, rm, meta = run_optimization(tables)
+    fg, rm, meta, purchase_summary, purchase_detail = run_optimization(tables)
 
     assert not fg.empty
     assert not rm.empty
     assert not meta.empty
+    assert len(purchase_summary) == 1
+    assert purchase_detail.empty
+    assert purchase_summary.loc[0, "Status"] in {"skipped", "Optimal", "Feasible", "fallback_Optimal", "fallback_Feasible"}
+    assert purchase_summary.loc[0, "Method"]
