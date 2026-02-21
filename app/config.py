@@ -8,7 +8,7 @@ REQUIRED_TABLES = {
     FG_DATASET: ["FG Code"],
     BOM_DATASET: ["FG Code", "RM Code", "QtyPerPair"],
     CAP_DATASET: ["FG Code"],
-    RM_DATASET: ["RM Code", "Avail_Stock", "Avail_StockPO", "RM_Rate"],
+    RM_DATASET: ["RM Code", "Avail_Stock", "Avail_StockPO"],
     CONTROL_DATASET: [],
 }
 

@@ -69,7 +69,7 @@ def validate_inputs(tables: Dict[str, pd.DataFrame]) -> None:
     for col in ["FG Code"]:
         if col not in cap.columns:
             errors.append(f"tblFGPlanCap missing columns: {col}")
-    for col in ["RM Code", "Avail_Stock", "Avail_StockPO", "RM_Rate"]:
+    for col in ["RM Code", "Avail_Stock", "Avail_StockPO"]:
         if col not in rm.columns:
             errors.append(f"tblRMAvail missing columns: {col}")
 
@@ -96,7 +96,7 @@ def validate_inputs(tables: Dict[str, pd.DataFrame]) -> None:
         (fg, [fg_margin_col], "fg_master"),
         (bom, ["QtyPerPair"], "bom_master"),
         (cap, [cap_col], "tblFGPlanCap"),
-        (rm, ["Avail_Stock", "Avail_StockPO", "RM_Rate"], "tblRMAvail"),
+        (rm, ["Avail_Stock", "Avail_StockPO"], "tblRMAvail"),
     ]
     for df, cols, name in numeric_checks:
         for col in cols:
@@ -108,6 +108,13 @@ def validate_inputs(tables: Dict[str, pd.DataFrame]) -> None:
                 errors.append(f"{name}.{col} has negative values")
     if (pd.to_numeric(bom["QtyPerPair"], errors="coerce") <= 0).any():
         errors.append("bom_master.QtyPerPair must be > 0")
+
+    if "RM_Rate" in rm.columns:
+        rm_rate = pd.to_numeric(rm["RM_Rate"], errors="coerce")
+        if rm_rate.isna().any():
+            errors.append("tblRMAvail.RM_Rate has non-numeric values")
+        elif (rm_rate < 0).any():
+            errors.append("tblRMAvail.RM_Rate has negative values")
 
     fg_codes = set(fg["FG Code"].astype(str))
     if not set(bom["FG Code"].astype(str)).issubset(fg_codes):

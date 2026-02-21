@@ -98,12 +98,34 @@ def _write_df_as_table(ws, df: pd.DataFrame, table_name: str):
     ws.add_table(tab)
 
 
+
+
+def _write_df_as_table_at(ws, df: pd.DataFrame, table_name: str, start_row: int):
+    start_col = 1
+    for col_idx, col in enumerate(df.columns.tolist(), start=start_col):
+        ws.cell(row=start_row, column=col_idx, value=str(col))
+    for ridx, row in enumerate(df.itertuples(index=False), start=start_row + 1):
+        for cidx, val in enumerate(list(row), start=start_col):
+            ws.cell(row=ridx, column=cidx, value=val)
+
+    if len(df) == 0:
+        return start_row + 1
+
+    end_col = get_column_letter(len(df.columns))
+    end_row = start_row + len(df)
+    tab = Table(displayName=table_name, ref=f"A{start_row}:{end_col}{end_row}")
+    style = TableStyleInfo(name="TableStyleMedium9", showFirstColumn=False, showLastColumn=False, showRowStripes=True, showColumnStripes=False)
+    tab.tableStyleInfo = style
+    ws.add_table(tab)
+    return end_row + 2
+
 def write_output_excel(
     fg_df: pd.DataFrame,
     rm_df: pd.DataFrame,
     meta_df: pd.DataFrame,
     purchase_summary_df: pd.DataFrame,
     purchase_detail_df: pd.DataFrame,
+    purchase_target_sheets: dict[int, dict[str, pd.DataFrame]] | None = None,
 ) -> bytes:
     wb = Workbook()
     wb.remove(wb.active)
@@ -119,6 +141,15 @@ def write_output_excel(
     _write_df_as_table(ws_meta, meta_df, "tblRunMeta")
     _write_df_as_table(ws_purchase_summary, purchase_summary_df, "tblPurchaseSummary")
     _write_df_as_table(ws_purchase_detail, purchase_detail_df, "tblPurchaseDetail")
+
+    purchase_target_sheets = purchase_target_sheets or {}
+    for pct in [25, 50, 75, 100]:
+        ws = wb.create_sheet(f"Purchase_{pct}")
+        payload = purchase_target_sheets.get(pct, {})
+        fg_target = payload.get("fg", pd.DataFrame(columns=["FG Code", "Cap", "TargetPairs", "OptQty", "Shortfall", "UnitMargin", "TotalMargin"]))
+        rm_target = payload.get("rm", pd.DataFrame(columns=["RM Code", "AvailBase", "RM_Rate", "UsedAtPlan", "BuyQty", "BuyCost", "RemainingAfterBuy"]))
+        next_row = _write_df_as_table_at(ws, fg_target, f"tblPurchaseFG_{pct}", 1)
+        _write_df_as_table_at(ws, rm_target, f"tblPurchaseRM_{pct}", next_row)
 
     final = BytesIO()
     wb.save(final)

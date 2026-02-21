@@ -58,7 +58,7 @@ if upload is not None:
                 tables,
                 run_purchase_planner=run_purchase_planner,
             )
-            out_bytes = write_output_excel(fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df)
+            out_bytes = write_output_excel(fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df, purchase_target_sheets=purchase_detail_df.attrs.get("purchase_target_sheets"))
 
             st.subheader("Summary")
             st.write({

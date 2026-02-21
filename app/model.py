@@ -161,12 +161,11 @@ def _solve_highs(
             raise ValueError(f"Unsupported objective sense: {sense}")
     highs.changeObjectiveSense(obj_sense)
 
-    if var_types is None:
-        var_types = np.array([HighsVarType.kInteger] * len(col_cost))
-    if len(var_types) != len(col_cost):
-        raise ValueError("var_types length must match number of columns")
-    idx = np.arange(len(col_cost), dtype=np.int32)
-    highs.changeColsIntegrality(len(col_cost), idx, np.asarray(var_types))
+    if var_types is not None:
+        if len(var_types) != len(col_cost):
+            raise ValueError("var_types length must match number of columns")
+        idx = np.arange(len(col_cost), dtype=np.int32)
+        highs.changeColsIntegrality(len(col_cost), idx, np.asarray(var_types))
 
     highs.run()
     status = highs.modelStatusToString(highs.getModelStatus())
@@ -436,6 +435,97 @@ def solve_optimization(
     return SolveOutcome(quantities, float(obj_val), status, "highs", used_fallback, solver_used, time.time() - start)
 
 
+def solve_purchase_plan_pairs_target(
+    fg_df: pd.DataFrame,
+    bom_df: pd.DataFrame,
+    cap_df: pd.DataFrame,
+    rm_df: pd.DataFrame,
+    mode_avail: str,
+    target_fill_pct: float,
+) -> Dict[str, object]:
+    start = time.time()
+    model_inputs = _build_model_inputs(fg_df, bom_df, cap_df, rm_df, mode_avail, enforce_caps=True, big_m_cap=10**9)
+    fg_codes = model_inputs["fg_codes"]
+    rm_codes = rm_df["RM Code"].astype(str).tolist()
+    n_x = len(fg_codes)
+    n_r = len(rm_codes)
+
+    rm_rate_col = _rm_rate_col(rm_df)
+    rm_rate_map = dict(zip(rm_codes, pd.to_numeric(rm_df[rm_rate_col], errors="coerce").fillna(0.0)))
+    rm_rates = np.array([float(rm_rate_map[rm]) for rm in rm_codes], dtype=np.float64)
+
+    caps = model_inputs["caps"]
+    target_pairs = int(np.ceil(float(target_fill_pct) * float(caps.sum())))
+
+    col_entries: List[List[Tuple[int, float]]] = [list(entries) for entries in model_inputs["col_entries"]]
+    pair_row = n_r
+    for j in range(n_x):
+        col_entries[j].append((pair_row, 1.0))
+    for r in range(n_r):
+        col_entries.append([(r, -1.0)])
+
+    col_cost = np.concatenate([np.zeros(n_x, dtype=np.float64), rm_rates])
+    col_lower = np.zeros(n_x + n_r, dtype=np.float64)
+    col_upper = np.concatenate([caps, np.full(n_r, kHighsInf, dtype=np.float64)])
+    row_lower = np.concatenate([np.full(n_r, -kHighsInf, dtype=np.float64), np.array([float(target_pairs)], dtype=np.float64)])
+    row_upper = np.concatenate([model_inputs["row_upper"], np.array([kHighsInf], dtype=np.float64)])
+
+    var_types = np.array([HighsVarType.kInteger] * n_x + [HighsVarType.kContinuous] * n_r)
+    status, values, objective_value, runtime = _solve_highs(
+        col_cost=col_cost,
+        col_lower=col_lower,
+        col_upper=col_upper,
+        row_lower=row_lower,
+        row_upper=row_upper,
+        col_entries=col_entries,
+        var_types=var_types,
+        sense="min",
+    )
+
+    method = "highs_mip"
+    if not _status_feasible(status):
+        lp_var_types = np.array([HighsVarType.kContinuous] * (n_x + n_r))
+        lp_status, lp_values, _, runtime = _solve_highs(
+            col_cost=col_cost,
+            col_lower=col_lower,
+            col_upper=col_upper,
+            row_lower=row_lower,
+            row_upper=row_upper,
+            col_entries=col_entries,
+            var_types=lp_var_types,
+            sense="min",
+        )
+
+        base_x = np.maximum(np.floor(lp_values[:n_x]), 0).astype(int) if _status_feasible(lp_status) else np.zeros(n_x, dtype=int)
+        coeff = model_inputs["coeff"]
+        rm_upper = model_inputs["row_upper"]
+        if int(base_x.sum()) < target_pairs:
+            base_x = _greedy_fill(base_x, target_pairs, caps, coeff, rm_upper, np.ones(n_x, dtype=float))
+
+        usage = coeff @ base_x.astype(float)
+        deficits = np.maximum(usage - rm_upper, 0.0)
+        values = np.concatenate([base_x.astype(float), deficits])
+        status = "Feasible" if int(base_x.sum()) >= target_pairs else "Infeasible"
+        method = "fallback_deficit_buy"
+        objective_value = float(np.dot(rm_rates, deficits))
+
+    x_vals = np.maximum(np.rint(values[:n_x]), 0).astype(int)
+    buy_vals = np.maximum(values[n_x:], 0.0)
+    total_buy_cost = float(np.dot(rm_rates, buy_vals))
+
+    return {
+        "status": status,
+        "solver": "highs",
+        "method": method,
+        "runtime_sec": time.time() - start if runtime is None else float(runtime),
+        "target_fill_pct": float(target_fill_pct),
+        "target_pairs": target_pairs,
+        "x": {fg_codes[i]: int(x_vals[i]) for i in range(n_x)},
+        "buy": {rm_codes[r]: float(buy_vals[r]) for r in range(n_r)},
+        "total_buy_cost": total_buy_cost,
+    }
+
+
 def solve_purchase_planner_milp(
     fg_df: pd.DataFrame,
     bom_df: pd.DataFrame,
@@ -445,77 +535,17 @@ def solve_purchase_planner_milp(
     scenario: str,
     target_value: float,
 ) -> Dict[str, object]:
-    """Solve purchase planner MILP with RM shortage variables.
-
-    Decision variables:
-      - x_i integer, bounded by FG cap
-      - y_r continuous, y_r >= 0, representing purchase shortfall for RM r
-
-    Constraints:
-      - For each RM row r: sum_i a_{i,r} * x_i - y_r <= base_avail_r
-      - One scenario row with lower bound target_value and upper bound +inf
-
-    Objective:
-      - Minimize sum_r RM_Rate_r * y_r
-    """
-
-    start = time.time()
+    total_cap = float(pd.to_numeric(cap_df[_cap_col(cap_df)], errors="coerce").fillna(0.0).sum())
     scenario_key = str(scenario).upper()
-    if scenario_key not in {"PAIRS", "MARGIN_AT_PAIR_FILL"}:
-        raise ValueError(f"Unsupported scenario: {scenario}")
-
-    model_inputs = _build_model_inputs(fg_df, bom_df, cap_df, rm_df, mode_avail, enforce_caps=True, big_m_cap=10**9)
-    fg_codes = model_inputs["fg_codes"]
-    rm_codes = rm_df["RM Code"].astype(str).tolist()
-    n_x = len(fg_codes)
-    n_r = len(rm_codes)
-
-    rate_col = _rm_rate_col(rm_df)
-    rm_rate_map = dict(zip(rm_codes, pd.to_numeric(rm_df[rate_col], errors="coerce").fillna(0.0)))
-    rm_rates = np.array([float(rm_rate_map[rm]) for rm in rm_codes], dtype=np.float64)
-
-    margins = pd.to_numeric(fg_df[_fg_margin_col(fg_df)], errors="coerce").fillna(0.0).to_numpy(dtype=np.float64)
-
-    col_entries: List[List[Tuple[int, float]]] = [list(entries) for entries in model_inputs["col_entries"]]
-    for r in range(n_r):
-        col_entries.append([(r, -1.0)])
-
-    scenario_coeff = np.ones(n_x, dtype=np.float64) if scenario_key == "PAIRS" else margins
-    scenario_row = n_r
-    for j in range(n_x):
-        if abs(float(scenario_coeff[j])) > 0:
-            col_entries[j].append((scenario_row, float(scenario_coeff[j])))
-
-    col_cost = np.concatenate([np.zeros(n_x, dtype=np.float64), rm_rates])
-    col_lower = np.zeros(n_x + n_r, dtype=np.float64)
-    col_upper = np.concatenate([model_inputs["caps"], np.full(n_r, kHighsInf, dtype=np.float64)])
-    row_lower = np.concatenate([np.full(n_r, -kHighsInf, dtype=np.float64), np.array([float(target_value)], dtype=np.float64)])
-    row_upper = np.concatenate([model_inputs["row_upper"], np.array([kHighsInf], dtype=np.float64)])
-
-    status, values, objective_value, _ = _solve_highs(
-        col_cost=-col_cost,
-        col_lower=col_lower,
-        col_upper=col_upper,
-        row_lower=row_lower,
-        row_upper=row_upper,
-        col_entries=col_entries,
-        integer=True,
-        integer_col_count=n_x,
-    )
-
-    solver_used = "highs_milp"
-
-    x_vals = np.maximum(np.rint(values[:n_x]), 0).astype(int)
-    y_vals = np.maximum(values[n_x:], 0.0)
-
-    return {
-        "status": status,
-        "solver": "highs",
-        "method": solver_used,
-        "runtime_sec": time.time() - start,
-        "objective_value": float(-objective_value),
-        "scenario": scenario_key,
-        "target_value": float(target_value),
-        "x": {fg_codes[i]: int(x_vals[i]) for i in range(n_x)},
-        "y": {rm_codes[r]: float(y_vals[r]) for r in range(n_r)},
-    }
+    if scenario_key == "PAIRS":
+        target_pairs = float(target_value)
+    else:
+        margins = pd.to_numeric(fg_df[_fg_margin_col(fg_df)], errors="coerce").fillna(0.0)
+        plan_margin_max = float((margins.to_numpy(dtype=float) * pd.to_numeric(cap_df[_cap_col(cap_df)], errors="coerce").fillna(0.0).to_numpy(dtype=float)).sum())
+        fill = 0.0 if plan_margin_max <= 0 else float(target_value) / plan_margin_max
+        target_pairs = fill * total_cap
+    fill_pct = 0.0 if total_cap <= 0 else float(target_pairs) / total_cap
+    out = solve_purchase_plan_pairs_target(fg_df, bom_df, cap_df, rm_df, mode_avail, fill_pct)
+    out["y"] = out.get("buy", {})
+    out["objective_value"] = out.get("total_buy_cost", 0.0)
+    return out
