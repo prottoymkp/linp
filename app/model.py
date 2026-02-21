@@ -109,6 +109,10 @@ def _solve_highs(
     col_entries: List[List[Tuple[int, float]]],
     integer: bool,
     integer_col_count: int | None = None,
+    var_types: np.ndarray | None = None,
+    sense: ObjSense | str = ObjSense.kMaximize,
+    time_limit: float | None = None,
+    mip_rel_gap: float | None = None,
 ) -> Tuple[str, np.ndarray, float, float]:
     start = time.time()
     lp = HighsLp()
@@ -133,6 +137,10 @@ def _solve_highs(
 
     highs = Highs()
     highs.setOptionValue("output_flag", False)
+    if time_limit is not None:
+        highs.setOptionValue("time_limit", float(time_limit))
+    if mip_rel_gap is not None:
+        highs.setOptionValue("mip_rel_gap", float(mip_rel_gap))
     highs.passModel(model)
     highs.changeObjectiveSense(ObjSense.kMaximize)
 
@@ -141,6 +149,24 @@ def _solve_highs(
         idx = np.arange(integer_count, dtype=np.int32)
         types = np.array([HighsVarType.kInteger] * integer_count)
         highs.changeColsIntegrality(integer_count, idx, types)
+    if isinstance(sense, ObjSense):
+        obj_sense = sense
+    else:
+        norm_sense = str(sense).strip().lower()
+        if norm_sense == "min":
+            obj_sense = ObjSense.kMinimize
+        elif norm_sense == "max":
+            obj_sense = ObjSense.kMaximize
+        else:
+            raise ValueError(f"Unsupported objective sense: {sense}")
+    highs.changeObjectiveSense(obj_sense)
+
+    if var_types is None:
+        var_types = np.array([HighsVarType.kInteger] * len(col_cost))
+    if len(var_types) != len(col_cost):
+        raise ValueError("var_types length must match number of columns")
+    idx = np.arange(len(col_cost), dtype=np.int32)
+    highs.changeColsIntegrality(len(col_cost), idx, np.asarray(var_types))
 
     highs.run()
     status = highs.modelStatusToString(highs.getModelStatus())
@@ -213,7 +239,10 @@ def _fallback_stage2_reallocate(x_stage1: np.ndarray, margins: np.ndarray, caps:
 def _solve_single_objective(
     model_inputs: Dict[str, object],
     objective: np.ndarray,
-    integer: bool,
+    var_types: np.ndarray | None = None,
+    sense: ObjSense | str = ObjSense.kMaximize,
+    time_limit: float | None = None,
+    mip_rel_gap: float | None = None,
 ) -> Tuple[str, np.ndarray, float, float]:
     n = len(model_inputs["fg_codes"])
     return _solve_highs(
@@ -223,7 +252,10 @@ def _solve_single_objective(
         row_lower=model_inputs["row_lower"],
         row_upper=model_inputs["row_upper"],
         col_entries=model_inputs["col_entries"],
-        integer=integer,
+        var_types=var_types,
+        sense=sense,
+        time_limit=time_limit,
+        mip_rel_gap=mip_rel_gap,
     )
 
 
@@ -253,13 +285,26 @@ def solve_phaseA_lexicographic(
     }
 
     # Stage 1: maximize pairs
-    s1_status, s1_vals, _, s1_runtime = _solve_single_objective(model_inputs, np.ones(n, dtype=np.float64), integer=True)
+    mip_var_types = np.array([HighsVarType.kInteger] * n)
+    lp_var_types = np.array([HighsVarType.kContinuous] * n)
+
+    s1_status, s1_vals, _, s1_runtime = _solve_single_objective(
+        model_inputs,
+        np.ones(n, dtype=np.float64),
+        var_types=mip_var_types,
+        sense="max",
+    )
     meta["stage1_status"] = s1_status
     meta["stage1_runtime"] = s1_runtime
     x1 = np.maximum(np.rint(s1_vals), 0).astype(int)
 
     if not _status_feasible(s1_status):
-        lp_status, lp_vals, _, _ = _solve_single_objective(model_inputs, np.ones(n, dtype=np.float64), integer=False)
+        lp_status, lp_vals, _, _ = _solve_single_objective(
+            model_inputs,
+            np.ones(n, dtype=np.float64),
+            var_types=lp_var_types,
+            sense="max",
+        )
         base = np.maximum(np.floor(lp_vals), 0).astype(int) if _status_feasible(lp_status) else np.zeros(n, dtype=int)
         x1 = _greedy_fill(base, int(base.sum()) + int(model_inputs["caps"].sum()), model_inputs["caps"], model_inputs["coeff"], model_inputs["row_upper"], np.ones(n, dtype=np.float64))
         meta["stage1_status"] = f"fallback_{lp_status}"
@@ -288,7 +333,8 @@ def solve_phaseA_lexicographic(
         row_lower=row_lower2,
         row_upper=row_upper2,
         col_entries=col_entries_stage2,
-        integer=True,
+        var_types=mip_var_types,
+        sense="max",
     )
     meta["stage2_status"] = s2_status
     meta["stage2_runtime"] = s2_runtime
@@ -357,12 +403,26 @@ def solve_optimization(
     else:
         raise ValueError(f"Unsupported objective for solve_optimization: {objective}")
 
-    status, vals, obj_val, runtime = _solve_single_objective(model_inputs, obj, integer=True)
+    n = len(model_inputs["fg_codes"])
+    mip_var_types = np.array([HighsVarType.kInteger] * n)
+    lp_var_types = np.array([HighsVarType.kContinuous] * n)
+
+    status, vals, obj_val, runtime = _solve_single_objective(
+        model_inputs,
+        obj,
+        var_types=mip_var_types,
+        sense="max",
+    )
     solver_used = "highs_mip"
     used_fallback = False
 
     if not _status_feasible(status):
-        lp_status, lp_vals, _, _ = _solve_single_objective(model_inputs, obj, integer=False)
+        lp_status, lp_vals, _, _ = _solve_single_objective(
+            model_inputs,
+            obj,
+            var_types=lp_var_types,
+            sense="max",
+        )
         base = np.maximum(np.floor(lp_vals), 0).astype(int) if _status_feasible(lp_status) else np.zeros(len(obj), dtype=int)
         target = int(model_inputs["caps"].sum()) if enforce_caps else int(base.sum() + 10_000)
         ints = _greedy_fill(base, target, model_inputs["caps"], model_inputs["coeff"], model_inputs["row_upper"], obj)

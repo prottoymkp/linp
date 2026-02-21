@@ -10,7 +10,7 @@ def valid_payload():
         FG_DATASET: pd.DataFrame({"FG Code": ["FG1"], "Unit Margin": [10]}),
         BOM_DATASET: pd.DataFrame({"FG Code": ["FG1"], "RM Code": ["RM1"], "QtyPerPair": [1]}),
         CAP_DATASET: pd.DataFrame({"FG Code": ["FG1"], "Plan Cap": [5]}),
-        RM_DATASET: pd.DataFrame({"RM Code": ["RM1"], "Avail_Stock": [10], "Avail_StockPO": [20]}),
+        RM_DATASET: pd.DataFrame({"RM Code": ["RM1"], "Avail_Stock": [10], "Avail_StockPO": [20], "RM_Rate": [2.0]}),
         CONTROL_DATASET: pd.DataFrame(
             {
                 "Control Key": ["Mode_Avail", "Objective"],
