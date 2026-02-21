@@ -69,7 +69,7 @@ def validate_inputs(tables: Dict[str, pd.DataFrame]) -> None:
     for col in ["FG Code"]:
         if col not in cap.columns:
             errors.append(f"tblFGPlanCap missing columns: {col}")
-    for col in ["RM Code", "Avail_Stock", "Avail_StockPO"]:
+    for col in ["RM Code", "Avail_Stock", "Avail_StockPO", "RM_Rate"]:
         if col not in rm.columns:
             errors.append(f"tblRMAvail missing columns: {col}")
 
@@ -96,13 +96,14 @@ def validate_inputs(tables: Dict[str, pd.DataFrame]) -> None:
         (fg, [fg_margin_col], "fg_master"),
         (bom, ["QtyPerPair"], "bom_master"),
         (cap, [cap_col], "tblFGPlanCap"),
-        (rm, ["Avail_Stock", "Avail_StockPO"], "tblRMAvail"),
+        (rm, ["Avail_Stock", "Avail_StockPO", "RM_Rate"], "tblRMAvail"),
     ]
     for df, cols, name in numeric_checks:
         for col in cols:
             ser = pd.to_numeric(df[col], errors="coerce")
             if ser.isna().any():
                 errors.append(f"{name}.{col} has non-numeric values")
+                continue
             if (ser < 0).any():
                 errors.append(f"{name}.{col} has negative values")
     if (pd.to_numeric(bom["QtyPerPair"], errors="coerce") <= 0).any():
