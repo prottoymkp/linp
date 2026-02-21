@@ -58,7 +58,26 @@ if upload is not None:
                 tables,
                 run_purchase_planner=run_purchase_planner,
             )
-            out_bytes = write_output_excel(fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df, purchase_target_sheets=purchase_detail_df.attrs.get("purchase_target_sheets"))
+            purchase_target_sheets = purchase_detail_df.attrs.get("purchase_target_sheets")
+            try:
+                out_bytes = write_output_excel(
+                    fg_df,
+                    rm_df,
+                    meta_df,
+                    purchase_summary_df,
+                    purchase_detail_df,
+                    purchase_target_sheets=purchase_target_sheets,
+                )
+            except TypeError as exc:
+                if "purchase_target_sheets" not in str(exc):
+                    raise
+                out_bytes = write_output_excel(
+                    fg_df,
+                    rm_df,
+                    meta_df,
+                    purchase_summary_df,
+                    purchase_detail_df,
+                )
 
             st.subheader("Summary")
             st.write({
