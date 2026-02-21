@@ -58,18 +58,7 @@ if upload is not None:
                 tables,
                 run_purchase_planner=run_purchase_planner,
             )
-
-            if not run_purchase_planner:
-                purchase_summary_df = purchase_summary_df.iloc[0:0].copy()
-                purchase_detail_df = purchase_detail_df.iloc[0:0].copy()
-
-            out_bytes = write_output_excel(
-                fg_df,
-                rm_df,
-                meta_df,
-                purchase_summary_df,
-                purchase_detail_df,
-            )
+            out_bytes = write_output_excel(fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df)
 
             st.subheader("Summary")
             st.write({

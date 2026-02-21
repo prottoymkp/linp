@@ -58,3 +58,20 @@ streamlit run app/ui.py
 ```bash
 pytest -q
 ```
+
+## Python API
+
+`run_optimization` now has a single fixed return contract for all call paths:
+
+```python
+fg_result, rm_diag, meta, purchase_summary, purchase_detail = run_optimization(
+    tables,
+    run_purchase_planner=False,
+)
+```
+
+- `fg_result`: optimized FG quantities and margin output.
+- `rm_diag`: RM usage and remaining availability.
+- `meta`: run metadata as key/value rows.
+- `purchase_summary`: one-row summary of target/achieved plan metrics and buy-cost totals.
+- `purchase_detail`: per-RM buy quantities, rate, and buy cost.
