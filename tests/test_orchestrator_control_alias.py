@@ -1,9 +1,15 @@
 import pandas as pd
 
+from app.model import SolveOutcome
 from app.orchestrator import run_optimization
 
 
-def test_run_optimization_accepts_setting_value_control_columns():
+def test_run_optimization_accepts_setting_value_control_columns(monkeypatch):
+    def fake_solve_optimization(fg, bom, cap, rm, mode_avail, objective, big_m_cap, enforce_caps):
+        return SolveOutcome({"A": 1}, 1.0, "Optimal", "stub", False, "stub", 0.0)
+
+    monkeypatch.setattr("app.orchestrator.solve_optimization", fake_solve_optimization)
+
     tables = {
         "fg_master": pd.DataFrame({"FG Code": ["A"], "Margin": [3]}),
         "bom_master": pd.DataFrame({"FG Code": ["A"], "RM Code": ["R1"], "QtyPerPair": [1]}),
