@@ -107,7 +107,7 @@ def _solve_highs(
     row_lower: np.ndarray,
     row_upper: np.ndarray,
     col_entries: List[List[Tuple[int, float]]],
-    integer: bool,
+    integer: bool = False,
     integer_col_count: int | None = None,
     var_types: np.ndarray | None = None,
     sense: ObjSense | str = ObjSense.kMaximize,
