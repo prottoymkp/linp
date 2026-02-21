@@ -62,6 +62,47 @@ def _build_purchase_summary(
                     "Purchase Required": max(float(req - avail), 0.0),
                 }
             )
+def generate_purchase_planning_scenarios(
+    fg: pd.DataFrame,
+    cap: pd.DataFrame,
+    mode_avail: str,
+) -> pd.DataFrame:
+    fill_levels = [0.25, 0.50, 0.75, 1.00]
+
+    cap_col = _cap_col(cap)
+    margin_col = _margin_col(fg)
+
+    cap_series = pd.to_numeric(cap[cap_col], errors="coerce").fillna(0.0)
+    cap_map = dict(zip(cap["FG Code"].astype(str), cap_series))
+
+    margin_series = pd.to_numeric(fg[margin_col], errors="coerce").fillna(0.0)
+    margin_map = dict(zip(fg["FG Code"].astype(str), margin_series))
+
+    total_cap_pairs = float(cap_series.sum())
+    plan_margin_max = float(sum(cap_val * margin_map.get(fg_code, 0.0) for fg_code, cap_val in cap_map.items()))
+
+    rows = []
+    for fill_pct in fill_levels:
+        rows.append(
+            {
+                "target_metric": "PAIRS",
+                "fill_pct": fill_pct,
+                "target_value": int(np.ceil(fill_pct * total_cap_pairs)),
+                "mode_avail": mode_avail,
+                "status": "runnable",
+            }
+        )
+
+        margin_status = "runnable" if plan_margin_max > 0 else "not_run_plan_margin_nonpositive"
+        rows.append(
+            {
+                "target_metric": "MARGIN_AT_PAIR_FILL",
+                "fill_pct": fill_pct,
+                "target_value": fill_pct * plan_margin_max,
+                "mode_avail": mode_avail,
+                "status": margin_status,
+            }
+        )
 
     return pd.DataFrame(rows)
 
@@ -174,7 +215,18 @@ def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhas
     res["Opt Qty Phase B"] = res["FG Code"].astype(str).map(phase_b_qty).fillna(0).astype(int)
     res["Opt Qty Total"] = res["Opt Qty Phase A"] + res["Opt Qty Phase B"]
     res["Total Margin"] = res["Unit Margin"] * res["Opt Qty Total"]
-    res = res[["FG Code", "Plan Cap", "Opt Qty Phase A", "Opt Qty Phase B", "Opt Qty Total", "Unit Margin", "Total Margin"]]
+    res["Fill_FG"] = np.where(res["Plan Cap"] == 0, 0.0, res["Opt Qty Total"] / res["Plan Cap"])
+    res = res[["FG Code", "Plan Cap", "Opt Qty Phase A", "Opt Qty Phase B", "Opt Qty Total", "Unit Margin", "Total Margin", "Fill_FG"]]
+
+    total_cap_pairs = float(res["Plan Cap"].sum())
+    achieved_pairs = float(res["Opt Qty Total"].sum())
+    overall_fill_pairs = 0.0 if total_cap_pairs == 0 else achieved_pairs / total_cap_pairs
+    plan_margin_max = float((res["Plan Cap"] * res["Unit Margin"]).sum())
+    achieved_margin = float((res["Unit Margin"] * res["Opt Qty Total"]).sum())
+    achieved_margin_at_pair_fill = overall_fill_pairs * plan_margin_max
+    margin_fill_at_pair_fill = (
+        0.0 if achieved_margin_at_pair_fill == 0 else achieved_margin / achieved_margin_at_pair_fill
+    )
 
     rm_col = "Avail_Stock" if config.mode_avail == "STOCK" else "Avail_StockPO"
     avail_map = dict(zip(rm["RM Code"].astype(str), pd.to_numeric(rm[rm_col], errors="coerce").fillna(0.0)))
@@ -212,6 +264,13 @@ def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhas
                 "phase_b_method": phase_b_method,
                 "phase_b_executed": phase_b_executed,
                 "all_caps_hit": all_caps_hit,
+                "TotalCapPairs": total_cap_pairs,
+                "AchievedPairs": achieved_pairs,
+                "OverallFillPairs": overall_fill_pairs,
+                "PlanMarginMax": plan_margin_max,
+                "AchievedMargin": achieved_margin,
+                "AchievedMarginAtPairFill": achieved_margin_at_pair_fill,
+                "MarginFillAtPairFill": margin_fill_at_pair_fill,
             }
         ]
     )

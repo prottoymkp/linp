@@ -41,7 +41,15 @@ def test_phase_b_zero_when_any_cap_unmet(monkeypatch):
     out = run_two_phase(build_data(), RunConfig("STOCK", "PLAN", 100))
 
     assert out.fg_result["Opt Qty Phase B"].sum() == 0
+    assert "Fill_FG" in out.fg_result.columns
     assert out.run_meta.loc[0, "phase_b_executed"] == False
+    assert out.run_meta.loc[0, "TotalCapPairs"] == 4.0
+    assert out.run_meta.loc[0, "AchievedPairs"] == 3.0
+    assert out.run_meta.loc[0, "OverallFillPairs"] == 0.75
+    assert out.run_meta.loc[0, "PlanMarginMax"] == 30.0
+    assert out.run_meta.loc[0, "AchievedMargin"] == 25.0
+    assert out.run_meta.loc[0, "AchievedMarginAtPairFill"] == 22.5
+    assert out.run_meta.loc[0, "MarginFillAtPairFill"] == 25.0 / 22.5
     assert calls["n"] == 0
 
 
@@ -66,4 +74,11 @@ def test_phase_b_enabled_when_all_caps_met(monkeypatch):
 
     assert out.fg_result["Opt Qty Phase B"].sum() == 1
     assert out.run_meta.loc[0, "phase_b_executed"] == True
+    assert out.run_meta.loc[0, "TotalCapPairs"] == 4.0
+    assert out.run_meta.loc[0, "AchievedPairs"] == 5.0
+    assert out.run_meta.loc[0, "OverallFillPairs"] == 1.25
+    assert out.run_meta.loc[0, "PlanMarginMax"] == 30.0
+    assert out.run_meta.loc[0, "AchievedMargin"] == 40.0
+    assert out.run_meta.loc[0, "AchievedMarginAtPairFill"] == 37.5
+    assert out.run_meta.loc[0, "MarginFillAtPairFill"] == 40.0 / 37.5
     assert calls["n"] == 1
