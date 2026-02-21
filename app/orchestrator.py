@@ -62,6 +62,10 @@ def _build_purchase_summary(
                     "Purchase Required": max(float(req - avail), 0.0),
                 }
             )
+
+    return pd.DataFrame(rows)
+
+
 def generate_purchase_planning_scenarios(
     fg: pd.DataFrame,
     cap: pd.DataFrame,
