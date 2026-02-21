@@ -9,6 +9,7 @@ class RunConfig:
     mode_avail: str
     objective: str
     big_m_cap: int = 10**9
+    run_purchase_planner: bool = False
 
 
 @dataclass
@@ -27,3 +28,4 @@ class TwoPhaseResult:
     fg_result: pd.DataFrame
     rm_diagnostic: pd.DataFrame
     run_meta: pd.DataFrame
+    purchase_summary: pd.DataFrame | None = None
