@@ -284,7 +284,10 @@ def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhas
     return TwoPhaseResult(res, rm_diag, run_meta, purchase_summary)
 
 
-def run_optimization(tables: Dict[str, pd.DataFrame], run_purchase_planner: bool = False):
+def run_optimization(
+    tables: Dict[str, pd.DataFrame],
+    run_purchase_planner: bool = False,
+) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     ctrl = _control_map(tables[CONTROL_DATASET])
     cfg = RunConfig(
         mode_avail=ctrl["Mode_Avail"].upper(),
@@ -346,6 +349,3 @@ def run_optimization(tables: Dict[str, pd.DataFrame], run_purchase_planner: bool
     meta = out.run_meta.melt(var_name="Key", value_name="Value")
     meta["Value"] = meta["Value"].astype(str)
     return fg_result, rm_diag, meta, purchase_summary, purchase_detail
-    if run_purchase_planner:
-        return out.fg_result, out.rm_diagnostic, meta, out.purchase_summary
-    return out.fg_result, out.rm_diagnostic, meta
