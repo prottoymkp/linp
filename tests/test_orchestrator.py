@@ -23,7 +23,7 @@ def _tables(rm_avail=10, cap=4):
             }
         ),
         "tblFGPlanCap": pd.DataFrame({"FG Code": ["A", "B"], "Max Plan Qty": [cap, cap]}),
-        "tblRMAvail": pd.DataFrame({"RM Code": ["R1"], "Avail_Stock": [rm_avail], "Avail_StockPO": [rm_avail]}),
+        "tblRMAvail": pd.DataFrame({"RM Code": ["R1"], "Avail_Stock": [rm_avail], "Avail_StockPO": [rm_avail], "RM_Rate": [1.0]}),
         "tblControl_2": pd.DataFrame({"Key": ["Mode_Avail", "Objective"], "Value": ["STOCK", "PAIRS"]}),
     }
 
@@ -62,8 +62,8 @@ def test_phase_b_zero_when_caps_not_met():
     assert fg["Opt Qty Phase B"].sum() == 0
     assert "Fill_FG" in fg.columns
     assert meta.loc[meta["Key"] == "all_caps_hit", "Value"].iloc[0] == "False"
-    assert len(purchase_summary) == 1
-    assert purchase_summary.loc[0, "Status"] == "skipped"
+    assert len(purchase_summary) == 4
+    assert set(purchase_summary["Status"]) == {"not_run"}
 
     meta_map = dict(zip(meta["Key"], meta["Value"]))
     assert float(meta_map["TotalCapPairs"]) == float(fg["Plan Cap"].sum())
@@ -76,7 +76,7 @@ def test_phase_b_runs_when_caps_met():
     fg, _, meta, purchase_summary, _ = run_optimization(_tables(rm_avail=12, cap=4))
     assert fg["Opt Qty Phase B"].sum() >= 0
     assert meta.loc[meta["Key"] == "all_caps_hit", "Value"].iloc[0] == "True"
-    assert purchase_summary.loc[0, "Status"] in {"Optimal", "Feasible", "fallback_Optimal", "fallback_Feasible"}
+    assert set(purchase_summary["Status"]) == {"not_run"}
 
 
 def test_purchase_planner_summary_when_enabled():

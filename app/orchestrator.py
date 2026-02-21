@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 from .config import BOM_DATASET, CAP_DATASET, CONTROL_DATASET, FG_DATASET, RM_DATASET
-from .model import audit_phaseA_solution, solve_optimization, solve_phaseA_lexicographic
+from .model import audit_phaseA_solution, solve_optimization, solve_phaseA_lexicographic, solve_purchase_plan_pairs_target
 from .types import RunConfig, TwoPhaseResult
 
 
@@ -303,49 +303,140 @@ def run_optimization(
 
     achieved_pairs = int(pd.to_numeric(fg_result["Opt Qty Total"], errors="coerce").fillna(0).sum())
     achieved_margin = float(pd.to_numeric(fg_result["Total Margin"], errors="coerce").fillna(0.0).sum())
-    total_cap = float(pd.to_numeric(fg_result["Plan Cap"], errors="coerce").fillna(0.0).sum())
-    implied_pair_fill = float((achieved_pairs / total_cap) * 100.0) if total_cap > 0 else 0.0
-
-    target_metric = "MARGIN_AT_PAIR_FILL" if cfg.objective == "PLAN" else cfg.objective
-    phase_b_status = str(run_meta_df.loc[0, "phase_b_status"]) if "phase_b_status" in run_meta_df.columns else "not_run"
-    phase_b_method = str(run_meta_df.loc[0, "phase_b_method"]) if "phase_b_method" in run_meta_df.columns else "not_run"
 
     rm_source = tables[RM_DATASET].copy()
-    rm_rate_col = "RM_Rate" if "RM_Rate" in rm_source.columns else None
     rm_source["RM Code"] = rm_source["RM Code"].astype(str)
-    rm_source["RM_Rate"] = pd.to_numeric(rm_source[rm_rate_col], errors="coerce").fillna(0.0) if rm_rate_col else 0.0
-    rm_source["BuyQty"] = pd.to_numeric(rm_source["BuyQty"], errors="coerce").fillna(0.0) if "BuyQty" in rm_source.columns else 0.0
-    rm_source["BuyCost"] = rm_source["BuyQty"] * rm_source["RM_Rate"]
+    rm_col = "Avail_Stock" if cfg.mode_avail == "STOCK" else "Avail_StockPO"
+    rm_source["AvailBase"] = pd.to_numeric(rm_source[rm_col], errors="coerce").fillna(0.0)
 
-    include_zero_buy_qty = str(ctrl.get("IncludeZeroBuyQty", "FALSE")).upper() in {"TRUE", "1", "YES"}
-    purchase_detail = rm_source[["RM Code", "BuyQty", "RM_Rate", "BuyCost"]].copy()
-    if not include_zero_buy_qty:
-        purchase_detail = purchase_detail[purchase_detail["BuyQty"] > 0]
+    targets = [0.25, 0.50, 0.75, 1.00]
+    purchase_rows = []
+    detail_rows = []
+    purchase_sheets: Dict[int, Dict[str, pd.DataFrame]] = {}
 
-    purchase_detail.insert(0, "TargetFillPct", implied_pair_fill)
-    purchase_detail.insert(0, "TargetMetric", target_metric)
-    purchase_detail = purchase_detail[["TargetMetric", "TargetFillPct", "RM Code", "BuyQty", "RM_Rate", "BuyCost"]]
+    purchase_plan_status = "not_run"
+    purchase_solver = "n/a"
 
-    total_buy_cost = float(pd.to_numeric(purchase_detail["BuyCost"], errors="coerce").fillna(0.0).sum()) if not purchase_detail.empty else 0.0
-    purchase_summary = pd.DataFrame(
-        [
+    missing_rm_rate = run_purchase_planner and "RM_Rate" not in rm_source.columns
+    if "RM_Rate" not in rm_source.columns:
+        rm_source["RM_Rate"] = 0.0
+    else:
+        rm_source["RM_Rate"] = pd.to_numeric(rm_source["RM_Rate"], errors="coerce").fillna(0.0)
+    if missing_rm_rate:
+        purchase_plan_status = "skipped_missing_rm_rate"
+
+    cap_sum = float(pd.to_numeric(fg_result["Plan Cap"], errors="coerce").fillna(0).sum())
+
+    for target in targets:
+        pct = int(target * 100)
+        target_pairs = int(np.ceil(target * cap_sum))
+
+        if (not run_purchase_planner) or missing_rm_rate:
+            status = "skipped_missing_rm_rate" if missing_rm_rate else "not_run"
+            method = "not_run"
+            x_map = {str(code): 0 for code in fg_result["FG Code"].astype(str)}
+            buy_map = {str(code): 0.0 for code in rm_source["RM Code"].astype(str)}
+            total_buy_cost = 0.0
+            achieved = 0
+            margin = 0.0
+        else:
+            solve = solve_purchase_plan_pairs_target(
+                fg_df=tables[FG_DATASET],
+                bom_df=tables[BOM_DATASET],
+                cap_df=tables[CAP_DATASET],
+                rm_df=rm_source[["RM Code", "Avail_Stock", "Avail_StockPO", "RM_Rate"]],
+                mode_avail=cfg.mode_avail,
+                target_fill_pct=target,
+            )
+            status = str(solve["status"])
+            method = str(solve["method"])
+            x_map = {str(k): int(v) for k, v in solve["x"].items()}
+            buy_map = {str(k): float(v) for k, v in solve["buy"].items()}
+            total_buy_cost = float(solve["total_buy_cost"])
+            achieved = int(sum(x_map.values()))
+            margin_map = dict(zip(fg_result["FG Code"].astype(str), pd.to_numeric(fg_result["Unit Margin"], errors="coerce").fillna(0.0)))
+            margin = float(sum(margin_map.get(code, 0.0) * qty for code, qty in x_map.items()))
+            purchase_plan_status = "ran"
+            purchase_solver = str(solve.get("method", "highs_mip"))
+
+            # audits
+            caps_map = dict(zip(fg_result["FG Code"].astype(str), pd.to_numeric(fg_result["Plan Cap"], errors="coerce").fillna(0).astype(int)))
+            for code, qty in x_map.items():
+                assert float(qty).is_integer()
+                assert 0 <= qty <= int(caps_map.get(code, 0))
+            assert achieved >= target_pairs or status not in {"Optimal", "Feasible"}
+            bom = tables[BOM_DATASET]
+            usage = {rm: 0.0 for rm in rm_source["RM Code"].astype(str)}
+            for _, row in bom.iterrows():
+                fg_code = str(row["FG Code"])
+                rm_code = str(row["RM Code"])
+                if rm_code in usage:
+                    usage[rm_code] += float(row["QtyPerPair"]) * x_map.get(fg_code, 0)
+            for rm_code, used in usage.items():
+                avail = float(rm_source.loc[rm_source["RM Code"] == rm_code, "AvailBase"].iloc[0])
+                buy = float(buy_map.get(rm_code, 0.0))
+                assert used <= avail + buy + 1e-6
+            calc_buy_cost = float(sum(float(buy_map.get(rm, 0.0)) * float(rm_source.loc[rm_source["RM Code"] == rm, "RM_Rate"].iloc[0]) for rm in usage))
+            assert abs(calc_buy_cost - total_buy_cost) <= 1e-5
+
+        fg_sheet = fg_result[["FG Code", "Plan Cap", "Unit Margin"]].copy()
+        fg_sheet = fg_sheet.rename(columns={"Plan Cap": "Cap", "Unit Margin": "UnitMargin"})
+        fg_sheet["TargetPairs"] = target_pairs
+        fg_sheet["OptQty"] = fg_sheet["FG Code"].astype(str).map(x_map).fillna(0).astype(int)
+        fg_sheet["Shortfall"] = (fg_sheet["Cap"] - fg_sheet["OptQty"]).clip(lower=0)
+        fg_sheet["TotalMargin"] = fg_sheet["OptQty"] * fg_sheet["UnitMargin"]
+        fg_sheet = fg_sheet[["FG Code", "Cap", "TargetPairs", "OptQty", "Shortfall", "UnitMargin", "TotalMargin"]]
+
+        rm_sheet = rm_source[["RM Code", "AvailBase", "RM_Rate"]].copy()
+        usage_map = {rm: 0.0 for rm in rm_sheet["RM Code"].astype(str)}
+        for _, brow in tables[BOM_DATASET].iterrows():
+            fg_code = str(brow["FG Code"])
+            rm_code = str(brow["RM Code"])
+            if rm_code in usage_map:
+                usage_map[rm_code] += float(brow["QtyPerPair"]) * x_map.get(fg_code, 0)
+        rm_sheet["UsedAtPlan"] = rm_sheet["RM Code"].astype(str).map(usage_map).fillna(0.0)
+        rm_sheet["BuyQty"] = rm_sheet["RM Code"].astype(str).map(buy_map).fillna(0.0)
+        rm_sheet["BuyCost"] = rm_sheet["BuyQty"] * rm_sheet["RM_Rate"]
+        rm_sheet["RemainingAfterBuy"] = rm_sheet["AvailBase"] + rm_sheet["BuyQty"] - rm_sheet["UsedAtPlan"]
+        rm_sheet = rm_sheet[["RM Code", "AvailBase", "RM_Rate", "UsedAtPlan", "BuyQty", "BuyCost", "RemainingAfterBuy"]]
+
+        purchase_sheets[pct] = {"fg": fg_sheet, "rm": rm_sheet}
+
+        purchase_rows.append(
             {
-                "TargetMetric": target_metric,
-                "TargetFillPct": implied_pair_fill,
-                "TargetValue": achieved_margin if target_metric == "MARGIN_AT_PAIR_FILL" else achieved_pairs,
-                "AchievedPairs": achieved_pairs,
-                "AchievedMargin": achieved_margin,
-                "TotalBuyCost": total_buy_cost,
+                "TargetFillPct": float(pct),
+                "TargetPairs": target_pairs,
+                "AchievedPairs": int(achieved),
+                "AchievedMargin": float(margin),
+                "TotalBuyCost": float(total_buy_cost),
                 "Mode_Avail": cfg.mode_avail,
-                "Status": phase_b_status,
-                "Method": phase_b_method,
-                "ImpliedPairFill": implied_pair_fill,
-                "TargetMarginAtImpliedPairFill": achieved_margin,
-                "MarginFillAtImpliedPairFill": achieved_margin,
+                "Status": status,
+                "Method": method,
             }
-        ]
-    )
+        )
+        for _, r in rm_sheet.iterrows():
+            detail_rows.append({"TargetFillPct": float(pct), "RM Code": r["RM Code"], "BuyQty": r["BuyQty"], "RM_Rate": r["RM_Rate"], "BuyCost": r["BuyCost"]})
+
+    purchase_summary = pd.DataFrame(purchase_rows)
+    purchase_detail = pd.DataFrame(detail_rows, columns=["TargetFillPct", "RM Code", "BuyQty", "RM_Rate", "BuyCost"])
+    include_zero_buy_qty = str(ctrl.get("IncludeZeroBuyQty", "FALSE")).upper() in {"TRUE", "1", "YES"}
+    if (not include_zero_buy_qty) or missing_rm_rate:
+        purchase_detail = purchase_detail[purchase_detail["BuyQty"] > 0] if not purchase_detail.empty else purchase_detail
+
+    run_meta_df.loc[0, "purchase_plan_status"] = purchase_plan_status
+    run_meta_df.loc[0, "purchase_targets"] = "25,50,75,100"
+    run_meta_df.loc[0, "purchase_mode_avail"] = cfg.mode_avail
+    run_meta_df.loc[0, "purchase_solver"] = purchase_solver
 
     meta = out.run_meta.melt(var_name="Key", value_name="Value")
-    meta["Value"] = meta["Value"].astype(str)
+    meta["Value"] = meta["Value"].fillna("n/a").astype(str)
+    extra_meta = pd.DataFrame(
+        {
+            "Key": ["purchase_plan_status", "purchase_targets", "purchase_mode_avail", "purchase_solver"],
+            "Value": [str(purchase_plan_status), "25,50,75,100", cfg.mode_avail, str(purchase_solver)],
+        }
+    )
+    meta = pd.concat([meta, extra_meta], ignore_index=True)
+
+    purchase_detail.attrs["purchase_target_sheets"] = purchase_sheets
     return fg_result, rm_diag, meta, purchase_summary, purchase_detail

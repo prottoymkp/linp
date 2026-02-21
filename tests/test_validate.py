@@ -31,14 +31,10 @@ def test_validate_inputs_objective_case_insensitive_plan():
     validate_inputs(t)
 
 
-def test_validate_inputs_missing_rm_rate_column():
+def test_validate_inputs_missing_rm_rate_column_allowed_for_optimization():
     t = _valid_tables()
     t["tblRMAvail"] = t["tblRMAvail"].drop(columns=["RM_Rate"])
-
-    with pytest.raises(ValidationError) as exc:
-        validate_inputs(t)
-
-    assert "tblRMAvail missing columns: RM_Rate" in str(exc.value)
+    validate_inputs(t)
 
 
 def test_validate_inputs_non_numeric_rm_rate_fails():
