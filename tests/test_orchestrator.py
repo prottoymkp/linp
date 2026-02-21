@@ -27,12 +27,15 @@ def _tables(rm_avail=10, cap=4):
 
 
 def test_phase_b_zero_when_caps_not_met():
-    fg, _, meta = run_optimization(_tables(rm_avail=3, cap=4))
+    fg, _, meta, purchase_summary, _ = run_optimization(_tables(rm_avail=3, cap=4))
     assert fg["Opt Qty Phase B"].sum() == 0
     assert meta.loc[meta["Key"] == "all_caps_hit", "Value"].iloc[0] == "False"
+    assert len(purchase_summary) == 1
+    assert purchase_summary.loc[0, "Status"] == "skipped"
 
 
 def test_phase_b_runs_when_caps_met():
-    fg, _, meta = run_optimization(_tables(rm_avail=12, cap=4))
+    fg, _, meta, purchase_summary, _ = run_optimization(_tables(rm_avail=12, cap=4))
     assert fg["Opt Qty PhaseB"].sum() if "Opt Qty PhaseB" in fg.columns else fg["Opt Qty Phase B"].sum() >= 0
     assert meta.loc[meta["Key"] == "all_caps_hit", "Value"].iloc[0] == "True"
+    assert purchase_summary.loc[0, "Status"] in {"Optimal", "Feasible", "fallback_Optimal", "fallback_Feasible"}

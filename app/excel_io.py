@@ -85,17 +85,27 @@ def _write_df_as_table(ws, df: pd.DataFrame, table_name: str):
     ws.add_table(tab)
 
 
-def write_output_excel(fg_df: pd.DataFrame, rm_df: pd.DataFrame, meta_df: pd.DataFrame) -> bytes:
+def write_output_excel(
+    fg_df: pd.DataFrame,
+    rm_df: pd.DataFrame,
+    meta_df: pd.DataFrame,
+    purchase_summary_df: pd.DataFrame,
+    purchase_detail_df: pd.DataFrame,
+) -> bytes:
     wb = Workbook()
     wb.remove(wb.active)
 
     ws_fg = wb.create_sheet("FG_Result")
     ws_rm = wb.create_sheet("RM_Diagnostic")
     ws_meta = wb.create_sheet("Run_Metadata")
+    ws_purchase_summary = wb.create_sheet("Purchase_Summary")
+    ws_purchase_detail = wb.create_sheet("Purchase_Detail")
 
     _write_df_as_table(ws_fg, fg_df, "tblFGResult")
     _write_df_as_table(ws_rm, rm_df, "tblRMDiagnostic")
     _write_df_as_table(ws_meta, meta_df, "tblRunMeta")
+    _write_df_as_table(ws_purchase_summary, purchase_summary_df, "tblPurchaseSummary")
+    _write_df_as_table(ws_purchase_detail, purchase_detail_df, "tblPurchaseDetail")
 
     final = BytesIO()
     wb.save(final)

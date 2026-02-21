@@ -52,8 +52,8 @@ if upload is not None:
         st.success("Validation passed.")
 
         if st.button("Run Optimization", type="primary"):
-            fg_df, rm_df, meta_df = run_optimization(tables)
-            out_bytes = write_output_excel(fg_df, rm_df, meta_df)
+            fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df = run_optimization(tables)
+            out_bytes = write_output_excel(fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df)
 
             st.subheader("Summary")
             st.write({
