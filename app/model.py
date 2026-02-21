@@ -27,6 +27,10 @@ def _cap_col(df: pd.DataFrame) -> str:
     return "Max Plan Qty" if "Max Plan Qty" in df.columns else "Plan Cap"
 
 
+def _rm_rate_col(df: pd.DataFrame) -> str:
+    return "RM_Rate" if "RM_Rate" in df.columns else "RM Rate"
+
+
 def _status_feasible(status: str) -> bool:
     return status in {"Optimal", "Feasible"}
 
@@ -104,6 +108,7 @@ def _solve_highs(
     row_upper: np.ndarray,
     col_entries: List[List[Tuple[int, float]]],
     integer: bool,
+    integer_col_count: int | None = None,
 ) -> Tuple[str, np.ndarray, float, float]:
     start = time.time()
     lp = HighsLp()
@@ -132,9 +137,10 @@ def _solve_highs(
     highs.changeObjectiveSense(ObjSense.kMaximize)
 
     if integer:
-        idx = np.arange(len(col_cost), dtype=np.int32)
-        types = np.array([HighsVarType.kInteger] * len(col_cost))
-        highs.changeColsIntegrality(len(col_cost), idx, types)
+        integer_count = len(col_cost) if integer_col_count is None else int(integer_col_count)
+        idx = np.arange(integer_count, dtype=np.int32)
+        types = np.array([HighsVarType.kInteger] * integer_count)
+        highs.changeColsIntegrality(integer_count, idx, types)
 
     highs.run()
     status = highs.modelStatusToString(highs.getModelStatus())
@@ -368,3 +374,88 @@ def solve_optimization(
 
     quantities = {k: int(max(0, round(v))) for k, v in zip(model_inputs["fg_codes"], vals)}
     return SolveOutcome(quantities, float(obj_val), status, "highs", used_fallback, solver_used, time.time() - start)
+
+
+def solve_purchase_planner_milp(
+    fg_df: pd.DataFrame,
+    bom_df: pd.DataFrame,
+    cap_df: pd.DataFrame,
+    rm_df: pd.DataFrame,
+    mode_avail: str,
+    scenario: str,
+    target_value: float,
+) -> Dict[str, object]:
+    """Solve purchase planner MILP with RM shortage variables.
+
+    Decision variables:
+      - x_i integer, bounded by FG cap
+      - y_r continuous, y_r >= 0, representing purchase shortfall for RM r
+
+    Constraints:
+      - For each RM row r: sum_i a_{i,r} * x_i - y_r <= base_avail_r
+      - One scenario row with lower bound target_value and upper bound +inf
+
+    Objective:
+      - Minimize sum_r RM_Rate_r * y_r
+    """
+
+    start = time.time()
+    scenario_key = str(scenario).upper()
+    if scenario_key not in {"PAIRS", "MARGIN_AT_PAIR_FILL"}:
+        raise ValueError(f"Unsupported scenario: {scenario}")
+
+    model_inputs = _build_model_inputs(fg_df, bom_df, cap_df, rm_df, mode_avail, enforce_caps=True, big_m_cap=10**9)
+    fg_codes = model_inputs["fg_codes"]
+    rm_codes = rm_df["RM Code"].astype(str).tolist()
+    n_x = len(fg_codes)
+    n_r = len(rm_codes)
+
+    rate_col = _rm_rate_col(rm_df)
+    rm_rate_map = dict(zip(rm_codes, pd.to_numeric(rm_df[rate_col], errors="coerce").fillna(0.0)))
+    rm_rates = np.array([float(rm_rate_map[rm]) for rm in rm_codes], dtype=np.float64)
+
+    margins = pd.to_numeric(fg_df[_fg_margin_col(fg_df)], errors="coerce").fillna(0.0).to_numpy(dtype=np.float64)
+
+    col_entries: List[List[Tuple[int, float]]] = [list(entries) for entries in model_inputs["col_entries"]]
+    for r in range(n_r):
+        col_entries.append([(r, -1.0)])
+
+    scenario_coeff = np.ones(n_x, dtype=np.float64) if scenario_key == "PAIRS" else margins
+    scenario_row = n_r
+    for j in range(n_x):
+        if abs(float(scenario_coeff[j])) > 0:
+            col_entries[j].append((scenario_row, float(scenario_coeff[j])))
+
+    col_cost = np.concatenate([np.zeros(n_x, dtype=np.float64), rm_rates])
+    col_lower = np.zeros(n_x + n_r, dtype=np.float64)
+    col_upper = np.concatenate([model_inputs["caps"], np.full(n_r, kHighsInf, dtype=np.float64)])
+    row_lower = np.concatenate([np.full(n_r, -kHighsInf, dtype=np.float64), np.array([float(target_value)], dtype=np.float64)])
+    row_upper = np.concatenate([model_inputs["row_upper"], np.array([kHighsInf], dtype=np.float64)])
+
+    status, values, objective_value, _ = _solve_highs(
+        col_cost=-col_cost,
+        col_lower=col_lower,
+        col_upper=col_upper,
+        row_lower=row_lower,
+        row_upper=row_upper,
+        col_entries=col_entries,
+        integer=True,
+        integer_col_count=n_x,
+    )
+
+    solver_used = "highs_milp"
+
+    x_vals = np.maximum(np.rint(values[:n_x]), 0).astype(int)
+    y_vals = np.maximum(values[n_x:], 0.0)
+
+    return {
+        "status": status,
+        "solver": "highs",
+        "method": solver_used,
+        "runtime_sec": time.time() - start,
+        "objective_value": float(-objective_value),
+        "scenario": scenario_key,
+        "target_value": float(target_value),
+        "x": {fg_codes[i]: int(x_vals[i]) for i in range(n_x)},
+        "y": {rm_codes[r]: float(y_vals[r]) for r in range(n_r)},
+    }

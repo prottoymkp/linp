@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from app.model import audit_phaseA_solution, solve_optimization, solve_phaseA_lexicographic
+from app.model import audit_phaseA_solution, solve_optimization, solve_phaseA_lexicographic, solve_purchase_planner_milp
 
 
 def test_rm_feasibility_and_integer_outputs():
@@ -51,3 +51,53 @@ def test_solve_optimization_rejects_plan_objective():
 
     with pytest.raises(ValueError):
         solve_optimization(fg_df, bom_df, cap_df, rm_df, mode_avail="STOCK", objective="PLAN")
+
+
+def test_purchase_planner_pairs_shortage_objective_and_integrality():
+    fg_df = pd.DataFrame({"FG Code": ["A"], "Unit Margin": [5]})
+    bom_df = pd.DataFrame({"FG Code": ["A"], "RM Code": ["R1"], "QtyPerPair": [1]})
+    cap_df = pd.DataFrame({"FG Code": ["A"], "Plan Cap": [5]})
+    rm_df = pd.DataFrame(
+        {
+            "RM Code": ["R1"],
+            "Avail_Stock": [2],
+            "Avail_StockPO": [2],
+            "RM_Rate": [3],
+        }
+    )
+
+    out = solve_purchase_planner_milp(fg_df, bom_df, cap_df, rm_df, mode_avail="STOCK", scenario="PAIRS", target_value=4)
+
+    assert out["status"] in {"Optimal", "Feasible"}
+    assert out["x"] == {"A": 4}
+    assert out["y"]["R1"] == 2.0
+    assert out["objective_value"] == 6.0
+
+
+def test_purchase_planner_margin_at_pair_fill_respects_mode_avail():
+    fg_df = pd.DataFrame({"FG Code": ["A"], "Unit Margin": [10]})
+    bom_df = pd.DataFrame({"FG Code": ["A"], "RM Code": ["R1"], "QtyPerPair": [1]})
+    cap_df = pd.DataFrame({"FG Code": ["A"], "Plan Cap": [10]})
+    rm_df = pd.DataFrame(
+        {
+            "RM Code": ["R1"],
+            "Avail_Stock": [0],
+            "Avail_StockPO": [5],
+            "RM_Rate": [2],
+        }
+    )
+
+    out = solve_purchase_planner_milp(
+        fg_df,
+        bom_df,
+        cap_df,
+        rm_df,
+        mode_avail="STOCK_PO",
+        scenario="MARGIN_AT_PAIR_FILL",
+        target_value=50,
+    )
+
+    assert out["status"] in {"Optimal", "Feasible"}
+    assert out["x"]["A"] == 5
+    assert out["y"]["R1"] == 0.0
+    assert out["objective_value"] == 0.0
