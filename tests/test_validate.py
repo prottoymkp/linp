@@ -23,3 +23,9 @@ def test_validate_inputs_bad_control():
     t["tblControl_2"] = pd.DataFrame({"Key": ["Mode_Avail", "Objective"], "Value": ["X", "Y"]})
     with pytest.raises(ValidationError):
         validate_inputs(t)
+
+
+def test_validate_inputs_objective_case_insensitive_plan():
+    t = _valid_tables()
+    t["tblControl_2"] = pd.DataFrame({"Key": ["Mode_Avail", "Objective"], "Value": ["stock", "plan"]})
+    validate_inputs(t)

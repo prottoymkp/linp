@@ -344,7 +344,12 @@ def solve_optimization(
     model_inputs = _build_model_inputs(fg, bom, cap_df, rm_df, mode_avail, enforce_caps=enforce_caps, big_m_cap=big_m_cap)
     margin_col = _fg_margin_col(fg)
     margins = pd.to_numeric(fg[margin_col], errors="coerce").fillna(0.0).to_numpy(dtype=np.float64)
-    obj = margins if objective == "MARGIN" else np.ones(len(model_inputs["fg_codes"]), dtype=np.float64)
+    if objective == "MARGIN":
+        obj = margins
+    elif objective == "PAIRS":
+        obj = np.ones(len(model_inputs["fg_codes"]), dtype=np.float64)
+    else:
+        raise ValueError(f"Unsupported objective for solve_optimization: {objective}")
 
     status, vals, obj_val, runtime = _solve_single_objective(model_inputs, obj, integer=True)
     solver_used = "highs_mip"

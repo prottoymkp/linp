@@ -120,9 +120,11 @@ def validate_inputs(tables: Dict[str, pd.DataFrame]) -> None:
 
     key_col, val_col = _control_cols(ctrl)
     c_map = dict(zip(ctrl[key_col].astype(str), ctrl[val_col].astype(str)))
-    if c_map.get("Mode_Avail") not in CONTROL_MODE_VALUES:
+    mode_avail = str(c_map.get("Mode_Avail", "")).upper()
+    objective = str(c_map.get("Objective", "")).upper()
+    if mode_avail not in CONTROL_MODE_VALUES:
         errors.append("Control Mode_Avail invalid")
-    if c_map.get("Objective") not in CONTROL_OBJECTIVE_VALUES:
+    if objective not in CONTROL_OBJECTIVE_VALUES:
         errors.append("Control Objective invalid")
 
     if errors:

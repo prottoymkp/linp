@@ -38,7 +38,7 @@ def test_phase_b_zero_when_any_cap_unmet(monkeypatch):
     monkeypatch.setattr("app.orchestrator.solve_phaseA_lexicographic", fake_phase_a)
     monkeypatch.setattr("app.orchestrator.solve_optimization", fake_solve)
     monkeypatch.setattr("app.orchestrator.audit_phaseA_solution", _audit_stub)
-    out = run_two_phase(build_data(), RunConfig("STOCK", "MARGIN", 100))
+    out = run_two_phase(build_data(), RunConfig("STOCK", "PLAN", 100))
 
     assert out.fg_result["Opt Qty Phase B"].sum() == 0
     assert out.run_meta.loc[0, "phase_b_executed"] == False
@@ -62,7 +62,7 @@ def test_phase_b_enabled_when_all_caps_met(monkeypatch):
     monkeypatch.setattr("app.orchestrator.solve_phaseA_lexicographic", fake_phase_a)
     monkeypatch.setattr("app.orchestrator.solve_optimization", fake_solve)
     monkeypatch.setattr("app.orchestrator.audit_phaseA_solution", _audit_stub)
-    out = run_two_phase(build_data(), RunConfig("STOCK", "MARGIN", 100))
+    out = run_two_phase(build_data(), RunConfig("STOCK", "PLAN", 100))
 
     assert out.fg_result["Opt Qty Phase B"].sum() == 1
     assert out.run_meta.loc[0, "phase_b_executed"] == True

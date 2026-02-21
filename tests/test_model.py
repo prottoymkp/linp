@@ -39,3 +39,15 @@ def test_phase_a_lexicographic_keeps_pairs_then_maximizes_margin():
     assert meta["stage1_status"] in {"Optimal", "Feasible"}
     assert meta["stage2_status"] in {"Optimal", "Feasible"}
     audit_phaseA_solution(audit, stage2_success=True)
+
+
+def test_solve_optimization_rejects_plan_objective():
+    fg_df = pd.DataFrame({"FG Code": ["FG1"], "Unit Margin": [10]})
+    bom_df = pd.DataFrame({"FG Code": ["FG1"], "RM Code": ["RM1"], "QtyPerPair": [1]})
+    cap_df = pd.DataFrame({"FG Code": ["FG1"], "Plan Cap": [5]})
+    rm_df = pd.DataFrame({"RM Code": ["RM1"], "Avail_Stock": [10], "Avail_StockPO": [10]})
+
+    import pytest
+
+    with pytest.raises(ValueError):
+        solve_optimization(fg_df, bom_df, cap_df, rm_df, mode_avail="STOCK", objective="PLAN")
