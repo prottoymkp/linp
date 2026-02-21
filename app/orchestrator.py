@@ -135,7 +135,18 @@ def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhas
     res["Opt Qty Phase B"] = res["FG Code"].astype(str).map(phase_b_qty).fillna(0).astype(int)
     res["Opt Qty Total"] = res["Opt Qty Phase A"] + res["Opt Qty Phase B"]
     res["Total Margin"] = res["Unit Margin"] * res["Opt Qty Total"]
-    res = res[["FG Code", "Plan Cap", "Opt Qty Phase A", "Opt Qty Phase B", "Opt Qty Total", "Unit Margin", "Total Margin"]]
+    res["Fill_FG"] = np.where(res["Plan Cap"] == 0, 0.0, res["Opt Qty Total"] / res["Plan Cap"])
+    res = res[["FG Code", "Plan Cap", "Opt Qty Phase A", "Opt Qty Phase B", "Opt Qty Total", "Unit Margin", "Total Margin", "Fill_FG"]]
+
+    total_cap_pairs = float(res["Plan Cap"].sum())
+    achieved_pairs = float(res["Opt Qty Total"].sum())
+    overall_fill_pairs = 0.0 if total_cap_pairs == 0 else achieved_pairs / total_cap_pairs
+    plan_margin_max = float((res["Plan Cap"] * res["Unit Margin"]).sum())
+    achieved_margin = float((res["Unit Margin"] * res["Opt Qty Total"]).sum())
+    achieved_margin_at_pair_fill = overall_fill_pairs * plan_margin_max
+    margin_fill_at_pair_fill = (
+        0.0 if achieved_margin_at_pair_fill == 0 else achieved_margin / achieved_margin_at_pair_fill
+    )
 
     rm_col = "Avail_Stock" if config.mode_avail == "STOCK" else "Avail_StockPO"
     avail_map = dict(zip(rm["RM Code"].astype(str), pd.to_numeric(rm[rm_col], errors="coerce").fillna(0.0)))
@@ -173,6 +184,13 @@ def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhas
                 "phase_b_method": phase_b_method,
                 "phase_b_executed": phase_b_executed,
                 "all_caps_hit": all_caps_hit,
+                "TotalCapPairs": total_cap_pairs,
+                "AchievedPairs": achieved_pairs,
+                "OverallFillPairs": overall_fill_pairs,
+                "PlanMarginMax": plan_margin_max,
+                "AchievedMargin": achieved_margin,
+                "AchievedMarginAtPairFill": achieved_margin_at_pair_fill,
+                "MarginFillAtPairFill": margin_fill_at_pair_fill,
             }
         ]
     )

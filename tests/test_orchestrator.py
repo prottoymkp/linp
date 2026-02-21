@@ -29,10 +29,23 @@ def _tables(rm_avail=10, cap=4):
 def test_phase_b_zero_when_caps_not_met():
     fg, _, meta = run_optimization(_tables(rm_avail=3, cap=4))
     assert fg["Opt Qty Phase B"].sum() == 0
+    assert "Fill_FG" in fg.columns
     assert meta.loc[meta["Key"] == "all_caps_hit", "Value"].iloc[0] == "False"
+
+    meta_map = dict(zip(meta["Key"], meta["Value"]))
+    assert float(meta_map["TotalCapPairs"]) == float(fg["Plan Cap"].sum())
+    assert float(meta_map["AchievedPairs"]) == float(fg["Opt Qty Total"].sum())
+    assert float(meta_map["PlanMarginMax"]) == float((fg["Plan Cap"] * fg["Unit Margin"]).sum())
+    assert float(meta_map["AchievedMargin"]) == float(fg["Total Margin"].sum())
 
 
 def test_phase_b_runs_when_caps_met():
     fg, _, meta = run_optimization(_tables(rm_avail=12, cap=4))
     assert fg["Opt Qty PhaseB"].sum() if "Opt Qty PhaseB" in fg.columns else fg["Opt Qty Phase B"].sum() >= 0
     assert meta.loc[meta["Key"] == "all_caps_hit", "Value"].iloc[0] == "True"
+
+
+def test_fill_fg_guard_when_plan_cap_zero():
+    fg, _, _ = run_optimization(_tables(rm_avail=5, cap=0))
+    assert (fg["Plan Cap"] == 0).all()
+    assert (fg["Fill_FG"] == 0).all()
