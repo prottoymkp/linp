@@ -27,6 +27,41 @@ def _margin_col(df):
     return "Margin" if "Margin" in df.columns else "Unit Margin"
 
 
+def _build_purchase_summary(
+    fg_result: pd.DataFrame,
+    bom: pd.DataFrame,
+    rm: pd.DataFrame,
+    mode_avail: str,
+) -> pd.DataFrame:
+    coverage_levels = [25, 50, 75, 100]
+    rm_col = "Avail_Stock" if mode_avail == "STOCK" else "Avail_StockPO"
+
+    cap_map = dict(zip(fg_result["FG Code"].astype(str), pd.to_numeric(fg_result["Plan Cap"], errors="coerce").fillna(0.0)))
+    avail_map = dict(zip(rm["RM Code"].astype(str), pd.to_numeric(rm[rm_col], errors="coerce").fillna(0.0)))
+
+    rows = []
+    for coverage in coverage_levels:
+        fg_qty = {fg_code: int(np.floor(cap * coverage / 100.0)) for fg_code, cap in cap_map.items()}
+        required = {rm_code: 0.0 for rm_code in avail_map}
+
+        for _, row in bom.iterrows():
+            fg_code = str(row["FG Code"])
+            rm_code = str(row["RM Code"])
+            if rm_code not in required:
+                continue
+            required[rm_code] += float(row["QtyPerPair"]) * fg_qty.get(fg_code, 0)
+
+        for rm_code, avail in avail_map.items():
+            req = required[rm_code]
+            rows.append(
+                {
+                    "Coverage %": coverage,
+                    "RM Code": rm_code,
+                    "Current Availability": float(avail),
+                    "Required Qty": float(req),
+                    "Purchase Required": max(float(req - avail), 0.0),
+                }
+            )
 def generate_purchase_planning_scenarios(
     fg: pd.DataFrame,
     cap: pd.DataFrame,
@@ -240,13 +275,22 @@ def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhas
         ]
     )
 
-    return TwoPhaseResult(res, rm_diag, run_meta)
+    purchase_summary = _build_purchase_summary(res, bom, rm, config.mode_avail) if config.run_purchase_planner else None
+
+    return TwoPhaseResult(res, rm_diag, run_meta, purchase_summary)
 
 
-def run_optimization(tables: Dict[str, pd.DataFrame]):
+def run_optimization(tables: Dict[str, pd.DataFrame], run_purchase_planner: bool = False):
     ctrl = _control_map(tables[CONTROL_DATASET])
-    cfg = RunConfig(mode_avail=ctrl["Mode_Avail"].upper(), objective=ctrl["Objective"].upper(), big_m_cap=10**9)
+    cfg = RunConfig(
+        mode_avail=ctrl["Mode_Avail"].upper(),
+        objective=ctrl["Objective"].upper(),
+        big_m_cap=10**9,
+        run_purchase_planner=run_purchase_planner,
+    )
     out = run_two_phase(tables, cfg)
     meta = out.run_meta.melt(var_name="Key", value_name="Value")
     meta["Value"] = meta["Value"].astype(str)
+    if run_purchase_planner:
+        return out.fg_result, out.rm_diagnostic, meta, out.purchase_summary
     return out.fg_result, out.rm_diagnostic, meta

@@ -45,6 +45,15 @@ def test_phase_b_runs_when_caps_met():
     assert meta.loc[meta["Key"] == "all_caps_hit", "Value"].iloc[0] == "True"
 
 
+def test_purchase_planner_summary_when_enabled():
+    fg, rm, meta, purchase_summary = run_optimization(_tables(rm_avail=3, cap=4), run_purchase_planner=True)
+
+    assert not fg.empty
+    assert not rm.empty
+    assert not meta.empty
+    assert purchase_summary is not None
+    assert sorted(purchase_summary["Coverage %"].unique().tolist()) == [25, 50, 75, 100]
+    assert set(["RM Code", "Current Availability", "Required Qty", "Purchase Required"]).issubset(purchase_summary.columns)
 def test_fill_fg_guard_when_plan_cap_zero():
     fg, _, _ = run_optimization(_tables(rm_avail=5, cap=0))
     assert (fg["Plan Cap"] == 0).all()

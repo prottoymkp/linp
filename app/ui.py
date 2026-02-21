@@ -51,8 +51,15 @@ if upload is not None:
         validate_inputs(tables)
         st.success("Validation passed.")
 
+        run_purchase_planner = st.checkbox("Run purchase planner (25/50/75/100)", value=True)
+
         if st.button("Run Optimization", type="primary"):
-            fg_df, rm_df, meta_df = run_optimization(tables)
+            if run_purchase_planner:
+                fg_df, rm_df, meta_df, purchase_summary_df = run_optimization(tables, run_purchase_planner=True)
+            else:
+                fg_df, rm_df, meta_df = run_optimization(tables, run_purchase_planner=False)
+                purchase_summary_df = None
+
             out_bytes = write_output_excel(fg_df, rm_df, meta_df)
 
             st.subheader("Summary")
@@ -61,6 +68,10 @@ if upload is not None:
                 "Total Margin": float(fg_df["Total Margin"].sum()),
                 "RM rows": int(len(rm_df)),
             })
+
+            if run_purchase_planner and purchase_summary_df is not None and not purchase_summary_df.empty:
+                st.subheader("Purchase summary preview")
+                st.dataframe(purchase_summary_df, use_container_width=True)
 
             st.download_button(
                 "Download Optimized Output",
