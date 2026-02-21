@@ -3,7 +3,7 @@ from io import BytesIO
 import openpyxl
 import pandas as pd
 
-from app.excel_io import write_output_excel
+from app.excel_io import _write_df_as_table, write_output_excel
 
 
 def test_write_output_excel_writes_single_header_and_data_block_per_sheet():
@@ -42,3 +42,61 @@ def test_write_output_excel_writes_single_header_and_data_block_per_sheet():
         assert len(ws.tables) == 1
         table = next(iter(ws.tables.values()))
         assert table.displayName == table_name
+
+
+def test_write_df_as_table_repeated_calls_replace_existing_table_and_cells():
+    wb = openpyxl.Workbook()
+    ws = wb.active
+
+    first_df = pd.DataFrame([
+        {"Code": "A", "Qty": 1},
+        {"Code": "B", "Qty": 2},
+    ])
+    second_df = pd.DataFrame([
+        {"Code": "X", "Qty": 9},
+    ])
+
+    _write_df_as_table(ws, first_df, "tblFirst")
+    assert len(ws.tables) == 1
+    assert ws.max_row == len(first_df) + 1
+
+    _write_df_as_table(ws, second_df, "tblSecond")
+
+    assert ws.max_row == len(second_df) + 1
+    assert [cell.value for cell in ws[1]] == second_df.columns.tolist()
+    assert [cell.value for cell in ws[2]] == ["X", 9]
+    assert len(ws.tables) == 1
+    assert "tblFirst" not in ws.tables
+    assert "tblSecond" in ws.tables
+    assert next(iter(ws.tables.values())).ref == "A1:B2"
+
+
+def test_write_df_as_table_repeated_writes_persist_with_single_table_after_save_reload():
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "FG_Result"
+
+    original_df = pd.DataFrame([
+        {"FG Code": "FG1", "Units": 5},
+        {"FG Code": "FG2", "Units": 8},
+    ])
+    rewritten_df = pd.DataFrame([
+        {"FG Code": "FG9", "Units": 99},
+    ])
+
+    _write_df_as_table(ws, original_df, "tblFGResult")
+    _write_df_as_table(ws, rewritten_df, "tblFGResult")
+
+    payload = BytesIO()
+    wb.save(payload)
+    payload.seek(0)
+    reloaded = openpyxl.load_workbook(payload)
+    out_ws = reloaded["FG_Result"]
+
+    assert out_ws.max_row == len(rewritten_df) + 1
+    assert [cell.value for cell in out_ws[1]] == rewritten_df.columns.tolist()
+    assert [cell.value for cell in out_ws[2]] == ["FG9", 99]
+    assert len(out_ws.tables) == 1
+    table = next(iter(out_ws.tables.values()))
+    assert table.displayName == "tblFGResult"
+    assert table.ref == "A1:B2"

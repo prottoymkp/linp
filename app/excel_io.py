@@ -71,9 +71,15 @@ def load_tables_from_excel(file_bytes: bytes) -> Dict[str, pd.DataFrame]:
 
 
 def _write_df_as_table(ws, df: pd.DataFrame, table_name: str):
-    # Always reset the worksheet body before writing to avoid accidental
-    # duplicate header/data blocks when this helper is called repeatedly.
-    ws.delete_rows(1, ws.max_row)
+    # Always reset worksheet content and table definitions before writing.
+    # This guarantees a single header block + single table, even if this
+    # helper is called repeatedly for the same worksheet object.
+    for existing_table_name in list(ws.tables.keys()):
+        del ws.tables[existing_table_name]
+
+    if ws.max_row:
+        ws.delete_rows(1, ws.max_row)
+
     ws.append([str(col) for col in df.columns.tolist()])
     for row in df.itertuples(index=False):
         ws.append(list(row))
