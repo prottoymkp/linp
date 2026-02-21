@@ -1,9 +1,11 @@
 from io import BytesIO
+from zipfile import ZipFile
 
 import openpyxl
 import pandas as pd
 
 from app.excel_io import _write_df_as_table, write_output_excel
+from app.orchestrator import run_optimization
 
 
 def test_write_output_excel_writes_single_header_and_data_block_per_sheet():
@@ -115,3 +117,83 @@ def test_write_df_as_table_repeated_writes_persist_with_single_table_after_save_
     table = next(iter(out_ws.tables.values()))
     assert table.displayName == "tblFGResult"
     assert table.ref == "A1:B2"
+
+
+def test_write_output_excel_keeps_purchase_detail_headers_without_table_when_empty():
+    fg_df = pd.DataFrame([{"FG Code": "FG1", "Units": 10}])
+    rm_df = pd.DataFrame([{"RM Code": "RM1", "Variance": 1.5}])
+    meta_df = pd.DataFrame([{"Metric": "run_id", "Value": "abc123"}])
+    purchase_summary_df = pd.DataFrame([
+        {"TargetMetric": "MARGIN_AT_PAIR_FILL", "TargetFillPct": 100.0, "TargetValue": 123.0, "AchievedPairs": 30, "AchievedMargin": 50.0, "TotalBuyCost": 0.0, "Mode_Avail": "STOCK", "Status": "skipped", "Method": "not_run", "ImpliedPairFill": 100.0, "TargetMarginAtImpliedPairFill": 50.0, "MarginFillAtImpliedPairFill": 50.0},
+    ])
+    purchase_detail_df = pd.DataFrame(columns=["TargetMetric", "TargetFillPct", "RM Code", "BuyQty", "RM_Rate", "BuyCost"])
+
+    output_bytes = write_output_excel(
+        fg_df=fg_df,
+        rm_df=rm_df,
+        meta_df=meta_df,
+        purchase_summary_df=purchase_summary_df,
+        purchase_detail_df=purchase_detail_df,
+    )
+
+    wb = openpyxl.load_workbook(BytesIO(output_bytes))
+    ws = wb["Purchase_Detail"]
+
+    assert ws.max_row == 1
+    assert [cell.value for cell in ws[1]] == purchase_detail_df.columns.tolist()
+    assert len(ws.tables) == 0
+
+
+def test_run_optimization_export_avoids_broken_purchase_detail_table_when_zero_buy_qty_filtered():
+    tables = {
+        "fg_master": pd.DataFrame(
+            {
+                "FG Code": ["A"],
+                "Dealer Price": [10],
+                "Cost Value": [7],
+                "Margin": [3],
+            }
+        ),
+        "bom_master": pd.DataFrame(
+            {
+                "FG Code": ["A"],
+                "RM Code": ["R1"],
+                "QtyPerPair": [1],
+            }
+        ),
+        "tblFGPlanCap": pd.DataFrame({"FG Code": ["A"], "Max Plan Qty": [0]}),
+        "tblRMAvail": pd.DataFrame(
+            {
+                "RM Code": ["R1"],
+                "Avail_Stock": [0],
+                "Avail_StockPO": [0],
+                "RM_Rate": [4.5],
+                "BuyQty": [0],
+            }
+        ),
+        "tblControl_2": pd.DataFrame(
+            {
+                "Key": ["Mode_Avail", "Objective", "IncludeZeroBuyQty"],
+                "Value": ["STOCK", "PAIRS", "FALSE"],
+            }
+        ),
+    }
+
+    fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df = run_optimization(tables)
+    assert purchase_detail_df.empty
+
+    output_bytes = write_output_excel(
+        fg_df=fg_df,
+        rm_df=rm_df,
+        meta_df=meta_df,
+        purchase_summary_df=purchase_summary_df,
+        purchase_detail_df=purchase_detail_df,
+    )
+
+    workbook = openpyxl.load_workbook(BytesIO(output_bytes))
+    purchase_ws = workbook["Purchase_Detail"]
+    assert purchase_ws.max_row == 1
+    assert len(purchase_ws.tables) == 0
+
+    with ZipFile(BytesIO(output_bytes)) as zf:
+        assert "xl/tables/table5.xml" not in zf.namelist()

@@ -83,6 +83,13 @@ def _write_df_as_table(ws, df: pd.DataFrame, table_name: str):
     ws.append([str(col) for col in df.columns.tolist()])
     for row in df.itertuples(index=False):
         ws.append(list(row))
+
+    # Excel table objects with a header-only range are not consistently accepted
+    # across readers. Keep the header row when there is no data, but skip creating
+    # a table definition so the workbook remains valid.
+    if len(df) == 0:
+        return
+
     end_col = get_column_letter(len(df.columns))
     end_row = len(df) + 1
     tab = Table(displayName=table_name, ref=f"A1:{end_col}{end_row}")
