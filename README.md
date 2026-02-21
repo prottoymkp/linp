@@ -38,6 +38,9 @@ The Streamlit UI now includes an input-structure panel and a pre-parse workbook 
 - Sheet `FG_Result`, table `tblFGResult`
 - Sheet `RM_Diagnostic`, table `tblRMDiagnostic`
 - Sheet `Run_Metadata`, table `tblRunMeta`
+- Sheet `Purchase_Summary`, table `tblPurchaseSummary`
+- Sheet `Purchase_Detail`, table `tblPurchaseDetail` when rows exist
+  - When purchase detail has zero rows, the sheet is exported as header-only without an Excel table object by design to avoid invalid header-only table XML in some Excel readers.
 
 ## Install
 
