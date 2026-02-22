@@ -1,7 +1,14 @@
 import numpy as np
 import pandas as pd
 
-from app.model import audit_phaseA_solution, solve_optimization, solve_phaseA_lexicographic, solve_purchase_planner_milp
+from app.model import (
+    _fallback_stage2_reallocate,
+    _greedy_fill,
+    audit_phaseA_solution,
+    solve_optimization,
+    solve_phaseA_lexicographic,
+    solve_purchase_planner_milp,
+)
 
 
 def test_rm_feasibility_and_integer_outputs():
@@ -101,3 +108,40 @@ def test_purchase_planner_margin_at_pair_fill_respects_mode_avail():
     assert out["x"]["A"] == 5
     assert out["y"]["R1"] == 0.0
     assert out["objective_value"] == 0.0
+
+
+def test_greedy_fill_respects_iteration_cutoff():
+    base = np.array([0], dtype=int)
+    caps = np.array([100], dtype=float)
+    coeff = np.array([[0.0]], dtype=float)
+    rm_upper = np.array([100.0], dtype=float)
+    scores = np.array([1.0], dtype=float)
+
+    x, meta = _greedy_fill(base, 100, caps, coeff, rm_upper, scores, max_iterations=2, max_wall_time_sec=10.0)
+
+    assert int(x.sum()) == 2
+    assert meta["heuristic_cutoff_hit"] is True
+    assert meta["cutoff_reason"] == "max_iterations"
+
+
+def test_fallback_reallocate_reports_cutoff_metadata():
+    x_stage1 = np.array([5, 5], dtype=int)
+    margins = np.array([10.0, 1.0], dtype=float)
+    caps = np.array([10.0, 10.0], dtype=float)
+    coeff = np.array([[1.0, 1.0]], dtype=float)
+    rm_upper = np.array([10.0], dtype=float)
+
+    _, meta = _fallback_stage2_reallocate(
+        x_stage1,
+        margins,
+        caps,
+        coeff,
+        rm_upper,
+        max_passes=1,
+        max_swaps=100,
+        max_wall_time_sec=10.0,
+    )
+
+    assert meta["passes"] == 1
+    assert meta["heuristic_cutoff_hit"] is True
+    assert meta["cutoff_reason"] == "max_passes"

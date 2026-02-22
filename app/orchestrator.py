@@ -99,6 +99,28 @@ def _margin_col(df):
     return "Margin" if "Margin" in df.columns else "Unit Margin"
 
 
+
+def _parse_optional_int(value: object) -> int | None:
+    if value is None:
+        return None
+    text = str(value).strip()
+    if not text:
+        return None
+    if text.lower() in {"auto", "none", "null", "unset", "default"}:
+        return None
+    return int(float(text))
+
+
+def _parse_optional_float(value: object) -> float | None:
+    if value is None:
+        return None
+    text = str(value).strip()
+    if not text:
+        return None
+    if text.lower() in {"none", "null", "unset", "default"}:
+        return None
+    return float(text)
+
 def _build_purchase_summary(
     fg_result: pd.DataFrame,
     bom: pd.DataFrame,
@@ -224,6 +246,17 @@ def run_two_phase(
     if objective == "PLAN":
         with _with_solver_heartbeat(progress_callback, "Phase A - lexicographic solve", 45, 25):
             phase_a, phase_a_meta, audit_payload = solve_phaseA_lexicographic(fg, bom, cap, rm, config.mode_avail, config.big_m_cap)
+        _notify_progress(progress_callback, "Phase A - lexicographic solve", 45, 25)
+        solver_options = {}
+        if config.threads is not None:
+            solver_options["threads"] = config.threads
+        if config.mip_rel_gap is not None:
+            solver_options["mip_rel_gap"] = config.mip_rel_gap
+        if config.time_limit_sec is not None:
+            solver_options["time_limit_sec"] = config.time_limit_sec
+        phase_a, phase_a_meta, audit_payload = solve_phaseA_lexicographic(
+            fg, bom, cap, rm, config.mode_avail, config.big_m_cap, **solver_options
+        )
         stage2_success = str(phase_a_meta.get("stage2_status")) in {"Optimal", "Feasible", "fallback_reallocated"}
         audit_phaseA_solution(audit_payload, stage2_success=stage2_success)
         _audit_phase_a_final(
@@ -239,6 +272,17 @@ def run_two_phase(
     elif objective in {"MARGIN", "PAIRS"}:
         with _with_solver_heartbeat(progress_callback, f"Phase A - solving for {objective}", 45, 25):
             phase_a = solve_optimization(fg, bom, cap, rm, config.mode_avail, objective, config.big_m_cap, enforce_caps=True)
+        _notify_progress(progress_callback, f"Phase A - solving for {objective}", 45, 25)
+        solver_options = {}
+        if config.threads is not None:
+            solver_options["threads"] = config.threads
+        if config.mip_rel_gap is not None:
+            solver_options["mip_rel_gap"] = config.mip_rel_gap
+        if config.time_limit_sec is not None:
+            solver_options["time_limit_sec"] = config.time_limit_sec
+        phase_a = solve_optimization(
+            fg, bom, cap, rm, config.mode_avail, objective, config.big_m_cap, enforce_caps=True, **solver_options
+        )
         phase_a_meta = {
             "method": phase_a.method,
             "stage1_status": phase_a.status,
@@ -249,6 +293,12 @@ def run_two_phase(
             "stage2_solver_used": "n/a",
             "stage2_runtime": "n/a",
             "phaseA_final_status": phase_a.status,
+            "heuristic_cutoff_hit": phase_a.heuristic_cutoff_hit,
+            "heuristic_iterations": phase_a.heuristic_iterations,
+            "fallback_passes": "n/a",
+            "fallback_swaps": "n/a",
+            "fallback_elapsed_sec": phase_a.fallback_elapsed_sec,
+            "cutoff_reason": "none",
         }
 
         fg_codes = fg["FG Code"].astype(str).tolist()
@@ -291,6 +341,16 @@ def run_two_phase(
 
         with _with_solver_heartbeat(progress_callback, "Phase B - re-optimizing remaining inventory", 50, 50):
             phase_b = solve_optimization(fg, bom, cap, rm_res, config.mode_avail, objective if objective in {"MARGIN", "PAIRS"} else "MARGIN", config.big_m_cap, enforce_caps=False)
+        solver_options = {}
+        if config.threads is not None:
+            solver_options["threads"] = config.threads
+        if config.mip_rel_gap is not None:
+            solver_options["mip_rel_gap"] = config.mip_rel_gap
+        if config.time_limit_sec is not None:
+            solver_options["time_limit_sec"] = config.time_limit_sec
+        phase_b = solve_optimization(
+            fg, bom, cap, rm_res, config.mode_avail, objective if objective in {"MARGIN", "PAIRS"} else "MARGIN", config.big_m_cap, enforce_caps=False, **solver_options
+        )
         phase_b_qty = phase_b.quantities
         phase_b_executed = True
         phase_b_status = phase_b.status
@@ -349,6 +409,12 @@ def run_two_phase(
                 "stage2_solver_used": phase_a_meta.get("stage2_solver_used", "n/a"),
                 "stage2_runtime": phase_a_meta.get("stage2_runtime", "n/a"),
                 "phaseA_final_status": phase_a_meta.get("phaseA_final_status", phase_a.status),
+                "heuristic_cutoff_hit": phase_a_meta.get("heuristic_cutoff_hit", phase_a.heuristic_cutoff_hit),
+                "heuristic_iterations": phase_a_meta.get("heuristic_iterations", phase_a.heuristic_iterations),
+                "fallback_passes": phase_a_meta.get("fallback_passes", "n/a"),
+                "fallback_swaps": phase_a_meta.get("fallback_swaps", "n/a"),
+                "fallback_elapsed_sec": phase_a_meta.get("fallback_elapsed_sec", phase_a.fallback_elapsed_sec),
+                "cutoff_reason": phase_a_meta.get("cutoff_reason", "none"),
                 "phase_b_status": phase_b_status,
                 "phase_b_method": phase_b_method,
                 "phase_b_executed": phase_b_executed,
@@ -373,14 +439,24 @@ def run_optimization(
     tables: Dict[str, pd.DataFrame],
     run_purchase_planner: bool = False,
     progress_callback: ProgressCallback | None = None,
+    threads: int | None = None,
+    mip_rel_gap: float | None = None,
+    time_limit_sec: float | None = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     _notify_progress(progress_callback, "Initializing optimization", 0, 0)
     ctrl = _control_map(tables[CONTROL_DATASET])
+    control_threads = _parse_optional_int(ctrl.get("threads"))
+    control_mip_rel_gap = _parse_optional_float(ctrl.get("mip_rel_gap"))
+    control_time_limit_sec = _parse_optional_float(ctrl.get("time_limit_sec"))
+
     cfg = RunConfig(
         mode_avail=ctrl["Mode_Avail"].upper(),
         objective=ctrl["Objective"].upper(),
         big_m_cap=10**9,
         run_purchase_planner=run_purchase_planner,
+        threads=threads if threads is not None else control_threads,
+        mip_rel_gap=mip_rel_gap if mip_rel_gap is not None else control_mip_rel_gap,
+        time_limit_sec=time_limit_sec if time_limit_sec is not None else control_time_limit_sec,
     )
     out = run_two_phase(tables, cfg, progress_callback=progress_callback)
     _notify_progress(progress_callback, "Core optimization finished", 100, 65)
@@ -444,6 +520,22 @@ def run_optimization(
                     mode_avail=cfg.mode_avail,
                     target_fill_pct=target,
                 )
+            solver_options = {}
+            if cfg.threads is not None:
+                solver_options["threads"] = cfg.threads
+            if cfg.mip_rel_gap is not None:
+                solver_options["mip_rel_gap"] = cfg.mip_rel_gap
+            if cfg.time_limit_sec is not None:
+                solver_options["time_limit_sec"] = cfg.time_limit_sec
+            solve = solve_purchase_plan_pairs_target(
+                fg_df=tables[FG_DATASET],
+                bom_df=tables[BOM_DATASET],
+                cap_df=tables[CAP_DATASET],
+                rm_df=rm_source[["RM Code", "Avail_Stock", "Avail_StockPO", "RM_Rate"]],
+                mode_avail=cfg.mode_avail,
+                target_fill_pct=target,
+                **solver_options,
+            )
             status = str(solve["status"])
             method = str(solve["method"])
             x_map = {str(k): int(v) for k, v in solve["x"].items()}
