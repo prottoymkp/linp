@@ -663,7 +663,7 @@ def solve_purchase_plan_pairs_target(
         coeff = model_inputs["coeff"]
         rm_upper = model_inputs["row_upper"]
         if int(base_x.sum()) < target_pairs:
-            base_x = _greedy_fill(base_x, target_pairs, caps, coeff, rm_upper, np.ones(n_x, dtype=float))
+            base_x, _ = _greedy_fill(base_x, target_pairs, caps, coeff, rm_upper, np.ones(n_x, dtype=float))
 
         usage = coeff @ base_x.astype(float)
         deficits = np.maximum(usage - rm_upper, 0.0)
