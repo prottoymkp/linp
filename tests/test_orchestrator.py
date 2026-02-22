@@ -139,3 +139,32 @@ def test_purchase_planner_preserves_fallback_status_fields(monkeypatch):
     assert set(purchase_summary["LPStatus"]) == {"Infeasible"}
     assert purchase_summary["HeuristicCutoffHit"].all()
     assert set(purchase_summary["CutoffReason"]) == {"max_iterations"}
+
+
+def test_purchase_planner_calls_solver_once_per_target(monkeypatch):
+    calls = {"n": 0}
+
+    def fake_purchase_solver(**kwargs):
+        calls["n"] += 1
+        fg_codes = kwargs["cap_df"]["FG Code"].astype(str).tolist()
+        rm_codes = kwargs["rm_df"]["RM Code"].astype(str).tolist()
+        return {
+            "status": "Optimal",
+            "mip_status": "Optimal",
+            "lp_status": "Optimal",
+            "method": "highs_mip",
+            "x": {code: 4 for code in fg_codes},
+            "buy": {code: 7.0 for code in rm_codes},
+            "total_buy_cost": 7.0,
+            "heuristic_cutoff_hit": False,
+            "cutoff_reason": "none",
+            "fallback_iterations": 0,
+            "fallback_elapsed_sec": 0.0,
+        }
+
+    monkeypatch.setattr("app.orchestrator.solve_purchase_plan_pairs_target", fake_purchase_solver)
+
+    _, _, _, purchase_summary, _ = run_optimization(_tables(rm_avail=1, cap=4), run_purchase_planner=True)
+
+    assert calls["n"] == 4
+    assert len(purchase_summary) == 4
