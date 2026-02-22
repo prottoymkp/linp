@@ -104,7 +104,7 @@ if upload is not None:
             meta_map = dict(zip(meta_df["Key"], meta_df["Value"])) if {"Key", "Value"}.issubset(meta_df.columns) else {}
             if str(meta_map.get("heuristic_cutoff_hit", "False")).lower() == "true":
                 st.warning(
-                    "Fallback heuristic ended due to safety limits "
+                    "Phase A fallback heuristic ended due to safety limits "
                     f"(reason: {meta_map.get('cutoff_reason', 'unknown')}, "
                     f"iterations: {meta_map.get('heuristic_iterations', 'n/a')}, "
                     f"elapsed sec: {meta_map.get('fallback_elapsed_sec', 'n/a')})."
@@ -136,6 +136,15 @@ if upload is not None:
                 "Total Margin": float(fg_df["Total Margin"].sum()),
                 "RM rows": int(len(rm_df)),
             })
+
+            if run_purchase_planner and not purchase_summary_df.empty and "Status" in purchase_summary_df.columns:
+                fallback_rows = purchase_summary_df[purchase_summary_df["Status"].astype(str).str.startswith("fallback_")]
+                if not fallback_rows.empty:
+                    st.info(
+                        "Purchase planner fallback statuses detected: "
+                        + ", ".join(sorted(fallback_rows["Status"].astype(str).unique()))
+                        + ". Check MIPStatus/LPStatus and cutoff columns for diagnostics."
+                    )
 
             if run_purchase_planner and not purchase_summary_df.empty:
                 st.subheader("Purchase summary preview")

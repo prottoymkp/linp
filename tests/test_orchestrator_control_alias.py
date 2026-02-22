@@ -30,5 +30,5 @@ def test_run_optimization_accepts_setting_value_control_columns(monkeypatch):
     assert not meta.empty
     assert len(purchase_summary) == 4
     assert purchase_detail.empty
-    assert purchase_summary.loc[0, "Status"] in {"not_run", "skipped", "Optimal", "Feasible", "fallback_Optimal", "fallback_Feasible"}
+    assert purchase_summary.loc[0, "Status"] in {"not_run", "skipped", "Optimal", "Feasible", "fallback_feasible", "fallback_cutoff_partial", "fallback_no_progress"}
     assert purchase_summary.loc[0, "Method"]
