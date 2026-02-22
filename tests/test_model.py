@@ -199,3 +199,41 @@ def test_purchase_plan_fallback_no_progress_status(monkeypatch):
     assert out["status"] == "fallback_no_progress"
     assert out["mip_status"] == "Unknown"
     assert out["lp_status"] == "Unknown"
+def test_solve_optimization_fallback_large_feasible_caps_reaches_target_or_reports_cutoff(monkeypatch):
+    import app.model as model_mod
+
+    n_fg = 600
+    fg_codes = [f"FG{i}" for i in range(n_fg)]
+    fg_df = pd.DataFrame({"FG Code": fg_codes, "Unit Margin": np.ones(n_fg)})
+    bom_df = pd.DataFrame({"FG Code": fg_codes, "RM Code": ["RM1"] * n_fg, "QtyPerPair": np.ones(n_fg)})
+    cap_df = pd.DataFrame({"FG Code": fg_codes, "Plan Cap": np.ones(n_fg)})
+    rm_df = pd.DataFrame({"RM Code": ["RM1"], "Avail_Stock": [float(n_fg)], "Avail_StockPO": [float(n_fg)]})
+
+    call_state = {"count": 0}
+
+    def fake_solve_single_objective(model_inputs, objective, **kwargs):
+        call_state["count"] += 1
+        if call_state["count"] == 1:
+            return "Unknown", np.zeros(len(objective), dtype=float), 0.0, 0.0
+        return "Optimal", np.full(len(objective), 0.999, dtype=float), float(0.999 * len(objective)), 0.0
+
+    monkeypatch.setattr(model_mod, "_solve_single_objective", fake_solve_single_objective)
+
+    out = model_mod.solve_optimization(
+        fg_df,
+        bom_df,
+        cap_df,
+        rm_df,
+        mode_avail="STOCK",
+        objective="PAIRS",
+        enforce_caps=True,
+    )
+
+    total = sum(out.quantities.values())
+    if total < n_fg:
+        assert out.used_fallback is True
+        assert out.heuristic_cutoff_hit is True
+        assert "cutoff" in out.status
+    else:
+        assert total == n_fg
+        assert "target_reached" in out.status
