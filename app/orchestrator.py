@@ -131,6 +131,16 @@ def _parse_optional_float(value: object) -> float | None:
         return None
     return float(text)
 
+
+def _control_lookup(ctrl: Dict[str, str], key: str) -> str | None:
+    if key in ctrl:
+        return ctrl[key]
+    folded = key.strip().lower()
+    for existing_key, value in ctrl.items():
+        if str(existing_key).strip().lower() == folded:
+            return value
+    return None
+
 def _build_purchase_summary(
     fg_result: pd.DataFrame,
     bom: pd.DataFrame,
@@ -487,13 +497,22 @@ def run_optimization(
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     _notify_progress(progress_callback, "Initializing optimization", 0, 0)
     ctrl = _control_map(tables[CONTROL_DATASET])
-    control_threads = _parse_optional_int(ctrl.get("threads"))
-    control_mip_rel_gap = _parse_optional_float(ctrl.get("mip_rel_gap"))
-    control_time_limit_sec = _parse_optional_float(ctrl.get("time_limit_sec"))
+    control_threads = _parse_optional_int(_control_lookup(ctrl, "threads"))
+    control_mip_rel_gap = _parse_optional_float(_control_lookup(ctrl, "mip_rel_gap"))
+    control_time_limit_sec = _parse_optional_float(_control_lookup(ctrl, "time_limit_sec"))
+    mode_avail = _control_lookup(ctrl, "Mode_Avail")
+    objective = _control_lookup(ctrl, "Objective")
+    if mode_avail is None or objective is None:
+        missing = []
+        if mode_avail is None:
+            missing.append("Mode_Avail")
+        if objective is None:
+            missing.append("Objective")
+        raise KeyError(f"Missing control keys: {', '.join(missing)}")
 
     cfg = RunConfig(
-        mode_avail=ctrl["Mode_Avail"].upper(),
-        objective=ctrl["Objective"].upper(),
+        mode_avail=mode_avail.upper(),
+        objective=objective.upper(),
         big_m_cap=10**9,
         run_purchase_planner=run_purchase_planner,
         threads=threads if threads is not None else control_threads,
