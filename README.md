@@ -56,6 +56,8 @@ Run this command from the project root so the `app` package resolves on `PYTHONP
 streamlit run app/ui.py
 ```
 
+For Streamlit Community Cloud, you can also use `streamlit_app.py` as the app entrypoint.
+
 ## Test
 
 ```bash
