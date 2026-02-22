@@ -82,3 +82,57 @@ def test_phase_b_enabled_when_all_caps_met(monkeypatch):
     assert out.run_meta.loc[0, "AchievedMarginAtPairFill"] == 37.5
     assert out.run_meta.loc[0, "MarginFillAtPairFill"] == 40.0 / 37.5
     assert calls["n"] == 1
+
+
+def test_plan_objective_calls_lexicographic_solver_once(monkeypatch):
+    calls = {"lex": 0}
+
+    def fake_phase_a(*args, **kwargs):
+        calls["lex"] += 1
+        return (
+            SolveOutcome({"FG1": 2, "FG2": 1}, 25.0, "ok", "lex_once", False, "lex_mip", 1.23),
+            {
+                "method": "lex_once",
+                "stage1_status": "Optimal",
+                "stage1_solver_used": "lex_mip",
+                "stage1_runtime": 1.23,
+                "P_star": 3,
+                "stage2_status": "Optimal",
+                "stage2_solver_used": "lex_lp",
+                "stage2_runtime": 0.11,
+                "phaseA_final_status": "ok",
+                "heuristic_cutoff_hit": False,
+                "heuristic_iterations": 0,
+                "fallback_passes": 0,
+                "fallback_swaps": 0,
+                "fallback_elapsed_sec": 0.0,
+                "cutoff_reason": "none",
+            },
+            {"x_stage1": np.array([2, 1]), "x_stage2": np.array([2, 1]), "coeff": np.ones((1, 2)), "caps": np.array([2, 2]), "rm_upper": np.array([10])},
+        )
+
+    monkeypatch.setattr("app.orchestrator.solve_phaseA_lexicographic", fake_phase_a)
+    monkeypatch.setattr("app.orchestrator.audit_phaseA_solution", _audit_stub)
+
+    out = run_two_phase(build_data(), RunConfig("STOCK", "PLAN", 100, time_limit_sec=5))
+
+    assert calls["lex"] == 1
+    assert out.run_meta.loc[0, "phase_a_method"] == "lex_once"
+    assert out.run_meta.loc[0, "stage1_runtime"] == 1.23
+
+
+def test_pairs_objective_calls_solver_once(monkeypatch):
+    calls = {"solve": 0}
+
+    def fake_solve(*args, **kwargs):
+        calls["solve"] += 1
+        return SolveOutcome({"FG1": 2, "FG2": 1}, 25.0, "ok", "pairs_once", True, "mip", 2.5)
+
+    monkeypatch.setattr("app.orchestrator.solve_optimization", fake_solve)
+
+    out = run_two_phase(build_data(), RunConfig("STOCK", "PAIRS", 100, threads=2))
+
+    assert calls["solve"] == 1
+    assert out.run_meta.loc[0, "phase_a_status"] == "ok"
+    assert out.run_meta.loc[0, "phase_a_method"] == "mip"
+    assert out.run_meta.loc[0, "stage1_runtime"] == 2.5
