@@ -30,7 +30,7 @@ def _tables(rm_avail=10, cap=4):
 
 @pytest.fixture(autouse=True)
 def _stub_solve_optimization(monkeypatch):
-    def fake_solve_optimization(fg, bom, cap, rm, mode_avail, objective, big_m_cap, enforce_caps):
+    def fake_solve_optimization(fg, bom, cap, rm, mode_avail, objective, big_m_cap, enforce_caps, **kwargs):
         cap_col = "Max Plan Qty" if "Max Plan Qty" in cap.columns else "Plan Cap"
         caps = dict(zip(cap["FG Code"].astype(str), pd.to_numeric(cap[cap_col], errors="coerce").fillna(0).astype(int)))
         avail_col = "Avail_Stock" if mode_avail == "STOCK" else "Avail_StockPO"
