@@ -1,4 +1,5 @@
 from pathlib import Path
+import inspect
 import sys
 
 import streamlit as st
@@ -54,10 +55,39 @@ if upload is not None:
         run_purchase_planner = st.checkbox("Run purchase planner (25/50/75/100)", value=True)
 
         if st.button("Run Optimization", type="primary"):
-            fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df = run_optimization(
-                tables,
-                run_purchase_planner=run_purchase_planner,
-            )
+            stage_holder = st.empty()
+            overall_holder = st.empty()
+            stage_progress = st.progress(0, text="Current stage progress: 0%")
+            overall_progress = st.progress(0, text="Overall progress: 0%")
+
+            def on_progress(stage: str, stage_pct: float, overall_pct: float) -> None:
+                stage_holder.info(f"Current stage: {stage}")
+                overall_holder.caption(f"Solver overall progress: {overall_pct:.0f}%")
+                stage_progress.progress(int(stage_pct), text=f"Current stage progress: {stage_pct:.0f}%")
+                overall_progress.progress(int(overall_pct), text=f"Overall progress: {overall_pct:.0f}%")
+
+            run_opt_sig = inspect.signature(run_optimization)
+            if "progress_callback" in run_opt_sig.parameters:
+                try:
+                    fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df = run_optimization(
+                        tables,
+                        run_purchase_planner=run_purchase_planner,
+                        progress_callback=on_progress,
+                    )
+                except TypeError as exc:
+                    if "progress_callback" not in str(exc):
+                        raise
+                    stage_holder.warning("Detailed stage progress is unavailable with this backend version.")
+                    fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df = run_optimization(
+                        tables,
+                        run_purchase_planner=run_purchase_planner,
+                    )
+            else:
+                stage_holder.warning("Detailed stage progress is unavailable with this backend version.")
+                fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df = run_optimization(
+                    tables,
+                    run_purchase_planner=run_purchase_planner,
+                )
             purchase_target_sheets = purchase_detail_df.attrs.get("purchase_target_sheets")
             try:
                 out_bytes = write_output_excel(
