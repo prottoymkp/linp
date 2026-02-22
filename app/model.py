@@ -203,15 +203,18 @@ def _greedy_fill(
     iterations = 0
     cutoff_hit = False
     cutoff_reason = "none"
+    termination_reason = "target_reached"
 
     while int(x.sum()) < target_total:
         if iterations >= max_iterations:
             cutoff_hit = True
             cutoff_reason = "max_iterations"
+            termination_reason = "cutoff"
             break
         if (time.time() - start) >= max_wall_time_sec:
             cutoff_hit = True
             cutoff_reason = "max_wall_time"
+            termination_reason = "cutoff"
             break
         moved = False
         for j in order:
@@ -225,13 +228,36 @@ def _greedy_fill(
                 break
         iterations += 1
         if not moved:
+            termination_reason = "no_feasible_move"
             break
+    if int(x.sum()) >= target_total:
+        termination_reason = "target_reached"
     return x, {
         "iterations": iterations,
         "heuristic_cutoff_hit": cutoff_hit,
         "cutoff_reason": cutoff_reason,
+        "termination_reason": termination_reason,
+        "target_reached": int(x.sum()) >= target_total,
         "elapsed_sec": time.time() - start,
     }
+
+
+def _scaled_greedy_limits(
+    num_fg: int,
+    target_total: int,
+    current_total: int,
+    feasible_increments_estimate: int,
+    max_iterations: int | None,
+    max_wall_time_sec: float | None,
+) -> Tuple[int, float]:
+    if max_iterations is None:
+        desired_increments = max(0, int(target_total) - int(current_total))
+        est = max(desired_increments, int(feasible_increments_estimate), 1)
+        max_iterations = int(min(5_000_000, max(10_000, 3 * est + 20 * max(1, num_fg))))
+    if max_wall_time_sec is None:
+        size_term = max(1.0, float(num_fg) / 25.0)
+        max_wall_time_sec = float(min(30.0, max(2.0, 1.5 + 0.05 * float(feasible_increments_estimate) + size_term)))
+    return int(max_iterations), float(max_wall_time_sec)
 
 
 def _fallback_stage2_reallocate(
@@ -514,6 +540,9 @@ def solve_optimization(
     threads: int | None = None,
     mip_rel_gap: float | None = None,
     time_limit_sec: float | None = None,
+    fallback_max_iterations: int | None = None,
+    fallback_max_wall_time_sec: float | None = None,
+    fallback_second_pass_multiplier: float = 2.0,
 ) -> SolveOutcome:
     start = time.time()
     fg = fg_df.copy()
@@ -559,11 +588,72 @@ def solve_optimization(
             mip_rel_gap=mip_rel_gap,
         )
         base = np.maximum(np.floor(lp_vals), 0).astype(int) if _status_feasible(lp_status) else np.zeros(len(obj), dtype=int)
-        target = int(model_inputs["caps"].sum()) if enforce_caps else int(base.sum() + 10_000)
-        ints, greedy_meta = _greedy_fill(base, target, model_inputs["caps"], model_inputs["coeff"], model_inputs["row_upper"], obj)
+        caps_sum = int(model_inputs["caps"].sum())
+        lp_total = float(np.maximum(lp_vals, 0.0).sum()) if _status_feasible(lp_status) else float(base.sum())
+        resource_caps_reachable = bool(np.all(_rm_usage(model_inputs["coeff"], model_inputs["caps"]) <= model_inputs["row_upper"] + 1e-9))
+        lp_near_cap = bool(enforce_caps and caps_sum > 0 and lp_total >= 0.98 * float(caps_sum))
+
+        if enforce_caps:
+            target = caps_sum if (resource_caps_reachable or lp_near_cap) else min(caps_sum, int(np.ceil(lp_total)))
+        else:
+            target = int(max(base.sum() + 1_000, np.ceil(lp_total)))
+
+        feasible_increment_estimate = max(0, min(int(np.ceil(lp_total)), caps_sum) - int(base.sum())) if enforce_caps else max(0, int(np.ceil(lp_total)) - int(base.sum()))
+        max_iters, max_wall = _scaled_greedy_limits(
+            num_fg=n,
+            target_total=target,
+            current_total=int(base.sum()),
+            feasible_increments_estimate=feasible_increment_estimate,
+            max_iterations=fallback_max_iterations,
+            max_wall_time_sec=fallback_max_wall_time_sec,
+        )
+
+        ints, greedy_meta = _greedy_fill(
+            base,
+            target,
+            model_inputs["caps"],
+            model_inputs["coeff"],
+            model_inputs["row_upper"],
+            obj,
+            max_iterations=max_iters,
+            max_wall_time_sec=max_wall,
+        )
+
+        if (
+            enforce_caps
+            and bool(greedy_meta["heuristic_cutoff_hit"])
+            and int(ints.sum()) < caps_sum
+            and (resource_caps_reachable or lp_near_cap)
+        ):
+            intensity = np.maximum(model_inputs["coeff"].sum(axis=0), 1e-9)
+            second_scores = np.asarray(obj, dtype=np.float64) / intensity
+            ints, pass2_meta = _greedy_fill(
+                ints,
+                caps_sum,
+                model_inputs["caps"],
+                model_inputs["coeff"],
+                model_inputs["row_upper"],
+                second_scores,
+                max_iterations=int(max_iters * max(1.0, fallback_second_pass_multiplier)),
+                max_wall_time_sec=float(max_wall * max(1.0, fallback_second_pass_multiplier)),
+            )
+            if bool(pass2_meta["heuristic_cutoff_hit"]):
+                greedy_meta = pass2_meta
+            else:
+                greedy_meta = {
+                    **pass2_meta,
+                    "iterations": int(greedy_meta["iterations"]) + int(pass2_meta["iterations"]),
+                    "elapsed_sec": float(greedy_meta["elapsed_sec"]) + float(pass2_meta["elapsed_sec"]),
+                    "cutoff_reason": str(greedy_meta["cutoff_reason"]),
+                    "heuristic_cutoff_hit": False,
+                    "termination_reason": str(pass2_meta["termination_reason"]),
+                    "target_reached": bool(pass2_meta["target_reached"]),
+                }
+
         vals = ints.astype(np.float64)
         obj_val = float(np.dot(obj, vals))
-        status = f"fallback_{lp_status}"
+        termination_reason = str(greedy_meta.get("termination_reason", "unknown"))
+        status = f"fallback_{lp_status}_{termination_reason}"
         solver_used = "lp+greedy"
         used_fallback = True
         heuristic_cutoff_hit = bool(greedy_meta["heuristic_cutoff_hit"])
