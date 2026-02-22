@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timezone
-from typing import Dict
+from typing import Callable, Dict
 
 import numpy as np
 import pandas as pd
@@ -9,6 +9,15 @@ import pandas as pd
 from .config import BOM_DATASET, CAP_DATASET, CONTROL_DATASET, FG_DATASET, RM_DATASET
 from .model import audit_phaseA_solution, solve_optimization, solve_phaseA_lexicographic, solve_purchase_plan_pairs_target
 from .types import RunConfig, TwoPhaseResult
+
+
+ProgressCallback = Callable[[str, float, float], None]
+
+
+def _notify_progress(callback: ProgressCallback | None, stage: str, stage_progress_pct: float, overall_progress_pct: float) -> None:
+    if callback is None:
+        return
+    callback(stage, float(np.clip(stage_progress_pct, 0.0, 100.0)), float(np.clip(overall_progress_pct, 0.0, 100.0)))
 
 
 def _control_map(df: pd.DataFrame):
@@ -131,7 +140,12 @@ def _audit_phase_a_final(
         assert int(np.rint(x_stage1.sum())) == int(p_star)
 
 
-def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhaseResult:
+def run_two_phase(
+    tables: Dict[str, pd.DataFrame],
+    config: RunConfig,
+    progress_callback: ProgressCallback | None = None,
+) -> TwoPhaseResult:
+    _notify_progress(progress_callback, "Phase A - preparing optimization", 5, 10)
     fg = tables[FG_DATASET].copy()
     bom = tables[BOM_DATASET].copy()
     cap = tables[CAP_DATASET].copy()
@@ -145,6 +159,7 @@ def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhas
 
     phase_a_meta: Dict[str, object] = {}
     if objective == "PLAN":
+        _notify_progress(progress_callback, "Phase A - lexicographic solve", 45, 25)
         phase_a, phase_a_meta, audit_payload = solve_phaseA_lexicographic(fg, bom, cap, rm, config.mode_avail, config.big_m_cap)
         stage2_success = str(phase_a_meta.get("stage2_status")) in {"Optimal", "Feasible", "fallback_reallocated"}
         audit_phaseA_solution(audit_payload, stage2_success=stage2_success)
@@ -159,6 +174,7 @@ def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhas
             p_star=int(phase_a_meta.get("P_star", 0)),
         )
     elif objective in {"MARGIN", "PAIRS"}:
+        _notify_progress(progress_callback, f"Phase A - solving for {objective}", 45, 25)
         phase_a = solve_optimization(fg, bom, cap, rm, config.mode_avail, objective, config.big_m_cap, enforce_caps=True)
         phase_a_meta = {
             "method": phase_a.method,
@@ -190,6 +206,8 @@ def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhas
     else:
         raise ValueError(f"Unsupported objective: {objective}")
 
+    _notify_progress(progress_callback, "Phase A - completed", 100, 45)
+
     all_caps_hit = all(int(phase_a.quantities.get(code, 0)) >= int(cap_map.get(code, 0)) for code in fg["FG Code"].astype(str))
 
     phase_b_qty = {c: 0 for c in fg["FG Code"].astype(str)}
@@ -198,6 +216,7 @@ def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhas
     phase_b_method = "not_run"
 
     if all_caps_hit:
+        _notify_progress(progress_callback, "Phase B - re-optimizing remaining inventory", 50, 50)
         rm_col = "Avail_Stock" if config.mode_avail == "STOCK" else "Avail_StockPO"
         rm_res = rm.copy()
         rm_res[rm_col] = pd.to_numeric(rm_res[rm_col], errors="coerce").fillna(0.0)
@@ -212,6 +231,8 @@ def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhas
         phase_b_executed = True
         phase_b_status = phase_b.status
         phase_b_method = phase_b.method
+
+    _notify_progress(progress_callback, "Phase B - completed", 100, 60)
 
     res = fg[["FG Code", margin_col]].copy().rename(columns={margin_col: "Unit Margin"})
     res["Plan Cap"] = res["FG Code"].astype(str).map(cap_map).fillna(0).astype(int)
@@ -287,7 +308,9 @@ def run_two_phase(tables: Dict[str, pd.DataFrame], config: RunConfig) -> TwoPhas
 def run_optimization(
     tables: Dict[str, pd.DataFrame],
     run_purchase_planner: bool = False,
+    progress_callback: ProgressCallback | None = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    _notify_progress(progress_callback, "Initializing optimization", 0, 0)
     ctrl = _control_map(tables[CONTROL_DATASET])
     cfg = RunConfig(
         mode_avail=ctrl["Mode_Avail"].upper(),
@@ -295,7 +318,8 @@ def run_optimization(
         big_m_cap=10**9,
         run_purchase_planner=run_purchase_planner,
     )
-    out = run_two_phase(tables, cfg)
+    out = run_two_phase(tables, cfg, progress_callback=progress_callback)
+    _notify_progress(progress_callback, "Core optimization finished", 100, 65)
 
     fg_result = out.fg_result.copy()
     rm_diag = out.rm_diagnostic.copy()
@@ -327,9 +351,11 @@ def run_optimization(
 
     cap_sum = float(pd.to_numeric(fg_result["Plan Cap"], errors="coerce").fillna(0).sum())
 
-    for target in targets:
+    for idx, target in enumerate(targets):
         pct = int(target * 100)
         target_pairs = int(np.ceil(target * cap_sum))
+        stage_base = idx / len(targets)
+        _notify_progress(progress_callback, f"Purchase planning {pct}% target", stage_base * 100, 70 + (20 * stage_base))
 
         if (not run_purchase_planner) or missing_rm_rate:
             status = "skipped_missing_rm_rate" if missing_rm_rate else "not_run"
@@ -417,6 +443,9 @@ def run_optimization(
         for _, r in rm_sheet.iterrows():
             detail_rows.append({"TargetFillPct": float(pct), "RM Code": r["RM Code"], "BuyQty": r["BuyQty"], "RM_Rate": r["RM_Rate"], "BuyCost": r["BuyCost"]})
 
+        stage_end = (idx + 1) / len(targets)
+        _notify_progress(progress_callback, f"Purchase planning {pct}% target", 100, 70 + (20 * stage_end))
+
     purchase_summary = pd.DataFrame(purchase_rows)
     purchase_detail = pd.DataFrame(detail_rows, columns=["TargetFillPct", "RM Code", "BuyQty", "RM_Rate", "BuyCost"])
     include_zero_buy_qty = str(ctrl.get("IncludeZeroBuyQty", "FALSE")).upper() in {"TRUE", "1", "YES"}
@@ -439,4 +468,5 @@ def run_optimization(
     meta = pd.concat([meta, extra_meta], ignore_index=True)
 
     purchase_detail.attrs["purchase_target_sheets"] = purchase_sheets
+    _notify_progress(progress_callback, "Completed", 100, 100)
     return fg_result, rm_diag, meta, purchase_summary, purchase_detail
