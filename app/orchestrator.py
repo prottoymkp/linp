@@ -37,8 +37,12 @@ def _notify_progress(
     )
 
 
-def _solver_limits_text() -> str:
-    return "time_limit=None, mip_rel_gap=None"
+def _solver_limits_text(
+    threads: int | None,
+    mip_rel_gap: float | None,
+    time_limit_sec: float | None,
+) -> str:
+    return f"threads={threads}, time_limit={time_limit_sec}, mip_rel_gap={mip_rel_gap}"
 
 
 @contextmanager
@@ -47,13 +51,19 @@ def _with_solver_heartbeat(
     stage: str,
     stage_progress_pct: float,
     overall_progress_pct: float,
+    threads: int | None = None,
+    mip_rel_gap: float | None = None,
+    time_limit_sec: float | None = None,
 ) -> Iterator[None]:
     start = time.monotonic()
     done = threading.Event()
 
     def _status() -> str:
         elapsed = time.monotonic() - start
-        return f"{stage} | elapsed {elapsed:.1f}s | solver limits: {_solver_limits_text()}"
+        return (
+            f"{stage} | elapsed {elapsed:.1f}s | solver limits: "
+            f"{_solver_limits_text(threads=threads, mip_rel_gap=mip_rel_gap, time_limit_sec=time_limit_sec)}"
+        )
 
     def _heartbeater() -> None:
         while not done.wait(_HEARTBEAT_INTERVAL_SEC):
@@ -244,7 +254,15 @@ def run_two_phase(
 
     phase_a_meta: Dict[str, object] = {}
     if objective == "PLAN":
-        with _with_solver_heartbeat(progress_callback, "Phase A - lexicographic solve", 45, 25):
+        with _with_solver_heartbeat(
+            progress_callback,
+            "Phase A - lexicographic solve",
+            45,
+            25,
+            threads=config.threads,
+            mip_rel_gap=config.mip_rel_gap,
+            time_limit_sec=config.time_limit_sec,
+        ):
             phase_a, phase_a_meta, audit_payload = solve_phaseA_lexicographic(fg, bom, cap, rm, config.mode_avail, config.big_m_cap)
         _notify_progress(progress_callback, "Phase A - lexicographic solve", 45, 25)
         solver_options = {}
@@ -270,7 +288,15 @@ def run_two_phase(
             p_star=int(phase_a_meta.get("P_star", 0)),
         )
     elif objective in {"MARGIN", "PAIRS"}:
-        with _with_solver_heartbeat(progress_callback, f"Phase A - solving for {objective}", 45, 25):
+        with _with_solver_heartbeat(
+            progress_callback,
+            f"Phase A - solving for {objective}",
+            45,
+            25,
+            threads=config.threads,
+            mip_rel_gap=config.mip_rel_gap,
+            time_limit_sec=config.time_limit_sec,
+        ):
             phase_a = solve_optimization(fg, bom, cap, rm, config.mode_avail, objective, config.big_m_cap, enforce_caps=True)
         _notify_progress(progress_callback, f"Phase A - solving for {objective}", 45, 25)
         solver_options = {}
@@ -339,7 +365,15 @@ def run_two_phase(
             rm_res.loc[rm_res["RM Code"].astype(str) == rm_code, rm_col] -= float(row["QtyPerPair"]) * phase_a.quantities.get(fg_code, 0)
         rm_res[rm_col] = rm_res[rm_col].clip(lower=0)
 
-        with _with_solver_heartbeat(progress_callback, "Phase B - re-optimizing remaining inventory", 50, 50):
+        with _with_solver_heartbeat(
+            progress_callback,
+            "Phase B - re-optimizing remaining inventory",
+            50,
+            50,
+            threads=config.threads,
+            mip_rel_gap=config.mip_rel_gap,
+            time_limit_sec=config.time_limit_sec,
+        ):
             phase_b = solve_optimization(fg, bom, cap, rm_res, config.mode_avail, objective if objective in {"MARGIN", "PAIRS"} else "MARGIN", config.big_m_cap, enforce_caps=False)
         solver_options = {}
         if config.threads is not None:
@@ -399,6 +433,9 @@ def run_two_phase(
             {
                 "run_ts_utc": datetime.now(timezone.utc).isoformat(),
                 "objective": objective,
+                "threads": config.threads,
+                "mip_rel_gap": config.mip_rel_gap,
+                "time_limit_sec": config.time_limit_sec,
                 "phase_a_status": phase_a.status,
                 "phase_a_method": phase_a_meta.get("method", phase_a.method),
                 "stage1_status": phase_a_meta.get("stage1_status", phase_a.status),
@@ -511,6 +548,9 @@ def run_optimization(
                 f"Purchase planning {pct}% target - solver",
                 min(stage_base * 100 + 50.0, 99.0),
                 70 + (20 * stage_base),
+                threads=cfg.threads,
+                mip_rel_gap=cfg.mip_rel_gap,
+                time_limit_sec=cfg.time_limit_sec,
             ):
                 solve = solve_purchase_plan_pairs_target(
                     fg_df=tables[FG_DATASET],
