@@ -14,6 +14,19 @@ from app.orchestrator import run_optimization
 from app.validate import ValidationError, validate_inputs
 
 
+def _optional_int_value(raw: str) -> int | None:
+    text = str(raw).strip()
+    if not text:
+        return None
+    return int(text)
+
+
+def _optional_float_value(raw: str) -> float | None:
+    text = str(raw).strip()
+    if not text:
+        return None
+    return float(text)
+
 st.set_page_config(page_title="LP Optimizer Service", page_icon="📈", layout="centered")
 st.title("LP Optimizer Service for RM-Constrained FG Planning")
 
@@ -53,6 +66,11 @@ if upload is not None:
 
         run_purchase_planner = st.checkbox("Run purchase planner (25/50/75/100)", value=True)
 
+        with st.expander("Advanced solver controls", expanded=False):
+            threads_raw = st.text_input("threads (integer, blank = auto)", value="")
+            mip_rel_gap_raw = st.text_input("mip_rel_gap (float, default 0.01)", value="0.01")
+            time_limit_sec_raw = st.text_input("time_limit_sec (float, blank = unset)", value="")
+
         if st.button("Run Optimization", type="primary"):
             stage_holder = st.empty()
             overall_holder = st.empty()
@@ -69,6 +87,9 @@ if upload is not None:
                 tables,
                 run_purchase_planner=run_purchase_planner,
                 progress_callback=on_progress,
+                threads=_optional_int_value(threads_raw),
+                mip_rel_gap=_optional_float_value(mip_rel_gap_raw),
+                time_limit_sec=_optional_float_value(time_limit_sec_raw),
             )
             purchase_target_sheets = purchase_detail_df.attrs.get("purchase_target_sheets")
             try:
