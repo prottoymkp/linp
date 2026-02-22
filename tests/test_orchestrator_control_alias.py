@@ -59,3 +59,27 @@ def test_run_optimization_emits_solver_controls_in_metadata(monkeypatch):
     assert meta_map["threads"] == "6"
     assert meta_map["mip_rel_gap"] == "0.03"
     assert meta_map["time_limit_sec"] == "20.0"
+
+def test_run_optimization_reads_control_keys_case_insensitively(monkeypatch):
+    def fake_solve_optimization(fg, bom, cap, rm, mode_avail, objective, big_m_cap, enforce_caps, **kwargs):
+        return SolveOutcome({"A": 1}, 1.0, "Optimal", "stub", False, "stub", 0.0)
+
+    monkeypatch.setattr("app.orchestrator.solve_optimization", fake_solve_optimization)
+
+    tables = {
+        "fg_master": pd.DataFrame({"FG Code": ["A"], "Margin": [3]}),
+        "bom_master": pd.DataFrame({"FG Code": ["A"], "RM Code": ["R1"], "QtyPerPair": [1]}),
+        "tblFGPlanCap": pd.DataFrame({"FG Code": ["A"], "Max Plan Qty": [1]}),
+        "tblRMAvail": pd.DataFrame({"RM Code": ["R1"], "Avail_Stock": [1], "Avail_StockPO": [1]}),
+        "tblControl_2": pd.DataFrame(
+            {
+                "Setting": ["mode_avail", "objective", "Threads"],
+                "Value": ["STOCK", "PAIRS", "8"],
+            }
+        ),
+    }
+
+    _, _, meta, _, _ = run_optimization(tables)
+    meta_map = dict(zip(meta["Key"], meta["Value"]))
+
+    assert meta_map["threads"] == "8"
