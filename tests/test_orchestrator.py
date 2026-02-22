@@ -110,3 +110,32 @@ def test_run_optimization_returns_canonical_five_part_contract():
     assert isinstance(meta, pd.DataFrame)
     assert isinstance(purchase_summary, pd.DataFrame)
     assert isinstance(purchase_detail, pd.DataFrame)
+
+
+def test_purchase_planner_preserves_fallback_status_fields(monkeypatch):
+    def fake_purchase_solver(**kwargs):
+        fg_codes = kwargs["cap_df"]["FG Code"].astype(str).tolist()
+        rm_codes = kwargs["rm_df"]["RM Code"].astype(str).tolist()
+        return {
+            "status": "fallback_cutoff_partial",
+            "mip_status": "Time limit reached",
+            "lp_status": "Infeasible",
+            "method": "fallback_deficit_buy",
+            "x": {code: 1 for code in fg_codes},
+            "buy": {code: 1.0 for code in rm_codes},
+            "total_buy_cost": 1.0,
+            "heuristic_cutoff_hit": True,
+            "cutoff_reason": "max_iterations",
+            "fallback_iterations": 10,
+            "fallback_elapsed_sec": 0.5,
+        }
+
+    monkeypatch.setattr("app.orchestrator.solve_purchase_plan_pairs_target", fake_purchase_solver)
+
+    _, _, _, purchase_summary, _ = run_optimization(_tables(rm_avail=1, cap=4), run_purchase_planner=True)
+
+    assert set(purchase_summary["Status"]) == {"fallback_cutoff_partial"}
+    assert set(purchase_summary["MIPStatus"]) == {"Time limit reached"}
+    assert set(purchase_summary["LPStatus"]) == {"Infeasible"}
+    assert purchase_summary["HeuristicCutoffHit"].all()
+    assert set(purchase_summary["CutoffReason"]) == {"max_iterations"}

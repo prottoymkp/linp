@@ -718,7 +718,7 @@ def solve_purchase_plan_pairs_target(
     row_upper = np.concatenate([model_inputs["row_upper"], np.array([kHighsInf], dtype=np.float64)])
 
     var_types = np.array([HighsVarType.kInteger] * n_x + [HighsVarType.kContinuous] * n_r)
-    status, values, objective_value, runtime = _solve_highs(
+    mip_status, values, objective_value, runtime = _solve_highs(
         col_cost=col_cost,
         col_lower=col_lower,
         col_upper=col_upper,
@@ -732,8 +732,17 @@ def solve_purchase_plan_pairs_target(
         mip_rel_gap=mip_rel_gap,
     )
 
+    status = mip_status
+    lp_status = "not_run"
     method = "highs_mip"
-    if not _status_feasible(status):
+    heuristic_cutoff_hit = False
+    cutoff_reason = "none"
+    fallback_iterations = 0
+    fallback_elapsed_sec = 0.0
+    fallback_initial_pairs = 0
+    fallback_final_pairs = 0
+
+    if not _status_feasible(mip_status):
         lp_var_types = np.array([HighsVarType.kContinuous] * (n_x + n_r))
         lp_status, lp_values, _, runtime = _solve_highs(
             col_cost=col_cost,
@@ -752,13 +761,25 @@ def solve_purchase_plan_pairs_target(
         base_x = np.maximum(np.floor(lp_values[:n_x]), 0).astype(int) if _status_feasible(lp_status) else np.zeros(n_x, dtype=int)
         coeff = model_inputs["coeff"]
         rm_upper = model_inputs["row_upper"]
+        fallback_initial_pairs = int(base_x.sum())
         if int(base_x.sum()) < target_pairs:
-            base_x, _ = _greedy_fill(base_x, target_pairs, caps, coeff, rm_upper, np.ones(n_x, dtype=float))
+            base_x, greedy_meta = _greedy_fill(base_x, target_pairs, caps, coeff, rm_upper, np.ones(n_x, dtype=float))
+            heuristic_cutoff_hit = bool(greedy_meta["heuristic_cutoff_hit"])
+            cutoff_reason = str(greedy_meta["cutoff_reason"])
+            fallback_iterations = int(greedy_meta["iterations"])
+            fallback_elapsed_sec = float(greedy_meta["elapsed_sec"])
+
+        fallback_final_pairs = int(base_x.sum())
 
         usage = coeff @ base_x.astype(float)
         deficits = np.maximum(usage - rm_upper, 0.0)
         values = np.concatenate([base_x.astype(float), deficits])
-        status = "Feasible" if int(base_x.sum()) >= target_pairs else "Infeasible"
+        if fallback_final_pairs >= target_pairs:
+            status = "fallback_feasible"
+        elif heuristic_cutoff_hit and fallback_final_pairs > fallback_initial_pairs:
+            status = "fallback_cutoff_partial"
+        else:
+            status = "fallback_no_progress"
         method = "fallback_deficit_buy"
         objective_value = float(np.dot(rm_rates, deficits))
 
@@ -768,6 +789,8 @@ def solve_purchase_plan_pairs_target(
 
     return {
         "status": status,
+        "mip_status": mip_status,
+        "lp_status": lp_status,
         "solver": "highs",
         "method": method,
         "runtime_sec": time.time() - start if runtime is None else float(runtime),
@@ -776,6 +799,12 @@ def solve_purchase_plan_pairs_target(
         "x": {fg_codes[i]: int(x_vals[i]) for i in range(n_x)},
         "buy": {rm_codes[r]: float(buy_vals[r]) for r in range(n_r)},
         "total_buy_cost": total_buy_cost,
+        "heuristic_cutoff_hit": bool(heuristic_cutoff_hit),
+        "cutoff_reason": cutoff_reason,
+        "fallback_iterations": int(fallback_iterations),
+        "fallback_elapsed_sec": float(fallback_elapsed_sec),
+        "fallback_initial_pairs": int(fallback_initial_pairs),
+        "fallback_final_pairs": int(fallback_final_pairs),
     }
 
 

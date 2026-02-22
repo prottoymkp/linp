@@ -7,6 +7,7 @@ from app.model import (
     audit_phaseA_solution,
     solve_optimization,
     solve_phaseA_lexicographic,
+    solve_purchase_plan_pairs_target,
     solve_purchase_planner_milp,
 )
 
@@ -147,6 +148,57 @@ def test_fallback_reallocate_reports_cutoff_metadata():
     assert meta["cutoff_reason"] == "max_passes"
 
 
+def test_purchase_plan_fallback_cutoff_status_not_infeasible(monkeypatch):
+    fg_df = pd.DataFrame({"FG Code": ["A"], "Unit Margin": [5]})
+    bom_df = pd.DataFrame({"FG Code": ["A"], "RM Code": ["R1"], "QtyPerPair": [1]})
+    cap_df = pd.DataFrame({"FG Code": ["A"], "Plan Cap": [5]})
+    rm_df = pd.DataFrame({"RM Code": ["R1"], "Avail_Stock": [0], "Avail_StockPO": [0], "RM_Rate": [2]})
+
+    calls = {"count": 0}
+
+    def fake_solve_highs(*args, **kwargs):
+        calls["count"] += 1
+        n_cols = len(kwargs["col_cost"])
+        vals = np.zeros(n_cols, dtype=float)
+        if calls["count"] == 1:
+            return "Time limit reached", vals, 0.0, 0.01
+        return "Infeasible", vals, 0.0, 0.01
+
+    def fake_greedy(base_x, target_total, caps, coeff, rm_upper, scores, **kwargs):
+        x = base_x.copy()
+        x[0] = 2
+        return x, {"iterations": 7, "heuristic_cutoff_hit": True, "cutoff_reason": "max_iterations", "elapsed_sec": 0.2}
+
+    monkeypatch.setattr("app.model._solve_highs", fake_solve_highs)
+    monkeypatch.setattr("app.model._greedy_fill", fake_greedy)
+
+    out = solve_purchase_plan_pairs_target(fg_df, bom_df, cap_df, rm_df, mode_avail="STOCK", target_fill_pct=1.0)
+
+    assert out["status"] == "fallback_cutoff_partial"
+    assert out["status"] != "Infeasible"
+    assert out["mip_status"] == "Time limit reached"
+    assert out["lp_status"] == "Infeasible"
+    assert out["heuristic_cutoff_hit"] is True
+    assert out["cutoff_reason"] == "max_iterations"
+
+
+def test_purchase_plan_fallback_no_progress_status(monkeypatch):
+    fg_df = pd.DataFrame({"FG Code": ["A"], "Unit Margin": [5]})
+    bom_df = pd.DataFrame({"FG Code": ["A"], "RM Code": ["R1"], "QtyPerPair": [1]})
+    cap_df = pd.DataFrame({"FG Code": ["A"], "Plan Cap": [5]})
+    rm_df = pd.DataFrame({"RM Code": ["R1"], "Avail_Stock": [0], "Avail_StockPO": [0], "RM_Rate": [2]})
+
+    def fake_solve_highs(*args, **kwargs):
+        n_cols = len(kwargs["col_cost"])
+        return "Unknown", np.zeros(n_cols, dtype=float), 0.0, 0.01
+
+    monkeypatch.setattr("app.model._solve_highs", fake_solve_highs)
+
+    out = solve_purchase_plan_pairs_target(fg_df, bom_df, cap_df, rm_df, mode_avail="STOCK", target_fill_pct=1.0)
+
+    assert out["status"] == "fallback_no_progress"
+    assert out["mip_status"] == "Unknown"
+    assert out["lp_status"] == "Unknown"
 def test_solve_optimization_fallback_large_feasible_caps_reaches_target_or_reports_cutoff(monkeypatch):
     import app.model as model_mod
 

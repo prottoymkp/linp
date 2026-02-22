@@ -500,11 +500,17 @@ def run_optimization(
         if (not run_purchase_planner) or missing_rm_rate:
             status = "skipped_missing_rm_rate" if missing_rm_rate else "not_run"
             method = "not_run"
+            mip_status = "not_run"
+            lp_status = "not_run"
             x_map = {str(code): 0 for code in fg_result["FG Code"].astype(str)}
             buy_map = {str(code): 0.0 for code in rm_source["RM Code"].astype(str)}
             total_buy_cost = 0.0
             achieved = 0
             margin = 0.0
+            heuristic_cutoff_hit = False
+            cutoff_reason = "none"
+            fallback_iterations = 0
+            fallback_elapsed_sec = 0.0
         else:
             with _with_solver_heartbeat(
                 progress_callback,
@@ -538,10 +544,16 @@ def run_optimization(
             )
             status = str(solve["status"])
             method = str(solve["method"])
+            mip_status = str(solve.get("mip_status", "unknown"))
+            lp_status = str(solve.get("lp_status", "not_run"))
             x_map = {str(k): int(v) for k, v in solve["x"].items()}
             buy_map = {str(k): float(v) for k, v in solve["buy"].items()}
             total_buy_cost = float(solve["total_buy_cost"])
             achieved = int(sum(x_map.values()))
+            heuristic_cutoff_hit = bool(solve.get("heuristic_cutoff_hit", False))
+            cutoff_reason = str(solve.get("cutoff_reason", "none"))
+            fallback_iterations = int(solve.get("fallback_iterations", 0))
+            fallback_elapsed_sec = float(solve.get("fallback_elapsed_sec", 0.0))
             margin_map = dict(zip(fg_result["FG Code"].astype(str), pd.to_numeric(fg_result["Unit Margin"], errors="coerce").fillna(0.0)))
             margin = float(sum(margin_map.get(code, 0.0) * qty for code, qty in x_map.items()))
             purchase_plan_status = "ran"
@@ -599,7 +611,13 @@ def run_optimization(
                 "TotalBuyCost": float(total_buy_cost),
                 "Mode_Avail": cfg.mode_avail,
                 "Status": status,
+                "MIPStatus": mip_status,
+                "LPStatus": lp_status,
                 "Method": method,
+                "HeuristicCutoffHit": bool(heuristic_cutoff_hit),
+                "CutoffReason": cutoff_reason,
+                "FallbackIterations": int(fallback_iterations),
+                "FallbackElapsedSec": float(fallback_elapsed_sec),
             }
         )
         for _, r in rm_sheet.iterrows():
