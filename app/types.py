@@ -10,6 +10,9 @@ class RunConfig:
     objective: str
     big_m_cap: int = 10**9
     run_purchase_planner: bool = False
+    threads: int | None = None
+    mip_rel_gap: float | None = None
+    time_limit_sec: float | None = None
 
 
 @dataclass

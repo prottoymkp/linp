@@ -112,6 +112,7 @@ def _solve_highs(
     integer_col_count: int | None = None,
     var_types: np.ndarray | None = None,
     sense: ObjSense | str = ObjSense.kMaximize,
+    threads: int | None = None,
     time_limit: float | None = None,
     mip_rel_gap: float | None = None,
 ) -> Tuple[str, np.ndarray, float, float]:
@@ -138,9 +139,12 @@ def _solve_highs(
 
     highs = Highs()
     highs.setOptionValue("output_flag", False)
-    cpu_threads = os.cpu_count()
-    if cpu_threads and cpu_threads > 0:
-        highs.setOptionValue("threads", int(cpu_threads))
+    if threads is not None:
+        highs.setOptionValue("threads", int(threads))
+    else:
+        cpu_threads = os.cpu_count()
+        if cpu_threads and cpu_threads > 0:
+            highs.setOptionValue("threads", int(cpu_threads))
     if time_limit is not None:
         highs.setOptionValue("time_limit", float(time_limit))
     if mip_rel_gap is not None:
@@ -244,6 +248,7 @@ def _solve_single_objective(
     objective: np.ndarray,
     var_types: np.ndarray | None = None,
     sense: ObjSense | str = ObjSense.kMaximize,
+    threads: int | None = None,
     time_limit: float | None = None,
     mip_rel_gap: float | None = None,
 ) -> Tuple[str, np.ndarray, float, float]:
@@ -257,6 +262,7 @@ def _solve_single_objective(
         col_entries=model_inputs["col_entries"],
         var_types=var_types,
         sense=sense,
+        threads=threads,
         time_limit=time_limit,
         mip_rel_gap=mip_rel_gap,
     )
@@ -269,6 +275,9 @@ def solve_phaseA_lexicographic(
     rm_df: pd.DataFrame,
     mode_avail: str,
     big_m_cap: int = 10**9,
+    threads: int | None = None,
+    mip_rel_gap: float | None = None,
+    time_limit_sec: float | None = None,
 ) -> Tuple[SolveOutcome, Dict[str, object], Dict[str, np.ndarray]]:
     model_inputs = _build_model_inputs(fg_df, bom_df, cap_df, rm_df, mode_avail, enforce_caps=True, big_m_cap=big_m_cap)
     fg_codes = model_inputs["fg_codes"]
@@ -296,6 +305,9 @@ def solve_phaseA_lexicographic(
         np.ones(n, dtype=np.float64),
         var_types=mip_var_types,
         sense="max",
+        threads=threads,
+        time_limit=time_limit_sec,
+        mip_rel_gap=mip_rel_gap,
     )
     meta["stage1_status"] = s1_status
     meta["stage1_runtime"] = s1_runtime
@@ -307,6 +319,9 @@ def solve_phaseA_lexicographic(
             np.ones(n, dtype=np.float64),
             var_types=lp_var_types,
             sense="max",
+            threads=threads,
+            time_limit=time_limit_sec,
+            mip_rel_gap=mip_rel_gap,
         )
         base = np.maximum(np.floor(lp_vals), 0).astype(int) if _status_feasible(lp_status) else np.zeros(n, dtype=int)
         x1 = _greedy_fill(base, int(base.sum()) + int(model_inputs["caps"].sum()), model_inputs["caps"], model_inputs["coeff"], model_inputs["row_upper"], np.ones(n, dtype=np.float64))
@@ -338,6 +353,9 @@ def solve_phaseA_lexicographic(
         col_entries=col_entries_stage2,
         var_types=mip_var_types,
         sense="max",
+        threads=threads,
+        time_limit=time_limit_sec,
+        mip_rel_gap=mip_rel_gap,
     )
     meta["stage2_status"] = s2_status
     meta["stage2_runtime"] = s2_runtime
@@ -388,6 +406,9 @@ def solve_optimization(
     objective: str,
     big_m_cap: int = 10**9,
     enforce_caps: bool = True,
+    threads: int | None = None,
+    mip_rel_gap: float | None = None,
+    time_limit_sec: float | None = None,
 ) -> SolveOutcome:
     start = time.time()
     fg = fg_df.copy()
@@ -415,6 +436,9 @@ def solve_optimization(
         obj,
         var_types=mip_var_types,
         sense="max",
+        threads=threads,
+        time_limit=time_limit_sec,
+        mip_rel_gap=mip_rel_gap,
     )
     solver_used = "highs_mip"
     used_fallback = False
@@ -425,6 +449,9 @@ def solve_optimization(
             obj,
             var_types=lp_var_types,
             sense="max",
+            threads=threads,
+            time_limit=time_limit_sec,
+            mip_rel_gap=mip_rel_gap,
         )
         base = np.maximum(np.floor(lp_vals), 0).astype(int) if _status_feasible(lp_status) else np.zeros(len(obj), dtype=int)
         target = int(model_inputs["caps"].sum()) if enforce_caps else int(base.sum() + 10_000)
@@ -446,6 +473,9 @@ def solve_purchase_plan_pairs_target(
     rm_df: pd.DataFrame,
     mode_avail: str,
     target_fill_pct: float,
+    threads: int | None = None,
+    mip_rel_gap: float | None = None,
+    time_limit_sec: float | None = None,
 ) -> Dict[str, object]:
     start = time.time()
     model_inputs = _build_model_inputs(fg_df, bom_df, cap_df, rm_df, mode_avail, enforce_caps=True, big_m_cap=10**9)
@@ -484,6 +514,9 @@ def solve_purchase_plan_pairs_target(
         col_entries=col_entries,
         var_types=var_types,
         sense="min",
+        threads=threads,
+        time_limit=time_limit_sec,
+        mip_rel_gap=mip_rel_gap,
     )
 
     method = "highs_mip"
@@ -498,6 +531,9 @@ def solve_purchase_plan_pairs_target(
             col_entries=col_entries,
             var_types=lp_var_types,
             sense="min",
+            threads=threads,
+            time_limit=time_limit_sec,
+            mip_rel_gap=mip_rel_gap,
         )
 
         base_x = np.maximum(np.floor(lp_values[:n_x]), 0).astype(int) if _status_feasible(lp_status) else np.zeros(n_x, dtype=int)
