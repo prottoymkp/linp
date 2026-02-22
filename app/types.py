@@ -21,6 +21,9 @@ class SolveOutcome:
     used_fallback: bool
     method: str
     runtime_sec: float
+    heuristic_cutoff_hit: bool = False
+    heuristic_iterations: int = 0
+    fallback_elapsed_sec: float = 0.0
 
 
 @dataclass

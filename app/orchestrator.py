@@ -186,6 +186,12 @@ def run_two_phase(
             "stage2_solver_used": "n/a",
             "stage2_runtime": "n/a",
             "phaseA_final_status": phase_a.status,
+            "heuristic_cutoff_hit": phase_a.heuristic_cutoff_hit,
+            "heuristic_iterations": phase_a.heuristic_iterations,
+            "fallback_passes": "n/a",
+            "fallback_swaps": "n/a",
+            "fallback_elapsed_sec": phase_a.fallback_elapsed_sec,
+            "cutoff_reason": "none",
         }
 
         fg_codes = fg["FG Code"].astype(str).tolist()
@@ -285,6 +291,12 @@ def run_two_phase(
                 "stage2_solver_used": phase_a_meta.get("stage2_solver_used", "n/a"),
                 "stage2_runtime": phase_a_meta.get("stage2_runtime", "n/a"),
                 "phaseA_final_status": phase_a_meta.get("phaseA_final_status", phase_a.status),
+                "heuristic_cutoff_hit": phase_a_meta.get("heuristic_cutoff_hit", phase_a.heuristic_cutoff_hit),
+                "heuristic_iterations": phase_a_meta.get("heuristic_iterations", phase_a.heuristic_iterations),
+                "fallback_passes": phase_a_meta.get("fallback_passes", "n/a"),
+                "fallback_swaps": phase_a_meta.get("fallback_swaps", "n/a"),
+                "fallback_elapsed_sec": phase_a_meta.get("fallback_elapsed_sec", phase_a.fallback_elapsed_sec),
+                "cutoff_reason": phase_a_meta.get("cutoff_reason", "none"),
                 "phase_b_status": phase_b_status,
                 "phase_b_method": phase_b_method,
                 "phase_b_executed": phase_b_executed,

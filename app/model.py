@@ -189,12 +189,26 @@ def _greedy_fill(
     coeff: np.ndarray,
     rm_upper: np.ndarray,
     scores: np.ndarray,
-) -> np.ndarray:
+    max_iterations: int = 100_000,
+    max_wall_time_sec: float = 2.0,
+) -> Tuple[np.ndarray, Dict[str, object]]:
+    start = time.time()
     x = base_x.astype(int).copy()
     usage = _rm_usage(coeff, x.astype(np.float64))
     order = np.argsort(-scores)
+    iterations = 0
+    cutoff_hit = False
+    cutoff_reason = "none"
 
     while int(x.sum()) < target_total:
+        if iterations >= max_iterations:
+            cutoff_hit = True
+            cutoff_reason = "max_iterations"
+            break
+        if (time.time() - start) >= max_wall_time_sec:
+            cutoff_hit = True
+            cutoff_reason = "max_wall_time"
+            break
         moved = False
         for j in order:
             if x[j] >= int(caps[j]):
@@ -205,12 +219,28 @@ def _greedy_fill(
                 usage = next_usage
                 moved = True
                 break
+        iterations += 1
         if not moved:
             break
-    return x
+    return x, {
+        "iterations": iterations,
+        "heuristic_cutoff_hit": cutoff_hit,
+        "cutoff_reason": cutoff_reason,
+        "elapsed_sec": time.time() - start,
+    }
 
 
-def _fallback_stage2_reallocate(x_stage1: np.ndarray, margins: np.ndarray, caps: np.ndarray, coeff: np.ndarray, rm_upper: np.ndarray) -> np.ndarray:
+def _fallback_stage2_reallocate(
+    x_stage1: np.ndarray,
+    margins: np.ndarray,
+    caps: np.ndarray,
+    coeff: np.ndarray,
+    rm_upper: np.ndarray,
+    max_passes: int = 2_000,
+    max_swaps: int = 20_000,
+    max_wall_time_sec: float = 2.0,
+) -> Tuple[np.ndarray, Dict[str, object]]:
+    start = time.time()
     x = x_stage1.astype(int).copy()
     usage = _rm_usage(coeff, x.astype(np.float64))
     residual = rm_upper - usage
@@ -219,8 +249,25 @@ def _fallback_stage2_reallocate(x_stage1: np.ndarray, margins: np.ndarray, caps:
     high_to_low = np.argsort(-margins)
 
     improved = True
+    passes = 0
+    swaps = 0
+    cutoff_hit = False
+    cutoff_reason = "none"
     while improved:
+        if passes >= max_passes:
+            cutoff_hit = True
+            cutoff_reason = "max_passes"
+            break
+        if swaps >= max_swaps:
+            cutoff_hit = True
+            cutoff_reason = "max_swaps"
+            break
+        if (time.time() - start) >= max_wall_time_sec:
+            cutoff_hit = True
+            cutoff_reason = "max_wall_time"
+            break
         improved = False
+        passes += 1
         for j in high_to_low:
             if x[j] >= int(caps[j]):
                 continue
@@ -233,10 +280,17 @@ def _fallback_stage2_reallocate(x_stage1: np.ndarray, margins: np.ndarray, caps:
                     x[k] -= 1
                     residual -= delta
                     improved = True
+                    swaps += 1
                     break
             if improved:
                 break
-    return x
+    return x, {
+        "passes": passes,
+        "swaps": swaps,
+        "heuristic_cutoff_hit": cutoff_hit,
+        "cutoff_reason": cutoff_reason,
+        "elapsed_sec": time.time() - start,
+    }
 
 
 def _solve_single_objective(
@@ -285,6 +339,12 @@ def solve_phaseA_lexicographic(
         "stage2_runtime": 0.0,
         "phaseA_final_status": "not_run",
         "method": "lex_mip",
+        "heuristic_cutoff_hit": False,
+        "heuristic_iterations": 0,
+        "fallback_passes": 0,
+        "fallback_swaps": 0,
+        "fallback_elapsed_sec": 0.0,
+        "cutoff_reason": "none",
     }
 
     # Stage 1: maximize pairs
@@ -309,17 +369,39 @@ def solve_phaseA_lexicographic(
             sense="max",
         )
         base = np.maximum(np.floor(lp_vals), 0).astype(int) if _status_feasible(lp_status) else np.zeros(n, dtype=int)
-        x1 = _greedy_fill(base, int(base.sum()) + int(model_inputs["caps"].sum()), model_inputs["caps"], model_inputs["coeff"], model_inputs["row_upper"], np.ones(n, dtype=np.float64))
+        x1, greedy_meta = _greedy_fill(
+            base,
+            int(base.sum()) + int(model_inputs["caps"].sum()),
+            model_inputs["caps"],
+            model_inputs["coeff"],
+            model_inputs["row_upper"],
+            np.ones(n, dtype=np.float64),
+        )
         meta["stage1_status"] = f"fallback_{lp_status}"
         meta["stage1_solver_used"] = "lp+greedy"
         meta["method"] = "lex_lp+greedy"
+        meta["heuristic_iterations"] = int(greedy_meta["iterations"])
+        meta["heuristic_cutoff_hit"] = bool(greedy_meta["heuristic_cutoff_hit"])
+        meta["fallback_elapsed_sec"] = float(greedy_meta["elapsed_sec"])
+        meta["cutoff_reason"] = str(greedy_meta["cutoff_reason"])
 
     p_star = int(x1.sum())
     meta["P_star"] = p_star
 
     if p_star <= 0:
         quantities = {code: 0 for code in fg_codes}
-        out = SolveOutcome(quantities, 0.0, str(meta["stage1_status"]), "highs", True, str(meta["method"]), float(meta["stage1_runtime"]))
+        out = SolveOutcome(
+            quantities,
+            0.0,
+            str(meta["stage1_status"]),
+            "highs",
+            True,
+            str(meta["method"]),
+            float(meta["stage1_runtime"]),
+            heuristic_cutoff_hit=bool(meta["heuristic_cutoff_hit"]),
+            heuristic_iterations=int(meta["heuristic_iterations"]),
+            fallback_elapsed_sec=float(meta["fallback_elapsed_sec"]),
+        )
         meta["stage2_status"] = "skipped_no_pairs"
         meta["phaseA_final_status"] = str(meta["stage1_status"])
         return out, meta, {"x_stage1": x1, "x_stage2": np.zeros_like(x1)}
@@ -350,7 +432,19 @@ def solve_phaseA_lexicographic(
         phase_status = str(meta["stage1_status"])
         meta["method"] = "lex_lp+greedy" if meta["stage1_solver_used"] != "highs_mip" else "lex_mip"
         if meta["stage1_solver_used"] != "highs_mip":
-            x2_alt = _fallback_stage2_reallocate(x1, margins, model_inputs["caps"], model_inputs["coeff"], model_inputs["row_upper"])
+            x2_alt, reallocate_meta = _fallback_stage2_reallocate(
+                x1,
+                margins,
+                model_inputs["caps"],
+                model_inputs["coeff"],
+                model_inputs["row_upper"],
+            )
+            meta["fallback_passes"] = int(reallocate_meta["passes"])
+            meta["fallback_swaps"] = int(reallocate_meta["swaps"])
+            meta["fallback_elapsed_sec"] = float(reallocate_meta["elapsed_sec"])
+            meta["heuristic_cutoff_hit"] = bool(meta["heuristic_cutoff_hit"] or reallocate_meta["heuristic_cutoff_hit"])
+            if bool(reallocate_meta["heuristic_cutoff_hit"]):
+                meta["cutoff_reason"] = str(reallocate_meta["cutoff_reason"])
             if int(x2_alt.sum()) == p_star:
                 x2 = x2_alt
                 meta["stage2_status"] = "fallback_reallocated"
@@ -359,7 +453,18 @@ def solve_phaseA_lexicographic(
                 meta["stage2_status"] = "fallback_no_lex_stage2"
 
     quantities = {code: int(x2[i]) for i, code in enumerate(fg_codes)}
-    out = SolveOutcome(quantities, float(s2_obj), phase_status, "highs", meta["stage1_solver_used"] != "highs_mip", str(meta["method"]), s1_runtime + s2_runtime)
+    out = SolveOutcome(
+        quantities,
+        float(s2_obj),
+        phase_status,
+        "highs",
+        meta["stage1_solver_used"] != "highs_mip",
+        str(meta["method"]),
+        s1_runtime + s2_runtime,
+        heuristic_cutoff_hit=bool(meta["heuristic_cutoff_hit"]),
+        heuristic_iterations=int(meta["heuristic_iterations"]),
+        fallback_elapsed_sec=float(meta["fallback_elapsed_sec"]),
+    )
     meta["phaseA_final_status"] = phase_status
     return out, meta, {"x_stage1": x1, "x_stage2": x2, "rm_upper": model_inputs["row_upper"], "caps": model_inputs["caps"], "coeff": model_inputs["coeff"]}
 
@@ -428,15 +533,33 @@ def solve_optimization(
         )
         base = np.maximum(np.floor(lp_vals), 0).astype(int) if _status_feasible(lp_status) else np.zeros(len(obj), dtype=int)
         target = int(model_inputs["caps"].sum()) if enforce_caps else int(base.sum() + 10_000)
-        ints = _greedy_fill(base, target, model_inputs["caps"], model_inputs["coeff"], model_inputs["row_upper"], obj)
+        ints, greedy_meta = _greedy_fill(base, target, model_inputs["caps"], model_inputs["coeff"], model_inputs["row_upper"], obj)
         vals = ints.astype(np.float64)
         obj_val = float(np.dot(obj, vals))
         status = f"fallback_{lp_status}"
         solver_used = "lp+greedy"
         used_fallback = True
+        heuristic_cutoff_hit = bool(greedy_meta["heuristic_cutoff_hit"])
+        heuristic_iterations = int(greedy_meta["iterations"])
+        fallback_elapsed_sec = float(greedy_meta["elapsed_sec"])
+    else:
+        heuristic_cutoff_hit = False
+        heuristic_iterations = 0
+        fallback_elapsed_sec = 0.0
 
     quantities = {k: int(max(0, round(v))) for k, v in zip(model_inputs["fg_codes"], vals)}
-    return SolveOutcome(quantities, float(obj_val), status, "highs", used_fallback, solver_used, time.time() - start)
+    return SolveOutcome(
+        quantities,
+        float(obj_val),
+        status,
+        "highs",
+        used_fallback,
+        solver_used,
+        time.time() - start,
+        heuristic_cutoff_hit=heuristic_cutoff_hit,
+        heuristic_iterations=heuristic_iterations,
+        fallback_elapsed_sec=fallback_elapsed_sec,
+    )
 
 
 def solve_purchase_plan_pairs_target(

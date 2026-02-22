@@ -70,6 +70,14 @@ if upload is not None:
                 run_purchase_planner=run_purchase_planner,
                 progress_callback=on_progress,
             )
+            meta_map = dict(zip(meta_df["Key"], meta_df["Value"])) if {"Key", "Value"}.issubset(meta_df.columns) else {}
+            if str(meta_map.get("heuristic_cutoff_hit", "False")).lower() == "true":
+                st.warning(
+                    "Fallback heuristic ended due to safety limits "
+                    f"(reason: {meta_map.get('cutoff_reason', 'unknown')}, "
+                    f"iterations: {meta_map.get('heuristic_iterations', 'n/a')}, "
+                    f"elapsed sec: {meta_map.get('fallback_elapsed_sec', 'n/a')})."
+                )
             purchase_target_sheets = purchase_detail_df.attrs.get("purchase_target_sheets")
             try:
                 out_bytes = write_output_excel(
