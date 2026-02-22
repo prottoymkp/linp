@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+import threading
+import time
+from contextlib import contextmanager
 from datetime import datetime, timezone
-from typing import Callable, Dict
+from typing import Callable, Dict, Iterator
 
 import numpy as np
 import pandas as pd
@@ -11,13 +14,73 @@ from .model import audit_phaseA_solution, solve_optimization, solve_phaseA_lexic
 from .types import RunConfig, TwoPhaseResult
 
 
-ProgressCallback = Callable[[str, float, float], None]
+ProgressCallback = Callable[[str, float, float, str, bool], None]
+_HEARTBEAT_INTERVAL_SEC = 3.0
 
 
-def _notify_progress(callback: ProgressCallback | None, stage: str, stage_progress_pct: float, overall_progress_pct: float) -> None:
+def _notify_progress(
+    callback: ProgressCallback | None,
+    stage: str,
+    stage_progress_pct: float,
+    overall_progress_pct: float,
+    status_text: str | None = None,
+    is_heartbeat: bool = False,
+) -> None:
     if callback is None:
         return
-    callback(stage, float(np.clip(stage_progress_pct, 0.0, 100.0)), float(np.clip(overall_progress_pct, 0.0, 100.0)))
+    callback(
+        stage,
+        float(np.clip(stage_progress_pct, 0.0, 100.0)),
+        float(np.clip(overall_progress_pct, 0.0, 100.0)),
+        status_text or stage,
+        is_heartbeat,
+    )
+
+
+def _solver_limits_text() -> str:
+    return "time_limit=None, mip_rel_gap=None"
+
+
+@contextmanager
+def _with_solver_heartbeat(
+    callback: ProgressCallback | None,
+    stage: str,
+    stage_progress_pct: float,
+    overall_progress_pct: float,
+) -> Iterator[None]:
+    start = time.monotonic()
+    done = threading.Event()
+
+    def _status() -> str:
+        elapsed = time.monotonic() - start
+        return f"{stage} | elapsed {elapsed:.1f}s | solver limits: {_solver_limits_text()}"
+
+    def _heartbeater() -> None:
+        while not done.wait(_HEARTBEAT_INTERVAL_SEC):
+            _notify_progress(
+                callback,
+                stage,
+                stage_progress_pct,
+                overall_progress_pct,
+                status_text=_status(),
+                is_heartbeat=True,
+            )
+
+    hb_thread = threading.Thread(target=_heartbeater, daemon=True)
+    hb_thread.start()
+    _notify_progress(
+        callback,
+        stage,
+        stage_progress_pct,
+        overall_progress_pct,
+        status_text=_status(),
+        is_heartbeat=False,
+    )
+    try:
+        yield
+    finally:
+        done.set()
+        hb_thread.join(timeout=0.2)
 
 
 def _control_map(df: pd.DataFrame):
@@ -181,6 +244,8 @@ def run_two_phase(
 
     phase_a_meta: Dict[str, object] = {}
     if objective == "PLAN":
+        with _with_solver_heartbeat(progress_callback, "Phase A - lexicographic solve", 45, 25):
+            phase_a, phase_a_meta, audit_payload = solve_phaseA_lexicographic(fg, bom, cap, rm, config.mode_avail, config.big_m_cap)
         _notify_progress(progress_callback, "Phase A - lexicographic solve", 45, 25)
         solver_options = {}
         if config.threads is not None:
@@ -205,6 +270,8 @@ def run_two_phase(
             p_star=int(phase_a_meta.get("P_star", 0)),
         )
     elif objective in {"MARGIN", "PAIRS"}:
+        with _with_solver_heartbeat(progress_callback, f"Phase A - solving for {objective}", 45, 25):
+            phase_a = solve_optimization(fg, bom, cap, rm, config.mode_avail, objective, config.big_m_cap, enforce_caps=True)
         _notify_progress(progress_callback, f"Phase A - solving for {objective}", 45, 25)
         solver_options = {}
         if config.threads is not None:
@@ -272,6 +339,8 @@ def run_two_phase(
             rm_res.loc[rm_res["RM Code"].astype(str) == rm_code, rm_col] -= float(row["QtyPerPair"]) * phase_a.quantities.get(fg_code, 0)
         rm_res[rm_col] = rm_res[rm_col].clip(lower=0)
 
+        with _with_solver_heartbeat(progress_callback, "Phase B - re-optimizing remaining inventory", 50, 50):
+            phase_b = solve_optimization(fg, bom, cap, rm_res, config.mode_avail, objective if objective in {"MARGIN", "PAIRS"} else "MARGIN", config.big_m_cap, enforce_caps=False)
         solver_options = {}
         if config.threads is not None:
             solver_options["threads"] = config.threads
@@ -437,6 +506,20 @@ def run_optimization(
             achieved = 0
             margin = 0.0
         else:
+            with _with_solver_heartbeat(
+                progress_callback,
+                f"Purchase planning {pct}% target - solver",
+                min(stage_base * 100 + 50.0, 99.0),
+                70 + (20 * stage_base),
+            ):
+                solve = solve_purchase_plan_pairs_target(
+                    fg_df=tables[FG_DATASET],
+                    bom_df=tables[BOM_DATASET],
+                    cap_df=tables[CAP_DATASET],
+                    rm_df=rm_source[["RM Code", "Avail_Stock", "Avail_StockPO", "RM_Rate"]],
+                    mode_avail=cfg.mode_avail,
+                    target_fill_pct=target,
+                )
             solver_options = {}
             if cfg.threads is not None:
                 solver_options["threads"] = cfg.threads
