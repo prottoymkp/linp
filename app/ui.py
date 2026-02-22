@@ -1,5 +1,6 @@
 from pathlib import Path
 import sys
+import time
 
 import streamlit as st
 
@@ -56,12 +57,21 @@ if upload is not None:
         if st.button("Run Optimization", type="primary"):
             stage_holder = st.empty()
             overall_holder = st.empty()
+            elapsed_holder = st.empty()
+            heartbeat_holder = st.empty()
             stage_progress = st.progress(0, text="Current stage progress: 0%")
             overall_progress = st.progress(0, text="Overall progress: 0%")
+            run_start = time.monotonic()
 
-            def on_progress(stage: str, stage_pct: float, overall_pct: float) -> None:
+            def on_progress(stage: str, stage_pct: float, overall_pct: float, status_text: str, is_heartbeat: bool) -> None:
+                elapsed_total = time.monotonic() - run_start
                 stage_holder.info(f"Current stage: {stage}")
                 overall_holder.caption(f"Solver overall progress: {overall_pct:.0f}%")
+                elapsed_holder.caption(f"Elapsed runtime: {elapsed_total:.1f}s")
+                if is_heartbeat:
+                    heartbeat_holder.warning(f"Solver still running… {status_text}")
+                else:
+                    heartbeat_holder.info(status_text)
                 stage_progress.progress(int(stage_pct), text=f"Current stage progress: {stage_pct:.0f}%")
                 overall_progress.progress(int(overall_pct), text=f"Overall progress: {overall_pct:.0f}%")
 
