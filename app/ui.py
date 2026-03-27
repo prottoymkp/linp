@@ -11,23 +11,73 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 from app.config import REQUIRED_TABLES
-from app.excel_io import diagnose_workbook_structure, load_tables_from_excel, write_output_excel
+from app.excel_io import build_input_workbook, diagnose_workbook_structure, load_tables_from_excel, write_output_excel
 from app.orchestrator import run_optimization
 from app.validate import ValidationError, validate_inputs
 
 
-def _optional_int_value(raw: str) -> int | None:
+class UserInputError(Exception):
+    pass
+
+
+def _optional_int_value(raw: str, field_name: str) -> int | None:
     text = str(raw).strip()
     if not text:
         return None
-    return int(text)
+    if text.lower() in {"auto", "default", "none", "null", "unset"}:
+        return None
+    try:
+        value = int(float(text))
+    except ValueError as exc:
+        raise UserInputError(f"{field_name} must be an integer or left blank.") from exc
+    if value < 1:
+        raise UserInputError(f"{field_name} must be at least 1.")
+    return value
 
 
-def _optional_float_value(raw: str) -> float | None:
+def _optional_float_value(
+    raw: str,
+    field_name: str,
+    *,
+    min_value: float | None = None,
+    max_value: float | None = None,
+    min_inclusive: bool = True,
+) -> float | None:
     text = str(raw).strip()
     if not text:
         return None
-    return float(text)
+    if text.lower() in {"default", "none", "null", "unset"}:
+        return None
+    try:
+        value = float(text)
+    except ValueError as exc:
+        raise UserInputError(f"{field_name} must be a number or left blank.") from exc
+    if min_value is not None:
+        too_low = value < min_value if min_inclusive else value <= min_value
+        if too_low:
+            comparator = "at least" if min_inclusive else "greater than"
+            raise UserInputError(f"{field_name} must be {comparator} {min_value}.")
+    if max_value is not None and value > max_value:
+        raise UserInputError(f"{field_name} must be at most {max_value}.")
+    return value
+
+
+def _purchase_targets_value(raw: str) -> str | None:
+    text = str(raw).strip()
+    if not text:
+        raise UserInputError("Purchase targets cannot be blank when purchase planning is enabled.")
+    tokens = [token.strip() for token in text.replace(";", ",").split(",") if token.strip()]
+    if not tokens:
+        raise UserInputError("Purchase targets must contain at least one percentage.")
+    for token in tokens:
+        try:
+            value = float(token)
+        except ValueError as exc:
+            raise UserInputError("Purchase targets must be comma-separated numbers like 25,50,75,100.") from exc
+        normalized = value / 100.0 if value > 1.0 else value
+        if normalized <= 0 or normalized > 1.0:
+            raise UserInputError("Purchase targets must be between 0 and 100 percent.")
+    return ",".join(tokens)
 
 st.set_page_config(page_title="LP Optimizer Service", page_icon="📈", layout="centered")
 st.title("LP Optimizer Service for RM-Constrained FG Planning")
@@ -35,6 +85,21 @@ st.title("LP Optimizer Service for RM-Constrained FG Planning")
 with st.expander("Input file structure requirements", expanded=True):
     st.markdown("Upload an **.xlsx workbook** that contains named Excel Tables with the following structures.")
     st.caption("Table aliases accepted: tblFG → fg_master, tblBOM → bom_master")
+    template_col, sample_col = st.columns(2)
+    with template_col:
+        st.download_button(
+            "Download input template",
+            data=build_input_workbook(include_sample_rows=False),
+            file_name="lp_optimizer_input_template.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        )
+    with sample_col:
+        st.download_button(
+            "Download sample workbook",
+            data=build_input_workbook(include_sample_rows=True),
+            file_name="lp_optimizer_sample_workbook.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        )
 
     for table_name, required_columns in REQUIRED_TABLES.items():
         cols = ", ".join(required_columns) if required_columns else "No mandatory columns, but must include control key/value pairs."
@@ -66,14 +131,23 @@ if upload is not None:
         validate_inputs(tables)
         st.success("Validation passed.")
 
-        run_purchase_planner = st.checkbox("Run purchase planner (25/50/75/100)", value=True)
+        run_purchase_planner = st.checkbox("Run purchase planner", value=True)
+        purchase_targets_raw = "25,50,75,100"
+        if run_purchase_planner:
+            purchase_targets_raw = st.text_input("purchase targets (%)", value="25,50,75,100")
 
         with st.expander("Advanced solver controls", expanded=False):
             threads_raw = st.text_input("threads (integer, blank = auto)", value="")
             mip_rel_gap_raw = st.text_input("mip_rel_gap (float, default 0.01)", value="0.01")
             time_limit_sec_raw = st.text_input("time_limit_sec (float, blank = unset)", value="")
+            st.caption("Blank threads uses the app default and is capped for safer multi-user execution.")
 
         if st.button("Run Optimization", type="primary"):
+            threads_value = _optional_int_value(threads_raw, "threads")
+            mip_rel_gap_value = _optional_float_value(mip_rel_gap_raw, "mip_rel_gap", min_value=0.0, max_value=1.0)
+            time_limit_value = _optional_float_value(time_limit_sec_raw, "time_limit_sec", min_value=0.0, min_inclusive=False)
+            purchase_targets_value = _purchase_targets_value(purchase_targets_raw) if run_purchase_planner else None
+
             stage_holder = st.empty()
             overall_holder = st.empty()
             elapsed_holder = st.empty()
@@ -103,9 +177,10 @@ if upload is not None:
                 tables,
                 run_purchase_planner=run_purchase_planner,
                 progress_callback=on_progress,
-                threads=_optional_int_value(threads_raw),
-                mip_rel_gap=_optional_float_value(mip_rel_gap_raw),
-                time_limit_sec=_optional_float_value(time_limit_sec_raw),
+                threads=threads_value,
+                mip_rel_gap=mip_rel_gap_value,
+                time_limit_sec=time_limit_value,
+                purchase_target_fill_pcts=purchase_targets_value,
             )
             meta_map = dict(zip(meta_df["Key"], meta_df["Value"])) if {"Key", "Value"}.issubset(meta_df.columns) else {}
             if str(meta_map.get("heuristic_cutoff_hit", "False")).lower() == "true":
@@ -151,6 +226,11 @@ if upload is not None:
                         + ", ".join(sorted(fallback_rows["Status"].astype(str).unique()))
                         + ". Check MIPStatus/LPStatus and cutoff columns for diagnostics."
                     )
+                audit_warning_rows = purchase_summary_df[
+                    purchase_summary_df.get("AuditWarning", "none").astype(str).str.lower() != "none"
+                ] if "AuditWarning" in purchase_summary_df.columns else purchase_summary_df.iloc[0:0]
+                if not audit_warning_rows.empty:
+                    st.warning("One or more purchase-plan audit checks reported warnings. Review the AuditWarning column in Purchase_Summary.")
 
             if run_purchase_planner and not purchase_summary_df.empty:
                 st.subheader("Purchase summary preview")
@@ -164,5 +244,7 @@ if upload is not None:
             )
     except ValidationError as e:
         st.error(f"Validation failed:\n{e}")
+    except UserInputError as e:
+        st.error(f"Input error:\n{e}")
     except Exception as e:
         st.exception(e)

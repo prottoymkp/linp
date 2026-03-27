@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+linp-main/tmp/
+linp-main/output/

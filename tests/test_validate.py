@@ -65,3 +65,20 @@ def test_validate_inputs_zero_and_positive_rm_rate_ok():
     t["bom_master"] = pd.DataFrame({"FG Code": ["A", "A"], "RM Code": ["R1", "R2"], "QtyPerPair": [2, 1]})
 
     validate_inputs(t)
+
+
+def test_validate_inputs_accepts_rm_rate_alias_column():
+    t = _valid_tables()
+    t["tblRMAvail"] = t["tblRMAvail"].rename(columns={"RM_Rate": "RM Rate"})
+
+    validate_inputs(t)
+
+
+def test_validate_inputs_non_numeric_rm_rate_alias_fails():
+    t = _valid_tables()
+    t["tblRMAvail"] = pd.DataFrame({"RM Code": ["R1"], "Avail_Stock": [20], "Avail_StockPO": [20], "RM Rate": ["bad"]})
+
+    with pytest.raises(ValidationError) as exc:
+        validate_inputs(t)
+
+    assert "tblRMAvail.RM Rate has non-numeric values" in str(exc.value)

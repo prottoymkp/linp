@@ -30,3 +30,13 @@ def test_generate_purchase_planning_scenarios_nonpositive_plan_margin_status():
 
     margin = out[out["target_metric"] == "MARGIN_AT_PAIR_FILL"]
     assert set(margin["status"]) == {"not_run_plan_margin_nonpositive"}
+
+
+def test_generate_purchase_planning_scenarios_accepts_custom_targets():
+    fg = pd.DataFrame({"FG Code": ["A"], "Margin": [3]})
+    cap = pd.DataFrame({"FG Code": ["A"], "Max Plan Qty": [8]})
+
+    out = generate_purchase_planning_scenarios(fg, cap, mode_avail="STOCK", fill_pcts="50,100")
+
+    pairs = out[out["target_metric"] == "PAIRS"].reset_index(drop=True)
+    assert pairs["target_value"].tolist() == [4, 8]
