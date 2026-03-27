@@ -168,3 +168,73 @@ def test_purchase_planner_calls_solver_once_per_target(monkeypatch):
 
     assert calls["n"] == 4
     assert len(purchase_summary) == 4
+
+
+def test_purchase_planner_respects_custom_targets(monkeypatch):
+    calls = {"targets": []}
+
+    def fake_purchase_solver(**kwargs):
+        calls["targets"].append(kwargs["target_fill_pct"])
+        fg_codes = kwargs["cap_df"]["FG Code"].astype(str).tolist()
+        rm_codes = kwargs["rm_df"]["RM Code"].astype(str).tolist()
+        return {
+            "status": "Optimal",
+            "mip_status": "Optimal",
+            "lp_status": "Optimal",
+            "method": "highs_mip",
+            "x": {code: 4 for code in fg_codes},
+            "buy": {code: 1.0 for code in rm_codes},
+            "total_buy_cost": 1.0,
+            "heuristic_cutoff_hit": False,
+            "cutoff_reason": "none",
+            "fallback_iterations": 0,
+            "fallback_elapsed_sec": 0.0,
+        }
+
+    monkeypatch.setattr("app.orchestrator.solve_purchase_plan_pairs_target", fake_purchase_solver)
+
+    _, _, meta, purchase_summary, purchase_detail = run_optimization(
+        _tables(rm_avail=1, cap=4),
+        run_purchase_planner=True,
+        purchase_target_fill_pcts="50,100",
+    )
+
+    meta_map = dict(zip(meta["Key"], meta["Value"]))
+    assert calls["targets"] == [0.5, 1.0]
+    assert purchase_summary["TargetLabel"].tolist() == ["50", "100"]
+    assert purchase_detail["TargetLabel"].drop_duplicates().tolist() == ["50", "100"]
+    assert meta_map["purchase_targets"] == "50,100"
+
+
+def test_purchase_planner_surfaces_audit_warnings_instead_of_raising(monkeypatch):
+    def fake_purchase_solver(**kwargs):
+        fg_codes = kwargs["cap_df"]["FG Code"].astype(str).tolist()
+        rm_codes = kwargs["rm_df"]["RM Code"].astype(str).tolist()
+        return {
+            "status": "Optimal",
+            "mip_status": "Optimal",
+            "lp_status": "Optimal",
+            "method": "highs_mip",
+            "x": {code: 999 for code in fg_codes},
+            "buy": {code: 0.0 for code in rm_codes},
+            "total_buy_cost": 999.0,
+            "heuristic_cutoff_hit": False,
+            "cutoff_reason": "none",
+            "fallback_iterations": 0,
+            "fallback_elapsed_sec": 0.0,
+        }
+
+    monkeypatch.setattr("app.orchestrator.solve_purchase_plan_pairs_target", fake_purchase_solver)
+
+    _, _, meta, purchase_summary, _ = run_optimization(_tables(rm_avail=1, cap=4), run_purchase_planner=True, purchase_target_fill_pcts="100")
+    meta_map = dict(zip(meta["Key"], meta["Value"]))
+
+    assert purchase_summary.loc[0, "AuditWarning"] != "none"
+    assert meta_map["purchase_audit_warning"] != "none"
+
+
+def test_fg_and_rm_results_include_explainability_columns():
+    fg, rm, _, _, _ = run_optimization(_tables(rm_avail=3, cap=4))
+
+    assert {"Unmet Plan Qty", "Estimated Extra Units From Remaining RM", "Likely Limiting RM", "Shortfall Reason"}.issubset(fg.columns)
+    assert {"availability_total", "availability_utilization_pct", "is_binding"}.issubset(rm.columns)

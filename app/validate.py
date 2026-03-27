@@ -9,6 +9,7 @@ from .config import (
     CONTROL_MODE_VALUES,
     CONTROL_OBJECTIVE_VALUES,
     FG_DATASET,
+    RM_RATE_COLUMNS,
     RM_DATASET,
 )
 
@@ -41,6 +42,13 @@ def _cap_col(df: pd.DataFrame) -> str:
     if "Plan Cap" in df.columns:
         return "Plan Cap"
     raise ValidationError("tblFGPlanCap must include either 'Max Plan Qty' or 'Plan Cap'")
+
+
+def _rm_rate_col(df: pd.DataFrame) -> str | None:
+    for candidate in RM_RATE_COLUMNS:
+        if candidate in df.columns:
+            return candidate
+    return None
 
 
 def validate_inputs(tables: Dict[str, pd.DataFrame]) -> None:
@@ -109,12 +117,13 @@ def validate_inputs(tables: Dict[str, pd.DataFrame]) -> None:
     if (pd.to_numeric(bom["QtyPerPair"], errors="coerce") <= 0).any():
         errors.append("bom_master.QtyPerPair must be > 0")
 
-    if "RM_Rate" in rm.columns:
-        rm_rate = pd.to_numeric(rm["RM_Rate"], errors="coerce")
+    rm_rate_col = _rm_rate_col(rm)
+    if rm_rate_col is not None:
+        rm_rate = pd.to_numeric(rm[rm_rate_col], errors="coerce")
         if rm_rate.isna().any():
-            errors.append("tblRMAvail.RM_Rate has non-numeric values")
+            errors.append(f"tblRMAvail.{rm_rate_col} has non-numeric values")
         elif (rm_rate < 0).any():
-            errors.append("tblRMAvail.RM_Rate has negative values")
+            errors.append(f"tblRMAvail.{rm_rate_col} has negative values")
 
     fg_codes = set(fg["FG Code"].astype(str))
     if not set(bom["FG Code"].astype(str)).issubset(fg_codes):

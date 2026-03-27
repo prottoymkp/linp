@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import threading
 import time
 from contextlib import contextmanager
@@ -9,7 +10,17 @@ from typing import Callable, Dict, Iterator
 import numpy as np
 import pandas as pd
 
-from .config import BOM_DATASET, CAP_DATASET, CONTROL_DATASET, FG_DATASET, RM_DATASET
+from .config import (
+    BOM_DATASET,
+    CAP_DATASET,
+    CONTROL_DATASET,
+    DEFAULT_MAX_SOLVER_THREADS,
+    DEFAULT_PURCHASE_TARGET_FILL_PCTS,
+    FG_DATASET,
+    PURCHASE_TARGET_CONTROL_KEYS,
+    RM_DATASET,
+    RM_RATE_COLUMNS,
+)
 from .model import audit_phaseA_solution, solve_optimization, solve_phaseA_lexicographic, solve_purchase_plan_pairs_target
 from .types import RunConfig, TwoPhaseResult
 
@@ -109,6 +120,112 @@ def _margin_col(df):
     return "Margin" if "Margin" in df.columns else "Unit Margin"
 
 
+def _rm_rate_col(df: pd.DataFrame) -> str | None:
+    for candidate in RM_RATE_COLUMNS:
+        if candidate in df.columns:
+            return candidate
+    return None
+
+
+def _normalize_purchase_target_fill_pcts(raw_targets: object) -> list[float]:
+    if raw_targets is None:
+        return list(DEFAULT_PURCHASE_TARGET_FILL_PCTS)
+
+    if isinstance(raw_targets, str):
+        tokens = [token.strip() for token in raw_targets.replace(";", ",").split(",") if token.strip()]
+    else:
+        tokens = list(raw_targets)
+
+    fill_pcts: list[float] = []
+    seen: set[float] = set()
+    for token in tokens:
+        value = float(token)
+        if value <= 0:
+            raise ValueError("Purchase targets must be positive percentages or fill fractions.")
+        fill_pct = value / 100.0 if value > 1.0 else value
+        if fill_pct <= 0 or fill_pct > 1.0:
+            raise ValueError("Purchase targets must be between 0 and 100 percent.")
+        normalized = round(fill_pct, 4)
+        if normalized in seen:
+            continue
+        fill_pcts.append(normalized)
+        seen.add(normalized)
+
+    if not fill_pcts:
+        raise ValueError("At least one purchase target is required.")
+
+    return fill_pcts
+
+
+def _purchase_target_label(fill_pct: float) -> str:
+    pct = round(fill_pct * 100.0, 2)
+    if float(pct).is_integer():
+        return str(int(pct))
+    return format(pct, ".2f").rstrip("0").rstrip(".").replace(".", "_")
+
+
+def _resolve_purchase_target_fill_pcts(
+    ctrl: Dict[str, str],
+    purchase_target_fill_pcts: list[float] | tuple[float, ...] | str | None,
+) -> list[float]:
+    if purchase_target_fill_pcts is not None:
+        return _normalize_purchase_target_fill_pcts(purchase_target_fill_pcts)
+
+    for key in PURCHASE_TARGET_CONTROL_KEYS:
+        raw = _control_lookup(ctrl, key)
+        if raw is not None and str(raw).strip():
+            return _normalize_purchase_target_fill_pcts(raw)
+
+    return list(DEFAULT_PURCHASE_TARGET_FILL_PCTS)
+
+
+def _resolve_solver_threads(threads: int | None) -> int:
+    if threads is not None:
+        if int(threads) < 1:
+            raise ValueError("threads must be at least 1.")
+        return int(threads)
+    cpu_threads = os.cpu_count() or 1
+    return max(1, min(cpu_threads, DEFAULT_MAX_SOLVER_THREADS))
+
+
+def _purchase_plan_audit_warning(
+    x_map: Dict[str, int],
+    buy_map: Dict[str, float],
+    caps_map: Dict[str, int],
+    bom: pd.DataFrame,
+    rm_source: pd.DataFrame,
+    target_pairs: int,
+    achieved: int,
+    status: str,
+    total_buy_cost: float,
+) -> str | None:
+    try:
+        for code, qty in x_map.items():
+            assert float(qty).is_integer()
+            assert 0 <= qty <= int(caps_map.get(code, 0))
+        assert achieved >= target_pairs or status not in {"Optimal", "Feasible"}
+        usage = {rm: 0.0 for rm in rm_source["RM Code"].astype(str)}
+        for _, row in bom.iterrows():
+            fg_code = str(row["FG Code"])
+            rm_code = str(row["RM Code"])
+            if rm_code in usage:
+                usage[rm_code] += float(row["QtyPerPair"]) * x_map.get(fg_code, 0)
+        for rm_code, used in usage.items():
+            avail = float(rm_source.loc[rm_source["RM Code"] == rm_code, "AvailBase"].iloc[0])
+            buy = float(buy_map.get(rm_code, 0.0))
+            assert used <= avail + buy + 1e-6
+        calc_buy_cost = float(
+            sum(
+                float(buy_map.get(rm, 0.0)) * float(rm_source.loc[rm_source["RM Code"] == rm, "RM_Rate"].iloc[0])
+                for rm in usage
+            )
+        )
+        assert abs(calc_buy_cost - total_buy_cost) <= 1e-5
+    except (AssertionError, IndexError, KeyError) as exc:
+        return str(exc) or "purchase_plan_audit_failed"
+    return None
+
+
 
 def _parse_optional_int(value: object) -> int | None:
     if value is None:
@@ -184,8 +301,9 @@ def generate_purchase_planning_scenarios(
     fg: pd.DataFrame,
     cap: pd.DataFrame,
     mode_avail: str,
+    fill_pcts: list[float] | tuple[float, ...] | str | None = None,
 ) -> pd.DataFrame:
-    fill_levels = [0.25, 0.50, 0.75, 1.00]
+    fill_levels = _normalize_purchase_target_fill_pcts(fill_pcts)
 
     cap_col = _cap_col(cap)
     margin_col = _margin_col(fg)
@@ -223,6 +341,61 @@ def generate_purchase_planning_scenarios(
         )
 
     return pd.DataFrame(rows)
+
+
+def _apply_explainability_columns(
+    fg_result: pd.DataFrame,
+    bom: pd.DataFrame,
+    remaining_map: Dict[str, float],
+) -> pd.DataFrame:
+    result = fg_result.copy()
+    result["Unmet Plan Qty"] = (result["Plan Cap"] - result["Opt Qty Total"]).clip(lower=0).astype(int)
+
+    remaining_units: list[float] = []
+    limiting_rms: list[str] = []
+    shortfall_reasons: list[str] = []
+
+    for _, fg_row in result.iterrows():
+        fg_code = str(fg_row["FG Code"])
+        unmet_qty = int(fg_row["Unmet Plan Qty"])
+        plan_cap = int(fg_row["Plan Cap"])
+
+        if plan_cap <= 0:
+            remaining_units.append(0.0)
+            limiting_rms.append("n/a")
+            shortfall_reasons.append("NO_PLAN_CAP")
+            continue
+        if unmet_qty <= 0:
+            remaining_units.append(0.0)
+            limiting_rms.append("n/a")
+            shortfall_reasons.append("CAP_REACHED")
+            continue
+
+        fg_bom = bom[bom["FG Code"].astype(str) == fg_code]
+        if fg_bom.empty:
+            remaining_units.append(0.0)
+            limiting_rms.append("Not found in BOM")
+            shortfall_reasons.append("NO_BOM_CONSTRAINT_FOUND")
+            continue
+
+        rm_limits: list[tuple[str, float]] = []
+        for _, bom_row in fg_bom.iterrows():
+            rm_code = str(bom_row["RM Code"])
+            qty_per_pair = float(bom_row["QtyPerPair"])
+            remaining_qty = max(float(remaining_map.get(rm_code, 0.0)), 0.0)
+            extra_units = np.floor(remaining_qty / qty_per_pair) if qty_per_pair > 0 else 0.0
+            rm_limits.append((rm_code, float(extra_units)))
+
+        limiting_capacity = min(extra_units for _, extra_units in rm_limits)
+        limiting_codes = [rm_code for rm_code, extra_units in rm_limits if extra_units == limiting_capacity]
+        remaining_units.append(float(limiting_capacity))
+        limiting_rms.append(", ".join(limiting_codes))
+        shortfall_reasons.append("RM_LIMITED" if limiting_capacity < unmet_qty else "CAP_OR_OBJECTIVE_LIMIT")
+
+    result["Estimated Extra Units From Remaining RM"] = remaining_units
+    result["Likely Limiting RM"] = limiting_rms
+    result["Shortfall Reason"] = shortfall_reasons
+    return result
 
 
 def _audit_phase_a_final(
@@ -263,6 +436,7 @@ def run_two_phase(
     objective = str(config.objective).upper()
 
     phase_a_meta: Dict[str, object] = {}
+    phase_a_audit_warning = "none"
     if objective == "PLAN":
         solver_options = {}
         if config.threads is not None:
@@ -285,17 +459,20 @@ def run_two_phase(
             )
         _notify_progress(progress_callback, "Phase A - lexicographic solve", 45, 25)
         stage2_success = str(phase_a_meta.get("stage2_status")) in {"Optimal", "Feasible", "fallback_reallocated"}
-        audit_phaseA_solution(audit_payload, stage2_success=stage2_success)
-        _audit_phase_a_final(
-            x_final=audit_payload["x_stage2"].astype(float),
-            caps=audit_payload["caps"].astype(float),
-            coeff=audit_payload["coeff"].astype(float),
-            rm_upper=audit_payload["rm_upper"].astype(float),
-            x_stage1=audit_payload["x_stage1"].astype(float),
-            x_stage2=audit_payload["x_stage2"].astype(float),
-            plan_stage2_feasible=stage2_success,
-            p_star=int(phase_a_meta.get("P_star", 0)),
-        )
+        try:
+            audit_phaseA_solution(audit_payload, stage2_success=stage2_success)
+            _audit_phase_a_final(
+                x_final=audit_payload["x_stage2"].astype(float),
+                caps=audit_payload["caps"].astype(float),
+                coeff=audit_payload["coeff"].astype(float),
+                rm_upper=audit_payload["rm_upper"].astype(float),
+                x_stage1=audit_payload["x_stage1"].astype(float),
+                x_stage2=audit_payload["x_stage2"].astype(float),
+                plan_stage2_feasible=stage2_success,
+                p_star=int(phase_a_meta.get("P_star", 0)),
+            )
+        except AssertionError as exc:
+            phase_a_audit_warning = str(exc) or "phase_a_post_solve_audit_failed"
     elif objective in {"MARGIN", "PAIRS"}:
         solver_options = {}
         if config.threads is not None:
@@ -349,7 +526,10 @@ def run_two_phase(
             r = str(row["RM Code"])
             if f in fg_index and r in rm_index:
                 coeff[rm_index[r], fg_index[f]] += float(row["QtyPerPair"])
-        _audit_phase_a_final(x_final=qty, caps=caps, coeff=coeff, rm_upper=rm_upper)
+        try:
+            _audit_phase_a_final(x_final=qty, caps=caps, coeff=coeff, rm_upper=rm_upper)
+        except AssertionError as exc:
+            phase_a_audit_warning = str(exc) or "phase_a_post_solve_audit_failed"
     else:
         raise ValueError(f"Unsupported objective: {objective}")
 
@@ -433,15 +613,22 @@ def run_two_phase(
     for _, row in bom.iterrows():
         used[str(row["RM Code"])] += float(row["QtyPerPair"]) * qty_total_map.get(str(row["FG Code"]), 0)
 
+    remaining_map = {k: max(avail_map[k] - used[k], 0.0) for k in avail_map}
     rm_diag = pd.DataFrame(
         {
             "RM Code": list(avail_map.keys()),
             "mode_avail": config.mode_avail,
             "objective": objective,
+            "availability_total": [avail_map[k] for k in avail_map],
             "availability_used": [used[k] for k in avail_map],
-            "availability_remaining": [avail_map[k] - used[k] for k in avail_map],
+            "availability_remaining": [remaining_map[k] for k in avail_map],
+            "availability_utilization_pct": [
+                0.0 if avail_map[k] <= 0 else float(used[k] / avail_map[k]) for k in avail_map
+            ],
+            "is_binding": [bool(remaining_map[k] <= 1e-9 and used[k] > 0) for k in avail_map],
         }
     )
+    res = _apply_explainability_columns(res, bom, remaining_map)
 
     run_meta = pd.DataFrame(
         [
@@ -467,6 +654,7 @@ def run_two_phase(
                 "fallback_swaps": phase_a_meta.get("fallback_swaps", "n/a"),
                 "fallback_elapsed_sec": phase_a_meta.get("fallback_elapsed_sec", phase_a.fallback_elapsed_sec),
                 "cutoff_reason": phase_a_meta.get("cutoff_reason", "none"),
+                "phase_a_audit_warning": phase_a_audit_warning,
                 "phase_b_status": phase_b_status,
                 "phase_b_method": phase_b_method,
                 "phase_b_executed": phase_b_executed,
@@ -494,6 +682,7 @@ def run_optimization(
     threads: int | None = None,
     mip_rel_gap: float | None = None,
     time_limit_sec: float | None = None,
+    purchase_target_fill_pcts: list[float] | tuple[float, ...] | str | None = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     _notify_progress(progress_callback, "Initializing optimization", 0, 0)
     ctrl = _control_map(tables[CONTROL_DATASET])
@@ -510,12 +699,15 @@ def run_optimization(
             missing.append("Objective")
         raise KeyError(f"Missing control keys: {', '.join(missing)}")
 
+    resolved_threads = _resolve_solver_threads(threads if threads is not None else control_threads)
+    resolved_purchase_targets = _resolve_purchase_target_fill_pcts(ctrl, purchase_target_fill_pcts)
+
     cfg = RunConfig(
         mode_avail=mode_avail.upper(),
         objective=objective.upper(),
         big_m_cap=10**9,
         run_purchase_planner=run_purchase_planner,
-        threads=threads if threads is not None else control_threads,
+        threads=resolved_threads,
         mip_rel_gap=mip_rel_gap if mip_rel_gap is not None else control_mip_rel_gap,
         time_limit_sec=time_limit_sec if time_limit_sec is not None else control_time_limit_sec,
     )
@@ -534,29 +726,33 @@ def run_optimization(
     rm_col = "Avail_Stock" if cfg.mode_avail == "STOCK" else "Avail_StockPO"
     rm_source["AvailBase"] = pd.to_numeric(rm_source[rm_col], errors="coerce").fillna(0.0)
 
-    targets = [0.25, 0.50, 0.75, 1.00]
+    targets = resolved_purchase_targets
     purchase_rows = []
     detail_rows = []
-    purchase_sheets: Dict[int, Dict[str, pd.DataFrame]] = {}
+    purchase_sheets: Dict[str, Dict[str, pd.DataFrame]] = {}
 
     purchase_plan_status = "not_run"
     purchase_solver = "n/a"
+    purchase_audit_warnings: list[str] = []
 
-    missing_rm_rate = run_purchase_planner and "RM_Rate" not in rm_source.columns
-    if "RM_Rate" not in rm_source.columns:
+    rm_rate_col = _rm_rate_col(rm_source)
+    missing_rm_rate = run_purchase_planner and rm_rate_col is None
+    if rm_rate_col is None:
         rm_source["RM_Rate"] = 0.0
     else:
-        rm_source["RM_Rate"] = pd.to_numeric(rm_source["RM_Rate"], errors="coerce").fillna(0.0)
+        rm_source["RM_Rate"] = pd.to_numeric(rm_source[rm_rate_col], errors="coerce").fillna(0.0)
     if missing_rm_rate:
         purchase_plan_status = "skipped_missing_rm_rate"
 
     cap_sum = float(pd.to_numeric(fg_result["Plan Cap"], errors="coerce").fillna(0).sum())
 
     for idx, target in enumerate(targets):
-        pct = int(target * 100)
+        pct = round(target * 100.0, 2)
+        pct_text = f"{pct:g}%"
+        target_label = _purchase_target_label(target)
         target_pairs = int(np.ceil(target * cap_sum))
         stage_base = idx / len(targets)
-        _notify_progress(progress_callback, f"Purchase planning {pct}% target", stage_base * 100, 70 + (20 * stage_base))
+        _notify_progress(progress_callback, f"Purchase planning {pct_text} target", stage_base * 100, 70 + (20 * stage_base))
 
         if (not run_purchase_planner) or missing_rm_rate:
             status = "skipped_missing_rm_rate" if missing_rm_rate else "not_run"
@@ -582,7 +778,7 @@ def run_optimization(
                 solver_options["time_limit_sec"] = cfg.time_limit_sec
             with _with_solver_heartbeat(
                 progress_callback,
-                f"Purchase planning {pct}% target - solver",
+                f"Purchase planning {pct_text} target - solver",
                 min(stage_base * 100 + 50.0, 99.0),
                 70 + (20 * stage_base),
                 threads=cfg.threads,
@@ -615,25 +811,26 @@ def run_optimization(
             purchase_plan_status = "ran"
             purchase_solver = str(solve.get("method", "highs_mip"))
 
-            # audits
             caps_map = dict(zip(fg_result["FG Code"].astype(str), pd.to_numeric(fg_result["Plan Cap"], errors="coerce").fillna(0).astype(int)))
-            for code, qty in x_map.items():
-                assert float(qty).is_integer()
-                assert 0 <= qty <= int(caps_map.get(code, 0))
-            assert achieved >= target_pairs or status not in {"Optimal", "Feasible"}
-            bom = tables[BOM_DATASET]
-            usage = {rm: 0.0 for rm in rm_source["RM Code"].astype(str)}
-            for _, row in bom.iterrows():
-                fg_code = str(row["FG Code"])
-                rm_code = str(row["RM Code"])
-                if rm_code in usage:
-                    usage[rm_code] += float(row["QtyPerPair"]) * x_map.get(fg_code, 0)
-            for rm_code, used in usage.items():
-                avail = float(rm_source.loc[rm_source["RM Code"] == rm_code, "AvailBase"].iloc[0])
-                buy = float(buy_map.get(rm_code, 0.0))
-                assert used <= avail + buy + 1e-6
-            calc_buy_cost = float(sum(float(buy_map.get(rm, 0.0)) * float(rm_source.loc[rm_source["RM Code"] == rm, "RM_Rate"].iloc[0]) for rm in usage))
-            assert abs(calc_buy_cost - total_buy_cost) <= 1e-5
+            audit_warning = _purchase_plan_audit_warning(
+                x_map=x_map,
+                buy_map=buy_map,
+                caps_map=caps_map,
+                bom=tables[BOM_DATASET],
+                rm_source=rm_source,
+                target_pairs=target_pairs,
+                achieved=achieved,
+                status=status,
+                total_buy_cost=total_buy_cost,
+            )
+            if audit_warning:
+                purchase_audit_warnings.append(f"{target_label}:{audit_warning}")
+        if (not run_purchase_planner) or missing_rm_rate:
+            audit_warning = "none"
+        elif not purchase_audit_warnings or not purchase_audit_warnings[-1].startswith(f"{target_label}:"):
+            audit_warning = "none"
+        else:
+            audit_warning = purchase_audit_warnings[-1].split(":", 1)[1]
 
         fg_sheet = fg_result[["FG Code", "Plan Cap", "Unit Margin"]].copy()
         fg_sheet = fg_sheet.rename(columns={"Plan Cap": "Cap", "Unit Margin": "UnitMargin"})
@@ -656,10 +853,11 @@ def run_optimization(
         rm_sheet["RemainingAfterBuy"] = rm_sheet["AvailBase"] + rm_sheet["BuyQty"] - rm_sheet["UsedAtPlan"]
         rm_sheet = rm_sheet[["RM Code", "AvailBase", "RM_Rate", "UsedAtPlan", "BuyQty", "BuyCost", "RemainingAfterBuy"]]
 
-        purchase_sheets[pct] = {"fg": fg_sheet, "rm": rm_sheet}
+        purchase_sheets[target_label] = {"fg": fg_sheet, "rm": rm_sheet}
 
         purchase_rows.append(
             {
+                "TargetLabel": target_label,
                 "TargetFillPct": float(pct),
                 "TargetPairs": target_pairs,
                 "AchievedPairs": int(achieved),
@@ -674,31 +872,39 @@ def run_optimization(
                 "CutoffReason": cutoff_reason,
                 "FallbackIterations": int(fallback_iterations),
                 "FallbackElapsedSec": float(fallback_elapsed_sec),
+                "AuditWarning": audit_warning,
             }
         )
         for _, r in rm_sheet.iterrows():
-            detail_rows.append({"TargetFillPct": float(pct), "RM Code": r["RM Code"], "BuyQty": r["BuyQty"], "RM_Rate": r["RM_Rate"], "BuyCost": r["BuyCost"]})
+            detail_rows.append({"TargetLabel": target_label, "TargetFillPct": float(pct), "RM Code": r["RM Code"], "BuyQty": r["BuyQty"], "RM_Rate": r["RM_Rate"], "BuyCost": r["BuyCost"]})
 
         stage_end = (idx + 1) / len(targets)
-        _notify_progress(progress_callback, f"Purchase planning {pct}% target", 100, 70 + (20 * stage_end))
+        _notify_progress(progress_callback, f"Purchase planning {pct_text} target", 100, 70 + (20 * stage_end))
 
     purchase_summary = pd.DataFrame(purchase_rows)
-    purchase_detail = pd.DataFrame(detail_rows, columns=["TargetFillPct", "RM Code", "BuyQty", "RM_Rate", "BuyCost"])
+    purchase_detail = pd.DataFrame(detail_rows, columns=["TargetLabel", "TargetFillPct", "RM Code", "BuyQty", "RM_Rate", "BuyCost"])
     include_zero_buy_qty = str(ctrl.get("IncludeZeroBuyQty", "FALSE")).upper() in {"TRUE", "1", "YES"}
     if (not include_zero_buy_qty) or missing_rm_rate:
         purchase_detail = purchase_detail[purchase_detail["BuyQty"] > 0] if not purchase_detail.empty else purchase_detail
 
     run_meta_df.loc[0, "purchase_plan_status"] = purchase_plan_status
-    run_meta_df.loc[0, "purchase_targets"] = "25,50,75,100"
+    run_meta_df.loc[0, "purchase_targets"] = ",".join(_purchase_target_label(target) for target in targets)
     run_meta_df.loc[0, "purchase_mode_avail"] = cfg.mode_avail
     run_meta_df.loc[0, "purchase_solver"] = purchase_solver
+    run_meta_df.loc[0, "purchase_audit_warning"] = " | ".join(purchase_audit_warnings) if purchase_audit_warnings else "none"
 
     meta = out.run_meta.melt(var_name="Key", value_name="Value")
     meta["Value"] = meta["Value"].fillna("n/a").astype(str)
     extra_meta = pd.DataFrame(
         {
-            "Key": ["purchase_plan_status", "purchase_targets", "purchase_mode_avail", "purchase_solver"],
-            "Value": [str(purchase_plan_status), "25,50,75,100", cfg.mode_avail, str(purchase_solver)],
+            "Key": ["purchase_plan_status", "purchase_targets", "purchase_mode_avail", "purchase_solver", "purchase_audit_warning"],
+            "Value": [
+                str(purchase_plan_status),
+                ",".join(_purchase_target_label(target) for target in targets),
+                cfg.mode_avail,
+                str(purchase_solver),
+                " | ".join(purchase_audit_warnings) if purchase_audit_warnings else "none",
+            ],
         }
     )
     meta = pd.concat([meta, extra_meta], ignore_index=True)

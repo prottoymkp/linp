@@ -17,6 +17,7 @@ from highspy import (
     kHighsInf,
 )
 
+from .config import DEFAULT_MAX_SOLVER_THREADS, RM_RATE_COLUMNS
 from .types import SolveOutcome
 
 
@@ -29,7 +30,10 @@ def _cap_col(df: pd.DataFrame) -> str:
 
 
 def _rm_rate_col(df: pd.DataFrame) -> str:
-    return "RM_Rate" if "RM_Rate" in df.columns else "RM Rate"
+    for candidate in RM_RATE_COLUMNS:
+        if candidate in df.columns:
+            return candidate
+    return "RM_Rate"
 
 
 def _status_feasible(status: str) -> bool:
@@ -144,7 +148,7 @@ def _solve_highs(
     else:
         cpu_threads = os.cpu_count()
         if cpu_threads and cpu_threads > 0:
-            highs.setOptionValue("threads", int(cpu_threads))
+            highs.setOptionValue("threads", int(min(cpu_threads, DEFAULT_MAX_SOLVER_THREADS)))
     if time_limit is not None:
         highs.setOptionValue("time_limit", float(time_limit))
     if mip_rel_gap is not None:
