@@ -1,3 +1,4 @@
+import base64
 from pathlib import Path
 import sys
 import time
@@ -95,6 +96,12 @@ def _render_generated_download(label: str, data_factory, file_name: str, mime: s
         mime=mime,
         use_container_width=True,
     )
+
+
+def _workflow_preview_data_uri() -> str:
+    payload = workflow_preview_svg().encode("utf-8")
+    encoded = base64.b64encode(payload).decode("ascii")
+    return f"data:image/svg+xml;base64,{encoded}"
 
 
 def _inject_page_styles() -> None:
@@ -254,6 +261,46 @@ def _inject_page_styles() -> None:
                 line-height: 1.4;
             }
 
+            .workflow-zoom-link {
+                display: block;
+                text-decoration: none;
+            }
+
+            .workflow-zoom-frame {
+                position: relative;
+                overflow: hidden;
+                border-radius: 18px;
+                border: 1px solid rgba(118, 105, 82, 0.14);
+                background: rgba(255, 255, 255, 0.82);
+            }
+
+            .workflow-zoom-frame img {
+                display: block;
+                width: 100%;
+                height: auto;
+                cursor: zoom-in;
+                transition: transform 180ms ease;
+            }
+
+            .workflow-zoom-frame:hover img {
+                transform: scale(1.015);
+            }
+
+            .workflow-zoom-badge {
+                position: absolute;
+                top: 0.85rem;
+                right: 0.85rem;
+                padding: 0.35rem 0.6rem;
+                border-radius: 999px;
+                background: rgba(13, 89, 98, 0.88);
+                color: #ffffff;
+                font-size: 0.74rem;
+                font-weight: 700;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                box-shadow: 0 8px 18px rgba(13, 89, 98, 0.2);
+            }
+
             div[data-testid="stFileUploader"] {
                 border-radius: 20px;
                 border: 1.5px dashed rgba(197, 137, 68, 0.82);
@@ -316,8 +363,9 @@ def _render_hero() -> None:
         f"""
         <section class="hero-shell">
             <div class="hero-badge">LP Optimizer - v{__version__}</div>
-            <h1>RM-Constrained FG Planning, Moved Up Front</h1>
+            <h1>RM Planning Optimizer</h1>
             <p class="hero-copy">
+                RM-Constrained FG Planning.
                 {APP_DESCRIPTION}
                 The page is organized so the working area comes first: upload a workbook,
                 validate the structure, tune the solver, and download the optimized output
@@ -354,7 +402,7 @@ def _render_requirements_list() -> None:
     st.info("Optional accepted columns: `fg_master` accepts `Margin` or `Unit Margin`; `tblFGPlanCap` accepts `Max Plan Qty` or `Plan Cap`.")
 
 
-def _render_support_column() -> None:
+def _render_starter_kit() -> None:
     with st.container(border=True):
         st.markdown("### Starter kit")
         st.caption("Grab a workbook, inspect the sample output, or hand teammates a clean template.")
@@ -381,11 +429,15 @@ def _render_support_column() -> None:
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         )
 
+
+def _render_workbook_map() -> None:
     with st.container(border=True):
         st.markdown("### Workbook map")
         st.caption("Use named Excel Tables, not plain ranges.")
         _render_requirements_list()
 
+
+def _render_workflow_glance() -> None:
     with st.container(border=True):
         st.markdown("### Workflow glance")
         st.markdown(
@@ -407,8 +459,19 @@ def _render_support_column() -> None:
             """,
             unsafe_allow_html=True,
         )
-        st.markdown(workflow_preview_svg(), unsafe_allow_html=True)
-        st.caption("Quick preview of the workbook-in, workbook-out flow.")
+        preview_uri = _workflow_preview_data_uri()
+        st.markdown(
+            f"""
+            <a class="workflow-zoom-link" href="{preview_uri}" target="_blank" rel="noopener noreferrer" title="Open full-size workflow preview">
+                <div class="workflow-zoom-frame">
+                    <span class="workflow-zoom-badge">Click to zoom</span>
+                    <img src="{preview_uri}" alt="LP Optimizer workflow preview" />
+                </div>
+            </a>
+            """,
+            unsafe_allow_html=True,
+        )
+        st.caption("Click the workflow preview to open the full-size image in a new tab for zooming.")
 
 
 def _render_bottom_guide() -> None:
@@ -535,7 +598,7 @@ with main_col:
             st.info("Upload an `.xlsx` workbook to unlock validation, solver controls, and the output download.")
 
 with side_col:
-    _render_support_column()
+    _render_starter_kit()
 
 if upload is None:
     with main_col:
@@ -743,6 +806,14 @@ else:
         with main_col:
             with st.container(border=True):
                 st.exception(exc)
+
+support_left, support_right = st.columns([1.02, 0.98], gap="large")
+
+with support_left:
+    _render_workbook_map()
+
+with support_right:
+    _render_workflow_glance()
 
 st.divider()
 _render_bottom_guide()
