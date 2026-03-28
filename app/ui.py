@@ -108,16 +108,27 @@ def _inject_page_styles() -> None:
     st.markdown(
         """
         <style>
+            :root {
+                --app-bg: #f5efe6;
+                --surface: #fffaf3;
+                --surface-muted: #f1e7da;
+                --border: #d7c8b8;
+                --text-strong: #2f241a;
+                --text-body: #5f5246;
+                --text-muted: #7b6d60;
+                --accent: #6d4528;
+                --accent-soft: #efe1cf;
+                --teal: #1f5b63;
+                --teal-soft: #e8f0ef;
+            }
+
             [data-testid="stAppViewContainer"] {
-                background:
-                    radial-gradient(circle at top left, rgba(186, 220, 208, 0.42), transparent 28%),
-                    radial-gradient(circle at top right, rgba(242, 201, 149, 0.34), transparent 30%),
-                    linear-gradient(180deg, #f7f3eb 0%, #fcfbf7 32%, #ffffff 100%);
+                background: var(--app-bg);
             }
 
             [data-testid="stHeader"] {
-                background: rgba(247, 243, 235, 0.72);
-                backdrop-filter: blur(12px);
+                background: rgba(245, 239, 230, 0.94);
+                border-bottom: 1px solid rgba(215, 200, 184, 0.45);
             }
 
             .block-container {
@@ -126,27 +137,31 @@ def _inject_page_styles() -> None:
                 padding-bottom: 3rem;
             }
 
+            .block-container [data-testid="stMarkdownContainer"] h1,
+            .block-container [data-testid="stMarkdownContainer"] h2,
+            .block-container [data-testid="stMarkdownContainer"] h3,
+            .block-container [data-testid="stMarkdownContainer"] h4,
+            .block-container [data-testid="stMarkdownContainer"] h5,
+            .block-container [data-testid="stMarkdownContainer"] h6,
+            .block-container label[data-testid="stWidgetLabel"] {
+                color: var(--text-strong);
+            }
+
+            .block-container [data-testid="stMarkdownContainer"] p,
+            .block-container [data-testid="stMarkdownContainer"] li,
+            .block-container [data-testid="stCaptionContainer"],
+            .block-container div[data-testid="stMetricValue"],
+            .block-container div[data-testid="stMetricLabel"] {
+                color: var(--text-body);
+            }
+
             .hero-shell {
-                position: relative;
-                overflow: hidden;
                 margin-bottom: 1.2rem;
                 padding: 1.7rem 1.8rem;
                 border-radius: 28px;
-                border: 1px solid rgba(21, 57, 66, 0.12);
-                background: linear-gradient(135deg, #0d5962 0%, #1b7380 48%, #df9451 100%);
-                box-shadow: 0 24px 54px rgba(24, 49, 83, 0.16);
-                color: #ffffff;
-            }
-
-            .hero-shell::after {
-                content: "";
-                position: absolute;
-                inset: auto -8% -32% auto;
-                width: 360px;
-                height: 360px;
-                border-radius: 50%;
-                background: rgba(255, 255, 255, 0.08);
-                filter: blur(2px);
+                border: 1px solid var(--border);
+                background: var(--surface);
+                box-shadow: 0 12px 24px rgba(82, 61, 42, 0.05);
             }
 
             .hero-badge {
@@ -155,17 +170,18 @@ def _inject_page_styles() -> None:
                 gap: 0.45rem;
                 padding: 0.35rem 0.8rem;
                 border-radius: 999px;
-                background: rgba(255, 255, 255, 0.14);
-                border: 1px solid rgba(255, 255, 255, 0.2);
+                background: var(--teal-soft);
+                border: 1px solid rgba(31, 91, 99, 0.16);
+                color: var(--teal);
                 font-size: 0.82rem;
-                font-weight: 600;
+                font-weight: 700;
                 letter-spacing: 0.04em;
                 text-transform: uppercase;
             }
 
             .hero-shell h1 {
                 margin: 0.8rem 0 0.45rem;
-                color: #ffffff;
+                color: var(--text-strong);
                 font-size: clamp(2rem, 4vw, 3.35rem);
                 line-height: 1.05;
                 letter-spacing: -0.03em;
@@ -174,7 +190,7 @@ def _inject_page_styles() -> None:
             .hero-copy {
                 max-width: 58rem;
                 margin: 0;
-                color: rgba(255, 255, 255, 0.9);
+                color: var(--text-body);
                 font-size: 1.03rem;
                 line-height: 1.55;
             }
@@ -187,18 +203,15 @@ def _inject_page_styles() -> None:
             }
 
             .hero-card {
-                position: relative;
-                z-index: 1;
                 padding: 1rem 1.05rem;
                 border-radius: 22px;
-                background: rgba(255, 255, 255, 0.12);
-                border: 1px solid rgba(255, 255, 255, 0.18);
-                backdrop-filter: blur(12px);
+                background: var(--surface-muted);
+                border: 1px solid var(--border);
             }
 
             .hero-card-label {
                 display: block;
-                color: rgba(255, 255, 255, 0.72);
+                color: var(--teal);
                 font-size: 0.78rem;
                 font-weight: 700;
                 letter-spacing: 0.08em;
@@ -208,13 +221,13 @@ def _inject_page_styles() -> None:
             .hero-card strong {
                 display: block;
                 margin-top: 0.25rem;
-                color: #ffffff;
+                color: var(--text-strong);
                 font-size: 1.02rem;
             }
 
             .hero-card p {
                 margin: 0.38rem 0 0;
-                color: rgba(255, 255, 255, 0.85);
+                color: var(--text-body);
                 font-size: 0.92rem;
                 line-height: 1.45;
             }
@@ -226,8 +239,8 @@ def _inject_page_styles() -> None:
                 margin: 0 0 0.75rem;
                 padding: 0.34rem 0.7rem;
                 border-radius: 999px;
-                background: rgba(13, 89, 98, 0.08);
-                color: #0d5962;
+                background: var(--accent-soft);
+                color: var(--accent);
                 font-size: 0.78rem;
                 font-weight: 700;
                 letter-spacing: 0.08em;
@@ -243,46 +256,22 @@ def _inject_page_styles() -> None:
             .mini-step {
                 padding: 0.85rem 0.95rem;
                 border-radius: 18px;
-                background: rgba(246, 242, 233, 0.78);
-                border: 1px solid rgba(118, 105, 82, 0.12);
+                background: var(--surface-muted);
+                border: 1px solid var(--border);
             }
 
             .mini-step strong {
                 display: block;
-                color: #173b4a;
+                color: var(--text-strong);
                 font-size: 0.95rem;
             }
 
             .mini-step span {
                 display: block;
                 margin-top: 0.2rem;
-                color: #51606b;
+                color: var(--text-body);
                 font-size: 0.9rem;
                 line-height: 1.4;
-            }
-
-            .block-container [data-testid="stMarkdownContainer"] h1,
-            .block-container [data-testid="stMarkdownContainer"] h2,
-            .block-container [data-testid="stMarkdownContainer"] h3,
-            .block-container [data-testid="stMarkdownContainer"] h4,
-            .block-container [data-testid="stMarkdownContainer"] h5,
-            .block-container [data-testid="stMarkdownContainer"] h6,
-            .block-container label[data-testid="stWidgetLabel"] {
-                color: #173b4a;
-            }
-
-            .block-container [data-testid="stMarkdownContainer"] p,
-            .block-container [data-testid="stMarkdownContainer"] li,
-            .block-container [data-testid="stCaptionContainer"] {
-                color: #51606b;
-            }
-
-            .hero-shell,
-            .hero-shell h1,
-            .hero-shell p,
-            .hero-shell strong,
-            .hero-shell span {
-                color: #ffffff;
             }
 
             .workflow-zoom-link {
@@ -294,8 +283,8 @@ def _inject_page_styles() -> None:
                 position: relative;
                 overflow: hidden;
                 border-radius: 18px;
-                border: 1px solid rgba(118, 105, 82, 0.14);
-                background: rgba(255, 255, 255, 0.82);
+                border: 1px solid var(--border);
+                background: var(--surface);
             }
 
             .workflow-zoom-frame img {
@@ -316,13 +305,13 @@ def _inject_page_styles() -> None:
                 right: 0.85rem;
                 padding: 0.35rem 0.6rem;
                 border-radius: 999px;
-                background: rgba(13, 89, 98, 0.88);
+                background: var(--accent);
                 color: #ffffff;
                 font-size: 0.74rem;
                 font-weight: 700;
                 letter-spacing: 0.04em;
                 text-transform: uppercase;
-                box-shadow: 0 8px 18px rgba(13, 89, 98, 0.2);
+                box-shadow: none;
             }
 
             .workflow-zoom-modal {
@@ -353,9 +342,9 @@ def _inject_page_styles() -> None:
                 max-height: 90vh;
                 padding: 1rem 1rem 0.8rem;
                 border-radius: 24px;
-                border: 1px solid rgba(118, 105, 82, 0.16);
-                background: #fffdf8;
-                box-shadow: 0 28px 70px rgba(9, 25, 37, 0.35);
+                border: 1px solid var(--border);
+                background: var(--surface);
+                box-shadow: 0 24px 48px rgba(47, 36, 26, 0.18);
             }
 
             .workflow-zoom-dialog img {
@@ -374,7 +363,7 @@ def _inject_page_styles() -> None:
                 right: 0.9rem;
                 padding: 0.42rem 0.82rem;
                 border-radius: 999px;
-                background: rgba(13, 89, 98, 0.94);
+                background: var(--accent);
                 color: #ffffff;
                 font-size: 0.8rem;
                 font-weight: 700;
@@ -383,15 +372,15 @@ def _inject_page_styles() -> None:
 
             .workflow-zoom-dialog-caption {
                 margin: 0.72rem 0 0;
-                color: #5a6774;
+                color: var(--text-muted);
                 font-size: 0.92rem;
                 text-align: center;
             }
 
             div[data-testid="stFileUploader"] {
                 border-radius: 20px;
-                border: 1.5px dashed rgba(197, 137, 68, 0.82);
-                background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 245, 236, 0.98) 100%);
+                border: 1.5px dashed rgba(109, 69, 40, 0.35);
+                background: var(--surface);
                 padding: 0.35rem 0.45rem;
             }
 
@@ -399,35 +388,78 @@ def _inject_page_styles() -> None:
                 padding: 0.15rem 0.25rem;
             }
 
+            div[data-testid="stFileUploader"] * {
+                color: var(--text-body);
+            }
+
             div[data-testid="stButton"] > button,
             div[data-testid="stDownloadButton"] > button {
                 border-radius: 999px;
                 min-height: 2.8rem;
                 font-weight: 700;
+                box-shadow: none;
             }
 
             div[data-testid="stDownloadButton"] > button {
-                background: #fff8ee;
-                color: #7a4d18;
-                border: 1px solid rgba(191, 137, 72, 0.35);
+                background: var(--surface);
+                color: var(--accent);
+                border: 1px solid rgba(109, 69, 40, 0.24);
             }
 
             div[data-testid="stDownloadButton"] > button:hover {
-                border-color: rgba(191, 137, 72, 0.78);
-                color: #59340f;
+                border-color: rgba(109, 69, 40, 0.42);
+                color: var(--accent);
+                background: var(--accent-soft);
+            }
+
+            div[data-testid="stButton"] > button[kind="primary"] {
+                background: var(--accent);
+                color: #ffffff;
+                border: 1px solid var(--accent);
+            }
+
+            div[data-testid="stButton"] > button[kind="primary"]:hover {
+                background: #5c3820;
+                color: #ffffff;
+                border-color: #5c3820;
             }
 
             div[data-testid="stMetric"] {
                 padding: 0.5rem 0.75rem;
                 border-radius: 18px;
-                background: rgba(246, 242, 233, 0.78);
-                border: 1px solid rgba(118, 105, 82, 0.12);
+                background: var(--surface-muted);
+                border: 1px solid var(--border);
             }
 
             div[data-testid="stExpander"] {
                 border-radius: 18px;
-                border: 1px solid rgba(118, 105, 82, 0.12);
-                background: rgba(255, 255, 255, 0.75);
+                border: 1px solid var(--border);
+                background: var(--surface);
+            }
+
+            div[data-testid="stAlert"] {
+                border-radius: 18px;
+                border: 1px solid var(--border);
+            }
+
+            div[data-testid="stAlert"][kind="info"] {
+                background: #edf3fb;
+                color: var(--text-body);
+            }
+
+            div[data-testid="stAlert"][kind="success"] {
+                background: #ecf4ed;
+                color: var(--text-body);
+            }
+
+            div[data-testid="stAlert"][kind="warning"] {
+                background: #fbf1df;
+                color: var(--text-body);
+            }
+
+            div[data-testid="stAlert"][kind="error"] {
+                background: #fbe8e6;
+                color: var(--text-body);
             }
 
             @media (max-width: 960px) {
