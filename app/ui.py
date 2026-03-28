@@ -261,6 +261,30 @@ def _inject_page_styles() -> None:
                 line-height: 1.4;
             }
 
+            .block-container [data-testid="stMarkdownContainer"] h1,
+            .block-container [data-testid="stMarkdownContainer"] h2,
+            .block-container [data-testid="stMarkdownContainer"] h3,
+            .block-container [data-testid="stMarkdownContainer"] h4,
+            .block-container [data-testid="stMarkdownContainer"] h5,
+            .block-container [data-testid="stMarkdownContainer"] h6,
+            .block-container label[data-testid="stWidgetLabel"] {
+                color: #173b4a;
+            }
+
+            .block-container [data-testid="stMarkdownContainer"] p,
+            .block-container [data-testid="stMarkdownContainer"] li,
+            .block-container [data-testid="stCaptionContainer"] {
+                color: #51606b;
+            }
+
+            .hero-shell,
+            .hero-shell h1,
+            .hero-shell p,
+            .hero-shell strong,
+            .hero-shell span {
+                color: #ffffff;
+            }
+
             .workflow-zoom-link {
                 display: block;
                 text-decoration: none;
@@ -299,6 +323,69 @@ def _inject_page_styles() -> None:
                 letter-spacing: 0.04em;
                 text-transform: uppercase;
                 box-shadow: 0 8px 18px rgba(13, 89, 98, 0.2);
+            }
+
+            .workflow-zoom-modal {
+                position: fixed;
+                inset: 0;
+                display: none;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem;
+                background: rgba(9, 25, 37, 0.8);
+                z-index: 1000;
+            }
+
+            .workflow-zoom-modal:target {
+                display: flex;
+            }
+
+            .workflow-zoom-backdrop {
+                position: absolute;
+                inset: 0;
+                display: block;
+            }
+
+            .workflow-zoom-dialog {
+                position: relative;
+                z-index: 1;
+                width: min(94vw, 1460px);
+                max-height: 90vh;
+                padding: 1rem 1rem 0.8rem;
+                border-radius: 24px;
+                border: 1px solid rgba(118, 105, 82, 0.16);
+                background: #fffdf8;
+                box-shadow: 0 28px 70px rgba(9, 25, 37, 0.35);
+            }
+
+            .workflow-zoom-dialog img {
+                display: block;
+                width: 100%;
+                height: auto;
+                max-height: calc(90vh - 5.25rem);
+                object-fit: contain;
+                border-radius: 16px;
+                background: #ffffff;
+            }
+
+            .workflow-zoom-close {
+                position: absolute;
+                top: 0.9rem;
+                right: 0.9rem;
+                padding: 0.42rem 0.82rem;
+                border-radius: 999px;
+                background: rgba(13, 89, 98, 0.94);
+                color: #ffffff;
+                font-size: 0.8rem;
+                font-weight: 700;
+                text-decoration: none;
+            }
+
+            .workflow-zoom-dialog-caption {
+                margin: 0.72rem 0 0;
+                color: #5a6774;
+                font-size: 0.92rem;
+                text-align: center;
             }
 
             div[data-testid="stFileUploader"] {
@@ -462,16 +549,26 @@ def _render_workflow_glance() -> None:
         preview_uri = _workflow_preview_data_uri()
         st.markdown(
             f"""
-            <a class="workflow-zoom-link" href="{preview_uri}" target="_blank" rel="noopener noreferrer" title="Open full-size workflow preview">
-                <div class="workflow-zoom-frame">
-                    <span class="workflow-zoom-badge">Click to zoom</span>
+            <div id="workflow-preview-panel">
+                <a class="workflow-zoom-link" href="#workflow-preview-modal" title="Zoom workflow preview">
+                    <div class="workflow-zoom-frame">
+                        <span class="workflow-zoom-badge">Click to zoom</span>
+                        <img src="{preview_uri}" alt="LP Optimizer workflow preview" />
+                    </div>
+                </a>
+            </div>
+            <div id="workflow-preview-modal" class="workflow-zoom-modal" role="dialog" aria-modal="true" aria-label="Workflow preview">
+                <a class="workflow-zoom-backdrop" href="#workflow-preview-panel" aria-label="Close workflow preview"></a>
+                <div class="workflow-zoom-dialog">
+                    <a class="workflow-zoom-close" href="#workflow-preview-panel" aria-label="Close workflow preview">Close</a>
                     <img src="{preview_uri}" alt="LP Optimizer workflow preview" />
+                    <p class="workflow-zoom-dialog-caption">Zoom your browser if you want to inspect the fine-grained sheet labels.</p>
                 </div>
-            </a>
+            </div>
             """,
             unsafe_allow_html=True,
         )
-        st.caption("Click the workflow preview to open the full-size image in a new tab for zooming.")
+        st.caption("Click the workflow preview to open a larger in-page view.")
 
 
 def _render_bottom_guide() -> None:
