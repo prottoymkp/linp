@@ -12,7 +12,9 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from app.excel_io import load_tables_from_excel
 from app.orchestrator import run_optimization
+from app.validate import validate_inputs
 
 
 def build_tables(num_fg: int, num_rm: int, bom_per_fg: int) -> dict[str, pd.DataFrame]:
@@ -66,13 +68,22 @@ def build_tables(num_fg: int, num_rm: int, bom_per_fg: int) -> dict[str, pd.Data
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Benchmark the optimization flow on synthetic data.")
+    parser.add_argument("--workbook", type=Path, help="Optional .xlsx workbook to benchmark instead of synthetic data.")
     parser.add_argument("--fg", type=int, default=250, help="Number of FG rows.")
     parser.add_argument("--rm", type=int, default=40, help="Number of RM rows.")
     parser.add_argument("--bom-per-fg", type=int, default=3, help="Average BOM rows per FG.")
     parser.add_argument("--purchase-planner", action="store_true", help="Include purchase planning scenarios.")
     args = parser.parse_args()
 
-    tables = build_tables(num_fg=args.fg, num_rm=args.rm, bom_per_fg=args.bom_per_fg)
+    if args.workbook is not None:
+        raw = args.workbook.read_bytes()
+        tables = load_tables_from_excel(raw)
+        validate_inputs(tables)
+        source_label = str(args.workbook)
+    else:
+        tables = build_tables(num_fg=args.fg, num_rm=args.rm, bom_per_fg=args.bom_per_fg)
+        source_label = f"synthetic fg={args.fg} rm={args.rm} bom_per_fg={args.bom_per_fg}"
+
     started = time.perf_counter()
     fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df = run_optimization(
         tables,
@@ -81,6 +92,7 @@ def main() -> None:
     elapsed = time.perf_counter() - started
 
     meta_map = dict(zip(meta_df["Key"], meta_df["Value"]))
+    print(f"source={source_label}")
     print(f"elapsed_sec={elapsed:.3f}")
     print(f"fg_rows={len(fg_df)}")
     print(f"rm_rows={len(rm_df)}")

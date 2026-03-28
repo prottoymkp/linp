@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 860" role="img" aria-label="LP Optimizer workflow preview" style="width:100%;height:auto;display:block">
+  <rect width="1500" height="860" fill="#f7f4ee"/>
+  <rect x="40" y="30" width="1420" height="800" rx="26" fill="#fffdf8" stroke="#d9cdbb" stroke-width="3"/>
+  <text x="70" y="82" fill="#183153" font-size="28" font-family="Segoe UI, Arial, sans-serif" font-weight="700">LP Optimizer Workflow Preview</text>
+  <text x="70" y="116" fill="#5d6f82" font-size="18" font-family="Segoe UI, Arial, sans-serif">Input workbook -&gt; Run optimization -&gt; Output workbook</text>
+  <line x1="470" y1="455" x2="520" y2="455" stroke="#ba8c4f" stroke-width="6"/>
+  <polygon points="520,455 502,443 502,467" fill="#ba8c4f"/>
+  <line x1="945" y1="455" x2="995" y2="455" stroke="#ba8c4f" stroke-width="6"/>
+  <polygon points="995,455 977,443 977,467" fill="#ba8c4f"/>
+  <rect x="80" y="160" width="390" height="600" rx="22" fill="#eef4ff" stroke="#d9cdbb" stroke-width="2"/>
+  <text x="104" y="208" fill="#183153" font-size="22" font-family="Segoe UI, Arial, sans-serif" font-weight="700">1. Start with a sample input</text>
+  <text x="104" y="256" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">Workbook: generated sample input</text>
+  <text x="104" y="302" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">FG table rows: 50</text>
+  <text x="104" y="348" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">BOM table rows: 400</text>
+  <text x="104" y="394" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">RM rows: 200</text>
+  <text x="104" y="440" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">Named tables: tblFG, tblBOM,</text>
+  <text x="104" y="486" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">tblFGPlanCap, tblRMAvail,</text>
+  <text x="104" y="532" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">and tblControl_2</text>
+  <rect x="555" y="160" width="390" height="600" rx="22" fill="#eff9f0" stroke="#d9cdbb" stroke-width="2"/>
+  <text x="579" y="208" fill="#183153" font-size="22" font-family="Segoe UI, Arial, sans-serif" font-weight="700">2. Run the Streamlit app</text>
+  <text x="579" y="256" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">Upload the workbook</text>
+  <text x="579" y="302" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">Validate table structure</text>
+  <text x="579" y="348" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">Choose purchase targets</text>
+  <text x="579" y="394" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">Adjust optional solver settings</text>
+  <text x="579" y="440" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">Run optimization and review progress</text>
+  <rect x="1030" y="160" width="390" height="600" rx="22" fill="#fff2e8" stroke="#d9cdbb" stroke-width="2"/>
+  <text x="1054" y="208" fill="#183153" font-size="22" font-family="Segoe UI, Arial, sans-serif" font-weight="700">3. Review the output workbook</text>
+  <text x="1054" y="256" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">FG_Result: production recommendation</text>
+  <text x="1054" y="302" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">RM_Diagnostic: bottleneck materials</text>
+  <text x="1054" y="348" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">Purchase_Summary: target vs buy cost</text>
+  <text x="1054" y="394" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">Run_Metadata: solver trace</text>
+  <text x="1054" y="440" fill="#334e68" font-size="18" font-family="Segoe UI, Arial, sans-serif">Purchase_Detail and Purchase_&lt;target&gt;</text>
+</svg>

@@ -1,0 +1,6 @@
+Key,Value
+Horizon_Start,2026-04-01 00:00:00
+Horizon_End,2026-04-30 00:00:00
+Mode_Avail,STOCK
+Objective,PLAN
+PurchaseTargets,"25,50,75,100"
