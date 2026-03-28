@@ -86,136 +86,423 @@ def _render_generated_download(label: str, data_factory, file_name: str, mime: s
     try:
         payload = data_factory()
     except FileNotFoundError as exc:
-        st.button(label, disabled=True, help=str(exc))
+        st.button(label, disabled=True, help=str(exc), use_container_width=True)
         return
     st.download_button(
         label,
         data=payload,
         file_name=file_name,
         mime=mime,
+        use_container_width=True,
     )
 
 
-def _render_intro() -> None:
-    st.caption(f"Version {__version__}")
-    st.write(APP_DESCRIPTION)
-
-    left_col, right_col = st.columns(2)
-    with left_col:
-        st.markdown(
-            """
-            ### What it does
-            This app turns a workbook of finished-goods plans, raw-material availability,
-            BOM usage, and planner controls into an optimized production plan. It shows
-            which FG quantities are worth building first, which RMs are binding, and how
-            much extra material you would need to buy to hit higher fill targets.
-            """
-        )
-    with right_col:
-        st.markdown(
-            """
-            ### Who it is for
-            It is designed for production planners, procurement teams, operations leaders,
-            and analysts who need a fast answer to: "Given scarce RM, what should we build
-            now, and what would it cost to buy our way to a higher plan fill?"
-            """
-        )
-
+def _inject_page_styles() -> None:
     st.markdown(
         """
-        ### Business example
-        Imagine a footwear factory that has monthly FG targets but not enough leather,
-        soles, or trims to make everything. Instead of manually comparing dozens of SKUs
-        and hundreds of materials, the optimizer recommends the best production mix under
-        current RM constraints and then shows the lowest-cost buy plan for hitting higher
-        service levels.
-        """
+        <style>
+            [data-testid="stAppViewContainer"] {
+                background:
+                    radial-gradient(circle at top left, rgba(186, 220, 208, 0.42), transparent 28%),
+                    radial-gradient(circle at top right, rgba(242, 201, 149, 0.34), transparent 30%),
+                    linear-gradient(180deg, #f7f3eb 0%, #fcfbf7 32%, #ffffff 100%);
+            }
+
+            [data-testid="stHeader"] {
+                background: rgba(247, 243, 235, 0.72);
+                backdrop-filter: blur(12px);
+            }
+
+            .block-container {
+                max-width: 1320px;
+                padding-top: 2rem;
+                padding-bottom: 3rem;
+            }
+
+            .hero-shell {
+                position: relative;
+                overflow: hidden;
+                margin-bottom: 1.2rem;
+                padding: 1.7rem 1.8rem;
+                border-radius: 28px;
+                border: 1px solid rgba(21, 57, 66, 0.12);
+                background: linear-gradient(135deg, #0d5962 0%, #1b7380 48%, #df9451 100%);
+                box-shadow: 0 24px 54px rgba(24, 49, 83, 0.16);
+                color: #ffffff;
+            }
+
+            .hero-shell::after {
+                content: "";
+                position: absolute;
+                inset: auto -8% -32% auto;
+                width: 360px;
+                height: 360px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.08);
+                filter: blur(2px);
+            }
+
+            .hero-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.45rem;
+                padding: 0.35rem 0.8rem;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.14);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                font-size: 0.82rem;
+                font-weight: 600;
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+            }
+
+            .hero-shell h1 {
+                margin: 0.8rem 0 0.45rem;
+                color: #ffffff;
+                font-size: clamp(2rem, 4vw, 3.35rem);
+                line-height: 1.05;
+                letter-spacing: -0.03em;
+            }
+
+            .hero-copy {
+                max-width: 58rem;
+                margin: 0;
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 1.03rem;
+                line-height: 1.55;
+            }
+
+            .hero-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 0.85rem;
+                margin-top: 1.25rem;
+            }
+
+            .hero-card {
+                position: relative;
+                z-index: 1;
+                padding: 1rem 1.05rem;
+                border-radius: 22px;
+                background: rgba(255, 255, 255, 0.12);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                backdrop-filter: blur(12px);
+            }
+
+            .hero-card-label {
+                display: block;
+                color: rgba(255, 255, 255, 0.72);
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
+
+            .hero-card strong {
+                display: block;
+                margin-top: 0.25rem;
+                color: #ffffff;
+                font-size: 1.02rem;
+            }
+
+            .hero-card p {
+                margin: 0.38rem 0 0;
+                color: rgba(255, 255, 255, 0.85);
+                font-size: 0.92rem;
+                line-height: 1.45;
+            }
+
+            .section-label {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.35rem;
+                margin: 0 0 0.75rem;
+                padding: 0.34rem 0.7rem;
+                border-radius: 999px;
+                background: rgba(13, 89, 98, 0.08);
+                color: #0d5962;
+                font-size: 0.78rem;
+                font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
+
+            .mini-steps {
+                display: grid;
+                gap: 0.7rem;
+                margin-bottom: 1rem;
+            }
+
+            .mini-step {
+                padding: 0.85rem 0.95rem;
+                border-radius: 18px;
+                background: rgba(246, 242, 233, 0.78);
+                border: 1px solid rgba(118, 105, 82, 0.12);
+            }
+
+            .mini-step strong {
+                display: block;
+                color: #173b4a;
+                font-size: 0.95rem;
+            }
+
+            .mini-step span {
+                display: block;
+                margin-top: 0.2rem;
+                color: #51606b;
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+
+            div[data-testid="stFileUploader"] {
+                border-radius: 20px;
+                border: 1.5px dashed rgba(197, 137, 68, 0.82);
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(249, 245, 236, 0.98) 100%);
+                padding: 0.35rem 0.45rem;
+            }
+
+            div[data-testid="stFileUploader"] section {
+                padding: 0.15rem 0.25rem;
+            }
+
+            div[data-testid="stButton"] > button,
+            div[data-testid="stDownloadButton"] > button {
+                border-radius: 999px;
+                min-height: 2.8rem;
+                font-weight: 700;
+            }
+
+            div[data-testid="stDownloadButton"] > button {
+                background: #fff8ee;
+                color: #7a4d18;
+                border: 1px solid rgba(191, 137, 72, 0.35);
+            }
+
+            div[data-testid="stDownloadButton"] > button:hover {
+                border-color: rgba(191, 137, 72, 0.78);
+                color: #59340f;
+            }
+
+            div[data-testid="stMetric"] {
+                padding: 0.5rem 0.75rem;
+                border-radius: 18px;
+                background: rgba(246, 242, 233, 0.78);
+                border: 1px solid rgba(118, 105, 82, 0.12);
+            }
+
+            div[data-testid="stExpander"] {
+                border-radius: 18px;
+                border: 1px solid rgba(118, 105, 82, 0.12);
+                background: rgba(255, 255, 255, 0.75);
+            }
+
+            @media (max-width: 960px) {
+                .hero-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .block-container {
+                    padding-top: 1.2rem;
+                }
+            }
+        </style>
+        """,
+        unsafe_allow_html=True,
     )
 
-    st.markdown(workflow_preview_svg(), unsafe_allow_html=True)
-    st.caption("Quick workflow preview: download a sample input, run the optimizer, then review the output workbook.")
 
-    with st.expander("What each output sheet means", expanded=True):
-        st.markdown(
-            """
-            - `FG_Result`: final quantity recommendation by FG, including phase split, fill rate, unmet plan quantity, and likely limiting RM.
-            - `RM_Diagnostic`: RM availability, usage, remaining balance, utilization percent, and whether an RM is fully binding.
-            - `Purchase_Summary`: target-by-target buy scenarios showing achieved pairs, achieved margin, total buy cost, and solver status.
-            - `Run_Metadata`: solver settings, solver path, fallback signals, and run-level KPIs for auditability.
-            - `Purchase_Detail`: RM-level buy quantities and buy cost lines for the active purchase scenarios.
-            - `Purchase_<target>`: target-specific FG and RM detail sheets so planners can inspect one fill threshold at a time.
-            """
-        )
-
-    note_left, note_right = st.columns(2)
-    with note_left:
-        st.info(
-            "Results may be exact or near-optimal depending on solver settings, including "
-            "`mip_rel_gap`, `time_limit_sec`, and whether fallback heuristics were needed."
-        )
-    with note_right:
-        st.info(
-            "Purchase targets are minimum thresholds. The model may exceed a target if doing "
-            "so still minimizes the total RM buy cost for that scenario."
-        )
-
-    with st.expander("What this does not solve yet", expanded=False):
-        st.markdown(
-            """
-            - Lead-time-aware material availability
-            - Manpower or line-capacity balancing
-            - Routing or work-center sequencing
-            - Cash timing and working-capital constraints
-            - Multi-period planning across weeks or months
-            - Minimum order quantities (MOQ)
-            - Supplier allocation or vendor-specific constraints
-            """
-        )
-
-    with st.expander("Privacy note", expanded=False):
-        st.markdown(
-            """
-            Uploaded workbooks are used only for the active app session to validate inputs,
-            run the optimization, and prepare the downloadable output workbook. This app does
-            not intentionally persist uploaded files as part of the normal workflow, but you
-            should still avoid sharing confidential data in public demo environments unless it
-            has already been sanitized.
-            """
-        )
+def _render_hero() -> None:
+    st.markdown(
+        f"""
+        <section class="hero-shell">
+            <div class="hero-badge">LP Optimizer - v{__version__}</div>
+            <h1>RM-Constrained FG Planning, Moved Up Front</h1>
+            <p class="hero-copy">
+                {APP_DESCRIPTION}
+                The page is organized so the working area comes first: upload a workbook,
+                validate the structure, tune the solver, and download the optimized output
+                before diving into the narrative details below.
+            </p>
+            <div class="hero-grid">
+                <div class="hero-card">
+                    <span class="hero-card-label">Step 1</span>
+                    <strong>Upload the workbook first</strong>
+                    <p>The input drop zone now sits at the top so users can start immediately.</p>
+                </div>
+                <div class="hero-card">
+                    <span class="hero-card-label">Step 2</span>
+                    <strong>Keep controls in view</strong>
+                    <p>Validation, purchase planning, and solver settings stay close to the upload flow.</p>
+                </div>
+                <div class="hero-card">
+                    <span class="hero-card-label">Step 3</span>
+                    <strong>Read the narrative later</strong>
+                    <p>The business context and output guide move into a lower section for cleaner focus.</p>
+                </div>
+            </div>
+        </section>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
-def _render_input_requirements() -> None:
-    with st.expander("Input file structure requirements", expanded=True):
-        st.markdown("Upload an **.xlsx workbook** that contains named Excel Tables with the following structures.")
-        st.caption("Table aliases accepted: `tblFG` -> `fg_master`, `tblBOM` -> `bom_master`")
-        template_col, sample_input_col, sample_output_col = st.columns(3)
-        with template_col:
+def _render_requirements_list() -> None:
+    st.caption("Accepted aliases: `tblFG` -> `fg_master`, `tblBOM` -> `bom_master`")
+    for table_name, required_columns in REQUIRED_TABLES.items():
+        columns = ", ".join(required_columns) if required_columns else "No mandatory columns, but key/value control rows are required."
+        st.write(f"- **{table_name}**: {columns}")
+    st.info("Optional accepted columns: `fg_master` accepts `Margin` or `Unit Margin`; `tblFGPlanCap` accepts `Max Plan Qty` or `Plan Cap`.")
+
+
+def _render_support_column() -> None:
+    with st.container(border=True):
+        st.markdown("### Starter kit")
+        st.caption("Grab a workbook, inspect the sample output, or hand teammates a clean template.")
+        download_left, download_right = st.columns(2)
+        with download_left:
             st.download_button(
                 "Template (.xlsx)",
                 data=build_input_workbook(include_sample_rows=False),
                 file_name="lp_optimizer_template.xlsx",
                 mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                use_container_width=True,
             )
-        with sample_input_col:
+        with download_right:
             _render_generated_download(
                 "Sample Input (.xlsx)",
                 sample_input_bytes,
                 "lp_optimizer_sample_input.xlsx",
                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
             )
-        with sample_output_col:
-            _render_generated_download(
-                "Sample Output (.xlsx)",
-                sample_output_bytes,
-                "lp_optimizer_sample_output.xlsx",
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        _render_generated_download(
+            "Sample Output (.xlsx)",
+            sample_output_bytes,
+            "lp_optimizer_sample_output.xlsx",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        )
+
+    with st.container(border=True):
+        st.markdown("### Workbook map")
+        st.caption("Use named Excel Tables, not plain ranges.")
+        _render_requirements_list()
+
+    with st.container(border=True):
+        st.markdown("### Workflow glance")
+        st.markdown(
+            """
+            <div class="mini-steps">
+                <div class="mini-step">
+                    <strong>Prepare</strong>
+                    <span>Start from the template or sample workbook so the table names are already right.</span>
+                </div>
+                <div class="mini-step">
+                    <strong>Run</strong>
+                    <span>Upload the workbook, fix any structural issues, and launch the optimizer from the left panel.</span>
+                </div>
+                <div class="mini-step">
+                    <strong>Review</strong>
+                    <span>Download the output workbook and inspect FG, RM, and purchase-planning sheets.</span>
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        st.markdown(workflow_preview_svg(), unsafe_allow_html=True)
+        st.caption("Quick preview of the workbook-in, workbook-out flow.")
+
+
+def _render_bottom_guide() -> None:
+    st.markdown('<div class="section-label">Planner guide</div>', unsafe_allow_html=True)
+    st.caption("Narrative context and interpretation live below the control deck so the workflow stays above the fold.")
+
+    top_left, top_right = st.columns(2, gap="large")
+    with top_left:
+        with st.container(border=True):
+            st.markdown("### What it does")
+            st.write(
+                """
+                This app turns a workbook of finished-goods plans, raw-material availability,
+                BOM usage, and planner controls into an optimized production plan. It helps teams
+                see which FG quantities are worth building first, which RMs are binding, and how
+                much extra material they would need to buy to hit higher fill targets.
+                """
             )
 
-        for table_name, required_columns in REQUIRED_TABLES.items():
-            cols = ", ".join(required_columns) if required_columns else "No mandatory columns, but must include control key/value pairs."
-            st.write(f"- **{table_name}**: {cols}")
+        with st.container(border=True):
+            st.markdown("### Business example")
+            st.write(
+                """
+                Imagine a footwear factory that has monthly FG targets but not enough leather,
+                soles, or trims to make everything. Instead of manually comparing dozens of SKUs
+                and hundreds of materials, the optimizer recommends the best production mix under
+                current RM constraints and then shows the lowest-cost buy plan for hitting higher
+                service levels.
+                """
+            )
 
-        st.info("Optional accepted columns: `fg_master` accepts `Margin` or `Unit Margin`; `tblFGPlanCap` accepts `Max Plan Qty` or `Plan Cap`.")
+    with top_right:
+        with st.container(border=True):
+            st.markdown("### Who it is for")
+            st.write(
+                """
+                It is designed for production planners, procurement teams, operations leaders,
+                and analysts who need a fast answer to: "Given scarce RM, what should we build
+                now, and what would it cost to buy our way to a higher plan fill?"
+                """
+            )
+
+        with st.container(border=True):
+            st.markdown("### What each output sheet means")
+            st.markdown(
+                """
+                - `FG_Result`: final quantity recommendation by FG, including phase split, fill rate, unmet plan quantity, and likely limiting RM.
+                - `RM_Diagnostic`: RM availability, usage, remaining balance, utilization percent, and whether an RM is fully binding.
+                - `Purchase_Summary`: target-by-target buy scenarios showing achieved pairs, achieved margin, total buy cost, and solver status.
+                - `Run_Metadata`: solver settings, solver path, fallback signals, and run-level KPIs for auditability.
+                - `Purchase_Detail`: RM-level buy quantities and buy cost lines for the active purchase scenarios.
+                - `Purchase_<target>`: target-specific FG and RM detail sheets so planners can inspect one fill threshold at a time.
+                """
+            )
+
+    with st.container(border=True):
+        st.markdown("### Run notes")
+        note_left, note_right = st.columns(2)
+        with note_left:
+            st.info(
+                "Results may be exact or near-optimal depending on solver settings, including "
+                "`mip_rel_gap`, `time_limit_sec`, and whether fallback heuristics were needed."
+            )
+        with note_right:
+            st.info(
+                "Purchase targets are minimum thresholds. The model may exceed a target if doing "
+                "so still minimizes the total RM buy cost for that scenario."
+            )
+
+        detail_left, detail_right = st.columns(2, gap="large")
+        with detail_left:
+            with st.expander("What this does not solve yet", expanded=False):
+                st.markdown(
+                    """
+                    - Lead-time-aware material availability
+                    - Manpower or line-capacity balancing
+                    - Routing or work-center sequencing
+                    - Cash timing and working-capital constraints
+                    - Multi-period planning across weeks or months
+                    - Minimum order quantities (MOQ)
+                    - Supplier allocation or vendor-specific constraints
+                    """
+                )
+        with detail_right:
+            with st.expander("Privacy note", expanded=False):
+                st.markdown(
+                    """
+                    Uploaded workbooks are used only for the active app session to validate inputs,
+                    run the optimization, and prepare the downloadable output workbook. This app does
+                    not intentionally persist uploaded files as part of the normal workflow, but you
+                    should still avoid sharing confidential data in public demo environments unless it
+                    has already been sanitized.
+                    """
+                )
 
 
 def _run_quality_message(meta_map: dict[str, str]) -> str:
@@ -230,155 +517,232 @@ def _run_quality_message(meta_map: dict[str, str]) -> str:
     )
 
 
-st.set_page_config(page_title="LP Optimizer Service", page_icon=":bar_chart:", layout="centered")
-st.title("LP Optimizer Service for RM-Constrained FG Planning")
+st.set_page_config(page_title="LP Optimizer Service", page_icon=":bar_chart:", layout="wide")
 
-_render_intro()
-_render_input_requirements()
+_inject_page_styles()
+_render_hero()
 
-upload = st.file_uploader("Upload input Excel (.xlsx)", type=["xlsx"])
+st.markdown('<div class="section-label">Control deck</div>', unsafe_allow_html=True)
 
-if upload is not None:
+main_col, side_col = st.columns([1.35, 0.95], gap="large")
+
+with main_col:
+    with st.container(border=True):
+        st.markdown("### Upload workbook")
+        st.caption("Start here. Once the workbook checks out, the optimization controls unlock directly below.")
+        upload = st.file_uploader("Upload input Excel (.xlsx)", type=["xlsx"], label_visibility="collapsed")
+        if upload is None:
+            st.info("Upload an `.xlsx` workbook to unlock validation, solver controls, and the output download.")
+
+with side_col:
+    _render_support_column()
+
+if upload is None:
+    with main_col:
+        with st.container(border=True):
+            st.markdown("### What happens next")
+            st.markdown(
+                """
+                - The app checks the workbook structure and reports missing or mismatched tables.
+                - Once validation passes, purchase-planning and solver settings become available in the same column.
+                - After the run finishes, the output workbook download and summary stay right below the controls.
+                """
+            )
+else:
     raw = upload.read()
     try:
-        st.subheader("File quality diagnosis")
         diagnosis = diagnose_workbook_structure(raw)
 
-        if diagnosis["issues"]:
-            for issue in diagnosis["issues"]:
-                st.error(issue)
-        if diagnosis["warnings"]:
-            for warning in diagnosis["warnings"]:
-                st.warning(warning)
-        if diagnosis["tables"]:
-            st.write({"Detected tables": diagnosis["tables"]})
+        with main_col:
+            with st.container(border=True):
+                st.markdown("### File readiness")
+                status_left, status_mid, status_right = st.columns(3)
+                with status_left:
+                    st.metric("Detected tables", f"{len(diagnosis['tables'])}")
+                with status_mid:
+                    st.metric("Warnings", f"{len(diagnosis['warnings'])}")
+                with status_right:
+                    st.metric("Issues", f"{len(diagnosis['issues'])}")
+
+                st.caption(f"Current workbook: `{upload.name}` - {len(raw) / 1024:.1f} KB")
+
+                if diagnosis["issues"]:
+                    for issue in diagnosis["issues"]:
+                        st.error(issue)
+                if diagnosis["warnings"]:
+                    for warning in diagnosis["warnings"]:
+                        st.warning(warning)
+                if diagnosis["tables"]:
+                    detected_tables = ", ".join(f"`{table_name}`" for table_name in diagnosis["tables"])
+                    st.markdown(f"Detected tables: {detected_tables}")
 
         if diagnosis["issues"]:
-            st.stop()
+            with main_col:
+                with st.container(border=True):
+                    st.markdown("### Optimization controls")
+                    st.info("Fix the workbook issues above and re-upload. Controls stay disabled until the structure checks pass.")
+        else:
+            tables = load_tables_from_excel(raw)
+            validate_inputs(tables)
 
-        tables = load_tables_from_excel(raw)
-        validate_inputs(tables)
-        st.success("Validation passed.")
+            with main_col:
+                with st.container(border=True):
+                    st.markdown("### Optimization controls")
+                    st.success("Validation passed. The workbook is ready to run.")
 
-        run_purchase_planner = st.checkbox("Run purchase planner", value=True)
-        purchase_targets_raw = "25,50,75,100"
-        if run_purchase_planner:
-            purchase_targets_raw = st.text_input("purchase targets (%)", value="25,50,75,100")
+                    control_left, control_right = st.columns(2, gap="large")
+                    with control_left:
+                        run_purchase_planner = st.checkbox("Run purchase planner", value=True)
+                        purchase_targets_raw = "25,50,75,100"
+                        if run_purchase_planner:
+                            purchase_targets_raw = st.text_input(
+                                "Purchase targets (%)",
+                                value="25,50,75,100",
+                                help="Comma-separated minimum fill targets like 25,50,75,100.",
+                            )
+                        else:
+                            st.caption("Purchase target scenarios are skipped when purchase planning is off.")
 
-        with st.expander("Advanced solver controls", expanded=False):
-            threads_raw = st.text_input("threads (integer, blank = auto)", value="")
-            mip_rel_gap_raw = st.text_input("mip_rel_gap (float, default 0.01)", value="0.01")
-            time_limit_sec_raw = st.text_input("time_limit_sec (float, blank = unset)", value="")
-            st.caption("Blank threads uses the app default and is capped for safer multi-user execution.")
+                    with control_right:
+                        threads_raw = st.text_input("threads (integer, blank = auto)", value="")
+                        mip_rel_gap_raw = st.text_input("mip_rel_gap (float, default 0.01)", value="0.01")
+                        time_limit_sec_raw = st.text_input("time_limit_sec (float, blank = unset)", value="")
 
-        if st.button("Run Optimization", type="primary"):
-            threads_value = _optional_int_value(threads_raw, "threads")
-            mip_rel_gap_value = _optional_float_value(mip_rel_gap_raw, "mip_rel_gap", min_value=0.0, max_value=1.0)
-            time_limit_value = _optional_float_value(time_limit_sec_raw, "time_limit_sec", min_value=0.0, min_inclusive=False)
-            purchase_targets_value = _purchase_targets_value(purchase_targets_raw) if run_purchase_planner else None
+                    st.caption("Blank `threads` uses the app default and is capped for safer multi-user execution.")
+                    run_clicked = st.button("Run optimization", type="primary", use_container_width=True)
 
-            stage_holder = st.empty()
-            overall_holder = st.empty()
-            elapsed_holder = st.empty()
-            heartbeat_holder = st.empty()
-            stage_progress = st.progress(0, text="Current stage progress: 0%")
-            overall_progress = st.progress(0, text="Overall progress: 0%")
-            run_start = time.monotonic()
+            if run_clicked:
+                threads_value = _optional_int_value(threads_raw, "threads")
+                mip_rel_gap_value = _optional_float_value(mip_rel_gap_raw, "mip_rel_gap", min_value=0.0, max_value=1.0)
+                time_limit_value = _optional_float_value(time_limit_sec_raw, "time_limit_sec", min_value=0.0, min_inclusive=False)
+                purchase_targets_value = _purchase_targets_value(purchase_targets_raw) if run_purchase_planner else None
 
-            def on_progress(stage: str, stage_pct: float, overall_pct: float, status_text: str, is_heartbeat: bool) -> None:
+                with main_col:
+                    with st.container(border=True):
+                        st.markdown("### Solver progress")
+
+                        stage_holder = st.empty()
+                        overall_holder = st.empty()
+                        elapsed_holder = st.empty()
+                        heartbeat_holder = st.empty()
+                        stage_progress = st.progress(0, text="Current stage progress: 0%")
+                        overall_progress = st.progress(0, text="Overall progress: 0%")
+                        run_start = time.monotonic()
+
+                        def on_progress(stage: str, stage_pct: float, overall_pct: float, status_text: str, is_heartbeat: bool) -> None:
+                            try:
+                                elapsed_total = time.monotonic() - run_start
+                                stage_holder.info(f"Current stage: {stage}")
+                                overall_holder.caption(f"Solver overall progress: {overall_pct:.0f}%")
+                                elapsed_holder.caption(f"Elapsed runtime: {elapsed_total:.1f}s")
+                                if is_heartbeat:
+                                    heartbeat_holder.warning(f"Solver still running... {status_text}")
+                                else:
+                                    heartbeat_holder.info(status_text)
+                                stage_progress.progress(int(stage_pct), text=f"Current stage progress: {stage_pct:.0f}%")
+                                overall_progress.progress(int(overall_pct), text=f"Overall progress: {overall_pct:.0f}%")
+                            except NoSessionContext:
+                                # Streamlit widgets cannot be updated from detached background threads
+                                # after the client disconnects; ignore these stale heartbeat updates.
+                                return
+
+                        fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df = run_optimization(
+                            tables,
+                            run_purchase_planner=run_purchase_planner,
+                            progress_callback=on_progress,
+                            threads=threads_value,
+                            mip_rel_gap=mip_rel_gap_value,
+                            time_limit_sec=time_limit_value,
+                            purchase_target_fill_pcts=purchase_targets_value,
+                        )
+
+                meta_map = dict(zip(meta_df["Key"], meta_df["Value"])) if {"Key", "Value"}.issubset(meta_df.columns) else {}
+                if str(meta_map.get("heuristic_cutoff_hit", "False")).lower() == "true":
+                    with main_col:
+                        with st.container(border=True):
+                            st.warning(
+                                "Phase A fallback heuristic ended due to safety limits "
+                                f"(reason: {meta_map.get('cutoff_reason', 'unknown')}, "
+                                f"iterations: {meta_map.get('heuristic_iterations', 'n/a')}, "
+                                f"elapsed sec: {meta_map.get('fallback_elapsed_sec', 'n/a')})."
+                            )
+
+                purchase_target_sheets = purchase_detail_df.attrs.get("purchase_target_sheets")
                 try:
-                    elapsed_total = time.monotonic() - run_start
-                    stage_holder.info(f"Current stage: {stage}")
-                    overall_holder.caption(f"Solver overall progress: {overall_pct:.0f}%")
-                    elapsed_holder.caption(f"Elapsed runtime: {elapsed_total:.1f}s")
-                    if is_heartbeat:
-                        heartbeat_holder.warning(f"Solver still running... {status_text}")
-                    else:
-                        heartbeat_holder.info(status_text)
-                    stage_progress.progress(int(stage_pct), text=f"Current stage progress: {stage_pct:.0f}%")
-                    overall_progress.progress(int(overall_pct), text=f"Overall progress: {overall_pct:.0f}%")
-                except NoSessionContext:
-                    # Streamlit widgets cannot be updated from detached background threads
-                    # after the client disconnects; ignore these stale heartbeat updates.
-                    return
-
-            fg_df, rm_df, meta_df, purchase_summary_df, purchase_detail_df = run_optimization(
-                tables,
-                run_purchase_planner=run_purchase_planner,
-                progress_callback=on_progress,
-                threads=threads_value,
-                mip_rel_gap=mip_rel_gap_value,
-                time_limit_sec=time_limit_value,
-                purchase_target_fill_pcts=purchase_targets_value,
-            )
-            meta_map = dict(zip(meta_df["Key"], meta_df["Value"])) if {"Key", "Value"}.issubset(meta_df.columns) else {}
-            if str(meta_map.get("heuristic_cutoff_hit", "False")).lower() == "true":
-                st.warning(
-                    "Phase A fallback heuristic ended due to safety limits "
-                    f"(reason: {meta_map.get('cutoff_reason', 'unknown')}, "
-                    f"iterations: {meta_map.get('heuristic_iterations', 'n/a')}, "
-                    f"elapsed sec: {meta_map.get('fallback_elapsed_sec', 'n/a')})."
-                )
-            purchase_target_sheets = purchase_detail_df.attrs.get("purchase_target_sheets")
-            try:
-                out_bytes = write_output_excel(
-                    fg_df,
-                    rm_df,
-                    meta_df,
-                    purchase_summary_df,
-                    purchase_detail_df,
-                    purchase_target_sheets=purchase_target_sheets,
-                )
-            except TypeError as exc:
-                if "purchase_target_sheets" not in str(exc):
-                    raise
-                out_bytes = write_output_excel(
-                    fg_df,
-                    rm_df,
-                    meta_df,
-                    purchase_summary_df,
-                    purchase_detail_df,
-                )
-
-            st.subheader("Summary")
-            st.write(
-                {
-                    "Total Pairs": int(fg_df["Opt Qty Total"].sum()),
-                    "Total Margin": float(fg_df["Total Margin"].sum()),
-                    "RM rows": int(len(rm_df)),
-                }
-            )
-            st.caption(_run_quality_message(meta_map))
-
-            if run_purchase_planner and not purchase_summary_df.empty and "Status" in purchase_summary_df.columns:
-                fallback_rows = purchase_summary_df[purchase_summary_df["Status"].astype(str).str.startswith("fallback_")]
-                if not fallback_rows.empty:
-                    st.info(
-                        "Purchase planner fallback statuses detected: "
-                        + ", ".join(sorted(fallback_rows["Status"].astype(str).unique()))
-                        + ". Check `MIPStatus`, `LPStatus`, and cutoff columns for diagnostics."
+                    out_bytes = write_output_excel(
+                        fg_df,
+                        rm_df,
+                        meta_df,
+                        purchase_summary_df,
+                        purchase_detail_df,
+                        purchase_target_sheets=purchase_target_sheets,
                     )
-                audit_warning_rows = (
-                    purchase_summary_df[purchase_summary_df.get("AuditWarning", "none").astype(str).str.lower() != "none"]
-                    if "AuditWarning" in purchase_summary_df.columns
-                    else purchase_summary_df.iloc[0:0]
-                )
-                if not audit_warning_rows.empty:
-                    st.warning("One or more purchase-plan audit checks reported warnings. Review the `AuditWarning` column in `Purchase_Summary`.")
+                except TypeError as exc:
+                    if "purchase_target_sheets" not in str(exc):
+                        raise
+                    out_bytes = write_output_excel(
+                        fg_df,
+                        rm_df,
+                        meta_df,
+                        purchase_summary_df,
+                        purchase_detail_df,
+                    )
 
-            if run_purchase_planner and not purchase_summary_df.empty:
-                st.subheader("Purchase summary preview")
-                st.dataframe(purchase_summary_df, use_container_width=True)
+                with main_col:
+                    with st.container(border=True):
+                        st.markdown("### Results")
+                        summary_left, summary_mid, summary_right = st.columns(3)
+                        with summary_left:
+                            st.metric("Total pairs", f"{int(fg_df['Opt Qty Total'].sum()):,}")
+                        with summary_mid:
+                            st.metric("Total margin", f"{float(fg_df['Total Margin'].sum()):,.2f}")
+                        with summary_right:
+                            st.metric("RM rows", f"{int(len(rm_df)):,}")
 
-            st.download_button(
-                "Download optimized output (.xlsx)",
-                data=out_bytes,
-                file_name="optimization_output.xlsx",
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            )
-    except ValidationError as e:
-        st.error(f"Validation failed:\n{e}")
-    except UserInputError as e:
-        st.error(f"Input error:\n{e}")
-    except Exception as e:
-        st.exception(e)
+                        st.caption(_run_quality_message(meta_map))
+
+                        if run_purchase_planner and not purchase_summary_df.empty and "Status" in purchase_summary_df.columns:
+                            fallback_rows = purchase_summary_df[purchase_summary_df["Status"].astype(str).str.startswith("fallback_")]
+                            if not fallback_rows.empty:
+                                st.info(
+                                    "Purchase planner fallback statuses detected: "
+                                    + ", ".join(sorted(fallback_rows["Status"].astype(str).unique()))
+                                    + ". Check `MIPStatus`, `LPStatus`, and cutoff columns for diagnostics."
+                                )
+                            audit_warning_rows = (
+                                purchase_summary_df[purchase_summary_df.get("AuditWarning", "none").astype(str).str.lower() != "none"]
+                                if "AuditWarning" in purchase_summary_df.columns
+                                else purchase_summary_df.iloc[0:0]
+                            )
+                            if not audit_warning_rows.empty:
+                                st.warning("One or more purchase-plan audit checks reported warnings. Review the `AuditWarning` column in `Purchase_Summary`.")
+
+                        if run_purchase_planner and not purchase_summary_df.empty:
+                            with st.expander("Purchase summary preview", expanded=True):
+                                st.dataframe(purchase_summary_df, use_container_width=True)
+
+                        with st.expander("Run metadata", expanded=False):
+                            st.dataframe(meta_df, use_container_width=True)
+
+                        st.download_button(
+                            "Download optimized output (.xlsx)",
+                            data=out_bytes,
+                            file_name="optimization_output.xlsx",
+                            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                            use_container_width=True,
+                        )
+    except ValidationError as exc:
+        with main_col:
+            with st.container(border=True):
+                st.error(f"Validation failed:\n{exc}")
+    except UserInputError as exc:
+        with main_col:
+            with st.container(border=True):
+                st.error(f"Input error:\n{exc}")
+    except Exception as exc:
+        with main_col:
+            with st.container(border=True):
+                st.exception(exc)
+
+st.divider()
+_render_bottom_guide()
