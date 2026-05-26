@@ -547,6 +547,11 @@ def _render_starter_kit() -> None:
             "lp_optimizer_sample_output.xlsx",
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         )
+        st.link_button(
+            "Try the interactive web demo",
+            "https://prottoymkp.github.io/linp/",
+            use_container_width=True,
+        )
 
 
 def _render_workbook_map() -> None:

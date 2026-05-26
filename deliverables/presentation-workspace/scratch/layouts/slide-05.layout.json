@@ -1,0 +1,1925 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/hi9blo",
+    "id": "hi9blo",
+    "slide": 5,
+    "layoutId": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "283b815a-d041-44df-ac1f-251be766cf19",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d8v6psfi",
+      "id": "1",
+      "name": "slide-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#101312"
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6hcrmhk3",
+      "id": "2",
+      "name": "slide-title",
+      "bbox": [
+        90,
+        70,
+        1740,
+        66
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "The optimization question is concrete",
+      "textPreview": "The optimization question is concrete",
+      "resolvedFontSize": 54,
+      "resolvedTextStyle": {
+        "fontSize": 54,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The optimization question is concrete"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The optimization question is concrete",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The optimization question is concrete",
+              "fontSize": 54,
+              "color": "#FFFFFF",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/z25kb6xk",
+      "id": "3",
+      "name": "slide-subtitle",
+      "bbox": [
+        90,
+        148,
+        1160,
+        60
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "Given scarce raw material, what should we build now, and what would it cost to buy our way to a higher fill target?",
+      "textPreview": "Given scarce raw material, what should we build now, and what would it cost to buy our way to a higher fill target?",
+      "resolvedFontSize": 25,
+      "resolvedTextStyle": {
+        "fontSize": 25,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Given scarce raw material, what should we build now, and what would it cost to buy our way to a higher fill"
+          },
+          {
+            "index": 2,
+            "text": "target?"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Given scarce raw material, what should we build now, and what would it cost to buy our way to a higher fill target?",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Given scarce raw material, what should we build now, and what would it cost to buy our way to a higher fill target?",
+              "fontSize": 25,
+              "color": "#C9D6D2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ovahoza1",
+      "id": "4",
+      "name": "s5-main",
+      "bbox": [
+        90,
+        450,
+        666,
+        202
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0"
+      },
+      "geometry": "rect",
+      "text": "Choose integer production quantities for every FG style.",
+      "textPreview": "Choose integer production quantities for every FG style.",
+      "resolvedFontSize": 56,
+      "resolvedTextStyle": {
+        "fontSize": 56,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Choose integer production"
+          },
+          {
+            "index": 2,
+            "text": "quantities for every FG style."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Choose integer production quantities for every FG style.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Choose integer production quantities for every FG style.",
+              "fontSize": 56,
+              "color": "#FFFFFF",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dg7adsji",
+      "id": "5",
+      "name": "s5-support",
+      "bbox": [
+        90,
+        684,
+        674,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1"
+      },
+      "geometry": "rect",
+      "text": "The answer must respect every raw-material constraint and every plan cap.",
+      "textPreview": "The answer must respect every raw-material constraint and every plan cap.",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The answer must respect every raw-material constraint"
+          },
+          {
+            "index": 2,
+            "text": "and every plan cap."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The answer must respect every raw-material constraint and every plan cap.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The answer must respect every raw-material constraint and every plan cap.",
+              "fontSize": 28,
+              "color": "#DDE8E4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6tovahoz",
+      "id": "6",
+      "name": "s5-c1",
+      "bbox": [
+        1040.4,
+        391.6,
+        789.6,
+        128.4
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#F6F1EA",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 1
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vahoza1g",
+      "id": "7",
+      "name": "s5-x-value",
+      "bbox": [
+        1066,
+        414,
+        738,
+        58
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.0.0"
+      },
+      "geometry": "rect",
+      "text": "x_fg",
+      "textPreview": "x_fg",
+      "resolvedFontSize": 48,
+      "resolvedTextStyle": {
+        "fontSize": 48,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "x_fg"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "x_fg",
+          "runs": [
+            {
+              "index": 1,
+              "text": "x_fg",
+              "fontSize": 48,
+              "color": "#1F5B63",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/o7qpg3ex",
+      "id": "8",
+      "name": "s5-x-caption",
+      "bbox": [
+        1066,
+        476,
+        738,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.0.1"
+      },
+      "geometry": "rect",
+      "text": "decision variable: pairs to produce",
+      "textPreview": "decision variable: pairs to produce",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "decision variable: pairs to produce"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "decision variable: pairs to produce",
+          "runs": [
+            {
+              "index": 1,
+              "text": "decision variable: pairs to produce",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dsji5sne",
+      "id": "9",
+      "name": "s5-c2",
+      "bbox": [
+        1040.4,
+        544,
+        789.6,
+        121.2
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.1"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#F6F1EA",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 1
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/pwb2hwfy",
+      "id": "10",
+      "name": "s5-bom-value",
+      "bbox": [
+        1066,
+        566,
+        738,
+        52
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "BOM x quantity <= RM available",
+      "textPreview": "BOM x quantity <= RM available",
+      "resolvedFontSize": 42,
+      "resolvedTextStyle": {
+        "fontSize": 42,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "BOM x quantity <= RM available"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "BOM x quantity <= RM available",
+          "runs": [
+            {
+              "index": 1,
+              "text": "BOM x quantity <= RM available",
+              "fontSize": 42,
+              "color": "#A96533",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0bi9s36h",
+      "id": "11",
+      "name": "s5-bom-caption",
+      "bbox": [
+        1066,
+        620,
+        738,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "constraint: material usage cannot exceed stock or stock plus PO",
+      "textPreview": "constraint: material usage cannot exceed stock or stock plus PO",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "constraint: material usage cannot exceed stock or stock plus PO"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "constraint: material usage cannot exceed stock or stock plus PO",
+          "runs": [
+            {
+              "index": 1,
+              "text": "constraint: material usage cannot exceed stock or stock plus PO",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7qpg3ex0",
+      "id": "12",
+      "name": "s5-c3",
+      "bbox": [
+        1040.4,
+        689.2,
+        789.6,
+        121.2
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.2"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#F6F1EA",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 1
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/i5sneloj",
+      "id": "13",
+      "name": "s5-cap-value",
+      "bbox": [
+        1066,
+        712,
+        738,
+        52
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.2.0.0"
+      },
+      "geometry": "rect",
+      "text": "0 <= x_fg <= plan cap",
+      "textPreview": "0 <= x_fg <= plan cap",
+      "resolvedFontSize": 42,
+      "resolvedTextStyle": {
+        "fontSize": 42,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "0 <= x_fg <= plan cap"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "0 <= x_fg <= plan cap",
+          "runs": [
+            {
+              "index": 1,
+              "text": "0 <= x_fg <= plan cap",
+              "fontSize": 42,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p4r65wju",
+      "id": "14",
+      "name": "s5-cap-caption",
+      "bbox": [
+        1066,
+        766,
+        738,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.2.0.1"
+      },
+      "geometry": "rect",
+      "text": "constraint: production recommendation stays inside the plan envelope",
+      "textPreview": "constraint: production recommendation stays inside the plan envelope",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "constraint: production recommendation stays inside the plan envelope"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "constraint: production recommendation stays inside the plan envelope",
+          "runs": [
+            {
+              "index": 1,
+              "text": "constraint: production recommendation stays inside the plan envelope",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wjudg7ad",
+      "id": "15",
+      "name": "footer",
+      "bbox": [
+        90,
+        994,
+        1740,
+        18
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.3"
+      },
+      "geometry": "rect",
+      "text": "Algorithm summary based on app/model.py and app/orchestrator.py.",
+      "textPreview": "Algorithm summary based on app/model.py and app/orchestrator.py.",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Algorithm summary based on app/model.py and app/orchestrator.py."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Algorithm summary based on app/model.py and app/orchestrator.py.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Algorithm summary based on app/model.py and app/orchestrator.py.",
+              "fontSize": 14,
+              "color": "#77867F"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "baseUnit": 8,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "s5-root",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 0,
+          "height": 0
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "shape",
+            "name": "slide-bg",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 0,
+              "height": 0
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "snappedFrame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [],
+            "geometry": "rect",
+            "element": {
+              "aid": "sh/d8v6psfi",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "grid",
+            "name": "s5-grid",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 240,
+              "height": 333.6
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [
+              {
+                "path": "0.1.0",
+                "kind": "column",
+                "name": "title-stack",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 1160,
+                  "height": 108.8
+                },
+                "frame": {
+                  "left": 90,
+                  "top": 70,
+                  "width": 1740,
+                  "height": 138.8
+                },
+                "children": [
+                  {
+                    "path": "0.1.0.0",
+                    "kind": "text",
+                    "name": "slide-title",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 64.8
+                    },
+                    "frame": {
+                      "left": 90,
+                      "top": 70,
+                      "width": 1740,
+                      "height": 64.8
+                    },
+                    "snappedFrame": {
+                      "left": 90,
+                      "top": 70,
+                      "width": 1740,
+                      "height": 66
+                    },
+                    "children": [],
+                    "text": "The optimization question is concrete",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/6hcrmhk3",
+                      "id": "2",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "kind": "text",
+                    "name": "slide-subtitle",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 1320
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 1160,
+                      "height": 30
+                    },
+                    "frame": {
+                      "left": 90,
+                      "top": 148.8,
+                      "width": 1160,
+                      "height": 60
+                    },
+                    "snappedFrame": {
+                      "left": 90,
+                      "top": 148,
+                      "width": 1160,
+                      "height": 60
+                    },
+                    "children": [],
+                    "text": "Given scarce raw material, what should we build now, and what would it cost to buy our way to a higher fill target?",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/z25kb6xk",
+                      "id": "3",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 14,
+                "effectiveGap": 14,
+                "justifyOffset": 0,
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 90,
+                  "top": 70,
+                  "width": 1740,
+                  "height": 138.8
+                },
+                "items": [
+                  {
+                    "path": "0.1.0.0",
+                    "frame": {
+                      "left": 90,
+                      "top": 70,
+                      "width": 1740,
+                      "height": 64.8
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "frame": {
+                      "left": 90,
+                      "top": 148.8,
+                      "width": 1160,
+                      "height": 60
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.1",
+                "kind": "column",
+                "name": "s5-question",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 674.64,
+                  "height": 233.6
+                },
+                "frame": {
+                  "left": 90,
+                  "top": 242.8,
+                  "width": 890.4,
+                  "height": 716.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.1.0",
+                    "kind": "text",
+                    "name": "s5-main",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 820
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 665.24,
+                      "height": 134.4
+                    },
+                    "frame": {
+                      "left": 90,
+                      "top": 450.6,
+                      "width": 665.24,
+                      "height": 201.6
+                    },
+                    "snappedFrame": {
+                      "left": 90,
+                      "top": 450,
+                      "width": 666,
+                      "height": 202
+                    },
+                    "children": [],
+                    "text": "Choose integer production quantities for every FG style.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/ovahoza1",
+                      "id": "4",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "kind": "text",
+                    "name": "s5-support",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 740
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 674.64,
+                      "height": 67.2
+                    },
+                    "frame": {
+                      "left": 90,
+                      "top": 684.2,
+                      "width": 674.64,
+                      "height": 67.2
+                    },
+                    "snappedFrame": {
+                      "left": 90,
+                      "top": 684,
+                      "width": 674,
+                      "height": 68
+                    },
+                    "children": [],
+                    "text": "The answer must respect every raw-material constraint and every plan cap.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/dg7adsji",
+                      "id": "5",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 32,
+                "effectiveGap": 32,
+                "justifyOffset": 207.8,
+                "align": "start",
+                "justify": "center",
+                "contentFrame": {
+                  "left": 90,
+                  "top": 242.8,
+                  "width": 890.4,
+                  "height": 716.4
+                },
+                "items": [
+                  {
+                    "path": "0.1.1.0",
+                    "frame": {
+                      "left": 90,
+                      "top": 450.6,
+                      "width": 665.24,
+                      "height": 201.6
+                    }
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "frame": {
+                      "left": 90,
+                      "top": 684.2,
+                      "width": 674.64,
+                      "height": 67.2
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.2",
+                "kind": "column",
+                "name": "s5-constraint-list",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 418.8
+                },
+                "frame": {
+                  "left": 1040.4,
+                  "top": 242.8,
+                  "width": 789.6,
+                  "height": 716.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.2.0",
+                    "kind": "panel",
+                    "name": "s5-c1",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 52,
+                      "height": 128.4
+                    },
+                    "frame": {
+                      "left": 1040.4,
+                      "top": 391.6,
+                      "width": 789.6,
+                      "height": 128.4
+                    },
+                    "snappedFrame": {
+                      "left": 1040.4,
+                      "top": 391.6,
+                      "width": 789.6,
+                      "height": 128.4
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.2.0.0",
+                        "kind": "column",
+                        "name": "s5-x",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 84.4
+                        },
+                        "frame": {
+                          "left": 1066.4,
+                          "top": 413.6,
+                          "width": 737.6,
+                          "height": 84.4
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.2.0.0.0",
+                            "kind": "text",
+                            "name": "s5-x-value",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 57.6
+                            },
+                            "frame": {
+                              "left": 1066.4,
+                              "top": 413.6,
+                              "width": 737.6,
+                              "height": 57.6
+                            },
+                            "snappedFrame": {
+                              "left": 1066,
+                              "top": 414,
+                              "width": 738,
+                              "height": 58
+                            },
+                            "children": [],
+                            "text": "x_fg",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/vahoza1g",
+                              "id": "7",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.0.1",
+                            "kind": "text",
+                            "name": "s5-x-caption",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 22.8
+                            },
+                            "frame": {
+                              "left": 1066.4,
+                              "top": 475.2,
+                              "width": 737.6,
+                              "height": 22.8
+                            },
+                            "snappedFrame": {
+                              "left": 1066,
+                              "top": 476,
+                              "width": 738,
+                              "height": 24
+                            },
+                            "children": [],
+                            "text": "decision variable: pairs to produce",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/o7qpg3ex",
+                              "id": "8",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 4,
+                        "effectiveGap": 4,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 1066.4,
+                          "top": 413.6,
+                          "width": 737.6,
+                          "height": 84.4
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.2.0.0.0",
+                            "frame": {
+                              "left": 1066.4,
+                              "top": 413.6,
+                              "width": 737.6,
+                              "height": 57.6
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.0.1",
+                            "frame": {
+                              "left": 1066.4,
+                              "top": 475.2,
+                              "width": 737.6,
+                              "height": 22.8
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "padding": {
+                      "top": 22,
+                      "right": 26,
+                      "bottom": 22,
+                      "left": 26
+                    },
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 1066.4,
+                      "top": 413.6,
+                      "width": 737.6,
+                      "height": 84.4
+                    },
+                    "element": {
+                      "aid": "sh/6tovahoz",
+                      "id": "6",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.2.1",
+                    "kind": "panel",
+                    "name": "s5-c2",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 52,
+                      "height": 121.2
+                    },
+                    "frame": {
+                      "left": 1040.4,
+                      "top": 544,
+                      "width": 789.6,
+                      "height": 121.2
+                    },
+                    "snappedFrame": {
+                      "left": 1040.4,
+                      "top": 544,
+                      "width": 789.6,
+                      "height": 121.2
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.2.1.0",
+                        "kind": "column",
+                        "name": "s5-bom",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 77.2
+                        },
+                        "frame": {
+                          "left": 1066.4,
+                          "top": 566,
+                          "width": 737.6,
+                          "height": 77.2
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.2.1.0.0",
+                            "kind": "text",
+                            "name": "s5-bom-value",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 50.4
+                            },
+                            "frame": {
+                              "left": 1066.4,
+                              "top": 566,
+                              "width": 737.6,
+                              "height": 50.4
+                            },
+                            "snappedFrame": {
+                              "left": 1066,
+                              "top": 566,
+                              "width": 738,
+                              "height": 52
+                            },
+                            "children": [],
+                            "text": "BOM x quantity <= RM available",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/pwb2hwfy",
+                              "id": "10",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.2.1.0.1",
+                            "kind": "text",
+                            "name": "s5-bom-caption",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 22.8
+                            },
+                            "frame": {
+                              "left": 1066.4,
+                              "top": 620.4,
+                              "width": 737.6,
+                              "height": 22.8
+                            },
+                            "snappedFrame": {
+                              "left": 1066,
+                              "top": 620,
+                              "width": 738,
+                              "height": 24
+                            },
+                            "children": [],
+                            "text": "constraint: material usage cannot exceed stock or stock plus PO",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/0bi9s36h",
+                              "id": "11",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 4,
+                        "effectiveGap": 4,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 1066.4,
+                          "top": 566,
+                          "width": 737.6,
+                          "height": 77.2
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.2.1.0.0",
+                            "frame": {
+                              "left": 1066.4,
+                              "top": 566,
+                              "width": 737.6,
+                              "height": 50.4
+                            }
+                          },
+                          {
+                            "path": "0.1.2.1.0.1",
+                            "frame": {
+                              "left": 1066.4,
+                              "top": 620.4,
+                              "width": 737.6,
+                              "height": 22.8
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "padding": {
+                      "top": 22,
+                      "right": 26,
+                      "bottom": 22,
+                      "left": 26
+                    },
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 1066.4,
+                      "top": 566,
+                      "width": 737.6,
+                      "height": 77.2
+                    },
+                    "element": {
+                      "aid": "sh/dsji5sne",
+                      "id": "9",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.2.2",
+                    "kind": "panel",
+                    "name": "s5-c3",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 52,
+                      "height": 121.2
+                    },
+                    "frame": {
+                      "left": 1040.4,
+                      "top": 689.2,
+                      "width": 789.6,
+                      "height": 121.2
+                    },
+                    "snappedFrame": {
+                      "left": 1040.4,
+                      "top": 689.2,
+                      "width": 789.6,
+                      "height": 121.2
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.2.2.0",
+                        "kind": "column",
+                        "name": "s5-cap",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 77.2
+                        },
+                        "frame": {
+                          "left": 1066.4,
+                          "top": 711.2,
+                          "width": 737.6,
+                          "height": 77.2
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.2.2.0.0",
+                            "kind": "text",
+                            "name": "s5-cap-value",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 50.4
+                            },
+                            "frame": {
+                              "left": 1066.4,
+                              "top": 711.2,
+                              "width": 737.6,
+                              "height": 50.4
+                            },
+                            "snappedFrame": {
+                              "left": 1066,
+                              "top": 712,
+                              "width": 738,
+                              "height": 52
+                            },
+                            "children": [],
+                            "text": "0 <= x_fg <= plan cap",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/i5sneloj",
+                              "id": "13",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.2.2.0.1",
+                            "kind": "text",
+                            "name": "s5-cap-caption",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 22.8
+                            },
+                            "frame": {
+                              "left": 1066.4,
+                              "top": 765.6,
+                              "width": 737.6,
+                              "height": 22.8
+                            },
+                            "snappedFrame": {
+                              "left": 1066,
+                              "top": 766,
+                              "width": 738,
+                              "height": 24
+                            },
+                            "children": [],
+                            "text": "constraint: production recommendation stays inside the plan envelope",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/p4r65wju",
+                              "id": "14",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 4,
+                        "effectiveGap": 4,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 1066.4,
+                          "top": 711.2,
+                          "width": 737.6,
+                          "height": 77.2
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.2.2.0.0",
+                            "frame": {
+                              "left": 1066.4,
+                              "top": 711.2,
+                              "width": 737.6,
+                              "height": 50.4
+                            }
+                          },
+                          {
+                            "path": "0.1.2.2.0.1",
+                            "frame": {
+                              "left": 1066.4,
+                              "top": 765.6,
+                              "width": 737.6,
+                              "height": 22.8
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "padding": {
+                      "top": 22,
+                      "right": 26,
+                      "bottom": 22,
+                      "left": 26
+                    },
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 1066.4,
+                      "top": 711.2,
+                      "width": 737.6,
+                      "height": 77.2
+                    },
+                    "element": {
+                      "aid": "sh/7qpg3ex0",
+                      "id": "12",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 24,
+                "effectiveGap": 24,
+                "justifyOffset": 148.8,
+                "align": "start",
+                "justify": "center",
+                "contentFrame": {
+                  "left": 1040.4,
+                  "top": 242.8,
+                  "width": 789.6,
+                  "height": 716.4
+                },
+                "items": [
+                  {
+                    "path": "0.1.2.0",
+                    "frame": {
+                      "left": 1040.4,
+                      "top": 391.6,
+                      "width": 789.6,
+                      "height": 128.4
+                    }
+                  },
+                  {
+                    "path": "0.1.2.1",
+                    "frame": {
+                      "left": 1040.4,
+                      "top": 544,
+                      "width": 789.6,
+                      "height": 121.2
+                    }
+                  },
+                  {
+                    "path": "0.1.2.2",
+                    "frame": {
+                      "left": 1040.4,
+                      "top": 689.2,
+                      "width": 789.6,
+                      "height": 121.2
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.3",
+                "kind": "text",
+                "name": "footer",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 16.8
+                },
+                "frame": {
+                  "left": 90,
+                  "top": 993.2,
+                  "width": 1740,
+                  "height": 16.8
+                },
+                "snappedFrame": {
+                  "left": 90,
+                  "top": 994,
+                  "width": 1740,
+                  "height": 18
+                },
+                "children": [],
+                "text": "Algorithm summary based on app/model.py and app/orchestrator.py.",
+                "transform": "none",
+                "element": {
+                  "aid": "sh/wjudg7ad",
+                  "id": "15",
+                  "kind": "shape"
+                }
+              }
+            ],
+            "padding": {
+              "top": 70,
+              "right": 90,
+              "bottom": 70,
+              "left": 90
+            },
+            "columnGap": 60,
+            "rowGap": 34,
+            "alignItems": "stretch",
+            "justifyItems": "stretch",
+            "contentFrame": {
+              "left": 90,
+              "top": 70,
+              "width": 1740,
+              "height": 940
+            },
+            "columns": [
+              {
+                "mode": "fr",
+                "value": 1.06
+              },
+              {
+                "mode": "fr",
+                "value": 0.94
+              }
+            ],
+            "rows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "autoRows": "auto",
+            "resolvedRows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "columnSizes": [
+              890.4,
+              789.6
+            ],
+            "rowSizes": [
+              138.8,
+              716.4,
+              16.8
+            ],
+            "cells": [
+              {
+                "path": "0.1.0",
+                "column": 0,
+                "row": 0,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 90,
+                  "top": 70,
+                  "width": 1740,
+                  "height": 138.8
+                }
+              },
+              {
+                "path": "0.1.1",
+                "column": 0,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 90,
+                  "top": 242.8,
+                  "width": 890.4,
+                  "height": 716.4
+                }
+              },
+              {
+                "path": "0.1.2",
+                "column": 1,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 1040.4,
+                  "top": 242.8,
+                  "width": 789.6,
+                  "height": 716.4
+                }
+              },
+              {
+                "path": "0.1.3",
+                "column": 0,
+                "row": 2,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 90,
+                  "top": 993.2,
+                  "width": 1740,
+                  "height": 16.8
+                }
+              }
+            ]
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

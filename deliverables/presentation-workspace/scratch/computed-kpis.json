@@ -1,0 +1,106 @@
+{
+  "shape": {
+    "fg": 50,
+    "rm": 200,
+    "bom": 400,
+    "capRows": 50
+  },
+  "kpis": {
+    "totalCapPairs": 7312,
+    "achievedPairs": 2167,
+    "overallFillPairs": 0.2963621444201313,
+    "planMarginMax": 1333360,
+    "achievedMargin": 422993,
+    "marginFillAtPairFill": 1.0704417254525236,
+    "phaseAStatus": "Optimal",
+    "phaseAMethod": "lex_mip",
+    "purchaseSolver": "highs_mip"
+  },
+  "purchaseRows": [
+    {
+      "targetFillPct": 25,
+      "targetPairs": 1828,
+      "achievedPairs": 1828,
+      "achievedMargin": 317950,
+      "totalBuyCost": 0,
+      "status": "Optimal",
+      "method": "highs_mip"
+    },
+    {
+      "targetFillPct": 50,
+      "targetPairs": 3656,
+      "achievedPairs": 3656,
+      "achievedMargin": 649550,
+      "totalBuyCost": 818600.3499999999,
+      "status": "Optimal",
+      "method": "highs_mip"
+    },
+    {
+      "targetFillPct": 75,
+      "targetPairs": 5484,
+      "achievedPairs": 5484,
+      "achievedMargin": 985318,
+      "totalBuyCost": 1937759.63,
+      "status": "Optimal",
+      "method": "highs_mip"
+    },
+    {
+      "targetFillPct": 100,
+      "targetPairs": 7312,
+      "achievedPairs": 7312,
+      "achievedMargin": 1333360,
+      "totalBuyCost": 3291425.5599999996,
+      "status": "Optimal",
+      "method": "highs_mip"
+    }
+  ],
+  "topRm": [
+    {
+      "RM Code": "RM002",
+      "availability_total": 2202.4,
+      "availability_used": 2202.39,
+      "availability_remaining": 0.010000000000218279,
+      "availability_utilization_pct": 0.9999954594987286
+    },
+    {
+      "RM Code": "RM001",
+      "availability_total": 2138.28,
+      "availability_used": 2138.2599999999998,
+      "availability_remaining": 0.020000000000436557,
+      "availability_utilization_pct": 0.999990646687992
+    },
+    {
+      "RM Code": "RM003",
+      "availability_total": 2211.94,
+      "availability_used": 2211.9,
+      "availability_remaining": 0.03999999999996362,
+      "availability_utilization_pct": 0.9999819163268443
+    }
+  ],
+  "topUnmet": [
+    {
+      "FG Code": "FG035",
+      "Plan Cap": 221,
+      "Opt Qty Total": 0,
+      "Fill_FG": 0,
+      "Unmet Plan Qty": 221,
+      "Likely Limiting RM": "RM001, RM002, RM003"
+    },
+    {
+      "FG Code": "FG023",
+      "Plan Cap": 217,
+      "Opt Qty Total": 0,
+      "Fill_FG": 0,
+      "Unmet Plan Qty": 217,
+      "Likely Limiting RM": "RM001, RM002, RM003"
+    },
+    {
+      "FG Code": "FG050",
+      "Plan Cap": 209,
+      "Opt Qty Total": 0,
+      "Fill_FG": 0,
+      "Unmet Plan Qty": 209,
+      "Likely Limiting RM": "RM001, RM002, RM003"
+    }
+  ]
+}

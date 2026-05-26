@@ -1,0 +1,1365 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/1qf4eo",
+    "id": "1qf4eo",
+    "slide": 9,
+    "layoutId": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "283b815a-d041-44df-ac1f-251be766cf19",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/i9s36hcr",
+      "id": "1",
+      "name": "slide-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#FFFDF8"
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p0bi9s36",
+      "id": "2",
+      "name": "slide-title",
+      "bbox": [
+        84,
+        62,
+        1752,
+        66
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "Purchase planning answers the next procurement question",
+      "textPreview": "Purchase planning answers the next procurement question",
+      "resolvedFontSize": 54,
+      "resolvedTextStyle": {
+        "fontSize": 54,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Purchase planning answers the next procurement question"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Purchase planning answers the next procurement question",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Purchase planning answers the next procurement question",
+              "fontSize": 54,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0fepkzup",
+      "id": "3",
+      "name": "slide-subtitle",
+      "bbox": [
+        84,
+        140,
+        1234,
+        60
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "For each minimum fill target, the model minimizes extra RM buy cost while staying inside FG caps and BOM requirements.",
+      "textPreview": "For each minimum fill target, the model minimizes extra RM buy cost while staying inside FG caps and BOM requirements.",
+      "resolvedFontSize": 25,
+      "resolvedTextStyle": {
+        "fontSize": 25,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "For each minimum fill target, the model minimizes extra RM buy cost while staying inside FG caps and BOM"
+          },
+          {
+            "index": 2,
+            "text": "requirements."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "For each minimum fill target, the model minimizes extra RM buy cost while staying inside FG caps and BOM requirements.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "For each minimum fill target, the model minimizes extra RM buy cost while staying inside FG caps and BOM requirements.",
+              "fontSize": 25,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/bi9s36hc",
+      "id": "4",
+      "name": "s9-m1-value",
+      "bbox": [
+        84,
+        430,
+        732,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "Target fill",
+      "textPreview": "Target fill",
+      "resolvedFontSize": 56,
+      "resolvedTextStyle": {
+        "fontSize": 56,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Target fill"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Target fill",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Target fill",
+              "fontSize": 56,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ixczed8v",
+      "id": "5",
+      "name": "s9-m1-caption",
+      "bbox": [
+        84,
+        502,
+        732,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "is a minimum service threshold, not a forced exact output",
+      "textPreview": "is a minimum service threshold, not a forced exact output",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "is a minimum service threshold, not a forced exact output"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "is a minimum service threshold, not a forced exact output",
+          "runs": [
+            {
+              "index": 1,
+              "text": "is a minimum service threshold, not a forced exact output",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/tovahoza",
+      "id": "6",
+      "name": "s9-m2-value",
+      "bbox": [
+        84,
+        554,
+        732,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0"
+      },
+      "geometry": "rect",
+      "text": "Buy quantity",
+      "textPreview": "Buy quantity",
+      "resolvedFontSize": 56,
+      "resolvedTextStyle": {
+        "fontSize": 56,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Buy quantity"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Buy quantity",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Buy quantity",
+              "fontSize": 56,
+              "color": "#A96533",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/032lszqt",
+      "id": "7",
+      "name": "s9-m2-caption",
+      "bbox": [
+        84,
+        626,
+        732,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.1"
+      },
+      "geometry": "rect",
+      "text": "is solved RM by RM against material rates",
+      "textPreview": "is solved RM by RM against material rates",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "is solved RM by RM against material rates"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "is solved RM by RM against material rates",
+          "runs": [
+            {
+              "index": 1,
+              "text": "is solved RM by RM against material rates",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/b6xkf6dc",
+      "id": "8",
+      "name": "s9-copy",
+      "bbox": [
+        84,
+        678,
+        688,
+        94
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.2"
+      },
+      "geometry": "rect",
+      "text": "This lets procurement compare the cost of moving from today's feasible plan to 50%, 75%, or full plan fill before committing cash.",
+      "textPreview": "This lets procurement compare the cost of moving from today's feasible plan to 50%, 75%, or full plan fill before committing cash.",
+      "resolvedFontSize": 26,
+      "resolvedTextStyle": {
+        "fontSize": 26,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "This lets procurement compare the cost of moving from today's"
+          },
+          {
+            "index": 2,
+            "text": "feasible plan to 50%, 75%, or full plan fill before committing cash."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "This lets procurement compare the cost of moving from today's feasible plan to 50%, 75%, or full plan fill before committing cash.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "This lets procurement compare the cost of moving from today's feasible plan to 50%, 75%, or full plan fill before committing cash.",
+              "fontSize": 26,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "chart",
+      "scope": "slide",
+      "aid": "ch/e9cvixcz",
+      "id": "9",
+      "name": "purchase-cost-chart",
+      "bbox": [
+        864.72,
+        228.8,
+        971.28,
+        744.4
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2"
+      },
+      "chartType": "bar"
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ovahoza1",
+      "id": "10",
+      "name": "footer",
+      "bbox": [
+        84,
+        1002,
+        1752,
+        18
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.3"
+      },
+      "geometry": "rect",
+      "text": "Chart uses recomputed Purchase_Summary values; costs shown in thousands of sample currency units.",
+      "textPreview": "Chart uses recomputed Purchase_Summary values; costs shown in thousands of sample currency units.",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Chart uses recomputed Purchase_Summary values; costs shown in thousands of sample currency units."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Chart uses recomputed Purchase_Summary values; costs shown in thousands of sample currency units.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Chart uses recomputed Purchase_Summary values; costs shown in thousands of sample currency units.",
+              "fontSize": 14,
+              "color": "#77867F"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "baseUnit": 8,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "s9-root",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 0,
+          "height": 0
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "shape",
+            "name": "slide-bg",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 0,
+              "height": 0
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "snappedFrame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [],
+            "geometry": "rect",
+            "element": {
+              "aid": "sh/i9s36hcr",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "grid",
+            "name": "s9-grid",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 216,
+              "height": 305.6
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [
+              {
+                "path": "0.1.0",
+                "kind": "column",
+                "name": "title-stack",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 1234.77,
+                  "height": 108.8
+                },
+                "frame": {
+                  "left": 84,
+                  "top": 62,
+                  "width": 1752,
+                  "height": 138.8
+                },
+                "children": [
+                  {
+                    "path": "0.1.0.0",
+                    "kind": "text",
+                    "name": "slide-title",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 64.8
+                    },
+                    "frame": {
+                      "left": 84,
+                      "top": 62,
+                      "width": 1752,
+                      "height": 64.8
+                    },
+                    "snappedFrame": {
+                      "left": 84,
+                      "top": 62,
+                      "width": 1752,
+                      "height": 66
+                    },
+                    "children": [],
+                    "text": "Purchase planning answers the next procurement question",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/p0bi9s36",
+                      "id": "2",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "kind": "text",
+                    "name": "slide-subtitle",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 1370
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 1234.77,
+                      "height": 30
+                    },
+                    "frame": {
+                      "left": 84,
+                      "top": 140.8,
+                      "width": 1234.77,
+                      "height": 60
+                    },
+                    "snappedFrame": {
+                      "left": 84,
+                      "top": 140,
+                      "width": 1234,
+                      "height": 60
+                    },
+                    "children": [],
+                    "text": "For each minimum fill target, the model minimizes extra RM buy cost while staying inside FG caps and BOM requirements.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/0fepkzup",
+                      "id": "3",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 14,
+                "effectiveGap": 14,
+                "justifyOffset": 0,
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 84,
+                  "top": 62,
+                  "width": 1752,
+                  "height": 138.8
+                },
+                "items": [
+                  {
+                    "path": "0.1.0.0",
+                    "frame": {
+                      "left": 84,
+                      "top": 62,
+                      "width": 1752,
+                      "height": 64.8
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "frame": {
+                      "left": 84,
+                      "top": 140.8,
+                      "width": 1234.77,
+                      "height": 60
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.1",
+                "kind": "column",
+                "name": "s9-left",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 687.49,
+                  "height": 310.4
+                },
+                "frame": {
+                  "left": 84,
+                  "top": 228.8,
+                  "width": 732.72,
+                  "height": 744.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.1.0",
+                    "kind": "column",
+                    "name": "s9-m1",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 94
+                    },
+                    "frame": {
+                      "left": 84,
+                      "top": 430.2,
+                      "width": 732.72,
+                      "height": 94
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.1.0.0",
+                        "kind": "text",
+                        "name": "s9-m1-value",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 67.2
+                        },
+                        "frame": {
+                          "left": 84,
+                          "top": 430.2,
+                          "width": 732.72,
+                          "height": 67.2
+                        },
+                        "snappedFrame": {
+                          "left": 84,
+                          "top": 430,
+                          "width": 732,
+                          "height": 68
+                        },
+                        "children": [],
+                        "text": "Target fill",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/bi9s36hc",
+                          "id": "4",
+                          "kind": "shape"
+                        }
+                      },
+                      {
+                        "path": "0.1.1.0.1",
+                        "kind": "text",
+                        "name": "s9-m1-caption",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 22.8
+                        },
+                        "frame": {
+                          "left": 84,
+                          "top": 501.4,
+                          "width": 732.72,
+                          "height": 22.8
+                        },
+                        "snappedFrame": {
+                          "left": 84,
+                          "top": 502,
+                          "width": 732,
+                          "height": 24
+                        },
+                        "children": [],
+                        "text": "is a minimum service threshold, not a forced exact output",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/ixczed8v",
+                          "id": "5",
+                          "kind": "shape"
+                        }
+                      }
+                    ],
+                    "padding": {
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    },
+                    "gap": 4,
+                    "effectiveGap": 4,
+                    "justifyOffset": 0,
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 84,
+                      "top": 430.2,
+                      "width": 732.72,
+                      "height": 94
+                    },
+                    "items": [
+                      {
+                        "path": "0.1.1.0.0",
+                        "frame": {
+                          "left": 84,
+                          "top": 430.2,
+                          "width": 732.72,
+                          "height": 67.2
+                        }
+                      },
+                      {
+                        "path": "0.1.1.0.1",
+                        "frame": {
+                          "left": 84,
+                          "top": 501.4,
+                          "width": 732.72,
+                          "height": 22.8
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "kind": "column",
+                    "name": "s9-m2",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 94
+                    },
+                    "frame": {
+                      "left": 84,
+                      "top": 554.2,
+                      "width": 732.72,
+                      "height": 94
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.1.1.0",
+                        "kind": "text",
+                        "name": "s9-m2-value",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 67.2
+                        },
+                        "frame": {
+                          "left": 84,
+                          "top": 554.2,
+                          "width": 732.72,
+                          "height": 67.2
+                        },
+                        "snappedFrame": {
+                          "left": 84,
+                          "top": 554,
+                          "width": 732,
+                          "height": 68
+                        },
+                        "children": [],
+                        "text": "Buy quantity",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/tovahoza",
+                          "id": "6",
+                          "kind": "shape"
+                        }
+                      },
+                      {
+                        "path": "0.1.1.1.1",
+                        "kind": "text",
+                        "name": "s9-m2-caption",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 22.8
+                        },
+                        "frame": {
+                          "left": 84,
+                          "top": 625.4,
+                          "width": 732.72,
+                          "height": 22.8
+                        },
+                        "snappedFrame": {
+                          "left": 84,
+                          "top": 626,
+                          "width": 732,
+                          "height": 24
+                        },
+                        "children": [],
+                        "text": "is solved RM by RM against material rates",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/032lszqt",
+                          "id": "7",
+                          "kind": "shape"
+                        }
+                      }
+                    ],
+                    "padding": {
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    },
+                    "gap": 4,
+                    "effectiveGap": 4,
+                    "justifyOffset": 0,
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 84,
+                      "top": 554.2,
+                      "width": 732.72,
+                      "height": 94
+                    },
+                    "items": [
+                      {
+                        "path": "0.1.1.1.0",
+                        "frame": {
+                          "left": 84,
+                          "top": 554.2,
+                          "width": 732.72,
+                          "height": 67.2
+                        }
+                      },
+                      {
+                        "path": "0.1.1.1.1",
+                        "frame": {
+                          "left": 84,
+                          "top": 625.4,
+                          "width": 732.72,
+                          "height": 22.8
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "path": "0.1.1.2",
+                    "kind": "text",
+                    "name": "s9-copy",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 700
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 687.49,
+                      "height": 62.4
+                    },
+                    "frame": {
+                      "left": 84,
+                      "top": 678.2,
+                      "width": 687.49,
+                      "height": 93.6
+                    },
+                    "snappedFrame": {
+                      "left": 84,
+                      "top": 678,
+                      "width": 688,
+                      "height": 94
+                    },
+                    "children": [],
+                    "text": "This lets procurement compare the cost of moving from today's feasible plan to 50%, 75%, or full plan fill before committing cash.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/b6xkf6dc",
+                      "id": "8",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 30,
+                "effectiveGap": 30,
+                "justifyOffset": 201.4,
+                "align": "start",
+                "justify": "center",
+                "contentFrame": {
+                  "left": 84,
+                  "top": 228.8,
+                  "width": 732.72,
+                  "height": 744.4
+                },
+                "items": [
+                  {
+                    "path": "0.1.1.0",
+                    "frame": {
+                      "left": 84,
+                      "top": 430.2,
+                      "width": 732.72,
+                      "height": 94
+                    }
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "frame": {
+                      "left": 84,
+                      "top": 554.2,
+                      "width": 732.72,
+                      "height": 94
+                    }
+                  },
+                  {
+                    "path": "0.1.1.2",
+                    "frame": {
+                      "left": 84,
+                      "top": 678.2,
+                      "width": 687.49,
+                      "height": 93.6
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.2",
+                "kind": "chart",
+                "name": "purchase-cost-chart",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 0
+                },
+                "frame": {
+                  "left": 864.72,
+                  "top": 228.8,
+                  "width": 971.28,
+                  "height": 744.4
+                },
+                "snappedFrame": {
+                  "left": 864.72,
+                  "top": 228.8,
+                  "width": 971.28,
+                  "height": 744.4
+                },
+                "children": [],
+                "chartType": "bar",
+                "title": "Extra RM buy cost by target (000s)",
+                "element": {
+                  "aid": "ch/e9cvixcz",
+                  "id": "9",
+                  "kind": "chart"
+                }
+              },
+              {
+                "path": "0.1.3",
+                "kind": "text",
+                "name": "footer",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 16.8
+                },
+                "frame": {
+                  "left": 84,
+                  "top": 1001.2,
+                  "width": 1752,
+                  "height": 16.8
+                },
+                "snappedFrame": {
+                  "left": 84,
+                  "top": 1002,
+                  "width": 1752,
+                  "height": 18
+                },
+                "children": [],
+                "text": "Chart uses recomputed Purchase_Summary values; costs shown in thousands of sample currency units.",
+                "transform": "none",
+                "element": {
+                  "aid": "sh/ovahoza1",
+                  "id": "10",
+                  "kind": "shape"
+                }
+              }
+            ],
+            "padding": {
+              "top": 62,
+              "right": 84,
+              "bottom": 62,
+              "left": 84
+            },
+            "columnGap": 48,
+            "rowGap": 28,
+            "alignItems": "stretch",
+            "justifyItems": "stretch",
+            "contentFrame": {
+              "left": 84,
+              "top": 62,
+              "width": 1752,
+              "height": 956
+            },
+            "columns": [
+              {
+                "mode": "fr",
+                "value": 0.86
+              },
+              {
+                "mode": "fr",
+                "value": 1.14
+              }
+            ],
+            "rows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "autoRows": "auto",
+            "resolvedRows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "columnSizes": [
+              732.72,
+              971.28
+            ],
+            "rowSizes": [
+              138.8,
+              744.4,
+              16.8
+            ],
+            "cells": [
+              {
+                "path": "0.1.0",
+                "column": 0,
+                "row": 0,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 84,
+                  "top": 62,
+                  "width": 1752,
+                  "height": 138.8
+                }
+              },
+              {
+                "path": "0.1.1",
+                "column": 0,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 84,
+                  "top": 228.8,
+                  "width": 732.72,
+                  "height": 744.4
+                }
+              },
+              {
+                "path": "0.1.2",
+                "column": 1,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 864.72,
+                  "top": 228.8,
+                  "width": 971.28,
+                  "height": 744.4
+                }
+              },
+              {
+                "path": "0.1.3",
+                "column": 0,
+                "row": 2,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 84,
+                  "top": 1001.2,
+                  "width": 1752,
+                  "height": 16.8
+                }
+              }
+            ]
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,2891 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/ofkly7",
+    "id": "ofkly7",
+    "slide": 3,
+    "layoutId": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "283b815a-d041-44df-ac1f-251be766cf19",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/8z25kb6x",
+      "id": "1",
+      "name": "slide-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#FFFDF8"
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/je9cvixc",
+      "id": "2",
+      "name": "slide-title",
+      "bbox": [
+        82,
+        60,
+        1756,
+        66
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "Complexity grows multiplicatively, not linearly",
+      "textPreview": "Complexity grows multiplicatively, not linearly",
+      "resolvedFontSize": 54,
+      "resolvedTextStyle": {
+        "fontSize": 54,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Complexity grows multiplicatively, not linearly"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Complexity grows multiplicatively, not linearly",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Complexity grows multiplicatively, not linearly",
+              "fontSize": 54,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qtcj6tov",
+      "id": "3",
+      "name": "slide-subtitle",
+      "bbox": [
+        82,
+        138,
+        1296,
+        30
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "Every new SKU adds BOM consumption rows; every shared RM creates tradeoffs; every target creates another scenario to solve.",
+      "textPreview": "Every new SKU adds BOM consumption rows; every shared RM creates tradeoffs; every target creates another scenario to solve.",
+      "resolvedFontSize": 25,
+      "resolvedTextStyle": {
+        "fontSize": 25,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Every new SKU adds BOM consumption rows; every shared RM creates tradeoffs; every target creates another scenario to solve."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Every new SKU adds BOM consumption rows; every shared RM creates tradeoffs; every target creates another scenario to solve.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Every new SKU adds BOM consumption rows; every shared RM creates tradeoffs; every target creates another scenario to solve.",
+              "fontSize": 25,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xs72x4na",
+      "id": "4",
+      "name": "s3-metric-value",
+      "bbox": [
+        82,
+        392,
+        750,
+        76
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "SKU x RM x BOM",
+      "textPreview": "SKU x RM x BOM",
+      "resolvedFontSize": 62,
+      "resolvedTextStyle": {
+        "fontSize": 62,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "SKU x RM x BOM"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "SKU x RM x BOM",
+          "runs": [
+            {
+              "index": 1,
+              "text": "SKU x RM x BOM",
+              "fontSize": 62,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/87ed8bat",
+      "id": "5",
+      "name": "s3-metric-caption",
+      "bbox": [
+        82,
+        470,
+        750,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "is the real planning surface",
+      "textPreview": "is the real planning surface",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "is the real planning surface"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "is the real planning surface",
+          "runs": [
+            {
+              "index": 1,
+              "text": "is the real planning surface",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fmlkjm1c",
+      "id": "6",
+      "name": "s3-scale-panel",
+      "bbox": [
+        82,
+        521.4,
+        750.64,
+        258.4
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#FBF7F0",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 1
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/q1orytsv",
+      "id": "7",
+      "name": "s3-scale-table-header-0",
+      "bbox": [
+        110,
+        546,
+        266,
+        20
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.0.0"
+      },
+      "geometry": "rect",
+      "text": "Planning layer",
+      "textPreview": "Planning layer",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Planning layer"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Planning layer",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Planning layer",
+              "fontSize": 16,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/x4nap4r6",
+      "id": "8",
+      "name": "s3-scale-table-header-1",
+      "bbox": [
+        388,
+        546,
+        416,
+        20
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.0.1"
+      },
+      "geometry": "rect",
+      "text": "Why it scales",
+      "textPreview": "Why it scales",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Why it scales"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Why it scales",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Why it scales",
+              "fontSize": 16,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/8jqh0fep",
+      "id": "9",
+      "name": "s3-scale-table-row-rule-0",
+      "bbox": [
+        110,
+        578,
+        694,
+        1
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.1.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#D7C8B8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mp0bi9s3",
+      "id": "10",
+      "name": "s3-scale-table-cell-0-0",
+      "bbox": [
+        110,
+        590,
+        266,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.1.1.0"
+      },
+      "geometry": "rect",
+      "text": "Styles",
+      "textPreview": "Styles",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Styles"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Styles",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Styles",
+              "fontSize": 19,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/bat47y1k",
+      "id": "11",
+      "name": "s3-scale-table-cell-0-1",
+      "bbox": [
+        388,
+        590,
+        416,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.1.1.1"
+      },
+      "geometry": "rect",
+      "text": "more product promises to protect",
+      "textPreview": "more product promises to protect",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "more product promises to protect"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "more product promises to protect",
+          "runs": [
+            {
+              "index": 1,
+              "text": "more product promises to protect",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4vmtwra5",
+      "id": "12",
+      "name": "s3-scale-table-row-rule-1",
+      "bbox": [
+        110,
+        626,
+        694,
+        1
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.2.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#D7C8B8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 0
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/tgfmlkjm",
+      "id": "13",
+      "name": "s3-scale-table-cell-1-0",
+      "bbox": [
+        110,
+        638,
+        266,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.2.1.0"
+      },
+      "geometry": "rect",
+      "text": "Materials",
+      "textPreview": "Materials",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Materials"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Materials",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Materials",
+              "fontSize": 19,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/m1cfa9w3",
+      "id": "14",
+      "name": "s3-scale-table-cell-1-1",
+      "bbox": [
+        388,
+        638,
+        416,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.2.1.1"
+      },
+      "geometry": "rect",
+      "text": "more shared constraints and substitutes",
+      "textPreview": "more shared constraints and substitutes",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "more shared constraints and substitutes"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "more shared constraints and substitutes",
+          "runs": [
+            {
+              "index": 1,
+              "text": "more shared constraints and substitutes",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/bm58z25k",
+      "id": "15",
+      "name": "s3-scale-table-row-rule-2",
+      "bbox": [
+        110,
+        674,
+        694,
+        1
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.3.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#D7C8B8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 0
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/47y1kre1",
+      "id": "16",
+      "name": "s3-scale-table-cell-2-0",
+      "bbox": [
+        110,
+        686,
+        266,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.3.1.0"
+      },
+      "geometry": "rect",
+      "text": "Availability mode",
+      "textPreview": "Availability mode",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Availability mode"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Availability mode",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Availability mode",
+              "fontSize": 19,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/tsvu9kni",
+      "id": "17",
+      "name": "s3-scale-table-cell-2-1",
+      "bbox": [
+        388,
+        686,
+        416,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.3.1.1"
+      },
+      "geometry": "rect",
+      "text": "stock vs stock plus PO changes feasibility",
+      "textPreview": "stock vs stock plus PO changes feasibility",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "stock vs stock plus PO changes feasibility"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "stock vs stock plus PO changes feasibility",
+          "runs": [
+            {
+              "index": 1,
+              "text": "stock vs stock plus PO changes feasibility",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/m58z25kb",
+      "id": "18",
+      "name": "s3-scale-table-row-rule-3",
+      "bbox": [
+        110,
+        722,
+        694,
+        1
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.4.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#D7C8B8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 0
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/bq1oryts",
+      "id": "19",
+      "name": "s3-scale-table-cell-3-0",
+      "bbox": [
+        110,
+        734,
+        266,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.4.1.0"
+      },
+      "geometry": "rect",
+      "text": "Targets",
+      "textPreview": "Targets",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Targets"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Targets",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Targets",
+              "fontSize": 19,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7mp0bi9s",
+      "id": "20",
+      "name": "s3-scale-table-cell-3-1",
+      "bbox": [
+        388,
+        734,
+        416,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.4.1.1"
+      },
+      "geometry": "rect",
+      "text": "25, 50, 75, 100 percent create distinct buy plans",
+      "textPreview": "25, 50, 75, 100 percent create distinct buy plans",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "25, 50, 75, 100 percent create distinct buy plans"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "25, 50, 75, 100 percent create distinct buy plans",
+          "runs": [
+            {
+              "index": 1,
+              "text": "25, 50, 75, 100 percent create distinct buy plans",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 21,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/hoza1gvy",
+      "id": "21",
+      "name": "complexity-photo",
+      "bbox": [
+        882.64,
+        194.8,
+        955.36,
+        782.4
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2"
+      },
+      "alt": "Footwear components and planning materials arranged for a complexity discussion",
+      "contentType": "image/png",
+      "asset": {
+        "assetId": "b88ecef1-fb1a-412a-b38d-4afa77291215",
+        "contentType": "image/png",
+        "byteLength": 2442197
+      }
+    },
+    {
+      "order": 22,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/psfil0rq",
+      "id": "22",
+      "name": "footer",
+      "bbox": [
+        82,
+        1004,
+        1756,
+        18
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.3"
+      },
+      "geometry": "rect",
+      "text": "Generated image is illustrative; scale metrics are from the sanitized repository demo.",
+      "textPreview": "Generated image is illustrative; scale metrics are from the sanitized repository demo.",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Generated image is illustrative; scale metrics are from the sanitized repository demo."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Generated image is illustrative; scale metrics are from the sanitized repository demo.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Generated image is illustrative; scale metrics are from the sanitized repository demo.",
+              "fontSize": 14,
+              "color": "#77867F"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "baseUnit": 8,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "s3-root",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 0,
+          "height": 0
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "shape",
+            "name": "slide-bg",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 0,
+              "height": 0
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "snappedFrame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [],
+            "geometry": "rect",
+            "element": {
+              "aid": "sh/8z25kb6x",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "grid",
+            "name": "s3-grid",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 214,
+              "height": 297.6
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [
+              {
+                "path": "0.1.0",
+                "kind": "column",
+                "name": "title-stack",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 1295.98,
+                  "height": 108.8
+                },
+                "frame": {
+                  "left": 82,
+                  "top": 60,
+                  "width": 1756,
+                  "height": 108.8
+                },
+                "children": [
+                  {
+                    "path": "0.1.0.0",
+                    "kind": "text",
+                    "name": "slide-title",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 64.8
+                    },
+                    "frame": {
+                      "left": 82,
+                      "top": 60,
+                      "width": 1756,
+                      "height": 64.8
+                    },
+                    "snappedFrame": {
+                      "left": 82,
+                      "top": 60,
+                      "width": 1756,
+                      "height": 66
+                    },
+                    "children": [],
+                    "text": "Complexity grows multiplicatively, not linearly",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/je9cvixc",
+                      "id": "2",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "kind": "text",
+                    "name": "slide-subtitle",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 1350
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 1295.98,
+                      "height": 30
+                    },
+                    "frame": {
+                      "left": 82,
+                      "top": 138.8,
+                      "width": 1295.98,
+                      "height": 30
+                    },
+                    "snappedFrame": {
+                      "left": 82,
+                      "top": 138,
+                      "width": 1296,
+                      "height": 30
+                    },
+                    "children": [],
+                    "text": "Every new SKU adds BOM consumption rows; every shared RM creates tradeoffs; every target creates another scenario to solve.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/qtcj6tov",
+                      "id": "3",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 14,
+                "effectiveGap": 14,
+                "justifyOffset": 0,
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 82,
+                  "top": 60,
+                  "width": 1756,
+                  "height": 108.8
+                },
+                "items": [
+                  {
+                    "path": "0.1.0.0",
+                    "frame": {
+                      "left": 82,
+                      "top": 60,
+                      "width": 1756,
+                      "height": 64.8
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "frame": {
+                      "left": 82,
+                      "top": 138.8,
+                      "width": 1295.98,
+                      "height": 30
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.1",
+                "kind": "column",
+                "name": "s3-left",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 387.6
+                },
+                "frame": {
+                  "left": 82,
+                  "top": 194.8,
+                  "width": 750.64,
+                  "height": 782.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.1.0",
+                    "kind": "column",
+                    "name": "s3-metric",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 101.2
+                    },
+                    "frame": {
+                      "left": 82,
+                      "top": 392.2,
+                      "width": 750.64,
+                      "height": 101.2
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.1.0.0",
+                        "kind": "text",
+                        "name": "s3-metric-value",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 74.4
+                        },
+                        "frame": {
+                          "left": 82,
+                          "top": 392.2,
+                          "width": 750.64,
+                          "height": 74.4
+                        },
+                        "snappedFrame": {
+                          "left": 82,
+                          "top": 392,
+                          "width": 750,
+                          "height": 76
+                        },
+                        "children": [],
+                        "text": "SKU x RM x BOM",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/xs72x4na",
+                          "id": "4",
+                          "kind": "shape"
+                        }
+                      },
+                      {
+                        "path": "0.1.1.0.1",
+                        "kind": "text",
+                        "name": "s3-metric-caption",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 22.8
+                        },
+                        "frame": {
+                          "left": 82,
+                          "top": 470.6,
+                          "width": 750.64,
+                          "height": 22.8
+                        },
+                        "snappedFrame": {
+                          "left": 82,
+                          "top": 470,
+                          "width": 750,
+                          "height": 24
+                        },
+                        "children": [],
+                        "text": "is the real planning surface",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/87ed8bat",
+                          "id": "5",
+                          "kind": "shape"
+                        }
+                      }
+                    ],
+                    "padding": {
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    },
+                    "gap": 4,
+                    "effectiveGap": 4,
+                    "justifyOffset": 0,
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 82,
+                      "top": 392.2,
+                      "width": 750.64,
+                      "height": 101.2
+                    },
+                    "items": [
+                      {
+                        "path": "0.1.1.0.0",
+                        "frame": {
+                          "left": 82,
+                          "top": 392.2,
+                          "width": 750.64,
+                          "height": 74.4
+                        }
+                      },
+                      {
+                        "path": "0.1.1.0.1",
+                        "frame": {
+                          "left": 82,
+                          "top": 470.6,
+                          "width": 750.64,
+                          "height": 22.8
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "kind": "panel",
+                    "name": "s3-scale-panel",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 56,
+                      "height": 258.4
+                    },
+                    "frame": {
+                      "left": 82,
+                      "top": 521.4,
+                      "width": 750.64,
+                      "height": 258.4
+                    },
+                    "snappedFrame": {
+                      "left": 82,
+                      "top": 521.4,
+                      "width": 750.64,
+                      "height": 258.4
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.1.1.0",
+                        "kind": "column",
+                        "name": "s3-scale-table",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 210.4
+                        },
+                        "frame": {
+                          "left": 110,
+                          "top": 545.4,
+                          "width": 694.64,
+                          "height": 210.4
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.1.1.0.0",
+                            "kind": "row",
+                            "name": "s3-scale-table-header",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 12,
+                              "height": 19.2
+                            },
+                            "frame": {
+                              "left": 110,
+                              "top": 545.4,
+                              "width": 694.64,
+                              "height": 19.2
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.1.1.0.0.0",
+                                "kind": "text",
+                                "name": "s3-scale-table-header-0",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 0.78
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 19.2
+                                },
+                                "frame": {
+                                  "left": 110,
+                                  "top": 545.4,
+                                  "width": 266.23,
+                                  "height": 19.2
+                                },
+                                "snappedFrame": {
+                                  "left": 110,
+                                  "top": 546,
+                                  "width": 266,
+                                  "height": 20
+                                },
+                                "children": [],
+                                "text": "Planning layer",
+                                "transform": "none",
+                                "element": {
+                                  "aid": "sh/q1orytsv",
+                                  "id": "7",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.1.1.0.0.1",
+                                "kind": "text",
+                                "name": "s3-scale-table-header-1",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1.22
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 19.2
+                                },
+                                "frame": {
+                                  "left": 388.23,
+                                  "top": 545.4,
+                                  "width": 416.41,
+                                  "height": 19.2
+                                },
+                                "snappedFrame": {
+                                  "left": 388,
+                                  "top": 546,
+                                  "width": 416,
+                                  "height": 20
+                                },
+                                "children": [],
+                                "text": "Why it scales",
+                                "transform": "none",
+                                "element": {
+                                  "aid": "sh/x4nap4r6",
+                                  "id": "8",
+                                  "kind": "shape"
+                                }
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 12,
+                            "effectiveGap": 12,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 110,
+                              "top": 545.4,
+                              "width": 694.64,
+                              "height": 19.2
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.1.1.0.0.0",
+                                "frame": {
+                                  "left": 110,
+                                  "top": 545.4,
+                                  "width": 266.23,
+                                  "height": 19.2
+                                }
+                              },
+                              {
+                                "path": "0.1.1.1.0.0.1",
+                                "frame": {
+                                  "left": 388.23,
+                                  "top": 545.4,
+                                  "width": 416.41,
+                                  "height": 19.2
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "path": "0.1.1.1.0.1",
+                            "kind": "column",
+                            "name": "s3-scale-table-row-wrap-0",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 33.8
+                            },
+                            "frame": {
+                              "left": 110,
+                              "top": 578.6,
+                              "width": 694.64,
+                              "height": 33.8
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.1.1.0.1.0",
+                                "kind": "rule",
+                                "name": "s3-scale-table-row-rule-0",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "fixed",
+                                    "value": 1
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 1
+                                },
+                                "frame": {
+                                  "left": 110,
+                                  "top": 578.6,
+                                  "width": 694.64,
+                                  "height": 1
+                                },
+                                "snappedFrame": {
+                                  "left": 110,
+                                  "top": 578,
+                                  "width": 694,
+                                  "height": 1
+                                },
+                                "children": [],
+                                "weight": 1,
+                                "element": {
+                                  "aid": "sh/8jqh0fep",
+                                  "id": "9",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.1.1.0.1.1",
+                                "kind": "row",
+                                "name": "s3-scale-table-row-0",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 12,
+                                  "height": 22.8
+                                },
+                                "frame": {
+                                  "left": 110,
+                                  "top": 589.6,
+                                  "width": 694.64,
+                                  "height": 22.8
+                                },
+                                "children": [
+                                  {
+                                    "path": "0.1.1.1.0.1.1.0",
+                                    "kind": "text",
+                                    "name": "s3-scale-table-cell-0-0",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 0.78
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 22.8
+                                    },
+                                    "frame": {
+                                      "left": 110,
+                                      "top": 589.6,
+                                      "width": 266.23,
+                                      "height": 22.8
+                                    },
+                                    "snappedFrame": {
+                                      "left": 110,
+                                      "top": 590,
+                                      "width": 266,
+                                      "height": 24
+                                    },
+                                    "children": [],
+                                    "text": "Styles",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/mp0bi9s3",
+                                      "id": "10",
+                                      "kind": "shape"
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.1.0.1.1.1",
+                                    "kind": "text",
+                                    "name": "s3-scale-table-cell-0-1",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 1.22
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 22.8
+                                    },
+                                    "frame": {
+                                      "left": 388.23,
+                                      "top": 589.6,
+                                      "width": 416.41,
+                                      "height": 22.8
+                                    },
+                                    "snappedFrame": {
+                                      "left": 388,
+                                      "top": 590,
+                                      "width": 416,
+                                      "height": 24
+                                    },
+                                    "children": [],
+                                    "text": "more product promises to protect",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/bat47y1k",
+                                      "id": "11",
+                                      "kind": "shape"
+                                    }
+                                  }
+                                ],
+                                "padding": {
+                                  "top": 0,
+                                  "right": 0,
+                                  "bottom": 0,
+                                  "left": 0
+                                },
+                                "gap": 12,
+                                "effectiveGap": 12,
+                                "justifyOffset": 0,
+                                "align": "start",
+                                "justify": "start",
+                                "contentFrame": {
+                                  "left": 110,
+                                  "top": 589.6,
+                                  "width": 694.64,
+                                  "height": 22.8
+                                },
+                                "items": [
+                                  {
+                                    "path": "0.1.1.1.0.1.1.0",
+                                    "frame": {
+                                      "left": 110,
+                                      "top": 589.6,
+                                      "width": 266.23,
+                                      "height": 22.8
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.1.0.1.1.1",
+                                    "frame": {
+                                      "left": 388.23,
+                                      "top": 589.6,
+                                      "width": 416.41,
+                                      "height": 22.8
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 10,
+                            "effectiveGap": 10,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 110,
+                              "top": 578.6,
+                              "width": 694.64,
+                              "height": 33.8
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.1.1.0.1.0",
+                                "frame": {
+                                  "left": 110,
+                                  "top": 578.6,
+                                  "width": 694.64,
+                                  "height": 1
+                                }
+                              },
+                              {
+                                "path": "0.1.1.1.0.1.1",
+                                "frame": {
+                                  "left": 110,
+                                  "top": 589.6,
+                                  "width": 694.64,
+                                  "height": 22.8
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "path": "0.1.1.1.0.2",
+                            "kind": "column",
+                            "name": "s3-scale-table-row-wrap-1",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 33.8
+                            },
+                            "frame": {
+                              "left": 110,
+                              "top": 626.4,
+                              "width": 694.64,
+                              "height": 33.8
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.1.1.0.2.0",
+                                "kind": "rule",
+                                "name": "s3-scale-table-row-rule-1",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "fixed",
+                                    "value": 1
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 1
+                                },
+                                "frame": {
+                                  "left": 110,
+                                  "top": 626.4,
+                                  "width": 694.64,
+                                  "height": 1
+                                },
+                                "snappedFrame": {
+                                  "left": 110,
+                                  "top": 626,
+                                  "width": 694,
+                                  "height": 1
+                                },
+                                "children": [],
+                                "weight": 1,
+                                "element": {
+                                  "aid": "sh/4vmtwra5",
+                                  "id": "12",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.1.1.0.2.1",
+                                "kind": "row",
+                                "name": "s3-scale-table-row-1",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 12,
+                                  "height": 22.8
+                                },
+                                "frame": {
+                                  "left": 110,
+                                  "top": 637.4,
+                                  "width": 694.64,
+                                  "height": 22.8
+                                },
+                                "children": [
+                                  {
+                                    "path": "0.1.1.1.0.2.1.0",
+                                    "kind": "text",
+                                    "name": "s3-scale-table-cell-1-0",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 0.78
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 22.8
+                                    },
+                                    "frame": {
+                                      "left": 110,
+                                      "top": 637.4,
+                                      "width": 266.23,
+                                      "height": 22.8
+                                    },
+                                    "snappedFrame": {
+                                      "left": 110,
+                                      "top": 638,
+                                      "width": 266,
+                                      "height": 24
+                                    },
+                                    "children": [],
+                                    "text": "Materials",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/tgfmlkjm",
+                                      "id": "13",
+                                      "kind": "shape"
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.1.0.2.1.1",
+                                    "kind": "text",
+                                    "name": "s3-scale-table-cell-1-1",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 1.22
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 22.8
+                                    },
+                                    "frame": {
+                                      "left": 388.23,
+                                      "top": 637.4,
+                                      "width": 416.41,
+                                      "height": 22.8
+                                    },
+                                    "snappedFrame": {
+                                      "left": 388,
+                                      "top": 638,
+                                      "width": 416,
+                                      "height": 24
+                                    },
+                                    "children": [],
+                                    "text": "more shared constraints and substitutes",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/m1cfa9w3",
+                                      "id": "14",
+                                      "kind": "shape"
+                                    }
+                                  }
+                                ],
+                                "padding": {
+                                  "top": 0,
+                                  "right": 0,
+                                  "bottom": 0,
+                                  "left": 0
+                                },
+                                "gap": 12,
+                                "effectiveGap": 12,
+                                "justifyOffset": 0,
+                                "align": "start",
+                                "justify": "start",
+                                "contentFrame": {
+                                  "left": 110,
+                                  "top": 637.4,
+                                  "width": 694.64,
+                                  "height": 22.8
+                                },
+                                "items": [
+                                  {
+                                    "path": "0.1.1.1.0.2.1.0",
+                                    "frame": {
+                                      "left": 110,
+                                      "top": 637.4,
+                                      "width": 266.23,
+                                      "height": 22.8
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.1.0.2.1.1",
+                                    "frame": {
+                                      "left": 388.23,
+                                      "top": 637.4,
+                                      "width": 416.41,
+                                      "height": 22.8
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 10,
+                            "effectiveGap": 10,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 110,
+                              "top": 626.4,
+                              "width": 694.64,
+                              "height": 33.8
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.1.1.0.2.0",
+                                "frame": {
+                                  "left": 110,
+                                  "top": 626.4,
+                                  "width": 694.64,
+                                  "height": 1
+                                }
+                              },
+                              {
+                                "path": "0.1.1.1.0.2.1",
+                                "frame": {
+                                  "left": 110,
+                                  "top": 637.4,
+                                  "width": 694.64,
+                                  "height": 22.8
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "path": "0.1.1.1.0.3",
+                            "kind": "column",
+                            "name": "s3-scale-table-row-wrap-2",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 33.8
+                            },
+                            "frame": {
+                              "left": 110,
+                              "top": 674.2,
+                              "width": 694.64,
+                              "height": 33.8
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.1.1.0.3.0",
+                                "kind": "rule",
+                                "name": "s3-scale-table-row-rule-2",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "fixed",
+                                    "value": 1
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 1
+                                },
+                                "frame": {
+                                  "left": 110,
+                                  "top": 674.2,
+                                  "width": 694.64,
+                                  "height": 1
+                                },
+                                "snappedFrame": {
+                                  "left": 110,
+                                  "top": 674,
+                                  "width": 694,
+                                  "height": 1
+                                },
+                                "children": [],
+                                "weight": 1,
+                                "element": {
+                                  "aid": "sh/bm58z25k",
+                                  "id": "15",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.1.1.0.3.1",
+                                "kind": "row",
+                                "name": "s3-scale-table-row-2",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 12,
+                                  "height": 22.8
+                                },
+                                "frame": {
+                                  "left": 110,
+                                  "top": 685.2,
+                                  "width": 694.64,
+                                  "height": 22.8
+                                },
+                                "children": [
+                                  {
+                                    "path": "0.1.1.1.0.3.1.0",
+                                    "kind": "text",
+                                    "name": "s3-scale-table-cell-2-0",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 0.78
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 22.8
+                                    },
+                                    "frame": {
+                                      "left": 110,
+                                      "top": 685.2,
+                                      "width": 266.23,
+                                      "height": 22.8
+                                    },
+                                    "snappedFrame": {
+                                      "left": 110,
+                                      "top": 686,
+                                      "width": 266,
+                                      "height": 24
+                                    },
+                                    "children": [],
+                                    "text": "Availability mode",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/47y1kre1",
+                                      "id": "16",
+                                      "kind": "shape"
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.1.0.3.1.1",
+                                    "kind": "text",
+                                    "name": "s3-scale-table-cell-2-1",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 1.22
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 22.8
+                                    },
+                                    "frame": {
+                                      "left": 388.23,
+                                      "top": 685.2,
+                                      "width": 416.41,
+                                      "height": 22.8
+                                    },
+                                    "snappedFrame": {
+                                      "left": 388,
+                                      "top": 686,
+                                      "width": 416,
+                                      "height": 24
+                                    },
+                                    "children": [],
+                                    "text": "stock vs stock plus PO changes feasibility",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/tsvu9kni",
+                                      "id": "17",
+                                      "kind": "shape"
+                                    }
+                                  }
+                                ],
+                                "padding": {
+                                  "top": 0,
+                                  "right": 0,
+                                  "bottom": 0,
+                                  "left": 0
+                                },
+                                "gap": 12,
+                                "effectiveGap": 12,
+                                "justifyOffset": 0,
+                                "align": "start",
+                                "justify": "start",
+                                "contentFrame": {
+                                  "left": 110,
+                                  "top": 685.2,
+                                  "width": 694.64,
+                                  "height": 22.8
+                                },
+                                "items": [
+                                  {
+                                    "path": "0.1.1.1.0.3.1.0",
+                                    "frame": {
+                                      "left": 110,
+                                      "top": 685.2,
+                                      "width": 266.23,
+                                      "height": 22.8
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.1.0.3.1.1",
+                                    "frame": {
+                                      "left": 388.23,
+                                      "top": 685.2,
+                                      "width": 416.41,
+                                      "height": 22.8
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 10,
+                            "effectiveGap": 10,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 110,
+                              "top": 674.2,
+                              "width": 694.64,
+                              "height": 33.8
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.1.1.0.3.0",
+                                "frame": {
+                                  "left": 110,
+                                  "top": 674.2,
+                                  "width": 694.64,
+                                  "height": 1
+                                }
+                              },
+                              {
+                                "path": "0.1.1.1.0.3.1",
+                                "frame": {
+                                  "left": 110,
+                                  "top": 685.2,
+                                  "width": 694.64,
+                                  "height": 22.8
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "path": "0.1.1.1.0.4",
+                            "kind": "column",
+                            "name": "s3-scale-table-row-wrap-3",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 33.8
+                            },
+                            "frame": {
+                              "left": 110,
+                              "top": 722,
+                              "width": 694.64,
+                              "height": 33.8
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.1.1.0.4.0",
+                                "kind": "rule",
+                                "name": "s3-scale-table-row-rule-3",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "fixed",
+                                    "value": 1
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 1
+                                },
+                                "frame": {
+                                  "left": 110,
+                                  "top": 722,
+                                  "width": 694.64,
+                                  "height": 1
+                                },
+                                "snappedFrame": {
+                                  "left": 110,
+                                  "top": 722,
+                                  "width": 694,
+                                  "height": 1
+                                },
+                                "children": [],
+                                "weight": 1,
+                                "element": {
+                                  "aid": "sh/m58z25kb",
+                                  "id": "18",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.1.1.0.4.1",
+                                "kind": "row",
+                                "name": "s3-scale-table-row-3",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 12,
+                                  "height": 22.8
+                                },
+                                "frame": {
+                                  "left": 110,
+                                  "top": 733,
+                                  "width": 694.64,
+                                  "height": 22.8
+                                },
+                                "children": [
+                                  {
+                                    "path": "0.1.1.1.0.4.1.0",
+                                    "kind": "text",
+                                    "name": "s3-scale-table-cell-3-0",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 0.78
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 22.8
+                                    },
+                                    "frame": {
+                                      "left": 110,
+                                      "top": 733,
+                                      "width": 266.23,
+                                      "height": 22.8
+                                    },
+                                    "snappedFrame": {
+                                      "left": 110,
+                                      "top": 734,
+                                      "width": 266,
+                                      "height": 24
+                                    },
+                                    "children": [],
+                                    "text": "Targets",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/bq1oryts",
+                                      "id": "19",
+                                      "kind": "shape"
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.1.0.4.1.1",
+                                    "kind": "text",
+                                    "name": "s3-scale-table-cell-3-1",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 1.22
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 22.8
+                                    },
+                                    "frame": {
+                                      "left": 388.23,
+                                      "top": 733,
+                                      "width": 416.41,
+                                      "height": 22.8
+                                    },
+                                    "snappedFrame": {
+                                      "left": 388,
+                                      "top": 734,
+                                      "width": 416,
+                                      "height": 24
+                                    },
+                                    "children": [],
+                                    "text": "25, 50, 75, 100 percent create distinct buy plans",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/7mp0bi9s",
+                                      "id": "20",
+                                      "kind": "shape"
+                                    }
+                                  }
+                                ],
+                                "padding": {
+                                  "top": 0,
+                                  "right": 0,
+                                  "bottom": 0,
+                                  "left": 0
+                                },
+                                "gap": 12,
+                                "effectiveGap": 12,
+                                "justifyOffset": 0,
+                                "align": "start",
+                                "justify": "start",
+                                "contentFrame": {
+                                  "left": 110,
+                                  "top": 733,
+                                  "width": 694.64,
+                                  "height": 22.8
+                                },
+                                "items": [
+                                  {
+                                    "path": "0.1.1.1.0.4.1.0",
+                                    "frame": {
+                                      "left": 110,
+                                      "top": 733,
+                                      "width": 266.23,
+                                      "height": 22.8
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.1.0.4.1.1",
+                                    "frame": {
+                                      "left": 388.23,
+                                      "top": 733,
+                                      "width": 416.41,
+                                      "height": 22.8
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 10,
+                            "effectiveGap": 10,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 110,
+                              "top": 722,
+                              "width": 694.64,
+                              "height": 33.8
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.1.1.0.4.0",
+                                "frame": {
+                                  "left": 110,
+                                  "top": 722,
+                                  "width": 694.64,
+                                  "height": 1
+                                }
+                              },
+                              {
+                                "path": "0.1.1.1.0.4.1",
+                                "frame": {
+                                  "left": 110,
+                                  "top": 733,
+                                  "width": 694.64,
+                                  "height": 22.8
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 14,
+                        "effectiveGap": 14,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 110,
+                          "top": 545.4,
+                          "width": 694.64,
+                          "height": 210.4
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.1.1.0.0",
+                            "frame": {
+                              "left": 110,
+                              "top": 545.4,
+                              "width": 694.64,
+                              "height": 19.2
+                            }
+                          },
+                          {
+                            "path": "0.1.1.1.0.1",
+                            "frame": {
+                              "left": 110,
+                              "top": 578.6,
+                              "width": 694.64,
+                              "height": 33.8
+                            }
+                          },
+                          {
+                            "path": "0.1.1.1.0.2",
+                            "frame": {
+                              "left": 110,
+                              "top": 626.4,
+                              "width": 694.64,
+                              "height": 33.8
+                            }
+                          },
+                          {
+                            "path": "0.1.1.1.0.3",
+                            "frame": {
+                              "left": 110,
+                              "top": 674.2,
+                              "width": 694.64,
+                              "height": 33.8
+                            }
+                          },
+                          {
+                            "path": "0.1.1.1.0.4",
+                            "frame": {
+                              "left": 110,
+                              "top": 722,
+                              "width": 694.64,
+                              "height": 33.8
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "padding": {
+                      "top": 24,
+                      "right": 28,
+                      "bottom": 24,
+                      "left": 28
+                    },
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 110,
+                      "top": 545.4,
+                      "width": 694.64,
+                      "height": 210.4
+                    },
+                    "element": {
+                      "aid": "sh/fmlkjm1c",
+                      "id": "6",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 28,
+                "effectiveGap": 28,
+                "justifyOffset": 197.4,
+                "align": "start",
+                "justify": "center",
+                "contentFrame": {
+                  "left": 82,
+                  "top": 194.8,
+                  "width": 750.64,
+                  "height": 782.4
+                },
+                "items": [
+                  {
+                    "path": "0.1.1.0",
+                    "frame": {
+                      "left": 82,
+                      "top": 392.2,
+                      "width": 750.64,
+                      "height": 101.2
+                    }
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "frame": {
+                      "left": 82,
+                      "top": 521.4,
+                      "width": 750.64,
+                      "height": 258.4
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.2",
+                "kind": "image",
+                "name": "complexity-photo",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 0
+                },
+                "frame": {
+                  "left": 882.64,
+                  "top": 194.8,
+                  "width": 955.36,
+                  "height": 782.4
+                },
+                "snappedFrame": {
+                  "left": 882.64,
+                  "top": 194.8,
+                  "width": 955.36,
+                  "height": 782.4
+                },
+                "children": [],
+                "source": {
+                  "kind": "dataUrl"
+                },
+                "contentType": "image/png",
+                "fit": "cover",
+                "alt": "Footwear components and planning materials arranged for a complexity discussion",
+                "element": {
+                  "aid": "im/hoza1gvy",
+                  "id": "21",
+                  "kind": "image"
+                }
+              },
+              {
+                "path": "0.1.3",
+                "kind": "text",
+                "name": "footer",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 16.8
+                },
+                "frame": {
+                  "left": 82,
+                  "top": 1003.2,
+                  "width": 1756,
+                  "height": 16.8
+                },
+                "snappedFrame": {
+                  "left": 82,
+                  "top": 1004,
+                  "width": 1756,
+                  "height": 18
+                },
+                "children": [],
+                "text": "Generated image is illustrative; scale metrics are from the sanitized repository demo.",
+                "transform": "none",
+                "element": {
+                  "aid": "sh/psfil0rq",
+                  "id": "22",
+                  "kind": "shape"
+                }
+              }
+            ],
+            "padding": {
+              "top": 60,
+              "right": 82,
+              "bottom": 60,
+              "left": 82
+            },
+            "columnGap": 50,
+            "rowGap": 26,
+            "alignItems": "stretch",
+            "justifyItems": "stretch",
+            "contentFrame": {
+              "left": 82,
+              "top": 60,
+              "width": 1756,
+              "height": 960
+            },
+            "columns": [
+              {
+                "mode": "fr",
+                "value": 0.88
+              },
+              {
+                "mode": "fr",
+                "value": 1.12
+              }
+            ],
+            "rows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "autoRows": "auto",
+            "resolvedRows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "columnSizes": [
+              750.64,
+              955.36
+            ],
+            "rowSizes": [
+              108.8,
+              782.4,
+              16.8
+            ],
+            "cells": [
+              {
+                "path": "0.1.0",
+                "column": 0,
+                "row": 0,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 82,
+                  "top": 60,
+                  "width": 1756,
+                  "height": 108.8
+                }
+              },
+              {
+                "path": "0.1.1",
+                "column": 0,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 82,
+                  "top": 194.8,
+                  "width": 750.64,
+                  "height": 782.4
+                }
+              },
+              {
+                "path": "0.1.2",
+                "column": 1,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 882.64,
+                  "top": 194.8,
+                  "width": 955.36,
+                  "height": 782.4
+                }
+              },
+              {
+                "path": "0.1.3",
+                "column": 0,
+                "row": 2,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 82,
+                  "top": 1003.2,
+                  "width": 1756,
+                  "height": 16.8
+                }
+              }
+            ]
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

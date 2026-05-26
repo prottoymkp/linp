@@ -1,0 +1,2525 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/xzclx5",
+    "id": "xzclx5",
+    "slide": 2,
+    "layoutId": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "283b815a-d041-44df-ac1f-251be766cf19",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/oj2t83it",
+      "id": "1",
+      "name": "slide-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#F6F1EA"
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vy90je9c",
+      "id": "2",
+      "name": "slide-title",
+      "bbox": [
+        86,
+        64,
+        1748,
+        66
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "The client problem starts on the factory floor",
+      "textPreview": "The client problem starts on the factory floor",
+      "resolvedFontSize": 54,
+      "resolvedTextStyle": {
+        "fontSize": 54,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The client problem starts on the factory floor"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The client problem starts on the factory floor",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The client problem starts on the factory floor",
+              "fontSize": 54,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6dcbulwv",
+      "id": "3",
+      "name": "slide-subtitle",
+      "bbox": [
+        86,
+        142,
+        1314,
+        60
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "A monthly footwear plan looks simple until the same leather, outsole, trim, and labor-adjacent materials are shared across dozens of styles.",
+      "textPreview": "A monthly footwear plan looks simple until the same leather, outsole, trim, and labor-adjacent materials are shared across dozens of styles.",
+      "resolvedFontSize": 25,
+      "resolvedTextStyle": {
+        "fontSize": 25,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "A monthly footwear plan looks simple until the same leather, outsole, trim, and labor-adjacent materials are shared across"
+          },
+          {
+            "index": 2,
+            "text": "dozens of styles."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "A monthly footwear plan looks simple until the same leather, outsole, trim, and labor-adjacent materials are shared across dozens of styles.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "A monthly footwear plan looks simple until the same leather, outsole, trim, and labor-adjacent materials are shared across dozens of styles.",
+              "fontSize": 25,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dsji5sne",
+      "id": "4",
+      "name": "s2-usecase-head",
+      "bbox": [
+        86,
+        236,
+        812,
+        52
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0"
+      },
+      "geometry": "rect",
+      "text": "A practical use case",
+      "textPreview": "A practical use case",
+      "resolvedFontSize": 42,
+      "resolvedTextStyle": {
+        "fontSize": 42,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "A practical use case"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "A practical use case",
+          "runs": [
+            {
+              "index": 1,
+              "text": "A practical use case",
+              "fontSize": 42,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/o7qpg3ex",
+      "id": "5",
+      "name": "bullet-mark-1",
+      "bbox": [
+        86,
+        326,
+        12,
+        12
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.0"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#1F5B63"
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vmtwra5g",
+      "id": "6",
+      "name": "bullet-text-1",
+      "bbox": [
+        112,
+        316,
+        786,
+        32
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "Production wants the highest possible plan fill before the month closes.",
+      "textPreview": "Production wants the highest possible plan fill before the month closes.",
+      "resolvedFontSize": 26,
+      "resolvedTextStyle": {
+        "fontSize": 26,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Production wants the highest possible plan fill before the month closes."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Production wants the highest possible plan fill before the month closes.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Production wants the highest possible plan fill before the month closes.",
+              "fontSize": 26,
+              "color": "#18201D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/61032lsz",
+      "id": "7",
+      "name": "bullet-mark-2",
+      "bbox": [
+        86,
+        392,
+        12,
+        12
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.1.0"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#D58A3A"
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dg7adsji",
+      "id": "8",
+      "name": "bullet-text-2",
+      "bbox": [
+        112,
+        366,
+        786,
+        64
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.1.1"
+      },
+      "geometry": "rect",
+      "text": "Procurement needs to know the smallest RM buy needed for each service-level target.",
+      "textPreview": "Procurement needs to know the smallest RM buy needed for each service-level target.",
+      "resolvedFontSize": 26,
+      "resolvedTextStyle": {
+        "fontSize": 26,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Procurement needs to know the smallest RM buy needed for each"
+          },
+          {
+            "index": 2,
+            "text": "service-level target."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Procurement needs to know the smallest RM buy needed for each service-level target.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Procurement needs to know the smallest RM buy needed for each service-level target.",
+              "fontSize": 26,
+              "color": "#18201D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ovahoza1",
+      "id": "9",
+      "name": "bullet-mark-3",
+      "bbox": [
+        86,
+        456,
+        12,
+        12
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.2.0"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#1F5B63"
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mtwra5gb",
+      "id": "10",
+      "name": "bullet-text-3",
+      "bbox": [
+        112,
+        446,
+        786,
+        32
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.2.1"
+      },
+      "geometry": "rect",
+      "text": "Operations leaders need to see which finished goods are blocked and why.",
+      "textPreview": "Operations leaders need to see which finished goods are blocked and why.",
+      "resolvedFontSize": 26,
+      "resolvedTextStyle": {
+        "fontSize": 26,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Operations leaders need to see which finished goods are blocked and why."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Operations leaders need to see which finished goods are blocked and why.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Operations leaders need to see which finished goods are blocked and why.",
+              "fontSize": 26,
+              "color": "#18201D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fepkzupw",
+      "id": "11",
+      "name": "s2-flow-panel",
+      "bbox": [
+        954.16,
+        236.8,
+        879.84,
+        728.4
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#FFFDF8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 1
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4zidonyd",
+      "id": "12",
+      "name": "s2-m1-value",
+      "bbox": [
+        990,
+        270,
+        808,
+        70
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.0.0"
+      },
+      "geometry": "rect",
+      "text": "50 FG",
+      "textPreview": "50 FG",
+      "resolvedFontSize": 58,
+      "resolvedTextStyle": {
+        "fontSize": 58,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "50 FG"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "50 FG",
+          "runs": [
+            {
+              "index": 1,
+              "text": "50 FG",
+              "fontSize": 58,
+              "color": "#1F5B63",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xkf6dcbu",
+      "id": "13",
+      "name": "s2-m1-caption",
+      "bbox": [
+        990,
+        344,
+        808,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.0.1"
+      },
+      "geometry": "rect",
+      "text": "styles in the sanitized demo",
+      "textPreview": "styles in the sanitized demo",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "styles in the sanitized demo"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "styles in the sanitized demo",
+          "runs": [
+            {
+              "index": 1,
+              "text": "styles in the sanitized demo",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mlkjm1cf",
+      "id": "14",
+      "name": "s2-r1",
+      "bbox": [
+        990,
+        390,
+        808,
+        1
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1"
+      },
+      "geometry": "rect",
+      "fillColor": "#D7C8B8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 0
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/f6dcbulw",
+      "id": "15",
+      "name": "s2-m2-value",
+      "bbox": [
+        990,
+        412,
+        808,
+        70
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.2.0"
+      },
+      "geometry": "rect",
+      "text": "200 RM",
+      "textPreview": "200 RM",
+      "resolvedFontSize": 58,
+      "resolvedTextStyle": {
+        "fontSize": 58,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "200 RM"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "200 RM",
+          "runs": [
+            {
+              "index": 1,
+              "text": "200 RM",
+              "fontSize": 58,
+              "color": "#A96533",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4r65wjud",
+      "id": "16",
+      "name": "s2-m2-caption",
+      "bbox": [
+        990,
+        486,
+        808,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.2.1"
+      },
+      "geometry": "rect",
+      "text": "raw materials competing across BOMs",
+      "textPreview": "raw materials competing across BOMs",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "raw materials competing across BOMs"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "raw materials competing across BOMs",
+          "runs": [
+            {
+              "index": 1,
+              "text": "raw materials competing across BOMs",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xc3ylc7u",
+      "id": "17",
+      "name": "s2-r2",
+      "bbox": [
+        990,
+        530,
+        808,
+        1
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.3"
+      },
+      "geometry": "rect",
+      "fillColor": "#D7C8B8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 0
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/m94fu18j",
+      "id": "18",
+      "name": "s2-m3-value",
+      "bbox": [
+        990,
+        554,
+        808,
+        64
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.4.0"
+      },
+      "geometry": "rect",
+      "text": "400 BOM rows",
+      "textPreview": "400 BOM rows",
+      "resolvedFontSize": 52,
+      "resolvedTextStyle": {
+        "fontSize": 52,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "400 BOM rows"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "400 BOM rows",
+          "runs": [
+            {
+              "index": 1,
+              "text": "400 BOM rows",
+              "fontSize": 52,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/fu18jqh0",
+      "id": "19",
+      "name": "s2-m3-caption",
+      "bbox": [
+        990,
+        620,
+        808,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.4.1"
+      },
+      "geometry": "rect",
+      "text": "the mapping that makes manual tradeoffs fragile",
+      "textPreview": "the mapping that makes manual tradeoffs fragile",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "the mapping that makes manual tradeoffs fragile"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "the mapping that makes manual tradeoffs fragile",
+          "runs": [
+            {
+              "index": 1,
+              "text": "the mapping that makes manual tradeoffs fragile",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7qpg3ex0",
+      "id": "20",
+      "name": "footer",
+      "bbox": [
+        86,
+        1000,
+        1748,
+        18
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.3"
+      },
+      "geometry": "rect",
+      "text": "Sanitized repository demo data; amounts are sample currency units.",
+      "textPreview": "Sanitized repository demo data; amounts are sample currency units.",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Sanitized repository demo data; amounts are sample currency units."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Sanitized repository demo data; amounts are sample currency units.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Sanitized repository demo data; amounts are sample currency units.",
+              "fontSize": 14,
+              "color": "#77867F"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "baseUnit": 8,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "s2-root",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 0,
+          "height": 0
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "shape",
+            "name": "slide-bg",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 0,
+              "height": 0
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "snappedFrame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [],
+            "geometry": "rect",
+            "element": {
+              "aid": "sh/oj2t83it",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "grid",
+            "name": "s2-grid",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 228,
+              "height": 351.6
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [
+              {
+                "path": "0.1.0",
+                "kind": "column",
+                "name": "title-stack",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 1314.22,
+                  "height": 138.8
+                },
+                "frame": {
+                  "left": 86,
+                  "top": 64,
+                  "width": 1748,
+                  "height": 138.8
+                },
+                "children": [
+                  {
+                    "path": "0.1.0.0",
+                    "kind": "text",
+                    "name": "slide-title",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 64.8
+                    },
+                    "frame": {
+                      "left": 86,
+                      "top": 64,
+                      "width": 1748,
+                      "height": 64.8
+                    },
+                    "snappedFrame": {
+                      "left": 86,
+                      "top": 64,
+                      "width": 1748,
+                      "height": 66
+                    },
+                    "children": [],
+                    "text": "The client problem starts on the factory floor",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/vy90je9c",
+                      "id": "2",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "kind": "text",
+                    "name": "slide-subtitle",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 1320
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 1314.22,
+                      "height": 60
+                    },
+                    "frame": {
+                      "left": 86,
+                      "top": 142.8,
+                      "width": 1314.22,
+                      "height": 60
+                    },
+                    "snappedFrame": {
+                      "left": 86,
+                      "top": 142,
+                      "width": 1314,
+                      "height": 60
+                    },
+                    "children": [],
+                    "text": "A monthly footwear plan looks simple until the same leather, outsole, trim, and labor-adjacent materials are shared across dozens of styles.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/6dcbulwv",
+                      "id": "3",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 14,
+                "effectiveGap": 14,
+                "justifyOffset": 0,
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 86,
+                  "top": 64,
+                  "width": 1748,
+                  "height": 138.8
+                },
+                "items": [
+                  {
+                    "path": "0.1.0.0",
+                    "frame": {
+                      "left": 86,
+                      "top": 64,
+                      "width": 1748,
+                      "height": 64.8
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "frame": {
+                      "left": 86,
+                      "top": 142.8,
+                      "width": 1314.22,
+                      "height": 60
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.1",
+                "kind": "column",
+                "name": "s2-story",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 210
+                },
+                "frame": {
+                  "left": 86,
+                  "top": 236.8,
+                  "width": 812.16,
+                  "height": 728.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.1.0",
+                    "kind": "text",
+                    "name": "s2-usecase-head",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 50.4
+                    },
+                    "frame": {
+                      "left": 86,
+                      "top": 236.8,
+                      "width": 812.16,
+                      "height": 50.4
+                    },
+                    "snappedFrame": {
+                      "left": 86,
+                      "top": 236,
+                      "width": 812,
+                      "height": 52
+                    },
+                    "children": [],
+                    "text": "A practical use case",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/dsji5sne",
+                      "id": "4",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "kind": "column",
+                    "name": "open-bullets",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 129.6
+                    },
+                    "frame": {
+                      "left": 86,
+                      "top": 317.2,
+                      "width": 812.16,
+                      "height": 160.8
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.1.1.0",
+                        "kind": "row",
+                        "name": "bullet-row-1",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 26,
+                          "height": 31.2
+                        },
+                        "frame": {
+                          "left": 86,
+                          "top": 317.2,
+                          "width": 812.16,
+                          "height": 31.2
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.1.1.0.0",
+                            "kind": "shape",
+                            "name": "bullet-mark-1",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fixed",
+                                "value": 12
+                              },
+                              "height": {
+                                "mode": "fixed",
+                                "value": 12
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 12,
+                              "height": 12
+                            },
+                            "frame": {
+                              "left": 86,
+                              "top": 326,
+                              "width": 12,
+                              "height": 12
+                            },
+                            "snappedFrame": {
+                              "left": 86,
+                              "top": 326,
+                              "width": 12,
+                              "height": 12
+                            },
+                            "children": [],
+                            "geometry": "rect",
+                            "element": {
+                              "aid": "sh/o7qpg3ex",
+                              "id": "5",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.1.1.0.1",
+                            "kind": "text",
+                            "name": "bullet-text-1",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 31.2
+                            },
+                            "frame": {
+                              "left": 112,
+                              "top": 316,
+                              "width": 786.16,
+                              "height": 32
+                            },
+                            "snappedFrame": {
+                              "left": 112,
+                              "top": 316,
+                              "width": 786,
+                              "height": 32
+                            },
+                            "children": [],
+                            "text": "Production wants the highest possible plan fill before the month closes.",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/vmtwra5g",
+                              "id": "6",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 14,
+                        "effectiveGap": 14,
+                        "justifyOffset": 0,
+                        "align": "center",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 86,
+                          "top": 317.2,
+                          "width": 812.16,
+                          "height": 31.2
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.1.1.0.0",
+                            "frame": {
+                              "left": 86,
+                              "top": 326,
+                              "width": 12,
+                              "height": 12
+                            }
+                          },
+                          {
+                            "path": "0.1.1.1.0.1",
+                            "frame": {
+                              "left": 112,
+                              "top": 316,
+                              "width": 786.16,
+                              "height": 32
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "path": "0.1.1.1.1",
+                        "kind": "row",
+                        "name": "bullet-row-2",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 26,
+                          "height": 31.2
+                        },
+                        "frame": {
+                          "left": 86,
+                          "top": 366.4,
+                          "width": 812.16,
+                          "height": 62.4
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.1.1.1.0",
+                            "kind": "shape",
+                            "name": "bullet-mark-2",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fixed",
+                                "value": 12
+                              },
+                              "height": {
+                                "mode": "fixed",
+                                "value": 12
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 12,
+                              "height": 12
+                            },
+                            "frame": {
+                              "left": 86,
+                              "top": 392,
+                              "width": 12,
+                              "height": 12
+                            },
+                            "snappedFrame": {
+                              "left": 86,
+                              "top": 392,
+                              "width": 12,
+                              "height": 12
+                            },
+                            "children": [],
+                            "geometry": "rect",
+                            "element": {
+                              "aid": "sh/61032lsz",
+                              "id": "7",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.1.1.1.1",
+                            "kind": "text",
+                            "name": "bullet-text-2",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 31.2
+                            },
+                            "frame": {
+                              "left": 112,
+                              "top": 366,
+                              "width": 786.16,
+                              "height": 64
+                            },
+                            "snappedFrame": {
+                              "left": 112,
+                              "top": 366,
+                              "width": 786,
+                              "height": 64
+                            },
+                            "children": [],
+                            "text": "Procurement needs to know the smallest RM buy needed for each service-level target.",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/dg7adsji",
+                              "id": "8",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 14,
+                        "effectiveGap": 14,
+                        "justifyOffset": 0,
+                        "align": "center",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 86,
+                          "top": 366.4,
+                          "width": 812.16,
+                          "height": 62.4
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.1.1.1.0",
+                            "frame": {
+                              "left": 86,
+                              "top": 392,
+                              "width": 12,
+                              "height": 12
+                            }
+                          },
+                          {
+                            "path": "0.1.1.1.1.1",
+                            "frame": {
+                              "left": 112,
+                              "top": 366,
+                              "width": 786.16,
+                              "height": 64
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "path": "0.1.1.1.2",
+                        "kind": "row",
+                        "name": "bullet-row-3",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 26,
+                          "height": 31.2
+                        },
+                        "frame": {
+                          "left": 86,
+                          "top": 446.8,
+                          "width": 812.16,
+                          "height": 31.2
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.1.1.2.0",
+                            "kind": "shape",
+                            "name": "bullet-mark-3",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fixed",
+                                "value": 12
+                              },
+                              "height": {
+                                "mode": "fixed",
+                                "value": 12
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 12,
+                              "height": 12
+                            },
+                            "frame": {
+                              "left": 86,
+                              "top": 456,
+                              "width": 12,
+                              "height": 12
+                            },
+                            "snappedFrame": {
+                              "left": 86,
+                              "top": 456,
+                              "width": 12,
+                              "height": 12
+                            },
+                            "children": [],
+                            "geometry": "rect",
+                            "element": {
+                              "aid": "sh/ovahoza1",
+                              "id": "9",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.1.1.2.1",
+                            "kind": "text",
+                            "name": "bullet-text-3",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 31.2
+                            },
+                            "frame": {
+                              "left": 112,
+                              "top": 446,
+                              "width": 786.16,
+                              "height": 32
+                            },
+                            "snappedFrame": {
+                              "left": 112,
+                              "top": 446,
+                              "width": 786,
+                              "height": 32
+                            },
+                            "children": [],
+                            "text": "Operations leaders need to see which finished goods are blocked and why.",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/mtwra5gb",
+                              "id": "10",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 14,
+                        "effectiveGap": 14,
+                        "justifyOffset": 0,
+                        "align": "center",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 86,
+                          "top": 446.8,
+                          "width": 812.16,
+                          "height": 31.2
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.1.1.2.0",
+                            "frame": {
+                              "left": 86,
+                              "top": 456,
+                              "width": 12,
+                              "height": 12
+                            }
+                          },
+                          {
+                            "path": "0.1.1.1.2.1",
+                            "frame": {
+                              "left": 112,
+                              "top": 446,
+                              "width": 786.16,
+                              "height": 32
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "padding": {
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    },
+                    "gap": 18,
+                    "effectiveGap": 18,
+                    "justifyOffset": 0,
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 86,
+                      "top": 317.2,
+                      "width": 812.16,
+                      "height": 160.8
+                    },
+                    "items": [
+                      {
+                        "path": "0.1.1.1.0",
+                        "frame": {
+                          "left": 86,
+                          "top": 317.2,
+                          "width": 812.16,
+                          "height": 31.2
+                        }
+                      },
+                      {
+                        "path": "0.1.1.1.1",
+                        "frame": {
+                          "left": 86,
+                          "top": 366.4,
+                          "width": 812.16,
+                          "height": 62.4
+                        }
+                      },
+                      {
+                        "path": "0.1.1.1.2",
+                        "frame": {
+                          "left": 86,
+                          "top": 446.8,
+                          "width": 812.16,
+                          "height": 31.2
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 30,
+                "effectiveGap": 30,
+                "justifyOffset": 0,
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 86,
+                  "top": 236.8,
+                  "width": 812.16,
+                  "height": 728.4
+                },
+                "items": [
+                  {
+                    "path": "0.1.1.0",
+                    "frame": {
+                      "left": 86,
+                      "top": 236.8,
+                      "width": 812.16,
+                      "height": 50.4
+                    }
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "frame": {
+                      "left": 86,
+                      "top": 317.2,
+                      "width": 812.16,
+                      "height": 160.8
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.2",
+                "kind": "panel",
+                "name": "s2-flow-panel",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 72,
+                  "height": 68
+                },
+                "frame": {
+                  "left": 954.16,
+                  "top": 236.8,
+                  "width": 879.84,
+                  "height": 728.4
+                },
+                "snappedFrame": {
+                  "left": 954.16,
+                  "top": 236.8,
+                  "width": 879.84,
+                  "height": 728.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.2.0",
+                    "kind": "column",
+                    "name": "s2-flow",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "fill",
+                        "value": 1
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 372
+                    },
+                    "frame": {
+                      "left": 990.16,
+                      "top": 270.8,
+                      "width": 807.84,
+                      "height": 660.4
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.2.0.0",
+                        "kind": "column",
+                        "name": "s2-m1",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 96.4
+                        },
+                        "frame": {
+                          "left": 990.16,
+                          "top": 270.8,
+                          "width": 807.84,
+                          "height": 96.4
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.2.0.0.0",
+                            "kind": "text",
+                            "name": "s2-m1-value",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 69.6
+                            },
+                            "frame": {
+                              "left": 990.16,
+                              "top": 270.8,
+                              "width": 807.84,
+                              "height": 69.6
+                            },
+                            "snappedFrame": {
+                              "left": 990,
+                              "top": 270,
+                              "width": 808,
+                              "height": 70
+                            },
+                            "children": [],
+                            "text": "50 FG",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/4zidonyd",
+                              "id": "12",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.0.1",
+                            "kind": "text",
+                            "name": "s2-m1-caption",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 22.8
+                            },
+                            "frame": {
+                              "left": 990.16,
+                              "top": 344.4,
+                              "width": 807.84,
+                              "height": 22.8
+                            },
+                            "snappedFrame": {
+                              "left": 990,
+                              "top": 344,
+                              "width": 808,
+                              "height": 24
+                            },
+                            "children": [],
+                            "text": "styles in the sanitized demo",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/xkf6dcbu",
+                              "id": "13",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 4,
+                        "effectiveGap": 4,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 990.16,
+                          "top": 270.8,
+                          "width": 807.84,
+                          "height": 96.4
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.2.0.0.0",
+                            "frame": {
+                              "left": 990.16,
+                              "top": 270.8,
+                              "width": 807.84,
+                              "height": 69.6
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.0.1",
+                            "frame": {
+                              "left": 990.16,
+                              "top": 344.4,
+                              "width": 807.84,
+                              "height": 22.8
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "path": "0.1.2.0.1",
+                        "kind": "rule",
+                        "name": "s2-r1",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "fixed",
+                            "value": 1
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 1
+                        },
+                        "frame": {
+                          "left": 990.16,
+                          "top": 389.2,
+                          "width": 807.84,
+                          "height": 1
+                        },
+                        "snappedFrame": {
+                          "left": 990,
+                          "top": 390,
+                          "width": 808,
+                          "height": 1
+                        },
+                        "children": [],
+                        "weight": 1,
+                        "element": {
+                          "aid": "sh/mlkjm1cf",
+                          "id": "14",
+                          "kind": "shape"
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.2",
+                        "kind": "column",
+                        "name": "s2-m2",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 96.4
+                        },
+                        "frame": {
+                          "left": 990.16,
+                          "top": 412.2,
+                          "width": 807.84,
+                          "height": 96.4
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.2.0.2.0",
+                            "kind": "text",
+                            "name": "s2-m2-value",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 69.6
+                            },
+                            "frame": {
+                              "left": 990.16,
+                              "top": 412.2,
+                              "width": 807.84,
+                              "height": 69.6
+                            },
+                            "snappedFrame": {
+                              "left": 990,
+                              "top": 412,
+                              "width": 808,
+                              "height": 70
+                            },
+                            "children": [],
+                            "text": "200 RM",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/f6dcbulw",
+                              "id": "15",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.2.1",
+                            "kind": "text",
+                            "name": "s2-m2-caption",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 22.8
+                            },
+                            "frame": {
+                              "left": 990.16,
+                              "top": 485.8,
+                              "width": 807.84,
+                              "height": 22.8
+                            },
+                            "snappedFrame": {
+                              "left": 990,
+                              "top": 486,
+                              "width": 808,
+                              "height": 24
+                            },
+                            "children": [],
+                            "text": "raw materials competing across BOMs",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/4r65wjud",
+                              "id": "16",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 4,
+                        "effectiveGap": 4,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 990.16,
+                          "top": 412.2,
+                          "width": 807.84,
+                          "height": 96.4
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.2.0.2.0",
+                            "frame": {
+                              "left": 990.16,
+                              "top": 412.2,
+                              "width": 807.84,
+                              "height": 69.6
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.2.1",
+                            "frame": {
+                              "left": 990.16,
+                              "top": 485.8,
+                              "width": 807.84,
+                              "height": 22.8
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "path": "0.1.2.0.3",
+                        "kind": "rule",
+                        "name": "s2-r2",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "fixed",
+                            "value": 1
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 1
+                        },
+                        "frame": {
+                          "left": 990.16,
+                          "top": 530.6,
+                          "width": 807.84,
+                          "height": 1
+                        },
+                        "snappedFrame": {
+                          "left": 990,
+                          "top": 530,
+                          "width": 808,
+                          "height": 1
+                        },
+                        "children": [],
+                        "weight": 1,
+                        "element": {
+                          "aid": "sh/xc3ylc7u",
+                          "id": "17",
+                          "kind": "shape"
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.4",
+                        "kind": "column",
+                        "name": "s2-m3",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 89.2
+                        },
+                        "frame": {
+                          "left": 990.16,
+                          "top": 553.6,
+                          "width": 807.84,
+                          "height": 89.2
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.2.0.4.0",
+                            "kind": "text",
+                            "name": "s2-m3-value",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 62.4
+                            },
+                            "frame": {
+                              "left": 990.16,
+                              "top": 553.6,
+                              "width": 807.84,
+                              "height": 62.4
+                            },
+                            "snappedFrame": {
+                              "left": 990,
+                              "top": 554,
+                              "width": 808,
+                              "height": 64
+                            },
+                            "children": [],
+                            "text": "400 BOM rows",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/m94fu18j",
+                              "id": "18",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.4.1",
+                            "kind": "text",
+                            "name": "s2-m3-caption",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 22.8
+                            },
+                            "frame": {
+                              "left": 990.16,
+                              "top": 620,
+                              "width": 807.84,
+                              "height": 22.8
+                            },
+                            "snappedFrame": {
+                              "left": 990,
+                              "top": 620,
+                              "width": 808,
+                              "height": 24
+                            },
+                            "children": [],
+                            "text": "the mapping that makes manual tradeoffs fragile",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/fu18jqh0",
+                              "id": "19",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 4,
+                        "effectiveGap": 4,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 990.16,
+                          "top": 553.6,
+                          "width": 807.84,
+                          "height": 89.2
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.2.0.4.0",
+                            "frame": {
+                              "left": 990.16,
+                              "top": 553.6,
+                              "width": 807.84,
+                              "height": 62.4
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.4.1",
+                            "frame": {
+                              "left": 990.16,
+                              "top": 620,
+                              "width": 807.84,
+                              "height": 22.8
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "padding": {
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    },
+                    "gap": 22,
+                    "effectiveGap": 22,
+                    "justifyOffset": 0,
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 990.16,
+                      "top": 270.8,
+                      "width": 807.84,
+                      "height": 660.4
+                    },
+                    "items": [
+                      {
+                        "path": "0.1.2.0.0",
+                        "frame": {
+                          "left": 990.16,
+                          "top": 270.8,
+                          "width": 807.84,
+                          "height": 96.4
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.1",
+                        "frame": {
+                          "left": 990.16,
+                          "top": 389.2,
+                          "width": 807.84,
+                          "height": 1
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.2",
+                        "frame": {
+                          "left": 990.16,
+                          "top": 412.2,
+                          "width": 807.84,
+                          "height": 96.4
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.3",
+                        "frame": {
+                          "left": 990.16,
+                          "top": 530.6,
+                          "width": 807.84,
+                          "height": 1
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.4",
+                        "frame": {
+                          "left": 990.16,
+                          "top": 553.6,
+                          "width": 807.84,
+                          "height": 89.2
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "padding": {
+                  "top": 34,
+                  "right": 36,
+                  "bottom": 34,
+                  "left": 36
+                },
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 990.16,
+                  "top": 270.8,
+                  "width": 807.84,
+                  "height": 660.4
+                },
+                "element": {
+                  "aid": "sh/fepkzupw",
+                  "id": "11",
+                  "kind": "shape"
+                }
+              },
+              {
+                "path": "0.1.3",
+                "kind": "text",
+                "name": "footer",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 16.8
+                },
+                "frame": {
+                  "left": 86,
+                  "top": 999.2,
+                  "width": 1748,
+                  "height": 16.8
+                },
+                "snappedFrame": {
+                  "left": 86,
+                  "top": 1000,
+                  "width": 1748,
+                  "height": 18
+                },
+                "children": [],
+                "text": "Sanitized repository demo data; amounts are sample currency units.",
+                "transform": "none",
+                "element": {
+                  "aid": "sh/7qpg3ex0",
+                  "id": "20",
+                  "kind": "shape"
+                }
+              }
+            ],
+            "padding": {
+              "top": 64,
+              "right": 86,
+              "bottom": 64,
+              "left": 86
+            },
+            "columnGap": 56,
+            "rowGap": 34,
+            "alignItems": "stretch",
+            "justifyItems": "stretch",
+            "contentFrame": {
+              "left": 86,
+              "top": 64,
+              "width": 1748,
+              "height": 952
+            },
+            "columns": [
+              {
+                "mode": "fr",
+                "value": 0.96
+              },
+              {
+                "mode": "fr",
+                "value": 1.04
+              }
+            ],
+            "rows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "autoRows": "auto",
+            "resolvedRows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "columnSizes": [
+              812.16,
+              879.84
+            ],
+            "rowSizes": [
+              138.8,
+              728.4,
+              16.8
+            ],
+            "cells": [
+              {
+                "path": "0.1.0",
+                "column": 0,
+                "row": 0,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 86,
+                  "top": 64,
+                  "width": 1748,
+                  "height": 138.8
+                }
+              },
+              {
+                "path": "0.1.1",
+                "column": 0,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 86,
+                  "top": 236.8,
+                  "width": 812.16,
+                  "height": 728.4
+                }
+              },
+              {
+                "path": "0.1.2",
+                "column": 1,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 954.16,
+                  "top": 236.8,
+                  "width": 879.84,
+                  "height": 728.4
+                }
+              },
+              {
+                "path": "0.1.3",
+                "column": 0,
+                "row": 2,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 86,
+                  "top": 999.2,
+                  "width": 1748,
+                  "height": 16.8
+                }
+              }
+            ]
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

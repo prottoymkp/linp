@@ -1,0 +1,1498 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/iq5uq8",
+    "id": "iq5uq8",
+    "slide": 8,
+    "layoutId": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "283b815a-d041-44df-ac1f-251be766cf19",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dsji5sne",
+      "id": "1",
+      "name": "slide-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#F6F1EA"
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/61032lsz",
+      "id": "2",
+      "name": "slide-title",
+      "bbox": [
+        88,
+        64,
+        1744,
+        66
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "PLAN objective uses a lexicographic solve",
+      "textPreview": "PLAN objective uses a lexicographic solve",
+      "resolvedFontSize": 54,
+      "resolvedTextStyle": {
+        "fontSize": 54,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "PLAN objective uses a lexicographic solve"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "PLAN objective uses a lexicographic solve",
+          "runs": [
+            {
+              "index": 1,
+              "text": "PLAN objective uses a lexicographic solve",
+              "fontSize": 54,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vmtwra5g",
+      "id": "3",
+      "name": "slide-subtitle",
+      "bbox": [
+        88,
+        142,
+        1316,
+        60
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "For planners, service fill usually comes first. Once the pair count is locked, the optimizer chooses the best-margin mix at that same output level.",
+      "textPreview": "For planners, service fill usually comes first. Once the pair count is locked, the optimizer chooses the best-margin mix at that same out...",
+      "resolvedFontSize": 25,
+      "resolvedTextStyle": {
+        "fontSize": 25,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "For planners, service fill usually comes first. Once the pair count is locked, the optimizer chooses the best-margin mix at that same"
+          },
+          {
+            "index": 2,
+            "text": "output level."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "For planners, service fill usually comes first. Once the pair count is locked, the optimizer chooses the best-margin mix at that same output level.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "For planners, service fill usually comes first. Once the pair count is locked, the optimizer chooses the best-margin mix at that same output level.",
+              "fontSize": 25,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/oj2t83it",
+      "id": "4",
+      "name": "s8-stage1",
+      "bbox": [
+        88,
+        236.8,
+        851,
+        728.4
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#FFFDF8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 1
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d4vmtwra",
+      "id": "5",
+      "name": "section-label",
+      "bbox": [
+        130,
+        500,
+        768,
+        20
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "Stage 1",
+      "textPreview": "Stage 1",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Stage 1"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Stage 1",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Stage 1",
+              "fontSize": 16,
+              "color": "#1F5B63",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6dcbulwv",
+      "id": "6",
+      "name": "s8-stage1-title",
+      "bbox": [
+        130,
+        544,
+        768,
+        72
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "Maximize pairs",
+      "textPreview": "Maximize pairs",
+      "resolvedFontSize": 60,
+      "resolvedTextStyle": {
+        "fontSize": 60,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Maximize pairs"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Maximize pairs",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Maximize pairs",
+              "fontSize": 60,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vy90je9c",
+      "id": "7",
+      "name": "s8-stage1-copy",
+      "bbox": [
+        130,
+        640,
+        704,
+        64
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.2"
+      },
+      "geometry": "rect",
+      "text": "Find P_star: the highest feasible production quantity under current RM availability and plan caps.",
+      "textPreview": "Find P_star: the highest feasible production quantity under current RM availability and plan caps.",
+      "resolvedFontSize": 26,
+      "resolvedTextStyle": {
+        "fontSize": 26,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Find P_star: the highest feasible production quantity under current"
+          },
+          {
+            "index": 2,
+            "text": "RM availability and plan caps."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Find P_star: the highest feasible production quantity under current RM availability and plan caps.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Find P_star: the highest feasible production quantity under current RM availability and plan caps.",
+              "fontSize": 26,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/onyd0z61",
+      "id": "8",
+      "name": "s8-stage2",
+      "bbox": [
+        981,
+        236.8,
+        851,
+        728.4
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#FBF7F0",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 1
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d8v6psfi",
+      "id": "9",
+      "name": "section-label",
+      "bbox": [
+        1024,
+        500,
+        768,
+        20
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.0"
+      },
+      "geometry": "rect",
+      "text": "Stage 2",
+      "textPreview": "Stage 2",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Stage 2"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Stage 2",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Stage 2",
+              "fontSize": 16,
+              "color": "#A96533",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/twra5gbq",
+      "id": "10",
+      "name": "s8-stage2-title",
+      "bbox": [
+        1024,
+        544,
+        768,
+        72
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1"
+      },
+      "geometry": "rect",
+      "text": "Maximize margin at P_star",
+      "textPreview": "Maximize margin at P_star",
+      "resolvedFontSize": 60,
+      "resolvedTextStyle": {
+        "fontSize": 60,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Maximize margin at P_star"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Maximize margin at P_star",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Maximize margin at P_star",
+              "fontSize": 60,
+              "color": "#A96533",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4byhgn29",
+      "id": "11",
+      "name": "s8-stage2-copy",
+      "bbox": [
+        1024,
+        640,
+        694,
+        64
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.2"
+      },
+      "geometry": "rect",
+      "text": "Keep total pairs equal to P_star, then reallocate scarce RM toward the highest-value feasible FG mix.",
+      "textPreview": "Keep total pairs equal to P_star, then reallocate scarce RM toward the highest-value feasible FG mix.",
+      "resolvedFontSize": 26,
+      "resolvedTextStyle": {
+        "fontSize": 26,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Keep total pairs equal to P_star, then reallocate scarce RM toward"
+          },
+          {
+            "index": 2,
+            "text": "the highest-value feasible FG mix."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Keep total pairs equal to P_star, then reallocate scarce RM toward the highest-value feasible FG mix.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Keep total pairs equal to P_star, then reallocate scarce RM toward the highest-value feasible FG mix.",
+              "fontSize": 26,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/bq1oryts",
+      "id": "12",
+      "name": "footer",
+      "bbox": [
+        88,
+        1000,
+        1744,
+        18
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.3"
+      },
+      "geometry": "rect",
+      "text": "Fallback LP plus greedy heuristics are available when exact MIP status is not feasible in time.",
+      "textPreview": "Fallback LP plus greedy heuristics are available when exact MIP status is not feasible in time.",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Fallback LP plus greedy heuristics are available when exact MIP status is not feasible in time."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Fallback LP plus greedy heuristics are available when exact MIP status is not feasible in time.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Fallback LP plus greedy heuristics are available when exact MIP status is not feasible in time.",
+              "fontSize": 14,
+              "color": "#77867F"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "baseUnit": 8,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "s8-root",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 0,
+          "height": 0
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "shape",
+            "name": "slide-bg",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 0,
+              "height": 0
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "snappedFrame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [],
+            "geometry": "rect",
+            "element": {
+              "aid": "sh/dsji5sne",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "grid",
+            "name": "s8-grid",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 218,
+              "height": 351.6
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [
+              {
+                "path": "0.1.0",
+                "kind": "column",
+                "name": "title-stack",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 1315.25,
+                  "height": 138.8
+                },
+                "frame": {
+                  "left": 88,
+                  "top": 64,
+                  "width": 1744,
+                  "height": 138.8
+                },
+                "children": [
+                  {
+                    "path": "0.1.0.0",
+                    "kind": "text",
+                    "name": "slide-title",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 64.8
+                    },
+                    "frame": {
+                      "left": 88,
+                      "top": 64,
+                      "width": 1744,
+                      "height": 64.8
+                    },
+                    "snappedFrame": {
+                      "left": 88,
+                      "top": 64,
+                      "width": 1744,
+                      "height": 66
+                    },
+                    "children": [],
+                    "text": "PLAN objective uses a lexicographic solve",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/61032lsz",
+                      "id": "2",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "kind": "text",
+                    "name": "slide-subtitle",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 1340
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 1315.25,
+                      "height": 60
+                    },
+                    "frame": {
+                      "left": 88,
+                      "top": 142.8,
+                      "width": 1315.25,
+                      "height": 60
+                    },
+                    "snappedFrame": {
+                      "left": 88,
+                      "top": 142,
+                      "width": 1316,
+                      "height": 60
+                    },
+                    "children": [],
+                    "text": "For planners, service fill usually comes first. Once the pair count is locked, the optimizer chooses the best-margin mix at that same output level.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/vmtwra5g",
+                      "id": "3",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 14,
+                "effectiveGap": 14,
+                "justifyOffset": 0,
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 88,
+                  "top": 64,
+                  "width": 1744,
+                  "height": 138.8
+                },
+                "items": [
+                  {
+                    "path": "0.1.0.0",
+                    "frame": {
+                      "left": 88,
+                      "top": 64,
+                      "width": 1744,
+                      "height": 64.8
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "frame": {
+                      "left": 88,
+                      "top": 142.8,
+                      "width": 1315.25,
+                      "height": 60
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.1",
+                "kind": "panel",
+                "name": "s8-stage1",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 84,
+                  "height": 76
+                },
+                "frame": {
+                  "left": 88,
+                  "top": 236.8,
+                  "width": 851,
+                  "height": 728.4
+                },
+                "snappedFrame": {
+                  "left": 88,
+                  "top": 236.8,
+                  "width": 851,
+                  "height": 728.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.1.0",
+                    "kind": "column",
+                    "name": "s8-stage1-col",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "fill",
+                        "value": 1
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 704,
+                      "height": 201.6
+                    },
+                    "frame": {
+                      "left": 130,
+                      "top": 274.8,
+                      "width": 767,
+                      "height": 652.4
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.1.0.0",
+                        "kind": "text",
+                        "name": "section-label",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 19.2
+                        },
+                        "frame": {
+                          "left": 130,
+                          "top": 500.2,
+                          "width": 767,
+                          "height": 19.2
+                        },
+                        "snappedFrame": {
+                          "left": 130,
+                          "top": 500,
+                          "width": 768,
+                          "height": 20
+                        },
+                        "children": [],
+                        "text": "Stage 1",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/d4vmtwra",
+                          "id": "5",
+                          "kind": "shape"
+                        }
+                      },
+                      {
+                        "path": "0.1.1.0.1",
+                        "kind": "text",
+                        "name": "s8-stage1-title",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 72
+                        },
+                        "frame": {
+                          "left": 130,
+                          "top": 543.4,
+                          "width": 767,
+                          "height": 72
+                        },
+                        "snappedFrame": {
+                          "left": 130,
+                          "top": 544,
+                          "width": 768,
+                          "height": 72
+                        },
+                        "children": [],
+                        "text": "Maximize pairs",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/6dcbulwv",
+                          "id": "6",
+                          "kind": "shape"
+                        }
+                      },
+                      {
+                        "path": "0.1.1.0.2",
+                        "kind": "text",
+                        "name": "s8-stage1-copy",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "wrap",
+                            "max": 720
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 704,
+                          "height": 62.4
+                        },
+                        "frame": {
+                          "left": 130,
+                          "top": 639.4,
+                          "width": 704,
+                          "height": 62.4
+                        },
+                        "snappedFrame": {
+                          "left": 130,
+                          "top": 640,
+                          "width": 704,
+                          "height": 64
+                        },
+                        "children": [],
+                        "text": "Find P_star: the highest feasible production quantity under current RM availability and plan caps.",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/vy90je9c",
+                          "id": "7",
+                          "kind": "shape"
+                        }
+                      }
+                    ],
+                    "padding": {
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    },
+                    "gap": 24,
+                    "effectiveGap": 24,
+                    "justifyOffset": 225.4,
+                    "align": "start",
+                    "justify": "center",
+                    "contentFrame": {
+                      "left": 130,
+                      "top": 274.8,
+                      "width": 767,
+                      "height": 652.4
+                    },
+                    "items": [
+                      {
+                        "path": "0.1.1.0.0",
+                        "frame": {
+                          "left": 130,
+                          "top": 500.2,
+                          "width": 767,
+                          "height": 19.2
+                        }
+                      },
+                      {
+                        "path": "0.1.1.0.1",
+                        "frame": {
+                          "left": 130,
+                          "top": 543.4,
+                          "width": 767,
+                          "height": 72
+                        }
+                      },
+                      {
+                        "path": "0.1.1.0.2",
+                        "frame": {
+                          "left": 130,
+                          "top": 639.4,
+                          "width": 704,
+                          "height": 62.4
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "padding": {
+                  "top": 38,
+                  "right": 42,
+                  "bottom": 38,
+                  "left": 42
+                },
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 130,
+                  "top": 274.8,
+                  "width": 767,
+                  "height": 652.4
+                },
+                "element": {
+                  "aid": "sh/oj2t83it",
+                  "id": "4",
+                  "kind": "shape"
+                }
+              },
+              {
+                "path": "0.1.2",
+                "kind": "panel",
+                "name": "s8-stage2",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 84,
+                  "height": 76
+                },
+                "frame": {
+                  "left": 981,
+                  "top": 236.8,
+                  "width": 851,
+                  "height": 728.4
+                },
+                "snappedFrame": {
+                  "left": 981,
+                  "top": 236.8,
+                  "width": 851,
+                  "height": 728.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.2.0",
+                    "kind": "column",
+                    "name": "s8-stage2-col",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "fill",
+                        "value": 1
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 693.19,
+                      "height": 201.6
+                    },
+                    "frame": {
+                      "left": 1023,
+                      "top": 274.8,
+                      "width": 767,
+                      "height": 652.4
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.2.0.0",
+                        "kind": "text",
+                        "name": "section-label",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 19.2
+                        },
+                        "frame": {
+                          "left": 1023,
+                          "top": 500.2,
+                          "width": 767,
+                          "height": 19.2
+                        },
+                        "snappedFrame": {
+                          "left": 1024,
+                          "top": 500,
+                          "width": 768,
+                          "height": 20
+                        },
+                        "children": [],
+                        "text": "Stage 2",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/d8v6psfi",
+                          "id": "9",
+                          "kind": "shape"
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.1",
+                        "kind": "text",
+                        "name": "s8-stage2-title",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 72
+                        },
+                        "frame": {
+                          "left": 1023,
+                          "top": 543.4,
+                          "width": 767,
+                          "height": 72
+                        },
+                        "snappedFrame": {
+                          "left": 1024,
+                          "top": 544,
+                          "width": 768,
+                          "height": 72
+                        },
+                        "children": [],
+                        "text": "Maximize margin at P_star",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/twra5gbq",
+                          "id": "10",
+                          "kind": "shape"
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.2",
+                        "kind": "text",
+                        "name": "s8-stage2-copy",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "wrap",
+                            "max": 720
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 693.19,
+                          "height": 62.4
+                        },
+                        "frame": {
+                          "left": 1023,
+                          "top": 639.4,
+                          "width": 693.19,
+                          "height": 62.4
+                        },
+                        "snappedFrame": {
+                          "left": 1024,
+                          "top": 640,
+                          "width": 694,
+                          "height": 64
+                        },
+                        "children": [],
+                        "text": "Keep total pairs equal to P_star, then reallocate scarce RM toward the highest-value feasible FG mix.",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/4byhgn29",
+                          "id": "11",
+                          "kind": "shape"
+                        }
+                      }
+                    ],
+                    "padding": {
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    },
+                    "gap": 24,
+                    "effectiveGap": 24,
+                    "justifyOffset": 225.4,
+                    "align": "start",
+                    "justify": "center",
+                    "contentFrame": {
+                      "left": 1023,
+                      "top": 274.8,
+                      "width": 767,
+                      "height": 652.4
+                    },
+                    "items": [
+                      {
+                        "path": "0.1.2.0.0",
+                        "frame": {
+                          "left": 1023,
+                          "top": 500.2,
+                          "width": 767,
+                          "height": 19.2
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.1",
+                        "frame": {
+                          "left": 1023,
+                          "top": 543.4,
+                          "width": 767,
+                          "height": 72
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.2",
+                        "frame": {
+                          "left": 1023,
+                          "top": 639.4,
+                          "width": 693.19,
+                          "height": 62.4
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "padding": {
+                  "top": 38,
+                  "right": 42,
+                  "bottom": 38,
+                  "left": 42
+                },
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 1023,
+                  "top": 274.8,
+                  "width": 767,
+                  "height": 652.4
+                },
+                "element": {
+                  "aid": "sh/onyd0z61",
+                  "id": "8",
+                  "kind": "shape"
+                }
+              },
+              {
+                "path": "0.1.3",
+                "kind": "text",
+                "name": "footer",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 16.8
+                },
+                "frame": {
+                  "left": 88,
+                  "top": 999.2,
+                  "width": 1744,
+                  "height": 16.8
+                },
+                "snappedFrame": {
+                  "left": 88,
+                  "top": 1000,
+                  "width": 1744,
+                  "height": 18
+                },
+                "children": [],
+                "text": "Fallback LP plus greedy heuristics are available when exact MIP status is not feasible in time.",
+                "transform": "none",
+                "element": {
+                  "aid": "sh/bq1oryts",
+                  "id": "12",
+                  "kind": "shape"
+                }
+              }
+            ],
+            "padding": {
+              "top": 64,
+              "right": 88,
+              "bottom": 64,
+              "left": 88
+            },
+            "columnGap": 42,
+            "rowGap": 34,
+            "alignItems": "stretch",
+            "justifyItems": "stretch",
+            "contentFrame": {
+              "left": 88,
+              "top": 64,
+              "width": 1744,
+              "height": 952
+            },
+            "columns": [
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              {
+                "mode": "fr",
+                "value": 1
+              }
+            ],
+            "rows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "autoRows": "auto",
+            "resolvedRows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "columnSizes": [
+              851,
+              851
+            ],
+            "rowSizes": [
+              138.8,
+              728.4,
+              16.8
+            ],
+            "cells": [
+              {
+                "path": "0.1.0",
+                "column": 0,
+                "row": 0,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 88,
+                  "top": 64,
+                  "width": 1744,
+                  "height": 138.8
+                }
+              },
+              {
+                "path": "0.1.1",
+                "column": 0,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 88,
+                  "top": 236.8,
+                  "width": 851,
+                  "height": 728.4
+                }
+              },
+              {
+                "path": "0.1.2",
+                "column": 1,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 981,
+                  "top": 236.8,
+                  "width": 851,
+                  "height": 728.4
+                }
+              },
+              {
+                "path": "0.1.3",
+                "column": 0,
+                "row": 2,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 88,
+                  "top": 999.2,
+                  "width": 1744,
+                  "height": 16.8
+                }
+              }
+            ]
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

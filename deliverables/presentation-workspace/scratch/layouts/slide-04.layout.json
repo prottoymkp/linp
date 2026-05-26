@@ -1,0 +1,2294 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/idyaum",
+    "id": "idyaum",
+    "slide": 4,
+    "layoutId": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "283b815a-d041-44df-ac1f-251be766cf19",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/tsvu9kni",
+      "id": "1",
+      "name": "slide-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#F6F1EA"
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/m1cfa9w3",
+      "id": "2",
+      "name": "slide-title",
+      "bbox": [
+        88,
+        66,
+        1744,
+        66
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "Spreadsheet planning leaks value in four places",
+      "textPreview": "Spreadsheet planning leaks value in four places",
+      "resolvedFontSize": 54,
+      "resolvedTextStyle": {
+        "fontSize": 54,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Spreadsheet planning leaks value in four places"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Spreadsheet planning leaks value in four places",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Spreadsheet planning leaks value in four places",
+              "fontSize": 54,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/bm58z25k",
+      "id": "3",
+      "name": "slide-subtitle",
+      "bbox": [
+        88,
+        144,
+        1288,
+        60
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "The issue is not spreadsheet skill. It is that the combinatorial tradeoff gets too large to reason through manually under deadline pressure.",
+      "textPreview": "The issue is not spreadsheet skill. It is that the combinatorial tradeoff gets too large to reason through manually under deadline pressure.",
+      "resolvedFontSize": 25,
+      "resolvedTextStyle": {
+        "fontSize": 25,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The issue is not spreadsheet skill. It is that the combinatorial tradeoff gets too large to reason through manually under"
+          },
+          {
+            "index": 2,
+            "text": "deadline pressure."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The issue is not spreadsheet skill. It is that the combinatorial tradeoff gets too large to reason through manually under deadline pressure.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The issue is not spreadsheet skill. It is that the combinatorial tradeoff gets too large to reason through manually under deadline pressure.",
+              "fontSize": 25,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4vmtwra5",
+      "id": "4",
+      "name": "s4-claim",
+      "bbox": [
+        88,
+        486,
+        752,
+        188
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0"
+      },
+      "geometry": "rect",
+      "text": "When planners work by hand, the first feasible answer can crowd out the best answer.",
+      "textPreview": "When planners work by hand, the first feasible answer can crowd out the best answer.",
+      "resolvedFontSize": 52,
+      "resolvedTextStyle": {
+        "fontSize": 52,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "When planners work by hand, the"
+          },
+          {
+            "index": 2,
+            "text": "first feasible answer can crowd out"
+          },
+          {
+            "index": 3,
+            "text": "the best answer."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "When planners work by hand, the first feasible answer can crowd out the best answer.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "When planners work by hand, the first feasible answer can crowd out the best answer.",
+              "fontSize": 52,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/tgfmlkjm",
+      "id": "5",
+      "name": "s4-rule",
+      "bbox": [
+        88,
+        710,
+        250,
+        5
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1"
+      },
+      "geometry": "rect",
+      "fillColor": "#D58A3A",
+      "lineColor": "#D58A3A",
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mp0bi9s3",
+      "id": "6",
+      "name": "s4-p1",
+      "bbox": [
+        948.86,
+        240.8,
+        430.57,
+        349.2
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#FFFDF8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 1
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/bat47y1k",
+      "id": "7",
+      "name": "s4-time-value",
+      "bbox": [
+        974,
+        262,
+        378,
+        54
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.0.0"
+      },
+      "geometry": "rect",
+      "text": "Time",
+      "textPreview": "Time",
+      "resolvedFontSize": 44,
+      "resolvedTextStyle": {
+        "fontSize": 44,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Time"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Time",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Time",
+              "fontSize": 44,
+              "color": "#1F5B63",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4nap4r65",
+      "id": "8",
+      "name": "s4-time-caption",
+      "bbox": [
+        974,
+        320,
+        378,
+        46
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.0.1"
+      },
+      "geometry": "rect",
+      "text": "hours spent reconciling BOM, caps, and stock tables",
+      "textPreview": "hours spent reconciling BOM, caps, and stock tables",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "hours spent reconciling BOM, caps, and stock"
+          },
+          {
+            "index": 2,
+            "text": "tables"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "hours spent reconciling BOM, caps, and stock tables",
+          "runs": [
+            {
+              "index": 1,
+              "text": "hours spent reconciling BOM, caps, and stock tables",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/t83itgfm",
+      "id": "9",
+      "name": "s4-p2",
+      "bbox": [
+        1401.43,
+        240.8,
+        430.57,
+        349.2
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.1"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#FFFDF8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 1
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9gr2p8nq",
+      "id": "10",
+      "name": "s4-money-value",
+      "bbox": [
+        1428,
+        262,
+        378,
+        54
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "Money",
+      "textPreview": "Money",
+      "resolvedFontSize": 44,
+      "resolvedTextStyle": {
+        "fontSize": 44,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Money"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Money",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Money",
+              "fontSize": 44,
+              "color": "#A96533",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gvy90je9",
+      "id": "11",
+      "name": "s4-money-caption",
+      "bbox": [
+        1428,
+        320,
+        378,
+        46
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "unfocused buys can chase full shortages instead of target fills",
+      "textPreview": "unfocused buys can chase full shortages instead of target fills",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "unfocused buys can chase full shortages instead"
+          },
+          {
+            "index": 2,
+            "text": "of target fills"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "unfocused buys can chase full shortages instead of target fills",
+          "runs": [
+            {
+              "index": 1,
+              "text": "unfocused buys can chase full shortages instead of target fills",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ra5gbq1o",
+      "id": "12",
+      "name": "s4-p3",
+      "bbox": [
+        948.86,
+        612,
+        430.57,
+        349.2
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.2"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#FFFDF8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 1
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2p8nqxs7",
+      "id": "13",
+      "name": "s4-margin-value",
+      "bbox": [
+        974,
+        634,
+        378,
+        54
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.2.0.0"
+      },
+      "geometry": "rect",
+      "text": "Margin",
+      "textPreview": "Margin",
+      "resolvedFontSize": 44,
+      "resolvedTextStyle": {
+        "fontSize": 44,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Margin"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Margin",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Margin",
+              "fontSize": 44,
+              "color": "#C86F4A",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/94fu18jq",
+      "id": "14",
+      "name": "s4-margin-caption",
+      "bbox": [
+        974,
+        690,
+        378,
+        46
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.2.0.1"
+      },
+      "geometry": "rect",
+      "text": "scarce RM may be consumed by lower-value styles first",
+      "textPreview": "scarce RM may be consumed by lower-value styles first",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "scarce RM may be consumed by lower-value"
+          },
+          {
+            "index": 2,
+            "text": "styles first"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "scarce RM may be consumed by lower-value styles first",
+          "runs": [
+            {
+              "index": 1,
+              "text": "scarce RM may be consumed by lower-value styles first",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kjm1cfa9",
+      "id": "15",
+      "name": "s4-p4",
+      "bbox": [
+        1401.43,
+        612,
+        430.57,
+        349.2
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.3"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#FFFDF8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 1
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/r2p8nqxs",
+      "id": "16",
+      "name": "s4-opp-value",
+      "bbox": [
+        1428,
+        634,
+        378,
+        54
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.3.0.0"
+      },
+      "geometry": "rect",
+      "text": "Opportunity",
+      "textPreview": "Opportunity",
+      "resolvedFontSize": 44,
+      "resolvedTextStyle": {
+        "fontSize": 44,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Opportunity"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Opportunity",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Opportunity",
+              "fontSize": 44,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2hwfyxob",
+      "id": "17",
+      "name": "s4-opp-caption",
+      "bbox": [
+        1428,
+        690,
+        378,
+        46
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.3.0.1"
+      },
+      "geometry": "rect",
+      "text": "missed production windows become missed customer commitments",
+      "textPreview": "missed production windows become missed customer commitments",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "missed production windows become missed"
+          },
+          {
+            "index": 2,
+            "text": "customer commitments"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "missed production windows become missed customer commitments",
+          "runs": [
+            {
+              "index": 1,
+              "text": "missed production windows become missed customer commitments",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9w3m94fu",
+      "id": "18",
+      "name": "footer",
+      "bbox": [
+        88,
+        998,
+        1744,
+        18
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.3"
+      },
+      "geometry": "rect",
+      "text": "Sanitized repository demo data; amounts are sample currency units.",
+      "textPreview": "Sanitized repository demo data; amounts are sample currency units.",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Sanitized repository demo data; amounts are sample currency units."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Sanitized repository demo data; amounts are sample currency units.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Sanitized repository demo data; amounts are sample currency units.",
+              "fontSize": 14,
+              "color": "#77867F"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "baseUnit": 8,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "s4-root",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 0,
+          "height": 0
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "shape",
+            "name": "slide-bg",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 0,
+              "height": 0
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "snappedFrame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [],
+            "geometry": "rect",
+            "element": {
+              "aid": "sh/tsvu9kni",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "grid",
+            "name": "s4-grid",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 234,
+              "height": 359.6
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [
+              {
+                "path": "0.1.0",
+                "kind": "column",
+                "name": "title-stack",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 1288.89,
+                  "height": 138.8
+                },
+                "frame": {
+                  "left": 88,
+                  "top": 66,
+                  "width": 1744,
+                  "height": 138.8
+                },
+                "children": [
+                  {
+                    "path": "0.1.0.0",
+                    "kind": "text",
+                    "name": "slide-title",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 64.8
+                    },
+                    "frame": {
+                      "left": 88,
+                      "top": 66,
+                      "width": 1744,
+                      "height": 64.8
+                    },
+                    "snappedFrame": {
+                      "left": 88,
+                      "top": 66,
+                      "width": 1744,
+                      "height": 66
+                    },
+                    "children": [],
+                    "text": "Spreadsheet planning leaks value in four places",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/m1cfa9w3",
+                      "id": "2",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "kind": "text",
+                    "name": "slide-subtitle",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 1340
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 1288.89,
+                      "height": 60
+                    },
+                    "frame": {
+                      "left": 88,
+                      "top": 144.8,
+                      "width": 1288.89,
+                      "height": 60
+                    },
+                    "snappedFrame": {
+                      "left": 88,
+                      "top": 144,
+                      "width": 1288,
+                      "height": 60
+                    },
+                    "children": [],
+                    "text": "The issue is not spreadsheet skill. It is that the combinatorial tradeoff gets too large to reason through manually under deadline pressure.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/bm58z25k",
+                      "id": "3",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 14,
+                "effectiveGap": 14,
+                "justifyOffset": 0,
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 88,
+                  "top": 66,
+                  "width": 1744,
+                  "height": 138.8
+                },
+                "items": [
+                  {
+                    "path": "0.1.0.0",
+                    "frame": {
+                      "left": 88,
+                      "top": 66,
+                      "width": 1744,
+                      "height": 64.8
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "frame": {
+                      "left": 88,
+                      "top": 144.8,
+                      "width": 1288.89,
+                      "height": 60
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.1",
+                "kind": "column",
+                "name": "s4-left",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 751.16,
+                  "height": 228.2
+                },
+                "frame": {
+                  "left": 88,
+                  "top": 240.8,
+                  "width": 802.86,
+                  "height": 720.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.1.0",
+                    "kind": "text",
+                    "name": "s4-claim",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 760
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 751.16,
+                      "height": 187.2
+                    },
+                    "frame": {
+                      "left": 88,
+                      "top": 486.9,
+                      "width": 751.16,
+                      "height": 187.2
+                    },
+                    "snappedFrame": {
+                      "left": 88,
+                      "top": 486,
+                      "width": 752,
+                      "height": 188
+                    },
+                    "children": [],
+                    "text": "When planners work by hand, the first feasible answer can crowd out the best answer.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/4vmtwra5",
+                      "id": "4",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "kind": "rule",
+                    "name": "s4-rule",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fixed",
+                        "value": 250
+                      },
+                      "height": {
+                        "mode": "fixed",
+                        "value": 5
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 250,
+                      "height": 5
+                    },
+                    "frame": {
+                      "left": 88,
+                      "top": 710.1,
+                      "width": 250,
+                      "height": 5
+                    },
+                    "snappedFrame": {
+                      "left": 88,
+                      "top": 710,
+                      "width": 250,
+                      "height": 5
+                    },
+                    "children": [],
+                    "weight": 5,
+                    "element": {
+                      "aid": "sh/tgfmlkjm",
+                      "id": "5",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 36,
+                "effectiveGap": 36,
+                "justifyOffset": 246.1,
+                "align": "start",
+                "justify": "center",
+                "contentFrame": {
+                  "left": 88,
+                  "top": 240.8,
+                  "width": 802.86,
+                  "height": 720.4
+                },
+                "items": [
+                  {
+                    "path": "0.1.1.0",
+                    "frame": {
+                      "left": 88,
+                      "top": 486.9,
+                      "width": 751.16,
+                      "height": 187.2
+                    }
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "frame": {
+                      "left": 88,
+                      "top": 710.1,
+                      "width": 250,
+                      "height": 5
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.2",
+                "kind": "grid",
+                "name": "s4-pain-grid",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 22,
+                  "height": 22
+                },
+                "frame": {
+                  "left": 948.86,
+                  "top": 240.8,
+                  "width": 883.14,
+                  "height": 720.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.2.0",
+                    "kind": "panel",
+                    "name": "s4-p1",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "fill",
+                        "value": 1
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 52,
+                      "height": 123.6
+                    },
+                    "frame": {
+                      "left": 948.86,
+                      "top": 240.8,
+                      "width": 430.57,
+                      "height": 349.2
+                    },
+                    "snappedFrame": {
+                      "left": 948.86,
+                      "top": 240.8,
+                      "width": 430.57,
+                      "height": 349.2
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.2.0.0",
+                        "kind": "column",
+                        "name": "s4-time",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 79.6
+                        },
+                        "frame": {
+                          "left": 974.86,
+                          "top": 262.8,
+                          "width": 378.57,
+                          "height": 102.4
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.2.0.0.0",
+                            "kind": "text",
+                            "name": "s4-time-value",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 52.8
+                            },
+                            "frame": {
+                              "left": 974.86,
+                              "top": 262.8,
+                              "width": 378.57,
+                              "height": 52.8
+                            },
+                            "snappedFrame": {
+                              "left": 974,
+                              "top": 262,
+                              "width": 378,
+                              "height": 54
+                            },
+                            "children": [],
+                            "text": "Time",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/bat47y1k",
+                              "id": "7",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.0.1",
+                            "kind": "text",
+                            "name": "s4-time-caption",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 22.8
+                            },
+                            "frame": {
+                              "left": 974.86,
+                              "top": 319.6,
+                              "width": 378.57,
+                              "height": 45.6
+                            },
+                            "snappedFrame": {
+                              "left": 974,
+                              "top": 320,
+                              "width": 378,
+                              "height": 46
+                            },
+                            "children": [],
+                            "text": "hours spent reconciling BOM, caps, and stock tables",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/4nap4r65",
+                              "id": "8",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 4,
+                        "effectiveGap": 4,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 974.86,
+                          "top": 262.8,
+                          "width": 378.57,
+                          "height": 102.4
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.2.0.0.0",
+                            "frame": {
+                              "left": 974.86,
+                              "top": 262.8,
+                              "width": 378.57,
+                              "height": 52.8
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.0.1",
+                            "frame": {
+                              "left": 974.86,
+                              "top": 319.6,
+                              "width": 378.57,
+                              "height": 45.6
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "padding": {
+                      "top": 22,
+                      "right": 26,
+                      "bottom": 22,
+                      "left": 26
+                    },
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 974.86,
+                      "top": 262.8,
+                      "width": 378.57,
+                      "height": 305.2
+                    },
+                    "element": {
+                      "aid": "sh/mp0bi9s3",
+                      "id": "6",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.2.1",
+                    "kind": "panel",
+                    "name": "s4-p2",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "fill",
+                        "value": 1
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 52,
+                      "height": 123.6
+                    },
+                    "frame": {
+                      "left": 1401.43,
+                      "top": 240.8,
+                      "width": 430.57,
+                      "height": 349.2
+                    },
+                    "snappedFrame": {
+                      "left": 1401.43,
+                      "top": 240.8,
+                      "width": 430.57,
+                      "height": 349.2
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.2.1.0",
+                        "kind": "column",
+                        "name": "s4-money",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 79.6
+                        },
+                        "frame": {
+                          "left": 1427.43,
+                          "top": 262.8,
+                          "width": 378.57,
+                          "height": 102.4
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.2.1.0.0",
+                            "kind": "text",
+                            "name": "s4-money-value",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 52.8
+                            },
+                            "frame": {
+                              "left": 1427.43,
+                              "top": 262.8,
+                              "width": 378.57,
+                              "height": 52.8
+                            },
+                            "snappedFrame": {
+                              "left": 1428,
+                              "top": 262,
+                              "width": 378,
+                              "height": 54
+                            },
+                            "children": [],
+                            "text": "Money",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/9gr2p8nq",
+                              "id": "10",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.2.1.0.1",
+                            "kind": "text",
+                            "name": "s4-money-caption",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 22.8
+                            },
+                            "frame": {
+                              "left": 1427.43,
+                              "top": 319.6,
+                              "width": 378.57,
+                              "height": 45.6
+                            },
+                            "snappedFrame": {
+                              "left": 1428,
+                              "top": 320,
+                              "width": 378,
+                              "height": 46
+                            },
+                            "children": [],
+                            "text": "unfocused buys can chase full shortages instead of target fills",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/gvy90je9",
+                              "id": "11",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 4,
+                        "effectiveGap": 4,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 1427.43,
+                          "top": 262.8,
+                          "width": 378.57,
+                          "height": 102.4
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.2.1.0.0",
+                            "frame": {
+                              "left": 1427.43,
+                              "top": 262.8,
+                              "width": 378.57,
+                              "height": 52.8
+                            }
+                          },
+                          {
+                            "path": "0.1.2.1.0.1",
+                            "frame": {
+                              "left": 1427.43,
+                              "top": 319.6,
+                              "width": 378.57,
+                              "height": 45.6
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "padding": {
+                      "top": 22,
+                      "right": 26,
+                      "bottom": 22,
+                      "left": 26
+                    },
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 1427.43,
+                      "top": 262.8,
+                      "width": 378.57,
+                      "height": 305.2
+                    },
+                    "element": {
+                      "aid": "sh/t83itgfm",
+                      "id": "9",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.2.2",
+                    "kind": "panel",
+                    "name": "s4-p3",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "fill",
+                        "value": 1
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 52,
+                      "height": 123.6
+                    },
+                    "frame": {
+                      "left": 948.86,
+                      "top": 612,
+                      "width": 430.57,
+                      "height": 349.2
+                    },
+                    "snappedFrame": {
+                      "left": 948.86,
+                      "top": 612,
+                      "width": 430.57,
+                      "height": 349.2
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.2.2.0",
+                        "kind": "column",
+                        "name": "s4-margin",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 79.6
+                        },
+                        "frame": {
+                          "left": 974.86,
+                          "top": 634,
+                          "width": 378.57,
+                          "height": 102.4
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.2.2.0.0",
+                            "kind": "text",
+                            "name": "s4-margin-value",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 52.8
+                            },
+                            "frame": {
+                              "left": 974.86,
+                              "top": 634,
+                              "width": 378.57,
+                              "height": 52.8
+                            },
+                            "snappedFrame": {
+                              "left": 974,
+                              "top": 634,
+                              "width": 378,
+                              "height": 54
+                            },
+                            "children": [],
+                            "text": "Margin",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/2p8nqxs7",
+                              "id": "13",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.2.2.0.1",
+                            "kind": "text",
+                            "name": "s4-margin-caption",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 22.8
+                            },
+                            "frame": {
+                              "left": 974.86,
+                              "top": 690.8,
+                              "width": 378.57,
+                              "height": 45.6
+                            },
+                            "snappedFrame": {
+                              "left": 974,
+                              "top": 690,
+                              "width": 378,
+                              "height": 46
+                            },
+                            "children": [],
+                            "text": "scarce RM may be consumed by lower-value styles first",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/94fu18jq",
+                              "id": "14",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 4,
+                        "effectiveGap": 4,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 974.86,
+                          "top": 634,
+                          "width": 378.57,
+                          "height": 102.4
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.2.2.0.0",
+                            "frame": {
+                              "left": 974.86,
+                              "top": 634,
+                              "width": 378.57,
+                              "height": 52.8
+                            }
+                          },
+                          {
+                            "path": "0.1.2.2.0.1",
+                            "frame": {
+                              "left": 974.86,
+                              "top": 690.8,
+                              "width": 378.57,
+                              "height": 45.6
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "padding": {
+                      "top": 22,
+                      "right": 26,
+                      "bottom": 22,
+                      "left": 26
+                    },
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 974.86,
+                      "top": 634,
+                      "width": 378.57,
+                      "height": 305.2
+                    },
+                    "element": {
+                      "aid": "sh/ra5gbq1o",
+                      "id": "12",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.2.3",
+                    "kind": "panel",
+                    "name": "s4-p4",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "fill",
+                        "value": 1
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 52,
+                      "height": 123.6
+                    },
+                    "frame": {
+                      "left": 1401.43,
+                      "top": 612,
+                      "width": 430.57,
+                      "height": 349.2
+                    },
+                    "snappedFrame": {
+                      "left": 1401.43,
+                      "top": 612,
+                      "width": 430.57,
+                      "height": 349.2
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.2.3.0",
+                        "kind": "column",
+                        "name": "s4-opp",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 79.6
+                        },
+                        "frame": {
+                          "left": 1427.43,
+                          "top": 634,
+                          "width": 378.57,
+                          "height": 102.4
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.2.3.0.0",
+                            "kind": "text",
+                            "name": "s4-opp-value",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 52.8
+                            },
+                            "frame": {
+                              "left": 1427.43,
+                              "top": 634,
+                              "width": 378.57,
+                              "height": 52.8
+                            },
+                            "snappedFrame": {
+                              "left": 1428,
+                              "top": 634,
+                              "width": 378,
+                              "height": 54
+                            },
+                            "children": [],
+                            "text": "Opportunity",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/r2p8nqxs",
+                              "id": "16",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.2.3.0.1",
+                            "kind": "text",
+                            "name": "s4-opp-caption",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 22.8
+                            },
+                            "frame": {
+                              "left": 1427.43,
+                              "top": 690.8,
+                              "width": 378.57,
+                              "height": 45.6
+                            },
+                            "snappedFrame": {
+                              "left": 1428,
+                              "top": 690,
+                              "width": 378,
+                              "height": 46
+                            },
+                            "children": [],
+                            "text": "missed production windows become missed customer commitments",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/2hwfyxob",
+                              "id": "17",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 4,
+                        "effectiveGap": 4,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 1427.43,
+                          "top": 634,
+                          "width": 378.57,
+                          "height": 102.4
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.2.3.0.0",
+                            "frame": {
+                              "left": 1427.43,
+                              "top": 634,
+                              "width": 378.57,
+                              "height": 52.8
+                            }
+                          },
+                          {
+                            "path": "0.1.2.3.0.1",
+                            "frame": {
+                              "left": 1427.43,
+                              "top": 690.8,
+                              "width": 378.57,
+                              "height": 45.6
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "padding": {
+                      "top": 22,
+                      "right": 26,
+                      "bottom": 22,
+                      "left": 26
+                    },
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 1427.43,
+                      "top": 634,
+                      "width": 378.57,
+                      "height": 305.2
+                    },
+                    "element": {
+                      "aid": "sh/kjm1cfa9",
+                      "id": "15",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "columnGap": 22,
+                "rowGap": 22,
+                "alignItems": "stretch",
+                "justifyItems": "stretch",
+                "contentFrame": {
+                  "left": 948.86,
+                  "top": 240.8,
+                  "width": 883.14,
+                  "height": 720.4
+                },
+                "columns": [
+                  {
+                    "mode": "fr",
+                    "value": 1
+                  },
+                  {
+                    "mode": "fr",
+                    "value": 1
+                  }
+                ],
+                "rows": [
+                  {
+                    "mode": "fr",
+                    "value": 1
+                  },
+                  {
+                    "mode": "fr",
+                    "value": 1
+                  }
+                ],
+                "autoRows": "auto",
+                "resolvedRows": [
+                  {
+                    "mode": "fr",
+                    "value": 1
+                  },
+                  {
+                    "mode": "fr",
+                    "value": 1
+                  }
+                ],
+                "columnSizes": [
+                  430.57,
+                  430.57
+                ],
+                "rowSizes": [
+                  349.2,
+                  349.2
+                ],
+                "cells": [
+                  {
+                    "path": "0.1.2.0",
+                    "column": 0,
+                    "row": 0,
+                    "columnSpan": 1,
+                    "rowSpan": 1,
+                    "cellFrame": {
+                      "left": 948.86,
+                      "top": 240.8,
+                      "width": 430.57,
+                      "height": 349.2
+                    }
+                  },
+                  {
+                    "path": "0.1.2.1",
+                    "column": 1,
+                    "row": 0,
+                    "columnSpan": 1,
+                    "rowSpan": 1,
+                    "cellFrame": {
+                      "left": 1401.43,
+                      "top": 240.8,
+                      "width": 430.57,
+                      "height": 349.2
+                    }
+                  },
+                  {
+                    "path": "0.1.2.2",
+                    "column": 0,
+                    "row": 1,
+                    "columnSpan": 1,
+                    "rowSpan": 1,
+                    "cellFrame": {
+                      "left": 948.86,
+                      "top": 612,
+                      "width": 430.57,
+                      "height": 349.2
+                    }
+                  },
+                  {
+                    "path": "0.1.2.3",
+                    "column": 1,
+                    "row": 1,
+                    "columnSpan": 1,
+                    "rowSpan": 1,
+                    "cellFrame": {
+                      "left": 1401.43,
+                      "top": 612,
+                      "width": 430.57,
+                      "height": 349.2
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.3",
+                "kind": "text",
+                "name": "footer",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 16.8
+                },
+                "frame": {
+                  "left": 88,
+                  "top": 997.2,
+                  "width": 1744,
+                  "height": 16.8
+                },
+                "snappedFrame": {
+                  "left": 88,
+                  "top": 998,
+                  "width": 1744,
+                  "height": 18
+                },
+                "children": [],
+                "text": "Sanitized repository demo data; amounts are sample currency units.",
+                "transform": "none",
+                "element": {
+                  "aid": "sh/9w3m94fu",
+                  "id": "18",
+                  "kind": "shape"
+                }
+              }
+            ],
+            "padding": {
+              "top": 66,
+              "right": 88,
+              "bottom": 66,
+              "left": 88
+            },
+            "columnGap": 58,
+            "rowGap": 36,
+            "alignItems": "stretch",
+            "justifyItems": "stretch",
+            "contentFrame": {
+              "left": 88,
+              "top": 66,
+              "width": 1744,
+              "height": 948
+            },
+            "columns": [
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              {
+                "mode": "fr",
+                "value": 1.1
+              }
+            ],
+            "rows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "autoRows": "auto",
+            "resolvedRows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "columnSizes": [
+              802.86,
+              883.14
+            ],
+            "rowSizes": [
+              138.8,
+              720.4,
+              16.8
+            ],
+            "cells": [
+              {
+                "path": "0.1.0",
+                "column": 0,
+                "row": 0,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 88,
+                  "top": 66,
+                  "width": 1744,
+                  "height": 138.8
+                }
+              },
+              {
+                "path": "0.1.1",
+                "column": 0,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 88,
+                  "top": 240.8,
+                  "width": 802.86,
+                  "height": 720.4
+                }
+              },
+              {
+                "path": "0.1.2",
+                "column": 1,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 948.86,
+                  "top": 240.8,
+                  "width": 883.14,
+                  "height": 720.4
+                }
+              },
+              {
+                "path": "0.1.3",
+                "column": 0,
+                "row": 2,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 88,
+                  "top": 997.2,
+                  "width": 1744,
+                  "height": 16.8
+                }
+              }
+            ]
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

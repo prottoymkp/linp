@@ -1,0 +1,1995 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/zkcysn",
+    "id": "zkcysn",
+    "slide": 12,
+    "layoutId": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "283b815a-d041-44df-ac1f-251be766cf19",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cj6tovah",
+      "id": "1",
+      "name": "slide-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#F6F1EA"
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/nyd0z610",
+      "id": "2",
+      "name": "slide-title",
+      "bbox": [
+        88,
+        66,
+        1744,
+        66
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "The savings come from better tradeoffs, faster",
+      "textPreview": "The savings come from better tradeoffs, faster",
+      "resolvedFontSize": 54,
+      "resolvedTextStyle": {
+        "fontSize": 54,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The savings come from better tradeoffs, faster"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The savings come from better tradeoffs, faster",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The savings come from better tradeoffs, faster",
+              "fontSize": 54,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/udg7adsj",
+      "id": "3",
+      "name": "slide-subtitle",
+      "bbox": [
+        88,
+        144,
+        1330,
+        60
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "The optimizer does not create material. It makes the scarcity visible, prioritizes feasible output, and prices the cost of moving to the next service level.",
+      "textPreview": "The optimizer does not create material. It makes the scarcity visible, prioritizes feasible output, and prices the cost of moving to the ...",
+      "resolvedFontSize": 25,
+      "resolvedTextStyle": {
+        "fontSize": 25,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The optimizer does not create material. It makes the scarcity visible, prioritizes feasible output, and prices the cost of moving to the"
+          },
+          {
+            "index": 2,
+            "text": "next service level."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The optimizer does not create material. It makes the scarcity visible, prioritizes feasible output, and prices the cost of moving to the next service level.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The optimizer does not create material. It makes the scarcity visible, prioritizes feasible output, and prices the cost of moving to the next service level.",
+              "fontSize": 25,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/5gbq1ory",
+      "id": "4",
+      "name": "s12-time-title",
+      "bbox": [
+        88,
+        416,
+        884,
+        60
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0"
+      },
+      "geometry": "rect",
+      "text": "Time saved",
+      "textPreview": "Time saved",
+      "resolvedFontSize": 50,
+      "resolvedTextStyle": {
+        "fontSize": 50,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Time saved"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Time saved",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Time saved",
+              "fontSize": 50,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cvixczed",
+      "id": "5",
+      "name": "s12-time-copy",
+      "bbox": [
+        88,
+        504,
+        774,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1"
+      },
+      "geometry": "rect",
+      "text": "Manual reconciliation becomes scenario review. Planners spend less time stitching worksheets and more time testing targets.",
+      "textPreview": "Manual reconciliation becomes scenario review. Planners spend less time stitching worksheets and more time testing targets.",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Manual reconciliation becomes scenario review. Planners spend less"
+          },
+          {
+            "index": 2,
+            "text": "time stitching worksheets and more time testing targets."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Manual reconciliation becomes scenario review. Planners spend less time stitching worksheets and more time testing targets.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Manual reconciliation becomes scenario review. Planners spend less time stitching worksheets and more time testing targets.",
+              "fontSize": 28,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/nap4r65w",
+      "id": "6",
+      "name": "s12-rule",
+      "bbox": [
+        88,
+        598,
+        280,
+        5
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.2"
+      },
+      "geometry": "rect",
+      "fillColor": "#D58A3A",
+      "lineColor": "#D58A3A",
+      "lineWidth": 0
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/upwb2hwf",
+      "id": "7",
+      "name": "s12-opp-title",
+      "bbox": [
+        88,
+        632,
+        884,
+        60
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.3"
+      },
+      "geometry": "rect",
+      "text": "Lost opportunity avoided",
+      "textPreview": "Lost opportunity avoided",
+      "resolvedFontSize": 50,
+      "resolvedTextStyle": {
+        "fontSize": 50,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Lost opportunity avoided"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Lost opportunity avoided",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Lost opportunity avoided",
+              "fontSize": 50,
+              "color": "#A96533",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/1orytsvu",
+      "id": "8",
+      "name": "s12-opp-copy",
+      "bbox": [
+        88,
+        720,
+        740,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.4"
+      },
+      "geometry": "rect",
+      "text": "The FG_Result sheet shows which plan commitments are blocked before the month is gone.",
+      "textPreview": "The FG_Result sheet shows which plan commitments are blocked before the month is gone.",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The FG_Result sheet shows which plan commitments are"
+          },
+          {
+            "index": 2,
+            "text": "blocked before the month is gone."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The FG_Result sheet shows which plan commitments are blocked before the month is gone.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The FG_Result sheet shows which plan commitments are blocked before the month is gone.",
+              "fontSize": 28,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/c7u54zid",
+      "id": "9",
+      "name": "s12-money",
+      "bbox": [
+        1032.1,
+        240.8,
+        799.9,
+        720.4
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#FFFDF8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 1
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6xkf6dcb",
+      "id": "10",
+      "name": "section-label",
+      "bbox": [
+        1070,
+        436,
+        724,
+        20
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.0"
+      },
+      "geometry": "rect",
+      "text": "Money saved through controlled buys",
+      "textPreview": "Money saved through controlled buys",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Money saved through controlled buys"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Money saved through controlled buys",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Money saved through controlled buys",
+              "fontSize": 16,
+              "color": "#A96533",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/zed8v6ps",
+      "id": "11",
+      "name": "s12-buy50-value",
+      "bbox": [
+        1070,
+        478,
+        724,
+        66
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1.0"
+      },
+      "geometry": "rect",
+      "text": "818,600",
+      "textPreview": "818,600",
+      "resolvedFontSize": 54,
+      "resolvedTextStyle": {
+        "fontSize": 54,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "818,600"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "818,600",
+          "runs": [
+            {
+              "index": 1,
+              "text": "818,600",
+              "fontSize": 54,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/oza1gvy9",
+      "id": "12",
+      "name": "s12-buy50-caption",
+      "bbox": [
+        1070,
+        548,
+        724,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1.1"
+      },
+      "geometry": "rect",
+      "text": "sample buy cost to reach 50% fill",
+      "textPreview": "sample buy cost to reach 50% fill",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "sample buy cost to reach 50% fill"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "sample buy cost to reach 50% fill",
+          "runs": [
+            {
+              "index": 1,
+              "text": "sample buy cost to reach 50% fill",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/hk3q5o7q",
+      "id": "13",
+      "name": "s12-buy100-value",
+      "bbox": [
+        1070,
+        594,
+        724,
+        66
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.2.0"
+      },
+      "geometry": "rect",
+      "text": "3,291,426",
+      "textPreview": "3,291,426",
+      "resolvedFontSize": 54,
+      "resolvedTextStyle": {
+        "fontSize": 54,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "3,291,426"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "3,291,426",
+          "runs": [
+            {
+              "index": 1,
+              "text": "3,291,426",
+              "fontSize": 54,
+              "color": "#A96533",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/65wjudg7",
+      "id": "14",
+      "name": "s12-buy100-caption",
+      "bbox": [
+        1070,
+        662,
+        724,
+        24
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.2.1"
+      },
+      "geometry": "rect",
+      "text": "sample buy cost to reach 100% fill",
+      "textPreview": "sample buy cost to reach 100% fill",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "sample buy cost to reach 100% fill"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "sample buy cost to reach 100% fill",
+          "runs": [
+            {
+              "index": 1,
+              "text": "sample buy cost to reach 100% fill",
+              "fontSize": 19,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/zqtcj6to",
+      "id": "15",
+      "name": "s12-money-copy",
+      "bbox": [
+        1070,
+        710,
+        674,
+        58
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.3"
+      },
+      "geometry": "rect",
+      "text": "The business can choose the service-level step it can afford instead of blindly buying toward the full shortage.",
+      "textPreview": "The business can choose the service-level step it can afford instead of blindly buying toward the full shortage.",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The business can choose the service-level step it can afford instead"
+          },
+          {
+            "index": 2,
+            "text": "of blindly buying toward the full shortage."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The business can choose the service-level step it can afford instead of blindly buying toward the full shortage.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The business can choose the service-level step it can afford instead of blindly buying toward the full shortage.",
+              "fontSize": 24,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/obm58z25",
+      "id": "16",
+      "name": "footer",
+      "bbox": [
+        88,
+        998,
+        1744,
+        18
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.3"
+      },
+      "geometry": "rect",
+      "text": "Cost examples are sample currency units from the bundled Purchase_Summary.",
+      "textPreview": "Cost examples are sample currency units from the bundled Purchase_Summary.",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Cost examples are sample currency units from the bundled Purchase_Summary."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Cost examples are sample currency units from the bundled Purchase_Summary.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Cost examples are sample currency units from the bundled Purchase_Summary.",
+              "fontSize": 14,
+              "color": "#77867F"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "baseUnit": 8,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "s12-root",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 0,
+          "height": 0
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "shape",
+            "name": "slide-bg",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 0,
+              "height": 0
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "snappedFrame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [],
+            "geometry": "rect",
+            "element": {
+              "aid": "sh/cj6tovah",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "grid",
+            "name": "s12-grid",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 236,
+              "height": 359.6
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [
+              {
+                "path": "0.1.0",
+                "kind": "column",
+                "name": "title-stack",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 1329.78,
+                  "height": 138.8
+                },
+                "frame": {
+                  "left": 88,
+                  "top": 66,
+                  "width": 1744,
+                  "height": 138.8
+                },
+                "children": [
+                  {
+                    "path": "0.1.0.0",
+                    "kind": "text",
+                    "name": "slide-title",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 64.8
+                    },
+                    "frame": {
+                      "left": 88,
+                      "top": 66,
+                      "width": 1744,
+                      "height": 64.8
+                    },
+                    "snappedFrame": {
+                      "left": 88,
+                      "top": 66,
+                      "width": 1744,
+                      "height": 66
+                    },
+                    "children": [],
+                    "text": "The savings come from better tradeoffs, faster",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/nyd0z610",
+                      "id": "2",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "kind": "text",
+                    "name": "slide-subtitle",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 1360
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 1329.78,
+                      "height": 60
+                    },
+                    "frame": {
+                      "left": 88,
+                      "top": 144.8,
+                      "width": 1329.78,
+                      "height": 60
+                    },
+                    "snappedFrame": {
+                      "left": 88,
+                      "top": 144,
+                      "width": 1330,
+                      "height": 60
+                    },
+                    "children": [],
+                    "text": "The optimizer does not create material. It makes the scarcity visible, prioritizes feasible output, and prices the cost of moving to the next service level.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/udg7adsj",
+                      "id": "3",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 14,
+                "effectiveGap": 14,
+                "justifyOffset": 0,
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 88,
+                  "top": 66,
+                  "width": 1744,
+                  "height": 138.8
+                },
+                "items": [
+                  {
+                    "path": "0.1.0.0",
+                    "frame": {
+                      "left": 88,
+                      "top": 66,
+                      "width": 1744,
+                      "height": 64.8
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "frame": {
+                      "left": 88,
+                      "top": 144.8,
+                      "width": 1329.78,
+                      "height": 60
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.1",
+                "kind": "column",
+                "name": "s12-left",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 773.22,
+                  "height": 371.4
+                },
+                "frame": {
+                  "left": 88,
+                  "top": 240.8,
+                  "width": 884.1,
+                  "height": 720.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.1.0",
+                    "kind": "text",
+                    "name": "s12-time-title",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 60
+                    },
+                    "frame": {
+                      "left": 88,
+                      "top": 415.3,
+                      "width": 884.1,
+                      "height": 60
+                    },
+                    "snappedFrame": {
+                      "left": 88,
+                      "top": 416,
+                      "width": 884,
+                      "height": 60
+                    },
+                    "children": [],
+                    "text": "Time saved",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/5gbq1ory",
+                      "id": "4",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "kind": "text",
+                    "name": "s12-time-copy",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 780
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 773.22,
+                      "height": 67.2
+                    },
+                    "frame": {
+                      "left": 88,
+                      "top": 503.3,
+                      "width": 773.22,
+                      "height": 67.2
+                    },
+                    "snappedFrame": {
+                      "left": 88,
+                      "top": 504,
+                      "width": 774,
+                      "height": 68
+                    },
+                    "children": [],
+                    "text": "Manual reconciliation becomes scenario review. Planners spend less time stitching worksheets and more time testing targets.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/cvixczed",
+                      "id": "5",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.1.2",
+                    "kind": "rule",
+                    "name": "s12-rule",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fixed",
+                        "value": 280
+                      },
+                      "height": {
+                        "mode": "fixed",
+                        "value": 5
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 280,
+                      "height": 5
+                    },
+                    "frame": {
+                      "left": 88,
+                      "top": 598.5,
+                      "width": 280,
+                      "height": 5
+                    },
+                    "snappedFrame": {
+                      "left": 88,
+                      "top": 598,
+                      "width": 280,
+                      "height": 5
+                    },
+                    "children": [],
+                    "weight": 5,
+                    "element": {
+                      "aid": "sh/nap4r65w",
+                      "id": "6",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.1.3",
+                    "kind": "text",
+                    "name": "s12-opp-title",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 60
+                    },
+                    "frame": {
+                      "left": 88,
+                      "top": 631.5,
+                      "width": 884.1,
+                      "height": 60
+                    },
+                    "snappedFrame": {
+                      "left": 88,
+                      "top": 632,
+                      "width": 884,
+                      "height": 60
+                    },
+                    "children": [],
+                    "text": "Lost opportunity avoided",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/upwb2hwf",
+                      "id": "7",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.1.4",
+                    "kind": "text",
+                    "name": "s12-opp-copy",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 760
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 740.95,
+                      "height": 67.2
+                    },
+                    "frame": {
+                      "left": 88,
+                      "top": 719.5,
+                      "width": 740.95,
+                      "height": 67.2
+                    },
+                    "snappedFrame": {
+                      "left": 88,
+                      "top": 720,
+                      "width": 740,
+                      "height": 68
+                    },
+                    "children": [],
+                    "text": "The FG_Result sheet shows which plan commitments are blocked before the month is gone.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/1orytsvu",
+                      "id": "8",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 28,
+                "effectiveGap": 28,
+                "justifyOffset": 174.5,
+                "align": "start",
+                "justify": "center",
+                "contentFrame": {
+                  "left": 88,
+                  "top": 240.8,
+                  "width": 884.1,
+                  "height": 720.4
+                },
+                "items": [
+                  {
+                    "path": "0.1.1.0",
+                    "frame": {
+                      "left": 88,
+                      "top": 415.3,
+                      "width": 884.1,
+                      "height": 60
+                    }
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "frame": {
+                      "left": 88,
+                      "top": 503.3,
+                      "width": 773.22,
+                      "height": 67.2
+                    }
+                  },
+                  {
+                    "path": "0.1.1.2",
+                    "frame": {
+                      "left": 88,
+                      "top": 598.5,
+                      "width": 280,
+                      "height": 5
+                    }
+                  },
+                  {
+                    "path": "0.1.1.3",
+                    "frame": {
+                      "left": 88,
+                      "top": 631.5,
+                      "width": 884.1,
+                      "height": 60
+                    }
+                  },
+                  {
+                    "path": "0.1.1.4",
+                    "frame": {
+                      "left": 88,
+                      "top": 719.5,
+                      "width": 740.95,
+                      "height": 67.2
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.2",
+                "kind": "panel",
+                "name": "s12-money",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 76,
+                  "height": 68
+                },
+                "frame": {
+                  "left": 1032.1,
+                  "top": 240.8,
+                  "width": 799.9,
+                  "height": 720.4
+                },
+                "snappedFrame": {
+                  "left": 1032.1,
+                  "top": 240.8,
+                  "width": 799.9,
+                  "height": 720.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.2.0",
+                    "kind": "column",
+                    "name": "s12-money-col",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "fill",
+                        "value": 1
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 674.83,
+                      "height": 332
+                    },
+                    "frame": {
+                      "left": 1070.1,
+                      "top": 274.8,
+                      "width": 723.9,
+                      "height": 652.4
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.2.0.0",
+                        "kind": "text",
+                        "name": "section-label",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 19.2
+                        },
+                        "frame": {
+                          "left": 1070.1,
+                          "top": 435,
+                          "width": 723.9,
+                          "height": 19.2
+                        },
+                        "snappedFrame": {
+                          "left": 1070,
+                          "top": 436,
+                          "width": 724,
+                          "height": 20
+                        },
+                        "children": [],
+                        "text": "Money saved through controlled buys",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/6xkf6dcb",
+                          "id": "10",
+                          "kind": "shape"
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.1",
+                        "kind": "column",
+                        "name": "s12-buy50",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 91.6
+                        },
+                        "frame": {
+                          "left": 1070.1,
+                          "top": 478.2,
+                          "width": 723.9,
+                          "height": 91.6
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.2.0.1.0",
+                            "kind": "text",
+                            "name": "s12-buy50-value",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 64.8
+                            },
+                            "frame": {
+                              "left": 1070.1,
+                              "top": 478.2,
+                              "width": 723.9,
+                              "height": 64.8
+                            },
+                            "snappedFrame": {
+                              "left": 1070,
+                              "top": 478,
+                              "width": 724,
+                              "height": 66
+                            },
+                            "children": [],
+                            "text": "818,600",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/zed8v6ps",
+                              "id": "11",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.1.1",
+                            "kind": "text",
+                            "name": "s12-buy50-caption",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 22.8
+                            },
+                            "frame": {
+                              "left": 1070.1,
+                              "top": 547,
+                              "width": 723.9,
+                              "height": 22.8
+                            },
+                            "snappedFrame": {
+                              "left": 1070,
+                              "top": 548,
+                              "width": 724,
+                              "height": 24
+                            },
+                            "children": [],
+                            "text": "sample buy cost to reach 50% fill",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/oza1gvy9",
+                              "id": "12",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 4,
+                        "effectiveGap": 4,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 1070.1,
+                          "top": 478.2,
+                          "width": 723.9,
+                          "height": 91.6
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.2.0.1.0",
+                            "frame": {
+                              "left": 1070.1,
+                              "top": 478.2,
+                              "width": 723.9,
+                              "height": 64.8
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.1.1",
+                            "frame": {
+                              "left": 1070.1,
+                              "top": 547,
+                              "width": 723.9,
+                              "height": 22.8
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "path": "0.1.2.0.2",
+                        "kind": "column",
+                        "name": "s12-buy100",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 91.6
+                        },
+                        "frame": {
+                          "left": 1070.1,
+                          "top": 593.8,
+                          "width": 723.9,
+                          "height": 91.6
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.2.0.2.0",
+                            "kind": "text",
+                            "name": "s12-buy100-value",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 64.8
+                            },
+                            "frame": {
+                              "left": 1070.1,
+                              "top": 593.8,
+                              "width": 723.9,
+                              "height": 64.8
+                            },
+                            "snappedFrame": {
+                              "left": 1070,
+                              "top": 594,
+                              "width": 724,
+                              "height": 66
+                            },
+                            "children": [],
+                            "text": "3,291,426",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/hk3q5o7q",
+                              "id": "13",
+                              "kind": "shape"
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.2.1",
+                            "kind": "text",
+                            "name": "s12-buy100-caption",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 22.8
+                            },
+                            "frame": {
+                              "left": 1070.1,
+                              "top": 662.6,
+                              "width": 723.9,
+                              "height": 22.8
+                            },
+                            "snappedFrame": {
+                              "left": 1070,
+                              "top": 662,
+                              "width": 724,
+                              "height": 24
+                            },
+                            "children": [],
+                            "text": "sample buy cost to reach 100% fill",
+                            "transform": "none",
+                            "element": {
+                              "aid": "sh/65wjudg7",
+                              "id": "14",
+                              "kind": "shape"
+                            }
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 4,
+                        "effectiveGap": 4,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 1070.1,
+                          "top": 593.8,
+                          "width": 723.9,
+                          "height": 91.6
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.2.0.2.0",
+                            "frame": {
+                              "left": 1070.1,
+                              "top": 593.8,
+                              "width": 723.9,
+                              "height": 64.8
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.2.1",
+                            "frame": {
+                              "left": 1070.1,
+                              "top": 662.6,
+                              "width": 723.9,
+                              "height": 22.8
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "path": "0.1.2.0.3",
+                        "kind": "text",
+                        "name": "s12-money-copy",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "wrap",
+                            "max": 700
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 674.83,
+                          "height": 57.6
+                        },
+                        "frame": {
+                          "left": 1070.1,
+                          "top": 709.4,
+                          "width": 674.83,
+                          "height": 57.6
+                        },
+                        "snappedFrame": {
+                          "left": 1070,
+                          "top": 710,
+                          "width": 674,
+                          "height": 58
+                        },
+                        "children": [],
+                        "text": "The business can choose the service-level step it can afford instead of blindly buying toward the full shortage.",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/zqtcj6to",
+                          "id": "15",
+                          "kind": "shape"
+                        }
+                      }
+                    ],
+                    "padding": {
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    },
+                    "gap": 24,
+                    "effectiveGap": 24,
+                    "justifyOffset": 160.2,
+                    "align": "start",
+                    "justify": "center",
+                    "contentFrame": {
+                      "left": 1070.1,
+                      "top": 274.8,
+                      "width": 723.9,
+                      "height": 652.4
+                    },
+                    "items": [
+                      {
+                        "path": "0.1.2.0.0",
+                        "frame": {
+                          "left": 1070.1,
+                          "top": 435,
+                          "width": 723.9,
+                          "height": 19.2
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.1",
+                        "frame": {
+                          "left": 1070.1,
+                          "top": 478.2,
+                          "width": 723.9,
+                          "height": 91.6
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.2",
+                        "frame": {
+                          "left": 1070.1,
+                          "top": 593.8,
+                          "width": 723.9,
+                          "height": 91.6
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.3",
+                        "frame": {
+                          "left": 1070.1,
+                          "top": 709.4,
+                          "width": 674.83,
+                          "height": 57.6
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "padding": {
+                  "top": 34,
+                  "right": 38,
+                  "bottom": 34,
+                  "left": 38
+                },
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 1070.1,
+                  "top": 274.8,
+                  "width": 723.9,
+                  "height": 652.4
+                },
+                "element": {
+                  "aid": "sh/c7u54zid",
+                  "id": "9",
+                  "kind": "shape"
+                }
+              },
+              {
+                "path": "0.1.3",
+                "kind": "text",
+                "name": "footer",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 16.8
+                },
+                "frame": {
+                  "left": 88,
+                  "top": 997.2,
+                  "width": 1744,
+                  "height": 16.8
+                },
+                "snappedFrame": {
+                  "left": 88,
+                  "top": 998,
+                  "width": 1744,
+                  "height": 18
+                },
+                "children": [],
+                "text": "Cost examples are sample currency units from the bundled Purchase_Summary.",
+                "transform": "none",
+                "element": {
+                  "aid": "sh/obm58z25",
+                  "id": "16",
+                  "kind": "shape"
+                }
+              }
+            ],
+            "padding": {
+              "top": 66,
+              "right": 88,
+              "bottom": 66,
+              "left": 88
+            },
+            "columnGap": 60,
+            "rowGap": 36,
+            "alignItems": "stretch",
+            "justifyItems": "stretch",
+            "contentFrame": {
+              "left": 88,
+              "top": 66,
+              "width": 1744,
+              "height": 948
+            },
+            "columns": [
+              {
+                "mode": "fr",
+                "value": 1.05
+              },
+              {
+                "mode": "fr",
+                "value": 0.95
+              }
+            ],
+            "rows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "autoRows": "auto",
+            "resolvedRows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "columnSizes": [
+              884.1,
+              799.9
+            ],
+            "rowSizes": [
+              138.8,
+              720.4,
+              16.8
+            ],
+            "cells": [
+              {
+                "path": "0.1.0",
+                "column": 0,
+                "row": 0,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 88,
+                  "top": 66,
+                  "width": 1744,
+                  "height": 138.8
+                }
+              },
+              {
+                "path": "0.1.1",
+                "column": 0,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 88,
+                  "top": 240.8,
+                  "width": 884.1,
+                  "height": 720.4
+                }
+              },
+              {
+                "path": "0.1.2",
+                "column": 1,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 1032.1,
+                  "top": 240.8,
+                  "width": 799.9,
+                  "height": 720.4
+                }
+              },
+              {
+                "path": "0.1.3",
+                "column": 0,
+                "row": 2,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 88,
+                  "top": 997.2,
+                  "width": 1744,
+                  "height": 16.8
+                }
+              }
+            ]
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

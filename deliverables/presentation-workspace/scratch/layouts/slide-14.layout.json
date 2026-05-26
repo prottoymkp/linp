@@ -1,0 +1,798 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/9c8x98",
+    "id": "9c8x98",
+    "slide": 14,
+    "layoutId": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "283b815a-d041-44df-ac1f-251be766cf19",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/0fepkzup",
+      "id": "1",
+      "name": "pilot-photo",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "alt": "Footwear manufacturing planning team reviewing a pilot workflow",
+      "contentType": "image/png",
+      "asset": {
+        "assetId": "8e0ca31b-4066-48f5-b8ec-147a95bb050c",
+        "contentType": "image/png",
+        "byteLength": 1877460
+      }
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/adsji5sn",
+      "id": "2",
+      "name": "section-label",
+      "bbox": [
+        92,
+        302,
+        782,
+        20
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "Recommended next step",
+      "textPreview": "Recommended next step",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Recommended next step"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Recommended next step",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Recommended next step",
+              "fontSize": 16,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/3ylc7u54",
+      "id": "3",
+      "name": "s14-title",
+      "bbox": [
+        92,
+        348,
+        688,
+        238
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "Run one planning-cycle pilot with sanitized client data.",
+      "textPreview": "Run one planning-cycle pilot with sanitized client data.",
+      "resolvedFontSize": 66,
+      "resolvedTextStyle": {
+        "fontSize": 66,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Run one planning-cycle"
+          },
+          {
+            "index": 2,
+            "text": "pilot with sanitized"
+          },
+          {
+            "index": 3,
+            "text": "client data."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Run one planning-cycle pilot with sanitized client data.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Run one planning-cycle pilot with sanitized client data.",
+              "fontSize": 66,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/s72x4nap",
+      "id": "4",
+      "name": "s14-rule",
+      "bbox": [
+        92,
+        612,
+        260,
+        5
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.2"
+      },
+      "geometry": "rect",
+      "fillColor": "#D58A3A",
+      "lineColor": "#D58A3A",
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/lszqtcj6",
+      "id": "5",
+      "name": "s14-copy-text",
+      "bbox": [
+        92,
+        642,
+        682,
+        136
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.3"
+      },
+      "geometry": "rect",
+      "text": "Start with current workbook structure, confirm output interpretation with planning and procurement, then add client-specific constraints only where they change decisions.",
+      "textPreview": "Start with current workbook structure, confirm output interpretation with planning and procurement, then add client-specific constraints ...",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Start with current workbook structure, confirm output"
+          },
+          {
+            "index": 2,
+            "text": "interpretation with planning and procurement, then add"
+          },
+          {
+            "index": 3,
+            "text": "client-specific constraints only where they change"
+          },
+          {
+            "index": 4,
+            "text": "decisions."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Start with current workbook structure, confirm output interpretation with planning and procurement, then add client-specific constraints only where they change decisions.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Start with current workbook structure, confirm output interpretation with planning and procurement, then add client-specific constraints only where they change decisions.",
+              "fontSize": 28,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/a5gbq1or",
+      "id": "6",
+      "name": "s14-spacer",
+      "bbox": [
+        874,
+        76,
+        954,
+        928
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1"
+      },
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      }
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "baseUnit": 8,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "s14-root",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 0,
+          "height": 0
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "image",
+            "name": "pilot-photo",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 0,
+              "height": 0
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "snappedFrame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [],
+            "source": {
+              "kind": "dataUrl"
+            },
+            "contentType": "image/png",
+            "fit": "cover",
+            "alt": "Footwear manufacturing planning team reviewing a pilot workflow",
+            "element": {
+              "aid": "im/0fepkzup",
+              "id": "1",
+              "kind": "image"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "grid",
+            "name": "s14-grid",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 184,
+              "height": 174.4
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [
+              {
+                "path": "0.1.0",
+                "kind": "column",
+                "name": "s14-copy",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 688.44,
+                  "height": 440.6
+                },
+                "frame": {
+                  "left": 92,
+                  "top": 76,
+                  "width": 781.2,
+                  "height": 928
+                },
+                "children": [
+                  {
+                    "path": "0.1.0.0",
+                    "kind": "text",
+                    "name": "section-label",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 19.2
+                    },
+                    "frame": {
+                      "left": 92,
+                      "top": 302.9,
+                      "width": 781.2,
+                      "height": 19.2
+                    },
+                    "snappedFrame": {
+                      "left": 92,
+                      "top": 302,
+                      "width": 782,
+                      "height": 20
+                    },
+                    "children": [],
+                    "text": "Recommended next step",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/adsji5sn",
+                      "id": "2",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "kind": "text",
+                    "name": "s14-title",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 750
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 688.44,
+                      "height": 237.6
+                    },
+                    "frame": {
+                      "left": 92,
+                      "top": 348.1,
+                      "width": 688.44,
+                      "height": 237.6
+                    },
+                    "snappedFrame": {
+                      "left": 92,
+                      "top": 348,
+                      "width": 688,
+                      "height": 238
+                    },
+                    "children": [],
+                    "text": "Run one planning-cycle pilot with sanitized client data.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/3ylc7u54",
+                      "id": "3",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.2",
+                    "kind": "rule",
+                    "name": "s14-rule",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fixed",
+                        "value": 260
+                      },
+                      "height": {
+                        "mode": "fixed",
+                        "value": 5
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 260,
+                      "height": 5
+                    },
+                    "frame": {
+                      "left": 92,
+                      "top": 611.7,
+                      "width": 260,
+                      "height": 5
+                    },
+                    "snappedFrame": {
+                      "left": 92,
+                      "top": 612,
+                      "width": 260,
+                      "height": 5
+                    },
+                    "children": [],
+                    "weight": 5,
+                    "element": {
+                      "aid": "sh/s72x4nap",
+                      "id": "4",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.3",
+                    "kind": "text",
+                    "name": "s14-copy-text",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 720
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 682,
+                      "height": 100.8
+                    },
+                    "frame": {
+                      "left": 92,
+                      "top": 642.7,
+                      "width": 682,
+                      "height": 134.4
+                    },
+                    "snappedFrame": {
+                      "left": 92,
+                      "top": 642,
+                      "width": 682,
+                      "height": 136
+                    },
+                    "children": [],
+                    "text": "Start with current workbook structure, confirm output interpretation with planning and procurement, then add client-specific constraints only where they change decisions.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/lszqtcj6",
+                      "id": "5",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 26,
+                "effectiveGap": 26,
+                "justifyOffset": 226.9,
+                "align": "start",
+                "justify": "center",
+                "contentFrame": {
+                  "left": 92,
+                  "top": 76,
+                  "width": 781.2,
+                  "height": 928
+                },
+                "items": [
+                  {
+                    "path": "0.1.0.0",
+                    "frame": {
+                      "left": 92,
+                      "top": 302.9,
+                      "width": 781.2,
+                      "height": 19.2
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "frame": {
+                      "left": 92,
+                      "top": 348.1,
+                      "width": 688.44,
+                      "height": 237.6
+                    }
+                  },
+                  {
+                    "path": "0.1.0.2",
+                    "frame": {
+                      "left": 92,
+                      "top": 611.7,
+                      "width": 260,
+                      "height": 5
+                    }
+                  },
+                  {
+                    "path": "0.1.0.3",
+                    "frame": {
+                      "left": 92,
+                      "top": 642.7,
+                      "width": 682,
+                      "height": 134.4
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.1",
+                "kind": "text",
+                "name": "s14-spacer",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 22.4
+                },
+                "frame": {
+                  "left": 873.2,
+                  "top": 76,
+                  "width": 954.8,
+                  "height": 928
+                },
+                "snappedFrame": {
+                  "left": 874,
+                  "top": 76,
+                  "width": 954,
+                  "height": 928
+                },
+                "children": [],
+                "text": "",
+                "transform": "none",
+                "element": {
+                  "aid": "sh/a5gbq1or",
+                  "id": "6",
+                  "kind": "shape"
+                }
+              }
+            ],
+            "padding": {
+              "top": 76,
+              "right": 92,
+              "bottom": 76,
+              "left": 92
+            },
+            "columnGap": 0,
+            "rowGap": 0,
+            "alignItems": "stretch",
+            "justifyItems": "stretch",
+            "contentFrame": {
+              "left": 92,
+              "top": 76,
+              "width": 1736,
+              "height": 928
+            },
+            "columns": [
+              {
+                "mode": "fr",
+                "value": 0.9
+              },
+              {
+                "mode": "fr",
+                "value": 1.1
+              }
+            ],
+            "autoRows": "auto",
+            "resolvedRows": [
+              "auto"
+            ],
+            "columnSizes": [
+              781.2,
+              954.8
+            ],
+            "rowSizes": [
+              928
+            ],
+            "cells": [
+              {
+                "path": "0.1.0",
+                "column": 0,
+                "row": 0,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 92,
+                  "top": 76,
+                  "width": 781.2,
+                  "height": 928
+                }
+              },
+              {
+                "path": "0.1.1",
+                "column": 1,
+                "row": 0,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 873.2,
+                  "top": 76,
+                  "width": 954.8,
+                  "height": 928
+                }
+              }
+            ]
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

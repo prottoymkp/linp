@@ -1,0 +1,3269 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/va64om",
+    "id": "va64om",
+    "slide": 10,
+    "layoutId": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "283b815a-d041-44df-ac1f-251be766cf19",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7ed8bat4",
+      "id": "1",
+      "name": "slide-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#F6F1EA"
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0z61032l",
+      "id": "2",
+      "name": "slide-title",
+      "bbox": [
+        86,
+        62,
+        1748,
+        66
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "The output workbook is built for decision review",
+      "textPreview": "The output workbook is built for decision review",
+      "resolvedFontSize": 54,
+      "resolvedTextStyle": {
+        "fontSize": 54,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The output workbook is built for decision review"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The output workbook is built for decision review",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The output workbook is built for decision review",
+              "fontSize": 54,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/pkzupwb2",
+      "id": "3",
+      "name": "slide-subtitle",
+      "bbox": [
+        86,
+        140,
+        1338,
+        60
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "It does not just return a solver number. It gives planners and procurement a traceable set of worksheets for production, bottlenecks, and buy scenarios.",
+      "textPreview": "It does not just return a solver number. It gives planners and procurement a traceable set of worksheets for production, bottlenecks, and...",
+      "resolvedFontSize": 25,
+      "resolvedTextStyle": {
+        "fontSize": 25,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "It does not just return a solver number. It gives planners and procurement a traceable set of worksheets for production,"
+          },
+          {
+            "index": 2,
+            "text": "bottlenecks, and buy scenarios."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "It does not just return a solver number. It gives planners and procurement a traceable set of worksheets for production, bottlenecks, and buy scenarios.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "It does not just return a solver number. It gives planners and procurement a traceable set of worksheets for production, bottlenecks, and buy scenarios.",
+              "fontSize": 25,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ih4byhgn",
+      "id": "4",
+      "name": "s10-table-panel",
+      "bbox": [
+        86,
+        226.8,
+        835.94,
+        748.4
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#FBF7F0",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 1
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/72x4nap4",
+      "id": "5",
+      "name": "s10-output-table-header-0",
+      "bbox": [
+        116,
+        254,
+        236,
+        20
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.0.0"
+      },
+      "geometry": "rect",
+      "text": "Sheet",
+      "textPreview": "Sheet",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Sheet"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Sheet",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Sheet",
+              "fontSize": 16,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0nuxc3yl",
+      "id": "6",
+      "name": "s10-output-table-header-1",
+      "bbox": [
+        364,
+        254,
+        528,
+        20
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.0.1"
+      },
+      "geometry": "rect",
+      "text": "Decision it supports",
+      "textPreview": "Decision it supports",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Decision it supports"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Decision it supports",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Decision it supports",
+              "fontSize": 16,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p8nqxs72",
+      "id": "7",
+      "name": "s10-output-table-row-rule-0",
+      "bbox": [
+        116,
+        288,
+        776,
+        1
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.1.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#D7C8B8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ed8v6psf",
+      "id": "8",
+      "name": "s10-output-table-cell-0-0",
+      "bbox": [
+        116,
+        300,
+        236,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.1.1.0"
+      },
+      "geometry": "rect",
+      "text": "FG_Result",
+      "textPreview": "FG_Result",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "FG_Result"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "FG_Result",
+          "runs": [
+            {
+              "index": 1,
+              "text": "FG_Result",
+              "fontSize": 22,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7y1kre1w",
+      "id": "9",
+      "name": "s10-output-table-cell-0-1",
+      "bbox": [
+        364,
+        300,
+        528,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.1.1.1"
+      },
+      "geometry": "rect",
+      "text": "What to build, how much is short, likely limiting RM",
+      "textPreview": "What to build, how much is short, likely limiting RM",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "What to build, how much is short, likely limiting RM"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "What to build, how much is short, likely limiting RM",
+          "runs": [
+            {
+              "index": 1,
+              "text": "What to build, how much is short, likely limiting RM",
+              "fontSize": 22,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rmhk3q5o",
+      "id": "10",
+      "name": "s10-output-table-row-rule-1",
+      "bbox": [
+        116,
+        340,
+        776,
+        1
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.2.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#D7C8B8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/y1kre1w7",
+      "id": "11",
+      "name": "s10-output-table-cell-1-0",
+      "bbox": [
+        116,
+        350,
+        236,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.2.1.0"
+      },
+      "geometry": "rect",
+      "text": "RM_Diagnostic",
+      "textPreview": "RM_Diagnostic",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "RM_Diagnostic"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "RM_Diagnostic",
+          "runs": [
+            {
+              "index": 1,
+              "text": "RM_Diagnostic",
+              "fontSize": 22,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9s36hcrm",
+      "id": "12",
+      "name": "s10-output-table-cell-1-1",
+      "bbox": [
+        364,
+        350,
+        528,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.2.1.1"
+      },
+      "geometry": "rect",
+      "text": "Which raw materials are used up or still available",
+      "textPreview": "Which raw materials are used up or still available",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Which raw materials are used up or still available"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Which raw materials are used up or still available",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Which raw materials are used up or still available",
+              "fontSize": 22,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/g7adsji5",
+      "id": "13",
+      "name": "s10-output-table-row-rule-2",
+      "bbox": [
+        116,
+        390,
+        776,
+        1
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.3.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#D7C8B8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 0
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/rytsvu9k",
+      "id": "14",
+      "name": "s10-output-table-cell-2-0",
+      "bbox": [
+        116,
+        402,
+        236,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.3.1.0"
+      },
+      "geometry": "rect",
+      "text": "Purchase_Summary",
+      "textPreview": "Purchase_Summary",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Purchase_Summary"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Purchase_Summary",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Purchase_Summary",
+              "fontSize": 22,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/yd0z6103",
+      "id": "15",
+      "name": "s10-output-table-cell-2-1",
+      "bbox": [
+        364,
+        402,
+        528,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.3.1.1"
+      },
+      "geometry": "rect",
+      "text": "Target fill, achieved pairs, margin, and buy cost",
+      "textPreview": "Target fill, achieved pairs, margin, and buy cost",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Target fill, achieved pairs, margin, and buy cost"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Target fill, achieved pairs, margin, and buy cost",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Target fill, achieved pairs, margin, and buy cost",
+              "fontSize": 22,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/90je9cvi",
+      "id": "16",
+      "name": "s10-output-table-row-rule-3",
+      "bbox": [
+        116,
+        442,
+        776,
+        1
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.4.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#D7C8B8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 0
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gfmlkjm1",
+      "id": "17",
+      "name": "s10-output-table-cell-3-0",
+      "bbox": [
+        116,
+        454,
+        236,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.4.1.0"
+      },
+      "geometry": "rect",
+      "text": "Purchase_Detail",
+      "textPreview": "Purchase_Detail",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Purchase_Detail"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Purchase_Detail",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Purchase_Detail",
+              "fontSize": 22,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/r65wjudg",
+      "id": "18",
+      "name": "s10-output-table-cell-3-1",
+      "bbox": [
+        364,
+        454,
+        528,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.4.1.1"
+      },
+      "geometry": "rect",
+      "text": "RM-level buy quantities and cost lines",
+      "textPreview": "RM-level buy quantities and cost lines",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "RM-level buy quantities and cost lines"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "RM-level buy quantities and cost lines",
+          "runs": [
+            {
+              "index": 1,
+              "text": "RM-level buy quantities and cost lines",
+              "fontSize": 22,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ylc7u54z",
+      "id": "19",
+      "name": "s10-output-table-row-rule-4",
+      "bbox": [
+        116,
+        494,
+        776,
+        1
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.5.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#D7C8B8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 0
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6tovahoz",
+      "id": "20",
+      "name": "s10-output-table-cell-4-0",
+      "bbox": [
+        116,
+        504,
+        236,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.5.1.0"
+      },
+      "geometry": "rect",
+      "text": "Run_Metadata",
+      "textPreview": "Run_Metadata",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Run_Metadata"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Run_Metadata",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Run_Metadata",
+              "fontSize": 22,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 21,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vahoza1g",
+      "id": "21",
+      "name": "s10-output-table-cell-4-1",
+      "bbox": [
+        364,
+        504,
+        528,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0.0.5.1.1"
+      },
+      "geometry": "rect",
+      "text": "Solver status, method, timings, and audit warnings",
+      "textPreview": "Solver status, method, timings, and audit warnings",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Solver status, method, timings, and audit warnings"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Solver status, method, timings, and audit warnings",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Solver status, method, timings, and audit warnings",
+              "fontSize": 22,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 22,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ovahoza1",
+      "id": "22",
+      "name": "section-label",
+      "bbox": [
+        964,
+        478,
+        870,
+        20
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.0"
+      },
+      "geometry": "rect",
+      "text": "Interpretation flow",
+      "textPreview": "Interpretation flow",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Interpretation flow"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Interpretation flow",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Interpretation flow",
+              "fontSize": 16,
+              "color": "#A96533",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 23,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/dg7adsji",
+      "id": "23",
+      "name": "s10-flow-copy",
+      "bbox": [
+        964,
+        520,
+        688,
+        204
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1.1"
+      },
+      "geometry": "rect",
+      "text": "1. Find under-filled FG in FG_Result.\n2. Confirm binding RM in RM_Diagnostic.\n3. Compare incremental buy cost in Purchase_Summary.\n4. Use Purchase_Detail for procurement handoff.",
+      "textPreview": "1. Find under-filled FG in FG_Result. | 2. Confirm binding RM in RM_Diagnostic. | 3. Compare incremental buy cost in Purchase_Summary. | ...",
+      "resolvedFontSize": 34,
+      "resolvedTextStyle": {
+        "fontSize": 34,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 5,
+        "lines": [
+          {
+            "index": 1,
+            "text": "1. Find under-filled FG in FG_Result."
+          },
+          {
+            "index": 2,
+            "text": "2. Confirm binding RM in RM_Diagnostic."
+          },
+          {
+            "index": 3,
+            "text": "3. Compare incremental buy cost in"
+          },
+          {
+            "index": 4,
+            "text": "Purchase_Summary."
+          },
+          {
+            "index": 5,
+            "text": "4. Use Purchase_Detail for procurement handoff."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "1. Find under-filled FG in FG_Result.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "1. Find under-filled FG in FG_Result.",
+              "fontSize": 34,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "text": "2. Confirm binding RM in RM_Diagnostic.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "2. Confirm binding RM in RM_Diagnostic.",
+              "fontSize": 34,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "text": "3. Compare incremental buy cost in Purchase_Summary.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "3. Compare incremental buy cost in Purchase_Summary.",
+              "fontSize": 34,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "text": "4. Use Purchase_Detail for procurement handoff.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "4. Use Purchase_Detail for procurement handoff.",
+              "fontSize": 34,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 24,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6hcrmhk3",
+      "id": "24",
+      "name": "footer",
+      "bbox": [
+        86,
+        1002,
+        1748,
+        18
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2"
+      },
+      "geometry": "rect",
+      "text": "Workbook sheets are generated by app/excel_io.py and app/orchestrator.py.",
+      "textPreview": "Workbook sheets are generated by app/excel_io.py and app/orchestrator.py.",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Workbook sheets are generated by app/excel_io.py and app/orchestrator.py."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Workbook sheets are generated by app/excel_io.py and app/orchestrator.py.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Workbook sheets are generated by app/excel_io.py and app/orchestrator.py.",
+              "fontSize": 14,
+              "color": "#77867F"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "baseUnit": 8,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "s10-root",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 0,
+          "height": 0
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "shape",
+            "name": "slide-bg",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 0,
+              "height": 0
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "snappedFrame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [],
+            "geometry": "rect",
+            "element": {
+              "aid": "sh/7ed8bat4",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "grid",
+            "name": "s10-grid",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 172,
+              "height": 331.6
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [
+              {
+                "path": "0.1.0",
+                "kind": "column",
+                "name": "title-stack",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 1338.49,
+                  "height": 138.8
+                },
+                "frame": {
+                  "left": 86,
+                  "top": 62,
+                  "width": 1748,
+                  "height": 138.8
+                },
+                "children": [
+                  {
+                    "path": "0.1.0.0",
+                    "kind": "text",
+                    "name": "slide-title",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 64.8
+                    },
+                    "frame": {
+                      "left": 86,
+                      "top": 62,
+                      "width": 1748,
+                      "height": 64.8
+                    },
+                    "snappedFrame": {
+                      "left": 86,
+                      "top": 62,
+                      "width": 1748,
+                      "height": 66
+                    },
+                    "children": [],
+                    "text": "The output workbook is built for decision review",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/0z61032l",
+                      "id": "2",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "kind": "text",
+                    "name": "slide-subtitle",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 1380
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 1338.49,
+                      "height": 60
+                    },
+                    "frame": {
+                      "left": 86,
+                      "top": 140.8,
+                      "width": 1338.49,
+                      "height": 60
+                    },
+                    "snappedFrame": {
+                      "left": 86,
+                      "top": 140,
+                      "width": 1338,
+                      "height": 60
+                    },
+                    "children": [],
+                    "text": "It does not just return a solver number. It gives planners and procurement a traceable set of worksheets for production, bottlenecks, and buy scenarios.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/pkzupwb2",
+                      "id": "3",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 14,
+                "effectiveGap": 14,
+                "justifyOffset": 0,
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 86,
+                  "top": 62,
+                  "width": 1748,
+                  "height": 138.8
+                },
+                "items": [
+                  {
+                    "path": "0.1.0.0",
+                    "frame": {
+                      "left": 86,
+                      "top": 62,
+                      "width": 1748,
+                      "height": 64.8
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "frame": {
+                      "left": 86,
+                      "top": 140.8,
+                      "width": 1338.49,
+                      "height": 60
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.1",
+                "kind": "grid",
+                "name": "s10-body",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 42,
+                  "height": 0
+                },
+                "frame": {
+                  "left": 86,
+                  "top": 226.8,
+                  "width": 1748,
+                  "height": 748.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.1.0",
+                    "kind": "panel",
+                    "name": "s10-table-panel",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "fill",
+                        "value": 1
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 60,
+                      "height": 332.2
+                    },
+                    "frame": {
+                      "left": 86,
+                      "top": 226.8,
+                      "width": 835.94,
+                      "height": 748.4
+                    },
+                    "snappedFrame": {
+                      "left": 86,
+                      "top": 226.8,
+                      "width": 835.94,
+                      "height": 748.4
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.1.0.0",
+                        "kind": "column",
+                        "name": "s10-output-table",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 276.2
+                        },
+                        "frame": {
+                          "left": 116,
+                          "top": 254.8,
+                          "width": 775.94,
+                          "height": 276.2
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.1.0.0.0",
+                            "kind": "row",
+                            "name": "s10-output-table-header",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 12,
+                              "height": 19.2
+                            },
+                            "frame": {
+                              "left": 116,
+                              "top": 254.8,
+                              "width": 775.94,
+                              "height": 19.2
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.1.0.0.0.0",
+                                "kind": "text",
+                                "name": "s10-output-table-header-0",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 0.62
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 19.2
+                                },
+                                "frame": {
+                                  "left": 116,
+                                  "top": 254.8,
+                                  "width": 236.82,
+                                  "height": 19.2
+                                },
+                                "snappedFrame": {
+                                  "left": 116,
+                                  "top": 254,
+                                  "width": 236,
+                                  "height": 20
+                                },
+                                "children": [],
+                                "text": "Sheet",
+                                "transform": "none",
+                                "element": {
+                                  "aid": "sh/72x4nap4",
+                                  "id": "5",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.1.0.0.0.1",
+                                "kind": "text",
+                                "name": "s10-output-table-header-1",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1.38
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 19.2
+                                },
+                                "frame": {
+                                  "left": 364.82,
+                                  "top": 254.8,
+                                  "width": 527.12,
+                                  "height": 19.2
+                                },
+                                "snappedFrame": {
+                                  "left": 364,
+                                  "top": 254,
+                                  "width": 528,
+                                  "height": 20
+                                },
+                                "children": [],
+                                "text": "Decision it supports",
+                                "transform": "none",
+                                "element": {
+                                  "aid": "sh/0nuxc3yl",
+                                  "id": "6",
+                                  "kind": "shape"
+                                }
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 12,
+                            "effectiveGap": 12,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 116,
+                              "top": 254.8,
+                              "width": 775.94,
+                              "height": 19.2
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.1.0.0.0.0",
+                                "frame": {
+                                  "left": 116,
+                                  "top": 254.8,
+                                  "width": 236.82,
+                                  "height": 19.2
+                                }
+                              },
+                              {
+                                "path": "0.1.1.0.0.0.1",
+                                "frame": {
+                                  "left": 364.82,
+                                  "top": 254.8,
+                                  "width": 527.12,
+                                  "height": 19.2
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "path": "0.1.1.0.0.1",
+                            "kind": "column",
+                            "name": "s10-output-table-row-wrap-0",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 37.4
+                            },
+                            "frame": {
+                              "left": 116,
+                              "top": 288,
+                              "width": 775.94,
+                              "height": 37.4
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.1.0.0.1.0",
+                                "kind": "rule",
+                                "name": "s10-output-table-row-rule-0",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "fixed",
+                                    "value": 1
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 1
+                                },
+                                "frame": {
+                                  "left": 116,
+                                  "top": 288,
+                                  "width": 775.94,
+                                  "height": 1
+                                },
+                                "snappedFrame": {
+                                  "left": 116,
+                                  "top": 288,
+                                  "width": 776,
+                                  "height": 1
+                                },
+                                "children": [],
+                                "weight": 1,
+                                "element": {
+                                  "aid": "sh/p8nqxs72",
+                                  "id": "7",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.1.0.0.1.1",
+                                "kind": "row",
+                                "name": "s10-output-table-row-0",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 12,
+                                  "height": 26.4
+                                },
+                                "frame": {
+                                  "left": 116,
+                                  "top": 299,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                },
+                                "children": [
+                                  {
+                                    "path": "0.1.1.0.0.1.1.0",
+                                    "kind": "text",
+                                    "name": "s10-output-table-cell-0-0",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 0.62
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 116,
+                                      "top": 299,
+                                      "width": 236.82,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 116,
+                                      "top": 300,
+                                      "width": 236,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "FG_Result",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/ed8v6psf",
+                                      "id": "8",
+                                      "kind": "shape"
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.0.0.1.1.1",
+                                    "kind": "text",
+                                    "name": "s10-output-table-cell-0-1",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 1.38
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 364.82,
+                                      "top": 299,
+                                      "width": 527.12,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 364,
+                                      "top": 300,
+                                      "width": 528,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "What to build, how much is short, likely limiting RM",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/7y1kre1w",
+                                      "id": "9",
+                                      "kind": "shape"
+                                    }
+                                  }
+                                ],
+                                "padding": {
+                                  "top": 0,
+                                  "right": 0,
+                                  "bottom": 0,
+                                  "left": 0
+                                },
+                                "gap": 12,
+                                "effectiveGap": 12,
+                                "justifyOffset": 0,
+                                "align": "start",
+                                "justify": "start",
+                                "contentFrame": {
+                                  "left": 116,
+                                  "top": 299,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                },
+                                "items": [
+                                  {
+                                    "path": "0.1.1.0.0.1.1.0",
+                                    "frame": {
+                                      "left": 116,
+                                      "top": 299,
+                                      "width": 236.82,
+                                      "height": 26.4
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.0.0.1.1.1",
+                                    "frame": {
+                                      "left": 364.82,
+                                      "top": 299,
+                                      "width": 527.12,
+                                      "height": 26.4
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 10,
+                            "effectiveGap": 10,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 116,
+                              "top": 288,
+                              "width": 775.94,
+                              "height": 37.4
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.1.0.0.1.0",
+                                "frame": {
+                                  "left": 116,
+                                  "top": 288,
+                                  "width": 775.94,
+                                  "height": 1
+                                }
+                              },
+                              {
+                                "path": "0.1.1.0.0.1.1",
+                                "frame": {
+                                  "left": 116,
+                                  "top": 299,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "path": "0.1.1.0.0.2",
+                            "kind": "column",
+                            "name": "s10-output-table-row-wrap-1",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 37.4
+                            },
+                            "frame": {
+                              "left": 116,
+                              "top": 339.4,
+                              "width": 775.94,
+                              "height": 37.4
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.1.0.0.2.0",
+                                "kind": "rule",
+                                "name": "s10-output-table-row-rule-1",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "fixed",
+                                    "value": 1
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 1
+                                },
+                                "frame": {
+                                  "left": 116,
+                                  "top": 339.4,
+                                  "width": 775.94,
+                                  "height": 1
+                                },
+                                "snappedFrame": {
+                                  "left": 116,
+                                  "top": 340,
+                                  "width": 776,
+                                  "height": 1
+                                },
+                                "children": [],
+                                "weight": 1,
+                                "element": {
+                                  "aid": "sh/rmhk3q5o",
+                                  "id": "10",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.1.0.0.2.1",
+                                "kind": "row",
+                                "name": "s10-output-table-row-1",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 12,
+                                  "height": 26.4
+                                },
+                                "frame": {
+                                  "left": 116,
+                                  "top": 350.4,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                },
+                                "children": [
+                                  {
+                                    "path": "0.1.1.0.0.2.1.0",
+                                    "kind": "text",
+                                    "name": "s10-output-table-cell-1-0",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 0.62
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 116,
+                                      "top": 350.4,
+                                      "width": 236.82,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 116,
+                                      "top": 350,
+                                      "width": 236,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "RM_Diagnostic",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/y1kre1w7",
+                                      "id": "11",
+                                      "kind": "shape"
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.0.0.2.1.1",
+                                    "kind": "text",
+                                    "name": "s10-output-table-cell-1-1",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 1.38
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 364.82,
+                                      "top": 350.4,
+                                      "width": 527.12,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 364,
+                                      "top": 350,
+                                      "width": 528,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "Which raw materials are used up or still available",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/9s36hcrm",
+                                      "id": "12",
+                                      "kind": "shape"
+                                    }
+                                  }
+                                ],
+                                "padding": {
+                                  "top": 0,
+                                  "right": 0,
+                                  "bottom": 0,
+                                  "left": 0
+                                },
+                                "gap": 12,
+                                "effectiveGap": 12,
+                                "justifyOffset": 0,
+                                "align": "start",
+                                "justify": "start",
+                                "contentFrame": {
+                                  "left": 116,
+                                  "top": 350.4,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                },
+                                "items": [
+                                  {
+                                    "path": "0.1.1.0.0.2.1.0",
+                                    "frame": {
+                                      "left": 116,
+                                      "top": 350.4,
+                                      "width": 236.82,
+                                      "height": 26.4
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.0.0.2.1.1",
+                                    "frame": {
+                                      "left": 364.82,
+                                      "top": 350.4,
+                                      "width": 527.12,
+                                      "height": 26.4
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 10,
+                            "effectiveGap": 10,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 116,
+                              "top": 339.4,
+                              "width": 775.94,
+                              "height": 37.4
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.1.0.0.2.0",
+                                "frame": {
+                                  "left": 116,
+                                  "top": 339.4,
+                                  "width": 775.94,
+                                  "height": 1
+                                }
+                              },
+                              {
+                                "path": "0.1.1.0.0.2.1",
+                                "frame": {
+                                  "left": 116,
+                                  "top": 350.4,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "path": "0.1.1.0.0.3",
+                            "kind": "column",
+                            "name": "s10-output-table-row-wrap-2",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 37.4
+                            },
+                            "frame": {
+                              "left": 116,
+                              "top": 390.8,
+                              "width": 775.94,
+                              "height": 37.4
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.1.0.0.3.0",
+                                "kind": "rule",
+                                "name": "s10-output-table-row-rule-2",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "fixed",
+                                    "value": 1
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 1
+                                },
+                                "frame": {
+                                  "left": 116,
+                                  "top": 390.8,
+                                  "width": 775.94,
+                                  "height": 1
+                                },
+                                "snappedFrame": {
+                                  "left": 116,
+                                  "top": 390,
+                                  "width": 776,
+                                  "height": 1
+                                },
+                                "children": [],
+                                "weight": 1,
+                                "element": {
+                                  "aid": "sh/g7adsji5",
+                                  "id": "13",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.1.0.0.3.1",
+                                "kind": "row",
+                                "name": "s10-output-table-row-2",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 12,
+                                  "height": 26.4
+                                },
+                                "frame": {
+                                  "left": 116,
+                                  "top": 401.8,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                },
+                                "children": [
+                                  {
+                                    "path": "0.1.1.0.0.3.1.0",
+                                    "kind": "text",
+                                    "name": "s10-output-table-cell-2-0",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 0.62
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 116,
+                                      "top": 401.8,
+                                      "width": 236.82,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 116,
+                                      "top": 402,
+                                      "width": 236,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "Purchase_Summary",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/rytsvu9k",
+                                      "id": "14",
+                                      "kind": "shape"
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.0.0.3.1.1",
+                                    "kind": "text",
+                                    "name": "s10-output-table-cell-2-1",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 1.38
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 364.82,
+                                      "top": 401.8,
+                                      "width": 527.12,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 364,
+                                      "top": 402,
+                                      "width": 528,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "Target fill, achieved pairs, margin, and buy cost",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/yd0z6103",
+                                      "id": "15",
+                                      "kind": "shape"
+                                    }
+                                  }
+                                ],
+                                "padding": {
+                                  "top": 0,
+                                  "right": 0,
+                                  "bottom": 0,
+                                  "left": 0
+                                },
+                                "gap": 12,
+                                "effectiveGap": 12,
+                                "justifyOffset": 0,
+                                "align": "start",
+                                "justify": "start",
+                                "contentFrame": {
+                                  "left": 116,
+                                  "top": 401.8,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                },
+                                "items": [
+                                  {
+                                    "path": "0.1.1.0.0.3.1.0",
+                                    "frame": {
+                                      "left": 116,
+                                      "top": 401.8,
+                                      "width": 236.82,
+                                      "height": 26.4
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.0.0.3.1.1",
+                                    "frame": {
+                                      "left": 364.82,
+                                      "top": 401.8,
+                                      "width": 527.12,
+                                      "height": 26.4
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 10,
+                            "effectiveGap": 10,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 116,
+                              "top": 390.8,
+                              "width": 775.94,
+                              "height": 37.4
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.1.0.0.3.0",
+                                "frame": {
+                                  "left": 116,
+                                  "top": 390.8,
+                                  "width": 775.94,
+                                  "height": 1
+                                }
+                              },
+                              {
+                                "path": "0.1.1.0.0.3.1",
+                                "frame": {
+                                  "left": 116,
+                                  "top": 401.8,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "path": "0.1.1.0.0.4",
+                            "kind": "column",
+                            "name": "s10-output-table-row-wrap-3",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 37.4
+                            },
+                            "frame": {
+                              "left": 116,
+                              "top": 442.2,
+                              "width": 775.94,
+                              "height": 37.4
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.1.0.0.4.0",
+                                "kind": "rule",
+                                "name": "s10-output-table-row-rule-3",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "fixed",
+                                    "value": 1
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 1
+                                },
+                                "frame": {
+                                  "left": 116,
+                                  "top": 442.2,
+                                  "width": 775.94,
+                                  "height": 1
+                                },
+                                "snappedFrame": {
+                                  "left": 116,
+                                  "top": 442,
+                                  "width": 776,
+                                  "height": 1
+                                },
+                                "children": [],
+                                "weight": 1,
+                                "element": {
+                                  "aid": "sh/90je9cvi",
+                                  "id": "16",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.1.0.0.4.1",
+                                "kind": "row",
+                                "name": "s10-output-table-row-3",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 12,
+                                  "height": 26.4
+                                },
+                                "frame": {
+                                  "left": 116,
+                                  "top": 453.2,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                },
+                                "children": [
+                                  {
+                                    "path": "0.1.1.0.0.4.1.0",
+                                    "kind": "text",
+                                    "name": "s10-output-table-cell-3-0",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 0.62
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 116,
+                                      "top": 453.2,
+                                      "width": 236.82,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 116,
+                                      "top": 454,
+                                      "width": 236,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "Purchase_Detail",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/gfmlkjm1",
+                                      "id": "17",
+                                      "kind": "shape"
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.0.0.4.1.1",
+                                    "kind": "text",
+                                    "name": "s10-output-table-cell-3-1",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 1.38
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 364.82,
+                                      "top": 453.2,
+                                      "width": 527.12,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 364,
+                                      "top": 454,
+                                      "width": 528,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "RM-level buy quantities and cost lines",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/r65wjudg",
+                                      "id": "18",
+                                      "kind": "shape"
+                                    }
+                                  }
+                                ],
+                                "padding": {
+                                  "top": 0,
+                                  "right": 0,
+                                  "bottom": 0,
+                                  "left": 0
+                                },
+                                "gap": 12,
+                                "effectiveGap": 12,
+                                "justifyOffset": 0,
+                                "align": "start",
+                                "justify": "start",
+                                "contentFrame": {
+                                  "left": 116,
+                                  "top": 453.2,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                },
+                                "items": [
+                                  {
+                                    "path": "0.1.1.0.0.4.1.0",
+                                    "frame": {
+                                      "left": 116,
+                                      "top": 453.2,
+                                      "width": 236.82,
+                                      "height": 26.4
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.0.0.4.1.1",
+                                    "frame": {
+                                      "left": 364.82,
+                                      "top": 453.2,
+                                      "width": 527.12,
+                                      "height": 26.4
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 10,
+                            "effectiveGap": 10,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 116,
+                              "top": 442.2,
+                              "width": 775.94,
+                              "height": 37.4
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.1.0.0.4.0",
+                                "frame": {
+                                  "left": 116,
+                                  "top": 442.2,
+                                  "width": 775.94,
+                                  "height": 1
+                                }
+                              },
+                              {
+                                "path": "0.1.1.0.0.4.1",
+                                "frame": {
+                                  "left": 116,
+                                  "top": 453.2,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "path": "0.1.1.0.0.5",
+                            "kind": "column",
+                            "name": "s10-output-table-row-wrap-4",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 37.4
+                            },
+                            "frame": {
+                              "left": 116,
+                              "top": 493.6,
+                              "width": 775.94,
+                              "height": 37.4
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.1.0.0.5.0",
+                                "kind": "rule",
+                                "name": "s10-output-table-row-rule-4",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "fixed",
+                                    "value": 1
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 1
+                                },
+                                "frame": {
+                                  "left": 116,
+                                  "top": 493.6,
+                                  "width": 775.94,
+                                  "height": 1
+                                },
+                                "snappedFrame": {
+                                  "left": 116,
+                                  "top": 494,
+                                  "width": 776,
+                                  "height": 1
+                                },
+                                "children": [],
+                                "weight": 1,
+                                "element": {
+                                  "aid": "sh/ylc7u54z",
+                                  "id": "19",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.1.0.0.5.1",
+                                "kind": "row",
+                                "name": "s10-output-table-row-4",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 12,
+                                  "height": 26.4
+                                },
+                                "frame": {
+                                  "left": 116,
+                                  "top": 504.6,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                },
+                                "children": [
+                                  {
+                                    "path": "0.1.1.0.0.5.1.0",
+                                    "kind": "text",
+                                    "name": "s10-output-table-cell-4-0",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 0.62
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 116,
+                                      "top": 504.6,
+                                      "width": 236.82,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 116,
+                                      "top": 504,
+                                      "width": 236,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "Run_Metadata",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/6tovahoz",
+                                      "id": "20",
+                                      "kind": "shape"
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.0.0.5.1.1",
+                                    "kind": "text",
+                                    "name": "s10-output-table-cell-4-1",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 1.38
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 364.82,
+                                      "top": 504.6,
+                                      "width": 527.12,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 364,
+                                      "top": 504,
+                                      "width": 528,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "Solver status, method, timings, and audit warnings",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/vahoza1g",
+                                      "id": "21",
+                                      "kind": "shape"
+                                    }
+                                  }
+                                ],
+                                "padding": {
+                                  "top": 0,
+                                  "right": 0,
+                                  "bottom": 0,
+                                  "left": 0
+                                },
+                                "gap": 12,
+                                "effectiveGap": 12,
+                                "justifyOffset": 0,
+                                "align": "start",
+                                "justify": "start",
+                                "contentFrame": {
+                                  "left": 116,
+                                  "top": 504.6,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                },
+                                "items": [
+                                  {
+                                    "path": "0.1.1.0.0.5.1.0",
+                                    "frame": {
+                                      "left": 116,
+                                      "top": 504.6,
+                                      "width": 236.82,
+                                      "height": 26.4
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.1.0.0.5.1.1",
+                                    "frame": {
+                                      "left": 364.82,
+                                      "top": 504.6,
+                                      "width": 527.12,
+                                      "height": 26.4
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 10,
+                            "effectiveGap": 10,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 116,
+                              "top": 493.6,
+                              "width": 775.94,
+                              "height": 37.4
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.1.0.0.5.0",
+                                "frame": {
+                                  "left": 116,
+                                  "top": 493.6,
+                                  "width": 775.94,
+                                  "height": 1
+                                }
+                              },
+                              {
+                                "path": "0.1.1.0.0.5.1",
+                                "frame": {
+                                  "left": 116,
+                                  "top": 504.6,
+                                  "width": 775.94,
+                                  "height": 26.4
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 14,
+                        "effectiveGap": 14,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 116,
+                          "top": 254.8,
+                          "width": 775.94,
+                          "height": 276.2
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.1.0.0.0",
+                            "frame": {
+                              "left": 116,
+                              "top": 254.8,
+                              "width": 775.94,
+                              "height": 19.2
+                            }
+                          },
+                          {
+                            "path": "0.1.1.0.0.1",
+                            "frame": {
+                              "left": 116,
+                              "top": 288,
+                              "width": 775.94,
+                              "height": 37.4
+                            }
+                          },
+                          {
+                            "path": "0.1.1.0.0.2",
+                            "frame": {
+                              "left": 116,
+                              "top": 339.4,
+                              "width": 775.94,
+                              "height": 37.4
+                            }
+                          },
+                          {
+                            "path": "0.1.1.0.0.3",
+                            "frame": {
+                              "left": 116,
+                              "top": 390.8,
+                              "width": 775.94,
+                              "height": 37.4
+                            }
+                          },
+                          {
+                            "path": "0.1.1.0.0.4",
+                            "frame": {
+                              "left": 116,
+                              "top": 442.2,
+                              "width": 775.94,
+                              "height": 37.4
+                            }
+                          },
+                          {
+                            "path": "0.1.1.0.0.5",
+                            "frame": {
+                              "left": 116,
+                              "top": 493.6,
+                              "width": 775.94,
+                              "height": 37.4
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "padding": {
+                      "top": 28,
+                      "right": 30,
+                      "bottom": 28,
+                      "left": 30
+                    },
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 116,
+                      "top": 254.8,
+                      "width": 775.94,
+                      "height": 692.4
+                    },
+                    "element": {
+                      "aid": "sh/ih4byhgn",
+                      "id": "4",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "kind": "column",
+                    "name": "s10-interpret",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "fill",
+                        "value": 1
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 687.71,
+                      "height": 247.2
+                    },
+                    "frame": {
+                      "left": 963.94,
+                      "top": 226.8,
+                      "width": 870.06,
+                      "height": 748.4
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.1.1.0",
+                        "kind": "text",
+                        "name": "section-label",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 19.2
+                        },
+                        "frame": {
+                          "left": 963.94,
+                          "top": 477.4,
+                          "width": 870.06,
+                          "height": 19.2
+                        },
+                        "snappedFrame": {
+                          "left": 964,
+                          "top": 478,
+                          "width": 870,
+                          "height": 20
+                        },
+                        "children": [],
+                        "text": "Interpretation flow",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/ovahoza1",
+                          "id": "22",
+                          "kind": "shape"
+                        }
+                      },
+                      {
+                        "path": "0.1.1.1.1",
+                        "kind": "text",
+                        "name": "s10-flow-copy",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "wrap",
+                            "max": 780
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 687.71,
+                          "height": 204
+                        },
+                        "frame": {
+                          "left": 963.94,
+                          "top": 520.6,
+                          "width": 687.71,
+                          "height": 204
+                        },
+                        "snappedFrame": {
+                          "left": 964,
+                          "top": 520,
+                          "width": 688,
+                          "height": 204
+                        },
+                        "children": [],
+                        "text": "1. Find under-filled FG in FG_Result.\n2. Confirm binding RM in RM_Diagnostic.\n3. Compare incremental buy cost in Purchase_Summary.\n4. Use Purchase_Detail for procurement handoff.",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/dg7adsji",
+                          "id": "23",
+                          "kind": "shape"
+                        }
+                      }
+                    ],
+                    "padding": {
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    },
+                    "gap": 24,
+                    "effectiveGap": 24,
+                    "justifyOffset": 250.6,
+                    "align": "start",
+                    "justify": "center",
+                    "contentFrame": {
+                      "left": 963.94,
+                      "top": 226.8,
+                      "width": 870.06,
+                      "height": 748.4
+                    },
+                    "items": [
+                      {
+                        "path": "0.1.1.1.0",
+                        "frame": {
+                          "left": 963.94,
+                          "top": 477.4,
+                          "width": 870.06,
+                          "height": 19.2
+                        }
+                      },
+                      {
+                        "path": "0.1.1.1.1",
+                        "frame": {
+                          "left": 963.94,
+                          "top": 520.6,
+                          "width": 687.71,
+                          "height": 204
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "columnGap": 42,
+                "rowGap": 0,
+                "alignItems": "stretch",
+                "justifyItems": "stretch",
+                "contentFrame": {
+                  "left": 86,
+                  "top": 226.8,
+                  "width": 1748,
+                  "height": 748.4
+                },
+                "columns": [
+                  {
+                    "mode": "fr",
+                    "value": 0.98
+                  },
+                  {
+                    "mode": "fr",
+                    "value": 1.02
+                  }
+                ],
+                "autoRows": "auto",
+                "resolvedRows": [
+                  "auto"
+                ],
+                "columnSizes": [
+                  835.94,
+                  870.06
+                ],
+                "rowSizes": [
+                  748.4
+                ],
+                "cells": [
+                  {
+                    "path": "0.1.1.0",
+                    "column": 0,
+                    "row": 0,
+                    "columnSpan": 1,
+                    "rowSpan": 1,
+                    "cellFrame": {
+                      "left": 86,
+                      "top": 226.8,
+                      "width": 835.94,
+                      "height": 748.4
+                    }
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "column": 1,
+                    "row": 0,
+                    "columnSpan": 1,
+                    "rowSpan": 1,
+                    "cellFrame": {
+                      "left": 963.94,
+                      "top": 226.8,
+                      "width": 870.06,
+                      "height": 748.4
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.2",
+                "kind": "text",
+                "name": "footer",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 16.8
+                },
+                "frame": {
+                  "left": 86,
+                  "top": 1001.2,
+                  "width": 1748,
+                  "height": 16.8
+                },
+                "snappedFrame": {
+                  "left": 86,
+                  "top": 1002,
+                  "width": 1748,
+                  "height": 18
+                },
+                "children": [],
+                "text": "Workbook sheets are generated by app/excel_io.py and app/orchestrator.py.",
+                "transform": "none",
+                "element": {
+                  "aid": "sh/6hcrmhk3",
+                  "id": "24",
+                  "kind": "shape"
+                }
+              }
+            ],
+            "padding": {
+              "top": 62,
+              "right": 86,
+              "bottom": 62,
+              "left": 86
+            },
+            "columnGap": 0,
+            "rowGap": 26,
+            "alignItems": "stretch",
+            "justifyItems": "stretch",
+            "contentFrame": {
+              "left": 86,
+              "top": 62,
+              "width": 1748,
+              "height": 956
+            },
+            "columns": [
+              {
+                "mode": "fr",
+                "value": 1
+              }
+            ],
+            "rows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "autoRows": "auto",
+            "resolvedRows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "columnSizes": [
+              1748
+            ],
+            "rowSizes": [
+              138.8,
+              748.4,
+              16.8
+            ],
+            "cells": [
+              {
+                "path": "0.1.0",
+                "column": 0,
+                "row": 0,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 86,
+                  "top": 62,
+                  "width": 1748,
+                  "height": 138.8
+                }
+              },
+              {
+                "path": "0.1.1",
+                "column": 0,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 86,
+                  "top": 226.8,
+                  "width": 1748,
+                  "height": 748.4
+                }
+              },
+              {
+                "path": "0.1.2",
+                "column": 0,
+                "row": 2,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 86,
+                  "top": 1001.2,
+                  "width": 1748,
+                  "height": 16.8
+                }
+              }
+            ]
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

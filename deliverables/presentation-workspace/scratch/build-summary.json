@@ -1,0 +1,18 @@
+{
+  "deck": "C:\\Users\\prott\\Downloads\\linp\\deliverables\\lp-optimizer-client-presentation.pptx",
+  "workspacePptx": "C:\\Users\\prott\\Downloads\\linp\\deliverables\\presentation-workspace\\output\\output.pptx",
+  "previews": "C:\\Users\\prott\\Downloads\\linp\\deliverables\\presentation-workspace\\scratch\\previews",
+  "layouts": "C:\\Users\\prott\\Downloads\\linp\\deliverables\\presentation-workspace\\scratch\\layouts",
+  "slideCount": 14,
+  "kpis": {
+    "totalCapPairs": 7312,
+    "achievedPairs": 2167,
+    "overallFillPairs": 0.2963621444201313,
+    "planMarginMax": 1333360,
+    "achievedMargin": 422993,
+    "marginFillAtPairFill": 1.0704417254525236,
+    "phaseAStatus": "Optimal",
+    "phaseAMethod": "lex_mip",
+    "purchaseSolver": "highs_mip"
+  }
+}

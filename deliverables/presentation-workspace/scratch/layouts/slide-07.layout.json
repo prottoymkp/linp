@@ -1,0 +1,2683 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/zfd090",
+    "id": "zfd090",
+    "slide": 7,
+    "layoutId": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "283b815a-d041-44df-ac1f-251be766cf19",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/94fu18jq",
+      "id": "1",
+      "name": "slide-bg",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#FFFDF8"
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2hwfyxob",
+      "id": "2",
+      "name": "slide-title",
+      "bbox": [
+        86,
+        64,
+        1748,
+        66
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "The solver turns planning into a constrained optimization model",
+      "textPreview": "The solver turns planning into a constrained optimization model",
+      "resolvedFontSize": 54,
+      "resolvedTextStyle": {
+        "fontSize": 54,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The solver turns planning into a constrained optimization model"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The solver turns planning into a constrained optimization model",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The solver turns planning into a constrained optimization model",
+              "fontSize": 54,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/r2p8nqxs",
+      "id": "3",
+      "name": "slide-subtitle",
+      "bbox": [
+        86,
+        142,
+        1310,
+        30
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "The code builds a sparse coefficient matrix from the BOM, then solves integer quantities against raw-material rows and plan caps.",
+      "textPreview": "The code builds a sparse coefficient matrix from the BOM, then solves integer quantities against raw-material rows and plan caps.",
+      "resolvedFontSize": 25,
+      "resolvedTextStyle": {
+        "fontSize": 25,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The code builds a sparse coefficient matrix from the BOM, then solves integer quantities against raw-material rows and plan"
+          },
+          {
+            "index": 2,
+            "text": "caps."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The code builds a sparse coefficient matrix from the BOM, then solves integer quantities against raw-material rows and plan caps.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "The code builds a sparse coefficient matrix from the BOM, then solves integer quantities against raw-material rows and plan caps.",
+              "fontSize": 25,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gvy90je9",
+      "id": "4",
+      "name": "s7-eq-1",
+      "bbox": [
+        86,
+        420,
+        932,
+        68
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.0"
+      },
+      "geometry": "rect",
+      "text": "Maximize objective",
+      "textPreview": "Maximize objective",
+      "resolvedFontSize": 56,
+      "resolvedTextStyle": {
+        "fontSize": 56,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Maximize objective"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Maximize objective",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Maximize objective",
+              "fontSize": 56,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9gr2p8nq",
+      "id": "5",
+      "name": "s7-eq-2",
+      "bbox": [
+        86,
+        512,
+        932,
+        32
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.1"
+      },
+      "geometry": "rect",
+      "text": "subject to",
+      "textPreview": "subject to",
+      "resolvedFontSize": 26,
+      "resolvedTextStyle": {
+        "fontSize": 26,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "subject to"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "subject to",
+          "runs": [
+            {
+              "index": 1,
+              "text": "subject to",
+              "fontSize": 26,
+              "color": "#77867F"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/2p8nqxs7",
+      "id": "6",
+      "name": "s7-eq-3",
+      "bbox": [
+        86,
+        570,
+        380,
+        184
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1.2"
+      },
+      "geometry": "rect",
+      "text": "RM usage <= availability\nFG quantity <= plan cap\nFG quantity is integer",
+      "textPreview": "RM usage <= availability | FG quantity <= plan cap | FG quantity is integer",
+      "resolvedFontSize": 38,
+      "resolvedTextStyle": {
+        "fontSize": 38,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 4,
+        "lines": [
+          {
+            "index": 1,
+            "text": "RM usage <="
+          },
+          {
+            "index": 2,
+            "text": "availability"
+          },
+          {
+            "index": 3,
+            "text": "FG quantity <= plan cap"
+          },
+          {
+            "index": 4,
+            "text": "FG quantity is integer"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "RM usage <= availability",
+          "runs": [
+            {
+              "index": 1,
+              "text": "RM usage <= availability",
+              "fontSize": 38,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "text": "FG quantity <= plan cap",
+          "runs": [
+            {
+              "index": 1,
+              "text": "FG quantity <= plan cap",
+              "fontSize": 38,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "text": "FG quantity is integer",
+          "runs": [
+            {
+              "index": 1,
+              "text": "FG quantity is integer",
+              "fontSize": 38,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ra5gbq1o",
+      "id": "7",
+      "name": "s7-routing",
+      "bbox": [
+        1071.7,
+        202.8,
+        762.3,
+        766.4
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2"
+      },
+      "geometry": "roundRect",
+      "fillColor": "#F6F1EA",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 1
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kzupwb2h",
+      "id": "8",
+      "name": "section-label",
+      "bbox": [
+        1106,
+        232,
+        694,
+        20
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.0"
+      },
+      "geometry": "rect",
+      "text": "Objective routing",
+      "textPreview": "Objective routing",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Objective routing"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Objective routing",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Objective routing",
+              "fontSize": 16,
+              "color": "#1F5B63",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/9knih4by",
+      "id": "9",
+      "name": "s7-routing-table-header-0",
+      "bbox": [
+        1106,
+        272,
+        170,
+        20
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "Mode",
+      "textPreview": "Mode",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Mode"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Mode",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Mode",
+              "fontSize": 16,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p8nqxs72",
+      "id": "10",
+      "name": "s7-routing-table-header-1",
+      "bbox": [
+        1288,
+        272,
+        512,
+        20
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "What it optimizes",
+      "textPreview": "What it optimizes",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "What it optimizes"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "What it optimizes",
+          "runs": [
+            {
+              "index": 1,
+              "text": "What it optimizes",
+              "fontSize": 16,
+              "color": "#123B42",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0nuxc3yl",
+      "id": "11",
+      "name": "s7-routing-table-row-rule-0",
+      "bbox": [
+        1106,
+        306,
+        694,
+        1
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1.1.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#D7C8B8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/72x4nap4",
+      "id": "12",
+      "name": "s7-routing-table-cell-0-0",
+      "bbox": [
+        1106,
+        316,
+        170,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1.1.1.0"
+      },
+      "geometry": "rect",
+      "text": "PAIRS",
+      "textPreview": "PAIRS",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "PAIRS"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "PAIRS",
+          "runs": [
+            {
+              "index": 1,
+              "text": "PAIRS",
+              "fontSize": 22,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ih4byhgn",
+      "id": "13",
+      "name": "s7-routing-table-cell-0-1",
+      "bbox": [
+        1288,
+        316,
+        512,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1.1.1.1"
+      },
+      "geometry": "rect",
+      "text": "maximum total production pairs",
+      "textPreview": "maximum total production pairs",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "maximum total production pairs"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "maximum total production pairs",
+          "runs": [
+            {
+              "index": 1,
+              "text": "maximum total production pairs",
+              "fontSize": 22,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/pkzupwb2",
+      "id": "14",
+      "name": "s7-routing-table-row-rule-1",
+      "bbox": [
+        1106,
+        356,
+        694,
+        1
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1.2.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#D7C8B8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 0
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0z61032l",
+      "id": "15",
+      "name": "s7-routing-table-cell-1-0",
+      "bbox": [
+        1106,
+        368,
+        170,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1.2.1.0"
+      },
+      "geometry": "rect",
+      "text": "MARGIN",
+      "textPreview": "MARGIN",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "MARGIN"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "MARGIN",
+          "runs": [
+            {
+              "index": 1,
+              "text": "MARGIN",
+              "fontSize": 22,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7ed8bat4",
+      "id": "16",
+      "name": "s7-routing-table-cell-1-1",
+      "bbox": [
+        1288,
+        368,
+        512,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1.2.1.1"
+      },
+      "geometry": "rect",
+      "text": "maximum total margin",
+      "textPreview": "maximum total margin",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "maximum total margin"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "maximum total margin",
+          "runs": [
+            {
+              "index": 1,
+              "text": "maximum total margin",
+              "fontSize": 22,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/itgfmlkj",
+      "id": "17",
+      "name": "s7-routing-table-row-rule-2",
+      "bbox": [
+        1106,
+        408,
+        694,
+        1
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1.3.0"
+      },
+      "geometry": "rect",
+      "fillColor": "#D7C8B8",
+      "lineColor": "#D7C8B8",
+      "lineWidth": 0
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/pwb2hwfy",
+      "id": "18",
+      "name": "s7-routing-table-cell-2-0",
+      "bbox": [
+        1106,
+        418,
+        170,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1.3.1.0"
+      },
+      "geometry": "rect",
+      "text": "PLAN",
+      "textPreview": "PLAN",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "PLAN"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "PLAN",
+          "runs": [
+            {
+              "index": 1,
+              "text": "PLAN",
+              "fontSize": 22,
+              "color": "#18201D",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0bi9s36h",
+      "id": "19",
+      "name": "s7-routing-table-cell-2-1",
+      "bbox": [
+        1288,
+        418,
+        512,
+        28
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.2.0.1.3.1.1"
+      },
+      "geometry": "rect",
+      "text": "pair fill first, then margin",
+      "textPreview": "pair fill first, then margin",
+      "resolvedFontSize": 22,
+      "resolvedTextStyle": {
+        "fontSize": 22,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "pair fill first, then margin"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "pair fill first, then margin",
+          "runs": [
+            {
+              "index": 1,
+              "text": "pair fill first, then margin",
+              "fontSize": 22,
+              "color": "#51645E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/sneloj2t",
+      "id": "20",
+      "name": "footer",
+      "bbox": [
+        86,
+        1000,
+        1748,
+        18
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.3"
+      },
+      "geometry": "rect",
+      "text": "Implementation source: app/model.py and app/orchestrator.py.",
+      "textPreview": "Implementation source: app/model.py and app/orchestrator.py.",
+      "resolvedFontSize": 14,
+      "resolvedTextStyle": {
+        "fontSize": 14,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Implementation source: app/model.py and app/orchestrator.py."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Implementation source: app/model.py and app/orchestrator.py.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Implementation source: app/model.py and app/orchestrator.py.",
+              "fontSize": 14,
+              "color": "#77867F"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "baseUnit": 8,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "s7-root",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 0,
+          "height": 0
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "shape",
+            "name": "slide-bg",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 0,
+              "height": 0
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "snappedFrame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [],
+            "geometry": "rect",
+            "element": {
+              "aid": "sh/94fu18jq",
+              "id": "1",
+              "kind": "shape"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "grid",
+            "name": "s7-grid",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 226,
+              "height": 313.6
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [
+              {
+                "path": "0.1.0",
+                "kind": "column",
+                "name": "title-stack",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 1310.51,
+                  "height": 108.8
+                },
+                "frame": {
+                  "left": 86,
+                  "top": 64,
+                  "width": 1748,
+                  "height": 108.8
+                },
+                "children": [
+                  {
+                    "path": "0.1.0.0",
+                    "kind": "text",
+                    "name": "slide-title",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 64.8
+                    },
+                    "frame": {
+                      "left": 86,
+                      "top": 64,
+                      "width": 1748,
+                      "height": 64.8
+                    },
+                    "snappedFrame": {
+                      "left": 86,
+                      "top": 64,
+                      "width": 1748,
+                      "height": 66
+                    },
+                    "children": [],
+                    "text": "The solver turns planning into a constrained optimization model",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/2hwfyxob",
+                      "id": "2",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "kind": "text",
+                    "name": "slide-subtitle",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 1360
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 1310.51,
+                      "height": 30
+                    },
+                    "frame": {
+                      "left": 86,
+                      "top": 142.8,
+                      "width": 1310.51,
+                      "height": 30
+                    },
+                    "snappedFrame": {
+                      "left": 86,
+                      "top": 142,
+                      "width": 1310,
+                      "height": 30
+                    },
+                    "children": [],
+                    "text": "The code builds a sparse coefficient matrix from the BOM, then solves integer quantities against raw-material rows and plan caps.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/r2p8nqxs",
+                      "id": "3",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 14,
+                "effectiveGap": 14,
+                "justifyOffset": 0,
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 86,
+                  "top": 64,
+                  "width": 1748,
+                  "height": 108.8
+                },
+                "items": [
+                  {
+                    "path": "0.1.0.0",
+                    "frame": {
+                      "left": 86,
+                      "top": 64,
+                      "width": 1748,
+                      "height": 64.8
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "frame": {
+                      "left": 86,
+                      "top": 142.8,
+                      "width": 1310.51,
+                      "height": 30
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.1",
+                "kind": "column",
+                "name": "s7-equation",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 380.69,
+                  "height": 287.2
+                },
+                "frame": {
+                  "left": 86,
+                  "top": 202.8,
+                  "width": 931.7,
+                  "height": 766.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.1.0",
+                    "kind": "text",
+                    "name": "s7-eq-1",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 67.2
+                    },
+                    "frame": {
+                      "left": 86,
+                      "top": 419.6,
+                      "width": 931.7,
+                      "height": 67.2
+                    },
+                    "snappedFrame": {
+                      "left": 86,
+                      "top": 420,
+                      "width": 932,
+                      "height": 68
+                    },
+                    "children": [],
+                    "text": "Maximize objective",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/gvy90je9",
+                      "id": "4",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "kind": "text",
+                    "name": "s7-eq-2",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 31.2
+                    },
+                    "frame": {
+                      "left": 86,
+                      "top": 512.8,
+                      "width": 931.7,
+                      "height": 31.2
+                    },
+                    "snappedFrame": {
+                      "left": 86,
+                      "top": 512,
+                      "width": 932,
+                      "height": 32
+                    },
+                    "children": [],
+                    "text": "subject to",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/9gr2p8nq",
+                      "id": "5",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.1.2",
+                    "kind": "text",
+                    "name": "s7-eq-3",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 780
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 380.69,
+                      "height": 136.8
+                    },
+                    "frame": {
+                      "left": 86,
+                      "top": 570,
+                      "width": 380.69,
+                      "height": 182.4
+                    },
+                    "snappedFrame": {
+                      "left": 86,
+                      "top": 570,
+                      "width": 380,
+                      "height": 184
+                    },
+                    "children": [],
+                    "text": "RM usage <= availability\nFG quantity <= plan cap\nFG quantity is integer",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/2p8nqxs7",
+                      "id": "6",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 26,
+                "effectiveGap": 26,
+                "justifyOffset": 216.8,
+                "align": "start",
+                "justify": "center",
+                "contentFrame": {
+                  "left": 86,
+                  "top": 202.8,
+                  "width": 931.7,
+                  "height": 766.4
+                },
+                "items": [
+                  {
+                    "path": "0.1.1.0",
+                    "frame": {
+                      "left": 86,
+                      "top": 419.6,
+                      "width": 931.7,
+                      "height": 67.2
+                    }
+                  },
+                  {
+                    "path": "0.1.1.1",
+                    "frame": {
+                      "left": 86,
+                      "top": 512.8,
+                      "width": 931.7,
+                      "height": 31.2
+                    }
+                  },
+                  {
+                    "path": "0.1.1.2",
+                    "frame": {
+                      "left": 86,
+                      "top": 570,
+                      "width": 380.69,
+                      "height": 182.4
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.2",
+                "kind": "panel",
+                "name": "s7-routing",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 68,
+                  "height": 60
+                },
+                "frame": {
+                  "left": 1071.7,
+                  "top": 202.8,
+                  "width": 762.3,
+                  "height": 766.4
+                },
+                "snappedFrame": {
+                  "left": 1071.7,
+                  "top": 202.8,
+                  "width": 762.3,
+                  "height": 766.4
+                },
+                "children": [
+                  {
+                    "path": "0.1.2.0",
+                    "kind": "column",
+                    "name": "s7-routing-col",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "fill",
+                        "value": 1
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 212.6
+                    },
+                    "frame": {
+                      "left": 1105.7,
+                      "top": 232.8,
+                      "width": 694.3,
+                      "height": 706.4
+                    },
+                    "children": [
+                      {
+                        "path": "0.1.2.0.0",
+                        "kind": "text",
+                        "name": "section-label",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 19.2
+                        },
+                        "frame": {
+                          "left": 1105.7,
+                          "top": 232.8,
+                          "width": 694.3,
+                          "height": 19.2
+                        },
+                        "snappedFrame": {
+                          "left": 1106,
+                          "top": 232,
+                          "width": 694,
+                          "height": 20
+                        },
+                        "children": [],
+                        "text": "Objective routing",
+                        "transform": "none",
+                        "element": {
+                          "aid": "sh/kzupwb2h",
+                          "id": "8",
+                          "kind": "shape"
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.1",
+                        "kind": "column",
+                        "name": "s7-routing-table",
+                        "requestedSize": {
+                          "width": {
+                            "mode": "fill",
+                            "value": 1
+                          },
+                          "height": {
+                            "mode": "hug"
+                          }
+                        },
+                        "intrinsicSize": {
+                          "width": 0,
+                          "height": 173.4
+                        },
+                        "frame": {
+                          "left": 1105.7,
+                          "top": 272,
+                          "width": 694.3,
+                          "height": 173.4
+                        },
+                        "children": [
+                          {
+                            "path": "0.1.2.0.1.0",
+                            "kind": "row",
+                            "name": "s7-routing-table-header",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 12,
+                              "height": 19.2
+                            },
+                            "frame": {
+                              "left": 1105.7,
+                              "top": 272,
+                              "width": 694.3,
+                              "height": 19.2
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.2.0.1.0.0",
+                                "kind": "text",
+                                "name": "s7-routing-table-header-0",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 0.5
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 19.2
+                                },
+                                "frame": {
+                                  "left": 1105.7,
+                                  "top": 272,
+                                  "width": 170.58,
+                                  "height": 19.2
+                                },
+                                "snappedFrame": {
+                                  "left": 1106,
+                                  "top": 272,
+                                  "width": 170,
+                                  "height": 20
+                                },
+                                "children": [],
+                                "text": "Mode",
+                                "transform": "none",
+                                "element": {
+                                  "aid": "sh/9knih4by",
+                                  "id": "9",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.2.0.1.0.1",
+                                "kind": "text",
+                                "name": "s7-routing-table-header-1",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1.5
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 19.2
+                                },
+                                "frame": {
+                                  "left": 1288.28,
+                                  "top": 272,
+                                  "width": 511.73,
+                                  "height": 19.2
+                                },
+                                "snappedFrame": {
+                                  "left": 1288,
+                                  "top": 272,
+                                  "width": 512,
+                                  "height": 20
+                                },
+                                "children": [],
+                                "text": "What it optimizes",
+                                "transform": "none",
+                                "element": {
+                                  "aid": "sh/p8nqxs72",
+                                  "id": "10",
+                                  "kind": "shape"
+                                }
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 12,
+                            "effectiveGap": 12,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 1105.7,
+                              "top": 272,
+                              "width": 694.3,
+                              "height": 19.2
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.2.0.1.0.0",
+                                "frame": {
+                                  "left": 1105.7,
+                                  "top": 272,
+                                  "width": 170.58,
+                                  "height": 19.2
+                                }
+                              },
+                              {
+                                "path": "0.1.2.0.1.0.1",
+                                "frame": {
+                                  "left": 1288.28,
+                                  "top": 272,
+                                  "width": 511.73,
+                                  "height": 19.2
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "path": "0.1.2.0.1.1",
+                            "kind": "column",
+                            "name": "s7-routing-table-row-wrap-0",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 37.4
+                            },
+                            "frame": {
+                              "left": 1105.7,
+                              "top": 305.2,
+                              "width": 694.3,
+                              "height": 37.4
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.2.0.1.1.0",
+                                "kind": "rule",
+                                "name": "s7-routing-table-row-rule-0",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "fixed",
+                                    "value": 1
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 1
+                                },
+                                "frame": {
+                                  "left": 1105.7,
+                                  "top": 305.2,
+                                  "width": 694.3,
+                                  "height": 1
+                                },
+                                "snappedFrame": {
+                                  "left": 1106,
+                                  "top": 306,
+                                  "width": 694,
+                                  "height": 1
+                                },
+                                "children": [],
+                                "weight": 1,
+                                "element": {
+                                  "aid": "sh/0nuxc3yl",
+                                  "id": "11",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.2.0.1.1.1",
+                                "kind": "row",
+                                "name": "s7-routing-table-row-0",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 12,
+                                  "height": 26.4
+                                },
+                                "frame": {
+                                  "left": 1105.7,
+                                  "top": 316.2,
+                                  "width": 694.3,
+                                  "height": 26.4
+                                },
+                                "children": [
+                                  {
+                                    "path": "0.1.2.0.1.1.1.0",
+                                    "kind": "text",
+                                    "name": "s7-routing-table-cell-0-0",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 0.5
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 1105.7,
+                                      "top": 316.2,
+                                      "width": 170.58,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 1106,
+                                      "top": 316,
+                                      "width": 170,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "PAIRS",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/72x4nap4",
+                                      "id": "12",
+                                      "kind": "shape"
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.2.0.1.1.1.1",
+                                    "kind": "text",
+                                    "name": "s7-routing-table-cell-0-1",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 1.5
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 1288.28,
+                                      "top": 316.2,
+                                      "width": 511.73,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 1288,
+                                      "top": 316,
+                                      "width": 512,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "maximum total production pairs",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/ih4byhgn",
+                                      "id": "13",
+                                      "kind": "shape"
+                                    }
+                                  }
+                                ],
+                                "padding": {
+                                  "top": 0,
+                                  "right": 0,
+                                  "bottom": 0,
+                                  "left": 0
+                                },
+                                "gap": 12,
+                                "effectiveGap": 12,
+                                "justifyOffset": 0,
+                                "align": "start",
+                                "justify": "start",
+                                "contentFrame": {
+                                  "left": 1105.7,
+                                  "top": 316.2,
+                                  "width": 694.3,
+                                  "height": 26.4
+                                },
+                                "items": [
+                                  {
+                                    "path": "0.1.2.0.1.1.1.0",
+                                    "frame": {
+                                      "left": 1105.7,
+                                      "top": 316.2,
+                                      "width": 170.58,
+                                      "height": 26.4
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.2.0.1.1.1.1",
+                                    "frame": {
+                                      "left": 1288.28,
+                                      "top": 316.2,
+                                      "width": 511.73,
+                                      "height": 26.4
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 10,
+                            "effectiveGap": 10,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 1105.7,
+                              "top": 305.2,
+                              "width": 694.3,
+                              "height": 37.4
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.2.0.1.1.0",
+                                "frame": {
+                                  "left": 1105.7,
+                                  "top": 305.2,
+                                  "width": 694.3,
+                                  "height": 1
+                                }
+                              },
+                              {
+                                "path": "0.1.2.0.1.1.1",
+                                "frame": {
+                                  "left": 1105.7,
+                                  "top": 316.2,
+                                  "width": 694.3,
+                                  "height": 26.4
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "path": "0.1.2.0.1.2",
+                            "kind": "column",
+                            "name": "s7-routing-table-row-wrap-1",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 37.4
+                            },
+                            "frame": {
+                              "left": 1105.7,
+                              "top": 356.6,
+                              "width": 694.3,
+                              "height": 37.4
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.2.0.1.2.0",
+                                "kind": "rule",
+                                "name": "s7-routing-table-row-rule-1",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "fixed",
+                                    "value": 1
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 1
+                                },
+                                "frame": {
+                                  "left": 1105.7,
+                                  "top": 356.6,
+                                  "width": 694.3,
+                                  "height": 1
+                                },
+                                "snappedFrame": {
+                                  "left": 1106,
+                                  "top": 356,
+                                  "width": 694,
+                                  "height": 1
+                                },
+                                "children": [],
+                                "weight": 1,
+                                "element": {
+                                  "aid": "sh/pkzupwb2",
+                                  "id": "14",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.2.0.1.2.1",
+                                "kind": "row",
+                                "name": "s7-routing-table-row-1",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 12,
+                                  "height": 26.4
+                                },
+                                "frame": {
+                                  "left": 1105.7,
+                                  "top": 367.6,
+                                  "width": 694.3,
+                                  "height": 26.4
+                                },
+                                "children": [
+                                  {
+                                    "path": "0.1.2.0.1.2.1.0",
+                                    "kind": "text",
+                                    "name": "s7-routing-table-cell-1-0",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 0.5
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 1105.7,
+                                      "top": 367.6,
+                                      "width": 170.58,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 1106,
+                                      "top": 368,
+                                      "width": 170,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "MARGIN",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/0z61032l",
+                                      "id": "15",
+                                      "kind": "shape"
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.2.0.1.2.1.1",
+                                    "kind": "text",
+                                    "name": "s7-routing-table-cell-1-1",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 1.5
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 1288.28,
+                                      "top": 367.6,
+                                      "width": 511.73,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 1288,
+                                      "top": 368,
+                                      "width": 512,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "maximum total margin",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/7ed8bat4",
+                                      "id": "16",
+                                      "kind": "shape"
+                                    }
+                                  }
+                                ],
+                                "padding": {
+                                  "top": 0,
+                                  "right": 0,
+                                  "bottom": 0,
+                                  "left": 0
+                                },
+                                "gap": 12,
+                                "effectiveGap": 12,
+                                "justifyOffset": 0,
+                                "align": "start",
+                                "justify": "start",
+                                "contentFrame": {
+                                  "left": 1105.7,
+                                  "top": 367.6,
+                                  "width": 694.3,
+                                  "height": 26.4
+                                },
+                                "items": [
+                                  {
+                                    "path": "0.1.2.0.1.2.1.0",
+                                    "frame": {
+                                      "left": 1105.7,
+                                      "top": 367.6,
+                                      "width": 170.58,
+                                      "height": 26.4
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.2.0.1.2.1.1",
+                                    "frame": {
+                                      "left": 1288.28,
+                                      "top": 367.6,
+                                      "width": 511.73,
+                                      "height": 26.4
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 10,
+                            "effectiveGap": 10,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 1105.7,
+                              "top": 356.6,
+                              "width": 694.3,
+                              "height": 37.4
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.2.0.1.2.0",
+                                "frame": {
+                                  "left": 1105.7,
+                                  "top": 356.6,
+                                  "width": 694.3,
+                                  "height": 1
+                                }
+                              },
+                              {
+                                "path": "0.1.2.0.1.2.1",
+                                "frame": {
+                                  "left": 1105.7,
+                                  "top": 367.6,
+                                  "width": 694.3,
+                                  "height": 26.4
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "path": "0.1.2.0.1.3",
+                            "kind": "column",
+                            "name": "s7-routing-table-row-wrap-2",
+                            "requestedSize": {
+                              "width": {
+                                "mode": "fill",
+                                "value": 1
+                              },
+                              "height": {
+                                "mode": "hug"
+                              }
+                            },
+                            "intrinsicSize": {
+                              "width": 0,
+                              "height": 37.4
+                            },
+                            "frame": {
+                              "left": 1105.7,
+                              "top": 408,
+                              "width": 694.3,
+                              "height": 37.4
+                            },
+                            "children": [
+                              {
+                                "path": "0.1.2.0.1.3.0",
+                                "kind": "rule",
+                                "name": "s7-routing-table-row-rule-2",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "fixed",
+                                    "value": 1
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 0,
+                                  "height": 1
+                                },
+                                "frame": {
+                                  "left": 1105.7,
+                                  "top": 408,
+                                  "width": 694.3,
+                                  "height": 1
+                                },
+                                "snappedFrame": {
+                                  "left": 1106,
+                                  "top": 408,
+                                  "width": 694,
+                                  "height": 1
+                                },
+                                "children": [],
+                                "weight": 1,
+                                "element": {
+                                  "aid": "sh/itgfmlkj",
+                                  "id": "17",
+                                  "kind": "shape"
+                                }
+                              },
+                              {
+                                "path": "0.1.2.0.1.3.1",
+                                "kind": "row",
+                                "name": "s7-routing-table-row-2",
+                                "requestedSize": {
+                                  "width": {
+                                    "mode": "fill",
+                                    "value": 1
+                                  },
+                                  "height": {
+                                    "mode": "hug"
+                                  }
+                                },
+                                "intrinsicSize": {
+                                  "width": 12,
+                                  "height": 26.4
+                                },
+                                "frame": {
+                                  "left": 1105.7,
+                                  "top": 419,
+                                  "width": 694.3,
+                                  "height": 26.4
+                                },
+                                "children": [
+                                  {
+                                    "path": "0.1.2.0.1.3.1.0",
+                                    "kind": "text",
+                                    "name": "s7-routing-table-cell-2-0",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 0.5
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 1105.7,
+                                      "top": 419,
+                                      "width": 170.58,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 1106,
+                                      "top": 418,
+                                      "width": 170,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "PLAN",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/pwb2hwfy",
+                                      "id": "18",
+                                      "kind": "shape"
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.2.0.1.3.1.1",
+                                    "kind": "text",
+                                    "name": "s7-routing-table-cell-2-1",
+                                    "requestedSize": {
+                                      "width": {
+                                        "mode": "fill",
+                                        "value": 1.5
+                                      },
+                                      "height": {
+                                        "mode": "hug"
+                                      }
+                                    },
+                                    "intrinsicSize": {
+                                      "width": 0,
+                                      "height": 26.4
+                                    },
+                                    "frame": {
+                                      "left": 1288.28,
+                                      "top": 419,
+                                      "width": 511.73,
+                                      "height": 26.4
+                                    },
+                                    "snappedFrame": {
+                                      "left": 1288,
+                                      "top": 418,
+                                      "width": 512,
+                                      "height": 28
+                                    },
+                                    "children": [],
+                                    "text": "pair fill first, then margin",
+                                    "transform": "none",
+                                    "element": {
+                                      "aid": "sh/0bi9s36h",
+                                      "id": "19",
+                                      "kind": "shape"
+                                    }
+                                  }
+                                ],
+                                "padding": {
+                                  "top": 0,
+                                  "right": 0,
+                                  "bottom": 0,
+                                  "left": 0
+                                },
+                                "gap": 12,
+                                "effectiveGap": 12,
+                                "justifyOffset": 0,
+                                "align": "start",
+                                "justify": "start",
+                                "contentFrame": {
+                                  "left": 1105.7,
+                                  "top": 419,
+                                  "width": 694.3,
+                                  "height": 26.4
+                                },
+                                "items": [
+                                  {
+                                    "path": "0.1.2.0.1.3.1.0",
+                                    "frame": {
+                                      "left": 1105.7,
+                                      "top": 419,
+                                      "width": 170.58,
+                                      "height": 26.4
+                                    }
+                                  },
+                                  {
+                                    "path": "0.1.2.0.1.3.1.1",
+                                    "frame": {
+                                      "left": 1288.28,
+                                      "top": 419,
+                                      "width": 511.73,
+                                      "height": 26.4
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            "padding": {
+                              "top": 0,
+                              "right": 0,
+                              "bottom": 0,
+                              "left": 0
+                            },
+                            "gap": 10,
+                            "effectiveGap": 10,
+                            "justifyOffset": 0,
+                            "align": "start",
+                            "justify": "start",
+                            "contentFrame": {
+                              "left": 1105.7,
+                              "top": 408,
+                              "width": 694.3,
+                              "height": 37.4
+                            },
+                            "items": [
+                              {
+                                "path": "0.1.2.0.1.3.0",
+                                "frame": {
+                                  "left": 1105.7,
+                                  "top": 408,
+                                  "width": 694.3,
+                                  "height": 1
+                                }
+                              },
+                              {
+                                "path": "0.1.2.0.1.3.1",
+                                "frame": {
+                                  "left": 1105.7,
+                                  "top": 419,
+                                  "width": 694.3,
+                                  "height": 26.4
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "padding": {
+                          "top": 0,
+                          "right": 0,
+                          "bottom": 0,
+                          "left": 0
+                        },
+                        "gap": 14,
+                        "effectiveGap": 14,
+                        "justifyOffset": 0,
+                        "align": "start",
+                        "justify": "start",
+                        "contentFrame": {
+                          "left": 1105.7,
+                          "top": 272,
+                          "width": 694.3,
+                          "height": 173.4
+                        },
+                        "items": [
+                          {
+                            "path": "0.1.2.0.1.0",
+                            "frame": {
+                              "left": 1105.7,
+                              "top": 272,
+                              "width": 694.3,
+                              "height": 19.2
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.1.1",
+                            "frame": {
+                              "left": 1105.7,
+                              "top": 305.2,
+                              "width": 694.3,
+                              "height": 37.4
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.1.2",
+                            "frame": {
+                              "left": 1105.7,
+                              "top": 356.6,
+                              "width": 694.3,
+                              "height": 37.4
+                            }
+                          },
+                          {
+                            "path": "0.1.2.0.1.3",
+                            "frame": {
+                              "left": 1105.7,
+                              "top": 408,
+                              "width": 694.3,
+                              "height": 37.4
+                            }
+                          }
+                        ]
+                      }
+                    ],
+                    "padding": {
+                      "top": 0,
+                      "right": 0,
+                      "bottom": 0,
+                      "left": 0
+                    },
+                    "gap": 20,
+                    "effectiveGap": 20,
+                    "justifyOffset": 0,
+                    "align": "start",
+                    "justify": "start",
+                    "contentFrame": {
+                      "left": 1105.7,
+                      "top": 232.8,
+                      "width": 694.3,
+                      "height": 706.4
+                    },
+                    "items": [
+                      {
+                        "path": "0.1.2.0.0",
+                        "frame": {
+                          "left": 1105.7,
+                          "top": 232.8,
+                          "width": 694.3,
+                          "height": 19.2
+                        }
+                      },
+                      {
+                        "path": "0.1.2.0.1",
+                        "frame": {
+                          "left": 1105.7,
+                          "top": 272,
+                          "width": 694.3,
+                          "height": 173.4
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "padding": {
+                  "top": 30,
+                  "right": 34,
+                  "bottom": 30,
+                  "left": 34
+                },
+                "align": "start",
+                "justify": "start",
+                "contentFrame": {
+                  "left": 1105.7,
+                  "top": 232.8,
+                  "width": 694.3,
+                  "height": 706.4
+                },
+                "element": {
+                  "aid": "sh/ra5gbq1o",
+                  "id": "7",
+                  "kind": "shape"
+                }
+              },
+              {
+                "path": "0.1.3",
+                "kind": "text",
+                "name": "footer",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 16.8
+                },
+                "frame": {
+                  "left": 86,
+                  "top": 999.2,
+                  "width": 1748,
+                  "height": 16.8
+                },
+                "snappedFrame": {
+                  "left": 86,
+                  "top": 1000,
+                  "width": 1748,
+                  "height": 18
+                },
+                "children": [],
+                "text": "Implementation source: app/model.py and app/orchestrator.py.",
+                "transform": "none",
+                "element": {
+                  "aid": "sh/sneloj2t",
+                  "id": "20",
+                  "kind": "shape"
+                }
+              }
+            ],
+            "padding": {
+              "top": 64,
+              "right": 86,
+              "bottom": 64,
+              "left": 86
+            },
+            "columnGap": 54,
+            "rowGap": 30,
+            "alignItems": "stretch",
+            "justifyItems": "stretch",
+            "contentFrame": {
+              "left": 86,
+              "top": 64,
+              "width": 1748,
+              "height": 952
+            },
+            "columns": [
+              {
+                "mode": "fr",
+                "value": 1.1
+              },
+              {
+                "mode": "fr",
+                "value": 0.9
+              }
+            ],
+            "rows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "autoRows": "auto",
+            "resolvedRows": [
+              "auto",
+              {
+                "mode": "fr",
+                "value": 1
+              },
+              "auto"
+            ],
+            "columnSizes": [
+              931.7,
+              762.3
+            ],
+            "rowSizes": [
+              108.8,
+              766.4,
+              16.8
+            ],
+            "cells": [
+              {
+                "path": "0.1.0",
+                "column": 0,
+                "row": 0,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 86,
+                  "top": 64,
+                  "width": 1748,
+                  "height": 108.8
+                }
+              },
+              {
+                "path": "0.1.1",
+                "column": 0,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 86,
+                  "top": 202.8,
+                  "width": 931.7,
+                  "height": 766.4
+                }
+              },
+              {
+                "path": "0.1.2",
+                "column": 1,
+                "row": 1,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 1071.7,
+                  "top": 202.8,
+                  "width": 762.3,
+                  "height": 766.4
+                }
+              },
+              {
+                "path": "0.1.3",
+                "column": 0,
+                "row": 2,
+                "columnSpan": 2,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 86,
+                  "top": 999.2,
+                  "width": 1748,
+                  "height": 16.8
+                }
+              }
+            ]
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

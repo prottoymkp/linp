@@ -1,0 +1,14 @@
+{
+  "workspace": "C:\\Users\\prott\\Downloads\\linp\\deliverables\\presentation-workspace",
+  "pptx": "C:\\Users\\prott\\Downloads\\linp\\deliverables\\presentation-workspace\\output\\output.pptx",
+  "checks": {
+    "output_hygiene": {
+      "output_dir": "C:\\Users\\prott\\Downloads\\linp\\deliverables\\presentation-workspace\\output",
+      "unexpected_files": []
+    }
+  },
+  "failures": [
+    "PPTX package inspection failed: unzip -Z1 C:\\Users\\prott\\Downloads\\linp\\deliverables\\presentation-workspace\\output\\output.pptx failed"
+  ],
+  "warnings": []
+}

@@ -1,0 +1,790 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/1zvg3t",
+    "id": "1zvg3t",
+    "slide": 1,
+    "layoutId": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+    "masterLayoutName": "Master",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "bd88c525-9684-46b8-9740-52f2d2d3fcec",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "283b815a-d041-44df-ac1f-251be766cf19",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "283b815a-d041-44df-ac1f-251be766cf19",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/29gr2p8n",
+      "id": "1",
+      "name": "cover-photo",
+      "bbox": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.0"
+      },
+      "alt": "Footwear production planning room beside a factory floor",
+      "contentType": "image/png",
+      "asset": {
+        "assetId": "8f0cc1fa-d4f5-4b71-8567-509b08494e8b",
+        "contentType": "image/png",
+        "byteLength": 1919834
+      }
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/w3m94fu1",
+      "id": "2",
+      "name": "section-label",
+      "bbox": [
+        96,
+        348,
+        794,
+        20
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.0"
+      },
+      "geometry": "rect",
+      "text": "Client presentation",
+      "textPreview": "Client presentation",
+      "resolvedFontSize": 16,
+      "resolvedTextStyle": {
+        "fontSize": 16,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Client presentation"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Client presentation",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Client presentation",
+              "fontSize": 16,
+              "color": "#F4DEC3",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/loj2t83i",
+      "id": "3",
+      "name": "cover-title",
+      "bbox": [
+        96,
+        392,
+        628,
+        188
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.1"
+      },
+      "geometry": "rect",
+      "text": "RM-Constrained FG Planning Optimizer",
+      "textPreview": "RM-Constrained FG Planning Optimizer",
+      "resolvedFontSize": 78,
+      "resolvedTextStyle": {
+        "fontSize": 78,
+        "typeface": "+mn-lt",
+        "bold": true,
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "RM-Constrained FG"
+          },
+          {
+            "index": 2,
+            "text": "Planning Optimizer"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "RM-Constrained FG Planning Optimizer",
+          "runs": [
+            {
+              "index": 1,
+              "text": "RM-Constrained FG Planning Optimizer",
+              "fontSize": 78,
+              "color": "#FFFFFF",
+              "bold": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/e9cvixcz",
+      "id": "4",
+      "name": "cover-rule",
+      "bbox": [
+        96,
+        602,
+        260,
+        5
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.2"
+      },
+      "geometry": "rect",
+      "fillColor": "#D58A3A",
+      "lineColor": "#D58A3A",
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/3q5o7qpg",
+      "id": "5",
+      "name": "cover-subtitle",
+      "bbox": [
+        96,
+        632,
+        694,
+        102
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.0.3"
+      },
+      "geometry": "rect",
+      "text": "A practical algorithmic planning layer for footwear manufacturers facing raw-material scarcity, SKU proliferation, and time-sensitive production commitments.",
+      "textPreview": "A practical algorithmic planning layer for footwear manufacturers facing raw-material scarcity, SKU proliferation, and time-sensitive pro...",
+      "resolvedFontSize": 28,
+      "resolvedTextStyle": {
+        "fontSize": 28,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "A practical algorithmic planning layer for footwear"
+          },
+          {
+            "index": 2,
+            "text": "manufacturers facing raw-material scarcity, SKU proliferation,"
+          },
+          {
+            "index": 3,
+            "text": "and time-sensitive production commitments."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "A practical algorithmic planning layer for footwear manufacturers facing raw-material scarcity, SKU proliferation, and time-sensitive production commitments.",
+          "runs": [
+            {
+              "index": 1,
+              "text": "A practical algorithmic planning layer for footwear manufacturers facing raw-material scarcity, SKU proliferation, and time-sensitive production commitments.",
+              "fontSize": 28,
+              "color": "#EDE5DA"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/wb2hwfyx",
+      "id": "6",
+      "name": "cover-spacer",
+      "bbox": [
+        890,
+        82,
+        934,
+        916
+      ],
+      "composeSource": {
+        "run": 1,
+        "path": "0.1.1"
+      },
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "+mn-lt",
+        "alignment": "left"
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      }
+    }
+  ],
+  "composeRuns": [
+    {
+      "index": 1,
+      "frame": {
+        "left": 0,
+        "top": 0,
+        "width": 1920,
+        "height": 1080
+      },
+      "baseUnit": 8,
+      "root": {
+        "path": "0",
+        "kind": "layers",
+        "name": "cover-root",
+        "requestedSize": {
+          "width": {
+            "mode": "fill",
+            "value": 1
+          },
+          "height": {
+            "mode": "fill",
+            "value": 1
+          }
+        },
+        "intrinsicSize": {
+          "width": 0,
+          "height": 0
+        },
+        "frame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "children": [
+          {
+            "path": "0.0",
+            "kind": "image",
+            "name": "cover-photo",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 0,
+              "height": 0
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "snappedFrame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [],
+            "source": {
+              "kind": "dataUrl"
+            },
+            "contentType": "image/png",
+            "fit": "cover",
+            "alt": "Footwear production planning room beside a factory floor",
+            "element": {
+              "aid": "im/29gr2p8n",
+              "id": "1",
+              "kind": "image"
+            }
+          },
+          {
+            "path": "0.1",
+            "kind": "grid",
+            "name": "cover-grid",
+            "requestedSize": {
+              "width": {
+                "mode": "fill",
+                "value": 1
+              },
+              "height": {
+                "mode": "fill",
+                "value": 1
+              }
+            },
+            "intrinsicSize": {
+              "width": 192,
+              "height": 186.4
+            },
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            },
+            "children": [
+              {
+                "path": "0.1.0",
+                "kind": "column",
+                "name": "cover-copy",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "fill",
+                    "value": 1
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 693.74,
+                  "height": 384.2
+                },
+                "frame": {
+                  "left": 96,
+                  "top": 82,
+                  "width": 794.88,
+                  "height": 916
+                },
+                "children": [
+                  {
+                    "path": "0.1.0.0",
+                    "kind": "text",
+                    "name": "section-label",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fill",
+                        "value": 1
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 0,
+                      "height": 19.2
+                    },
+                    "frame": {
+                      "left": 96,
+                      "top": 347.9,
+                      "width": 794.88,
+                      "height": 19.2
+                    },
+                    "snappedFrame": {
+                      "left": 96,
+                      "top": 348,
+                      "width": 794,
+                      "height": 20
+                    },
+                    "children": [],
+                    "text": "Client presentation",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/w3m94fu1",
+                      "id": "2",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "kind": "text",
+                    "name": "cover-title",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 760
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 627.53,
+                      "height": 187.2
+                    },
+                    "frame": {
+                      "left": 96,
+                      "top": 391.1,
+                      "width": 627.53,
+                      "height": 187.2
+                    },
+                    "snappedFrame": {
+                      "left": 96,
+                      "top": 392,
+                      "width": 628,
+                      "height": 188
+                    },
+                    "children": [],
+                    "text": "RM-Constrained FG Planning Optimizer",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/loj2t83i",
+                      "id": "3",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.2",
+                    "kind": "rule",
+                    "name": "cover-rule",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "fixed",
+                        "value": 260
+                      },
+                      "height": {
+                        "mode": "fixed",
+                        "value": 5
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 260,
+                      "height": 5
+                    },
+                    "frame": {
+                      "left": 96,
+                      "top": 602.3,
+                      "width": 260,
+                      "height": 5
+                    },
+                    "snappedFrame": {
+                      "left": 96,
+                      "top": 602,
+                      "width": 260,
+                      "height": 5
+                    },
+                    "children": [],
+                    "weight": 5,
+                    "element": {
+                      "aid": "sh/e9cvixcz",
+                      "id": "4",
+                      "kind": "shape"
+                    }
+                  },
+                  {
+                    "path": "0.1.0.3",
+                    "kind": "text",
+                    "name": "cover-subtitle",
+                    "requestedSize": {
+                      "width": {
+                        "mode": "wrap",
+                        "max": 720
+                      },
+                      "height": {
+                        "mode": "hug"
+                      }
+                    },
+                    "intrinsicSize": {
+                      "width": 693.74,
+                      "height": 100.8
+                    },
+                    "frame": {
+                      "left": 96,
+                      "top": 631.3,
+                      "width": 693.74,
+                      "height": 100.8
+                    },
+                    "snappedFrame": {
+                      "left": 96,
+                      "top": 632,
+                      "width": 694,
+                      "height": 102
+                    },
+                    "children": [],
+                    "text": "A practical algorithmic planning layer for footwear manufacturers facing raw-material scarcity, SKU proliferation, and time-sensitive production commitments.",
+                    "transform": "none",
+                    "element": {
+                      "aid": "sh/3q5o7qpg",
+                      "id": "5",
+                      "kind": "shape"
+                    }
+                  }
+                ],
+                "padding": {
+                  "top": 0,
+                  "right": 0,
+                  "bottom": 0,
+                  "left": 0
+                },
+                "gap": 24,
+                "effectiveGap": 24,
+                "justifyOffset": 265.9,
+                "align": "start",
+                "justify": "center",
+                "contentFrame": {
+                  "left": 96,
+                  "top": 82,
+                  "width": 794.88,
+                  "height": 916
+                },
+                "items": [
+                  {
+                    "path": "0.1.0.0",
+                    "frame": {
+                      "left": 96,
+                      "top": 347.9,
+                      "width": 794.88,
+                      "height": 19.2
+                    }
+                  },
+                  {
+                    "path": "0.1.0.1",
+                    "frame": {
+                      "left": 96,
+                      "top": 391.1,
+                      "width": 627.53,
+                      "height": 187.2
+                    }
+                  },
+                  {
+                    "path": "0.1.0.2",
+                    "frame": {
+                      "left": 96,
+                      "top": 602.3,
+                      "width": 260,
+                      "height": 5
+                    }
+                  },
+                  {
+                    "path": "0.1.0.3",
+                    "frame": {
+                      "left": 96,
+                      "top": 631.3,
+                      "width": 693.74,
+                      "height": 100.8
+                    }
+                  }
+                ]
+              },
+              {
+                "path": "0.1.1",
+                "kind": "text",
+                "name": "cover-spacer",
+                "requestedSize": {
+                  "width": {
+                    "mode": "fill",
+                    "value": 1
+                  },
+                  "height": {
+                    "mode": "hug"
+                  }
+                },
+                "intrinsicSize": {
+                  "width": 0,
+                  "height": 22.4
+                },
+                "frame": {
+                  "left": 890.88,
+                  "top": 82,
+                  "width": 933.12,
+                  "height": 916
+                },
+                "snappedFrame": {
+                  "left": 890,
+                  "top": 82,
+                  "width": 934,
+                  "height": 916
+                },
+                "children": [],
+                "text": "",
+                "transform": "none",
+                "element": {
+                  "aid": "sh/wb2hwfyx",
+                  "id": "6",
+                  "kind": "shape"
+                }
+              }
+            ],
+            "padding": {
+              "top": 82,
+              "right": 96,
+              "bottom": 82,
+              "left": 96
+            },
+            "columnGap": 0,
+            "rowGap": 0,
+            "alignItems": "stretch",
+            "justifyItems": "stretch",
+            "contentFrame": {
+              "left": 96,
+              "top": 82,
+              "width": 1728,
+              "height": 916
+            },
+            "columns": [
+              {
+                "mode": "fr",
+                "value": 0.92
+              },
+              {
+                "mode": "fr",
+                "value": 1.08
+              }
+            ],
+            "autoRows": "auto",
+            "resolvedRows": [
+              "auto"
+            ],
+            "columnSizes": [
+              794.88,
+              933.12
+            ],
+            "rowSizes": [
+              916
+            ],
+            "cells": [
+              {
+                "path": "0.1.0",
+                "column": 0,
+                "row": 0,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 96,
+                  "top": 82,
+                  "width": 794.88,
+                  "height": 916
+                }
+              },
+              {
+                "path": "0.1.1",
+                "column": 1,
+                "row": 0,
+                "columnSpan": 1,
+                "rowSpan": 1,
+                "cellFrame": {
+                  "left": 890.88,
+                  "top": 82,
+                  "width": 933.12,
+                  "height": 916
+                }
+              }
+            ]
+          }
+        ],
+        "padding": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        },
+        "alignItems": "stretch",
+        "justifyItems": "stretch",
+        "contentFrame": {
+          "left": 0,
+          "top": 0,
+          "width": 1920,
+          "height": 1080
+        },
+        "items": [
+          {
+            "path": "0.0",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          },
+          {
+            "path": "0.1",
+            "frame": {
+              "left": 0,
+              "top": 0,
+              "width": 1920,
+              "height": 1080
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
