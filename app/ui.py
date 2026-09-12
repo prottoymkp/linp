@@ -384,44 +384,95 @@ def _inject_page_styles() -> None:
                 padding: 0.35rem 0.45rem;
             }
 
-            div[data-testid="stFileUploader"] section {
+            div[data-testid="stFileUploader"] section,
+            section[data-testid="stFileUploaderDropzone"] {
                 padding: 0.15rem 0.25rem;
+                background: var(--surface-muted);
+                border-color: var(--border);
             }
 
-            div[data-testid="stFileUploader"] * {
+            div[data-testid="stFileUploader"] label,
+            div[data-testid="stFileUploader"] span,
+            div[data-testid="stFileUploader"] small,
+            div[data-testid="stFileUploader"] p,
+            div[data-testid="stFileUploaderDropzoneInstructions"] {
                 color: var(--text-body);
             }
 
+            div[data-testid="stFileUploader"] button,
+            section[data-testid="stFileUploaderDropzone"] button {
+                background: var(--surface);
+                color: var(--accent);
+                border: 1px solid rgba(109, 69, 40, 0.28);
+            }
+
+            div[data-testid="stFileUploader"] button:hover,
+            section[data-testid="stFileUploaderDropzone"] button:hover {
+                background: var(--accent-soft);
+                color: var(--accent);
+                border-color: rgba(109, 69, 40, 0.46);
+            }
+
             div[data-testid="stButton"] > button,
-            div[data-testid="stDownloadButton"] > button {
+            div[data-testid="stDownloadButton"] > button,
+            div[data-testid="stLinkButton"] > a {
                 border-radius: 999px;
                 min-height: 2.8rem;
                 font-weight: 700;
                 box-shadow: none;
             }
 
-            div[data-testid="stDownloadButton"] > button {
+            div[data-testid="stDownloadButton"] > button,
+            div[data-testid="stLinkButton"] > a {
                 background: var(--surface);
                 color: var(--accent);
                 border: 1px solid rgba(109, 69, 40, 0.24);
             }
 
-            div[data-testid="stDownloadButton"] > button:hover {
+            div[data-testid="stDownloadButton"] > button:hover,
+            div[data-testid="stLinkButton"] > a:hover {
                 border-color: rgba(109, 69, 40, 0.42);
                 color: var(--accent);
                 background: var(--accent-soft);
             }
 
-            div[data-testid="stButton"] > button[kind="primary"] {
+            div[data-testid="stButton"] > button[kind="primary"],
+            button[data-testid="stBaseButton-primary"] {
                 background: var(--accent);
                 color: #ffffff;
                 border: 1px solid var(--accent);
             }
 
-            div[data-testid="stButton"] > button[kind="primary"]:hover {
+            div[data-testid="stButton"] > button[kind="primary"]:hover,
+            button[data-testid="stBaseButton-primary"]:hover {
                 background: #5c3820;
                 color: #ffffff;
                 border-color: #5c3820;
+            }
+
+            /* Streamlit renders button labels inside nested markdown nodes. Keep
+               those nodes from inheriting the page-level paragraph color. */
+            div[data-testid="stButton"] > button *,
+            div[data-testid="stDownloadButton"] > button *,
+            div[data-testid="stLinkButton"] > a *,
+            div[data-testid="stFileUploader"] button * {
+                color: inherit !important;
+            }
+
+            div[data-testid="stButton"] > button[kind="primary"] *,
+            button[data-testid="stBaseButton-primary"] * {
+                color: #ffffff !important;
+            }
+
+            div[data-baseweb="input"] > div,
+            div[data-baseweb="base-input"] {
+                background: var(--surface);
+                color: var(--text-strong);
+            }
+
+            div[data-baseweb="input"] input {
+                color: var(--text-strong);
+                -webkit-text-fill-color: var(--text-strong);
             }
 
             div[data-testid="stMetric"] {
